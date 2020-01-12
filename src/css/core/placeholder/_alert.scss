@@ -1,0 +1,5 @@
+%alert {
+  @include _alert();
+  border-radius: $_border-radius;
+  @include _padding(.5);
+}

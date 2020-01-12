@@ -1,0 +1,7 @@
+.DS_Store
+vendor/
+node_modules/
+snow-monkey-editor.zip
+snow-monkey-editor
+dist/
+npm-debug.log

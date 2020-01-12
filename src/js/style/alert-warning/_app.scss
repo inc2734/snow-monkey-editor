@@ -1,0 +1,6 @@
+.is-style-sme-alert-warning {
+  @extend %alert;
+  background-color: adjust-hue($alert-color, -30deg);
+  border-color: adjust-hue(darken(desaturate($alert-color, 10%), 10%), -30deg);
+  color: adjust-hue(darken(desaturate($alert-color, 60%), 60%), -30deg);
+}

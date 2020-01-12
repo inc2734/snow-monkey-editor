@@ -1,0 +1,9 @@
+.wp-block-cover.is-style-sme-overwrap-rm {
+  @extend %overwrap;
+  @extend %overwrap--right;
+
+  > .wp-block-cover__inner-container {
+    @extend %overwrap__container;
+    @extend %overwrap--right__container;
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*",
+    "wp-coding-standards/wpcs": "*",
+    "phpmd/phpmd": "2.*",
+    "phpunit/phpunit": "7.*",
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3"
+  },
+  "authors": [
+    {
+      "name": "Takashi Kitajima",
+      "email": "inc@2inc.org"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "Snow_Monkey\\Plugin\\Editor\\" : ""
+    }
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpcs --config-set installed_paths vendor/phpcompatibility/php-compatibility,vendor/phpcompatibility/phpcompatibility-paragonie,vendor/phpcompatibility/phpcompatibility-wp,vendor/wp-coding-standards/wpcs",
+      "vendor/bin/phpcs -p -s -v -n . --standard=./.phpcs.xml.dist --extensions=php",
+      "vendor/bin/phpmd ./ text .phpmd.ruleset.xml --suffixes php --exclude /vendor/,/tests/,/languages/",
+      "bash bin/phpunit.sh"
+    ],
+    "phpcbf": "vendor/bin/phpcbf -p -s -v -n . --standard=./.phpcs.xml.dist --extensions=php",
+    "wpphpunit": "bash bin/wpphpunit.sh",
+    "phpunit": "bash bin/phpunit.sh"
+  }
+}

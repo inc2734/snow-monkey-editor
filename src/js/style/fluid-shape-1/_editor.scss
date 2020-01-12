@@ -1,0 +1,21 @@
+.editor-styles-wrapper {
+  @import 'app';
+
+  .wp-block-media-text.is-style-sme-fluid-shape-1 {
+    > .components-resizable-box__container {
+      > .block-library-media-text__media-container {
+        @extend %fluid-shape__media;
+        mask-image: url(../../src/js/style/fluid-shape-1/shape.svg);
+      }
+    }
+  }
+
+  .wp-block-image.is-style-sme-fluid-shape-1 {
+    > div {
+      > .components-resizable-box__container {
+        @extend %fluid-shape__media;
+        mask-image: url(../../src/js/style/fluid-shape-1/shape.svg);
+      }
+    }
+  }
+}

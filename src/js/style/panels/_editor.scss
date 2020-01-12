@@ -1,0 +1,23 @@
+.editor-styles-wrapper {
+  @import 'app';
+
+  .wp-block-columns.is-style-sme-panels {
+    margin-bottom: 0;
+
+    > .editor-inner-blocks {
+      > .editor-block-list__layout {
+        > [data-type="core/column"] {
+          > .editor-block-list__block-edit {
+            > [data-block] {
+              > .wp-block-column {
+                @include panel();
+                margin-right: 14px;
+                margin-left: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

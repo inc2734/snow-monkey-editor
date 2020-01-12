@@ -1,0 +1,38 @@
+{
+  "author": "inc2734",
+  "license": "GPL-2.0+",
+  "devDependencies": {
+    "@wordpress/scripts": "6.1.1",
+    "autoprefixer": "^9.7.3",
+    "cpy-cli": "^3.0.0",
+    "cssnano": "^4.1.10",
+    "hex-to-rgba": "^2.0.1",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "po2json": "^1.0.0-alpha",
+    "postcss-cli": "^6.1.3",
+    "rgb2hex": "^0.1.10",
+    "rimraf": "^3.0.0",
+    "sass-basis": "^9.5.8"
+  },
+  "scripts": {
+    "lint:js": "wp-scripts lint-js src/js",
+    "lint": "npm-run-all -p lint:*",
+    "clean:css": "rimraf dist/css",
+    "clean:js": "rimraf dist/js",
+    "clean:zip": "rimraf snow-monkey-editor.zip",
+    "css": "npm run clean:css && node-sass src/css -o dist/css && postcss dist/css/*.css -r",
+    "js:editor": "wp-scripts build src/js/editor.js --output-path dist/js",
+    "js": "npm run clean:js && npm-run-all -p js:*",
+    "po2json:snow-monkey-editor@editor": "po2json languages/snow-monkey-editor-ja.po languages/snow-monkey-editor-ja-snow-monkey-editor@editor.json -f jed",
+    "po2json": "npm-run-all -p po2json:*",
+    "build": "npm-run-all -s css js po2json",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/bin' --exclude='/tests' --exclude='package*.json' . snow-monkey-editor && cd snow-monkey-editor && composer install --no-dev",
+    "zip:archive": "zip -9 -qmr snow-monkey-editor.zip snow-monkey-editor",
+    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@wordpress/i18n": "^3.7.0"
+  }
+}

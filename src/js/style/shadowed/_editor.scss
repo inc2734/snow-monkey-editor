@@ -1,0 +1,13 @@
+.editor-styles-wrapper {
+  @import 'app';
+
+  .wp-block-image.is-style-sme-shadowed {
+    > div {
+      > .components-resizable-box__container {
+        > img {
+          box-shadow: 0 0 4px 0 rgba(#000, .1);
+        }
+      }
+    }
+  }
+}

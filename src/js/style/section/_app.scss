@@ -1,0 +1,12 @@
+.wp-block-group.is-style-sme-section {
+  @include section();
+
+  > .wp-block-group__inner-container {
+    @include _container();
+    @include container-padding();
+  }
+
+  & + & {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,34 @@
+@charset 'utf-8';
+
+@import 'core/core';
+
+@import '../js/format/badge/editor';
+@import '../js/format/bg-color/editor';
+@import '../js/format/highlighter/editor';
+@import '../js/format/text-color/editor';
+
+@import '../js/style/alert/editor';
+@import '../js/style/alert-success/editor';
+@import '../js/style/alert-warning/editor';
+@import '../js/style/fluid-shape-1/editor';
+@import '../js/style/fluid-shape-2/editor';
+@import '../js/style/fluid-shape-3/editor';
+@import '../js/style/overwrap-lb/editor';
+@import '../js/style/overwrap-lm/editor';
+@import '../js/style/overwrap-rb/editor';
+@import '../js/style/overwrap-rm/editor';
+@import '../js/style/panels/editor';
+@import '../js/style/section/editor';
+@import '../js/style/section-title/editor';
+@import '../js/style/shadowed/editor';
+@import '../js/style/slim-width/editor';
+
+.sme-popover {
+  &__inner {
+    padding: 14px;
+  }
+
+  &.components-popover:not(.is-mobile) .components-popover__content {
+    min-width: 270px;
+  }
+}

@@ -1,0 +1,112 @@
+# Copyright (C) 2018 {package-name}
+# This file is distributed under the same license as the {package-name} package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Snow Monkey Editor\n"
+"Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
+"POT-Creation-Date: 2020-01-11 16:26+0900\n"
+"PO-Revision-Date: 2020-01-11 16:27+0900\n"
+"Last-Translator: inc2734 <inc@2inc.org>\n"
+"Language-Team: Takashi Kitajima <inc@2inc.org>\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: vendor\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+"X-Poedit-SearchPathExcluded-2: dist\n"
+"X-Poedit-SearchPathExcluded-3: tests\n"
+"X-Poedit-SearchPathExcluded-4: languages\n"
+
+#: src/js/format/badge/index.js:30 src/js/format/badge/index.js:57
+msgid "Badge"
+msgstr "バッジ"
+
+#: src/js/format/bg-color/index.js:30 src/js/format/bg-color/index.js:57
+msgid "Background color"
+msgstr "背景色"
+
+#: src/js/format/component/format-toolbar.js:44
+msgid "Snow Monkey Editor Controls"
+msgstr "Snow Monkey Editor コントロール"
+
+#: src/js/format/font-size/index.js:30 src/js/format/font-size/index.js:59
+msgid "Font size"
+msgstr "文字サイズ"
+
+#: src/js/format/highlighter/index.js:31 src/js/format/highlighter/index.js:59
+msgid "Highlighter"
+msgstr "蛍光ペン"
+
+#: src/js/format/remove/index.js:26 src/js/format/remove/index.js:44
+msgid "Remove formatting"
+msgstr "書式設定をクリア"
+
+#: src/js/format/text-color/index.js:30 src/js/format/text-color/index.js:57
+msgid "Text color"
+msgstr "文字色"
+
+#: src/js/style/alert-success/settings.js:9
+msgid "Alert (Success)"
+msgstr "アラート（Success）"
+
+#: src/js/style/alert-warning/settings.js:9
+msgid "Alert (Warning)"
+msgstr "アラート（Warning）"
+
+#: src/js/style/alert/settings.js:9
+msgid "Alert"
+msgstr "アラート"
+
+#: src/js/style/fluid-shape-1/settings.js:9
+msgid "Fluid Shape 1"
+msgstr "流体シェイプ1"
+
+#: src/js/style/fluid-shape-2/settings.js:9
+msgid "Fluid Shape 2"
+msgstr "流体シェイプ2"
+
+#: src/js/style/fluid-shape-3/settings.js:9
+msgid "Fluid Shape 3"
+msgstr "流体シェイプ3"
+
+#: src/js/style/overwrap-lb/settings.js:9
+msgid "Overwrap (Left/Bottom)"
+msgstr "オーバーラップ（左/下）"
+
+#: src/js/style/overwrap-lm/settings.js:9
+msgid "Overwrap (Left/Middle)"
+msgstr "オーバーラップ（左/中央）"
+
+#: src/js/style/overwrap-rb/settings.js:9
+msgid "Overwrap (Right/Bottom)"
+msgstr "オーバーラップ（右/下）"
+
+#: src/js/style/overwrap-rm/settings.js:9
+msgid "Overwrap (Right/Middle)"
+msgstr "オーバーラップ（右/中央）"
+
+#: src/js/style/panels/settings.js:9
+msgid "Panels"
+msgstr "パネル"
+
+#: src/js/style/section-title/settings.js:9
+msgid "Section title"
+msgstr "セクションタイトル"
+
+#: src/js/style/section/settings.js:9
+msgid "Section"
+msgstr "セクション"
+
+#: src/js/style/shadowed/settings.js:9
+msgid "Shadowed"
+msgstr "影付き"
+
+#: src/js/style/slim-width/settings.js:9
+msgid "Slim width"
+msgstr "スリム幅"
