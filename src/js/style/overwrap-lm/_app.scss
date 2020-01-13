@@ -1,9 +1,0 @@
-.wp-block-cover.is-style-sme-overwrap-lm {
-  @extend %overwrap;
-  @extend %overwrap--left;
-
-  > .wp-block-cover__inner-container {
-    @extend %overwrap__container;
-    @extend %overwrap--left__container;
-  }
-}

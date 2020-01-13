@@ -3,4 +3,8 @@
   background-color: $alert-color;
   border: 1px solid darken(desaturate($alert-color, 10%), 10%);
   color: darken(desaturate($alert-color, 60%), 60%);
+
+  &::before {
+    background-image: url(../../src/js/style/alert/icon.svg);
+  }
 }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-11 16:26+0900\n"
-"PO-Revision-Date: 2020-01-11 16:27+0900\n"
+"POT-Creation-Date: 2020-01-13 06:01+0900\n"
+"PO-Revision-Date: 2020-01-13 06:01+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -75,38 +75,6 @@ msgstr "流体シェイプ2"
 msgid "Fluid Shape 3"
 msgstr "流体シェイプ3"
 
-#: src/js/style/overwrap-lb/settings.js:9
-msgid "Overwrap (Left/Bottom)"
-msgstr "オーバーラップ（左/下）"
-
-#: src/js/style/overwrap-lm/settings.js:9
-msgid "Overwrap (Left/Middle)"
-msgstr "オーバーラップ（左/中央）"
-
-#: src/js/style/overwrap-rb/settings.js:9
-msgid "Overwrap (Right/Bottom)"
-msgstr "オーバーラップ（右/下）"
-
-#: src/js/style/overwrap-rm/settings.js:9
-msgid "Overwrap (Right/Middle)"
-msgstr "オーバーラップ（右/中央）"
-
-#: src/js/style/panels/settings.js:9
-msgid "Panels"
-msgstr "パネル"
-
-#: src/js/style/section-title/settings.js:9
-msgid "Section title"
-msgstr "セクションタイトル"
-
-#: src/js/style/section/settings.js:9
-msgid "Section"
-msgstr "セクション"
-
 #: src/js/style/shadowed/settings.js:9
 msgid "Shadowed"
 msgstr "影付き"
-
-#: src/js/style/slim-width/settings.js:9
-msgid "Slim width"
-msgstr "スリム幅"

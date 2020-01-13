@@ -1,8 +1,0 @@
-.wp-block-columns.is-style-sme-panels {
-  @include _margin-bottom(-1);
-
-  > .wp-block-column {
-    @include panel();
-    @include _margin-bottom(1);
-  }
-}
