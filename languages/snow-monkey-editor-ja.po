@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-13 06:01+0900\n"
-"PO-Revision-Date: 2020-01-13 06:01+0900\n"
+"POT-Creation-Date: 2020-01-15 11:41+0900\n"
+"PO-Revision-Date: 2020-01-15 11:41+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,6 +23,22 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
+#: src/js/extention/hidden/index.js:97
+msgid "Show / Hide"
+msgstr "表示 / 非表示"
+
+#: src/js/extention/hidden/index.js:99
+msgid "Hide on smartphone size"
+msgstr "スマートフォンサイズで非表示"
+
+#: src/js/extention/hidden/index.js:105
+msgid "Hide on tablet size"
+msgstr "タブレットサイズで非表示"
+
+#: src/js/extention/hidden/index.js:111
+msgid "Hide on PC size"
+msgstr "PC サイズで非表示"
+
 #: src/js/format/badge/index.js:30 src/js/format/badge/index.js:57
 msgid "Badge"
 msgstr "バッジ"
@@ -31,7 +47,7 @@ msgstr "バッジ"
 msgid "Background color"
 msgstr "背景色"
 
-#: src/js/format/component/format-toolbar.js:44
+#: src/js/format/component/format-toolbar.js:42
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
@@ -50,6 +66,10 @@ msgstr "書式設定をクリア"
 #: src/js/format/text-color/index.js:30 src/js/format/text-color/index.js:57
 msgid "Text color"
 msgstr "文字色"
+
+#: src/js/style/alert-remark/settings.js:9
+msgid "Alert (Remark)"
+msgstr "アラート（Remark）"
 
 #: src/js/style/alert-success/settings.js:9
 msgid "Alert (Success)"

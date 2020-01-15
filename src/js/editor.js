@@ -41,3 +41,5 @@ fluidShape1.forEach( ( props ) => registerStyle( props ) );
 fluidShape2.forEach( ( props ) => registerStyle( props ) );
 fluidShape3.forEach( ( props ) => registerStyle( props ) );
 shadowed.forEach( ( props ) => registerStyle( props ) );
+
+import './extention/hidden';

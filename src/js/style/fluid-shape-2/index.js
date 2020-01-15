@@ -8,6 +8,6 @@ export default blocks.map(
 		return {
 			name,
 			settings,
-		}
+		};
 	}
 );
