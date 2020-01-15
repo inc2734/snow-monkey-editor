@@ -2,19 +2,9 @@
 
 @import 'core/core';
 
-@import '../js/format/badge/editor';
-@import '../js/format/bg-color/editor';
-@import '../js/format/highlighter/editor';
-@import '../js/format/text-color/editor';
-
-@import '../js/style/alert/editor';
-@import '../js/style/alert-success/editor';
-@import '../js/style/alert-warning/editor';
-@import '../js/style/alert-remark/editor';
-@import '../js/style/fluid-shape-1/editor';
-@import '../js/style/fluid-shape-2/editor';
-@import '../js/style/fluid-shape-3/editor';
-@import '../js/style/shadowed/editor';
+@import '../extension/editor';
+@import '../format/editor';
+@import '../style/editor';
 
 .sme-popover {
   &__inner {

@@ -5,6 +5,6 @@
   color: adjust-hue(darken(desaturate($alert-color, 70%), 80%), 40deg);
 
   &::before {
-    background-image: url(../../src/js/style/alert-success/icon.svg);
+    background-image: url(../../src/style/alert-success/icon.svg);
   }
 }

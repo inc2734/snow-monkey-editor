@@ -1,0 +1,48 @@
+.editor-styles-wrapper {
+  .sme-hidden-sm,
+  .sme-hidden-md,
+  .sme-hidden-lg-up {
+    outline: 1px dashed rgba(#127db8, .8);
+
+    &::after {
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      display: inline-block;
+      color: #fff;
+      background-color: #127db8;
+      font-size: 12px;
+      line-height: 1;
+      padding: 4px 4px;
+      opacity: .8;
+    }
+  }
+
+  .sme-hidden-sm::after {
+    content: 'Hide smartphone';
+  }
+
+  .sme-hidden-md::after {
+    content: 'Hide tablet';
+  }
+
+  .sme-hidden-lg-up::after {
+    content: 'Hide PC';
+  }
+
+  .sme-hidden-sm.sme-hidden-md::after {
+    content: 'Hide smartphone / tablet';
+  }
+
+  .sme-hidden-sm.sme-hidden-lg-up::after {
+    content: 'Hide smartphone / PC';
+  }
+
+  .sme-hidden-sm.sme-hidden-md.sme-hidden-lg-up::after {
+    content: 'Hide';
+  }
+
+  .sme-hidden-md.sme-hidden-lg-up::after {
+    content: 'Hide tablet / PC';
+  }
+}

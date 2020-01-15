@@ -2,16 +2,6 @@
 
 @import 'core/core';
 
-@import '../js/format/badge/app';
-@import '../js/format/bg-color/app';
-@import '../js/format/highlighter/app';
-@import '../js/format/text-color/app';
-
-@import '../js/style/alert/app';
-@import '../js/style/alert-success/app';
-@import '../js/style/alert-warning/app';
-@import '../js/style/alert-remark/app';
-@import '../js/style/fluid-shape-1/app';
-@import '../js/style/fluid-shape-2/app';
-@import '../js/style/fluid-shape-3/app';
-@import '../js/style/shadowed/app';
+@import '../extension/app';
+@import '../format/app';
+@import '../style/app';

@@ -2,7 +2,7 @@
 
 import {
 	InspectorControls,
-} from '@wordpress/blockEditor';
+} from '@wordpress/block-editor';
 
 import {
 	PanelBody,
@@ -23,7 +23,7 @@ import {
 
 import {
 	icon,
-} from '../../helper/icon';
+} from '../../js/helper/icon';
 
 addFilter(
 	'blocks.registerBlockType',
@@ -69,22 +69,22 @@ addFilter(
 				props.attributes.className = ( () => {
 					let extraClassName = className ? className.split( ' ' ) : [];
 
-					if ( true === smeIsHiddenSm && ! extraClassName.includes( 'u-hidden-sm' ) ) {
-						extraClassName.push( 'u-hidden-sm' );
+					if ( true === smeIsHiddenSm && ! extraClassName.includes( 'sme-hidden-sm' ) ) {
+						extraClassName.push( 'sme-hidden-sm' );
 					} else if ( false === smeIsHiddenSm ) {
-						extraClassName = extraClassName.filter( ( value ) => value !== 'u-hidden-sm' );
+						extraClassName = extraClassName.filter( ( value ) => value !== 'sme-hidden-sm' );
 					}
 
-					if ( true === smeIsHiddenMd && ! extraClassName.includes( 'u-hidden-md' ) ) {
-						extraClassName.push( 'u-hidden-md' );
+					if ( true === smeIsHiddenMd && ! extraClassName.includes( 'sme-hidden-md' ) ) {
+						extraClassName.push( 'sme-hidden-md' );
 					} else if ( false === smeIsHiddenMd ) {
-						extraClassName = extraClassName.filter( ( value ) => value !== 'u-hidden-md' );
+						extraClassName = extraClassName.filter( ( value ) => value !== 'sme-hidden-md' );
 					}
 
-					if ( true === smeIsHiddenLg && ! extraClassName.includes( 'u-hidden-lg-up' ) ) {
-						extraClassName.push( 'u-hidden-lg-up' );
+					if ( true === smeIsHiddenLg && ! extraClassName.includes( 'sme-hidden-lg-up' ) ) {
+						extraClassName.push( 'sme-hidden-lg-up' );
 					} else if ( false === smeIsHiddenLg ) {
-						extraClassName = extraClassName.filter( ( value ) => value !== 'u-hidden-lg-up' );
+						extraClassName = extraClassName.filter( ( value ) => value !== 'sme-hidden-lg-up' );
 					}
 
 					return extraClassName.join( ' ' );
