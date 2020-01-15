@@ -1,0 +1,9 @@
+.is-style-sme-alert-remark {
+  @extend %alert;
+  background-color: _lightest($_color-gray);
+  border: 1px solid _lighter($_color-gray);
+
+  &::before {
+    background-image: url(../../src/js/style/alert-remark/icon.svg);
+  }
+}

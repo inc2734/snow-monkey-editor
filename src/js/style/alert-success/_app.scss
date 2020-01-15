@@ -1,8 +1,8 @@
 .is-style-sme-alert-success {
   @extend %alert;
   background-color: adjust-hue($alert-color, 40deg);
-  border-color: adjust-hue(darken(desaturate($alert-color, 15%), 15%), 40deg);
-  color: adjust-hue(darken(desaturate($alert-color, 70%), 70%), 40deg);
+  border: 1px solid adjust-hue(darken($alert-color, 10%), 40deg);
+  color: adjust-hue(darken(desaturate($alert-color, 70%), 80%), 40deg);
 
   &::before {
     background-image: url(../../src/js/style/alert-success/icon.svg);
