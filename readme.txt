@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.3
 Tested up to: 5.3
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -19,6 +19,8 @@ The Snow Monkey Editor is a plugin that extends the block editor.
 
 = Formatter =
 
+Click Snow Monkey button in toolbar.
+
 * Text badge
 * Text background color
 * Text font size
@@ -28,9 +30,13 @@ The Snow Monkey Editor is a plugin that extends the block editor.
 
 = Extensions =
 
+You can settings in inspector.
+
 * Hide on smartphone size or tablet size or PC size.
 
 = Block styles =
+
+There can be used in paragraph blocks, group blocks, image blocks, etc.
 
 * Alert
 * Alert (Remark)
