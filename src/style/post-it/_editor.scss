@@ -1,0 +1,7 @@
+.editor-styles-wrapper {
+  @import 'app';
+
+  .is-style-sme-post-it {
+    @include _margin-bottom(2);
+  }
+}

@@ -14,12 +14,6 @@
     background-color: inherit;
   }
 
-  @at-root {
-    p#{&} {
-      @include _padding(.25, .5);
-    }
-  }
-
   &.has-text-align-center {
     margin-right: auto;
     margin-left: auto;
@@ -38,4 +32,8 @@
       right: _space(.75);
     }
   }
+}
+
+p.is-style-sme-speech {
+  @include _padding(.25, .5);
 }

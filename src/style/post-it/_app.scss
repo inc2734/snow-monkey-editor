@@ -1,0 +1,47 @@
+.is-style-sme-post-it {
+  position: relative;
+  @include _margin-bottom(1);
+  background-color: _darker($alert-color);
+  width: fit-content;
+  max-width: 300px;
+
+  &:not(:last-child) {
+    @include _margin-bottom(2);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 100%;
+    right: 0;
+    border-width: _space(1) _space(1) 0 0;
+    border-style: solid;
+    border-color: _lighter($_color-gray) transparent;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: _space(1);
+    left: 0;
+    display: block;
+    background-color: inherit;
+    height: _space(1);
+  }
+
+  &.has-text-align-center {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &.has-text-align-right {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+p.is-style-sme-post-it {
+  @include _padding(1, 1, 0);
+}
