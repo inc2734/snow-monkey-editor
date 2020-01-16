@@ -1,0 +1,41 @@
+.is-style-sme-post-it-narrow {
+  position: relative;
+  z-index: 1;
+  background-color: #fff !important;
+  width: fit-content;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: .5em;
+    box-shadow: 1px 2px 6px rgba(#000, .1);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: _space(.25);
+    background-color: _darker(adjust-hue($alert-color, -30deg));
+  }
+
+  &.has-text-align-center {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &.has-text-align-right {
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+p.is-style-sme-post-it-narrow {
+  @include _padding(.25, .5, .25, .75);
+}
