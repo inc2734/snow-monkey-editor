@@ -1,4 +1,4 @@
-# Snow Monkey Blocks
+# Snow Monkey Editor
 
 [![Build Status](https://travis-ci.org/inc2734/snow-monkey-editor.svg?branch=master)](https://travis-ci.org/inc2734/snow-monkey-editor)
 [![Latest Stable Version](https://poser.pugx.org/inc2734/snow-monkey-editor/v/stable)](https://packagist.org/packages/inc2734/snow-monkey-editor)
