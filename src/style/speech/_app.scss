@@ -1,0 +1,41 @@
+.is-style-sme-speech {
+  position: relative;
+  background-color: _lightest($_color-gray);
+  border-radius: $_border-radius;
+  width: fit-content;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(100% - 7px);
+    left: _space(.75);
+    @include _square(14px);
+    transform: rotate(45deg);
+    background-color: inherit;
+  }
+
+  @at-root {
+    p#{&} {
+      @include _padding(.25, .5);
+    }
+  }
+
+  &.has-text-align-center {
+    margin-right: auto;
+    margin-left: auto;
+
+    &::before {
+      left: calc(50% - 10px);
+    }
+  }
+
+  &.has-text-align-right {
+    margin-right: 0;
+    margin-left: auto;
+
+    &::before {
+      left: auto;
+      right: _space(.75);
+    }
+  }
+}
