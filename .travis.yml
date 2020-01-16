@@ -1,0 +1,49 @@
+dist: trusty
+sudo: false
+language: php
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+branches:
+  only:
+  - master
+  - develop
+  - "/\\d+\\.\\d+\\.\\d+?.*/"
+php:
+- 7.2
+- 7.3
+env:
+  global:
+  - GIT_COMMITTER_NAME=travis-ci
+  - GIT_COMMITTER_EMAIL=inc@2inc.org
+  - GIT_AUTHOR_NAME=travis-ci
+  - GIT_AUTHOR_EMAIL=inc@2inc.org
+  - WP_VERSION=latest WP_MULTISITE=0
+cache:
+  directories:
+  - node_modules
+  - vendor
+  - "$HOME/.composer/cache"
+install:
+- nvm install 8
+- npm install
+- composer install
+before_script:
+- bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+script:
+- composer test
+- npm run lint
+before_deploy:
+- npm run zip
+- ls -la snow-monkey-editor.zip
+- export RELEASE_FILE=$(ls snow-monkey-editor.zip)
+deploy:
+  provider: releases
+  api_key: ml3HLEkoA+GMIlDy8jTi1GIKYO+W0UxTbvBUMpTvE+UI1QhNUN4VsbY2jsSecYr9InwTCohSVWfzEgD7FmvQy+yRB6i1vO1tBIpN6pyjLYZYa59sJKcPURzvjB/CboO/e5EqMemfvu/3uoJhdeLHpzRU6oesyHaTgxGM3EWsCCiPgP9XSX3jPlu/A5MCDU3rG4qluJekr3MwP9qVDJ5uUExxHtW8cnbelK36jmtLEuN6pxRHY2Nz0kAp65prKqBLwNFISC7dcvQ9FID0cWP7wQsg8yF20ai7BAzN4SFNl7fMFOHFTZnr+WSJk3M76ZKgQ2KW45bgScZW+6TPyF0gpYlU2J27+kv3+S/KWrcRdhLj9x08OiwA03SpD/OF4ngVLkW8/EPa9SQyZm4Er5ikV+fKpBn7tnAN1BELQXvx/oruwK5haZhxQf8HQrL9pmgCLluda+C9AgwTXyXkfU4qK4DFg52MWZyjdHnPIc100ZIfLfjiHZLfJT96/aWmhT62pjxk1arYNq5i0/PVrdDiTSAZwLTTUXs/x9Ke/GuFWt07Aa9vCudY6LVqSVNFQvkj9OQCMW7XuoURy4pF4CW3MkupHa+N2NayTQO4vnbeDPUvTYedsn07k9V552H7tVBKGa7OPXKNT17uFTPkASsrSgEn44P4a3qA6QKsXikXiz0=
+  file: "${RELEASE_FILE}"
+  skip_cleanup: true
+  on:
+    tags: true
+    php: 7.3
+    repo: inc2734/snow-monkey-editor
