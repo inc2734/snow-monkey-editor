@@ -33,6 +33,7 @@ Click Snow Monkey button in toolbar.
 You can settings in inspector.
 
 * Hide on smartphone size or tablet size or PC size.
+* Hide by user roles.
 
 = Block styles =
 
@@ -71,17 +72,18 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 4. Text highlighter
 5. Text color
 6. Hide on smartphone size or tablet size or PC size.
-7. Alert
-8. Alert (Remark)
-9. Alert (Success)
-10. Alert (Warning)
-11. Fluid shapes 1
-12. Fluid shapes 2
-13. Fluid shapes 3
-14. Post-it
-15. Post-it (Narrow)
-16. Shadowed
-17. Speech
+7. Hide by user roles.
+8. Alert
+9. Alert (Remark)
+10. Alert (Success)
+11. Alert (Warning)
+12. Fluid shapes 1
+13. Fluid shapes 2
+14. Fluid shapes 3
+15. Post-it
+16. Post-it (Narrow)
+17. Shadowed
+18. Speech
 
 == Changelog ==
 
