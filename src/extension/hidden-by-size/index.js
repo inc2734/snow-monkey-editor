@@ -27,7 +27,7 @@ import {
 
 addFilter(
 	'blocks.registerBlockType',
-	'snow-monkey-editor/hidden/attributes',
+	'snow-monkey-editor/hidden-by-size/attributes',
 	( settings ) => {
 		settings.attributes = {
 			...settings.attributes,
@@ -50,7 +50,7 @@ addFilter(
 
 addFilter(
 	'editor.BlockEdit',
-	'snow-monkey-editor/hidden/block-edit',
+	'snow-monkey-editor/hidden-by-size/block-edit',
 	createHigherOrderComponent(
 		( BlockEdit ) => {
 			return ( props ) => {
@@ -94,7 +94,7 @@ addFilter(
 					<>
 						<BlockEdit { ...props } />
 						<InspectorControls>
-							<PanelBody title={ __( 'Show / Hide', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
+							<PanelBody title={ __( 'Display setting (By the window size)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
 								<ToggleControl
 									label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
 									checked={ smeIsHiddenSm }
@@ -118,6 +118,6 @@ addFilter(
 				);
 			};
 		},
-		'withSnowMonkeyEditorHiddenBlockEdit'
+		'withSnowMonkeyEditorHiddenBySizeBlockEdit'
 	)
 );

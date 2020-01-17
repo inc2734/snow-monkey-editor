@@ -7,8 +7,6 @@
 
 namespace Snow_Monkey\Plugin\Editor\App\Setup;
 
-use Snow_Monkey\Plugin\Editor;
-
 class Assets {
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', [ $this, '_enqueue_block_editor_assets' ] );

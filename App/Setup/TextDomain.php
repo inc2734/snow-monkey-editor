@@ -7,8 +7,6 @@
 
 namespace Snow_Monkey\Plugin\Editor\App\Setup;
 
-use Snow_Monkey\Plugin\Editor;
-
 class TextDomain {
 	public function __construct() {
 		load_plugin_textdomain( 'snow-monkey-editor', false, basename( SNOW_MONKEY_EDITOR_PATH ) . '/languages' );

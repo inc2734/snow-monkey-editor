@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-16 11:06+0900\n"
-"PO-Revision-Date: 2020-01-16 11:07+0900\n"
+"POT-Creation-Date: 2020-01-17 13:59+0900\n"
+"PO-Revision-Date: 2020-01-17 14:00+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,19 +23,31 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/hidden/index.js:97
-msgid "Show / Hide"
-msgstr "表示 / 非表示"
+#: src/extension/hidden-by-role/index.js:67
+msgid "user is not logged in"
+msgstr "非ログインユーザー"
 
-#: src/extension/hidden/index.js:99
+#: src/extension/hidden-by-role/index.js:86
+msgid "Display setting (By roles)"
+msgstr "表示設定（ロール）"
+
+#: src/extension/hidden-by-role/index.js:90
+msgid "Hide if %1$s"
+msgstr "%1$sのとき非表示"
+
+#: src/extension/hidden-by-size/index.js:97
+msgid "Display setting (By the window size)"
+msgstr "表示設定（ウィンドウサイズ）"
+
+#: src/extension/hidden-by-size/index.js:99
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden/index.js:105
+#: src/extension/hidden-by-size/index.js:105
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden/index.js:111
+#: src/extension/hidden-by-size/index.js:111
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
@@ -110,3 +122,6 @@ msgstr "影付き"
 #: src/style/speech/settings.js:9
 msgid "Speech"
 msgstr "吹きだし"
+
+#~ msgid "Show / Hide"
+#~ msgstr "表示 / 非表示"

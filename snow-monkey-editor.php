@@ -36,11 +36,30 @@ class Bootstrap {
 
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+		add_action( 'render_block', [ $this, '_render_block' ], 10, 2 );
 	}
 
 	public function _bootstrap() {
-		new App\Setup\TextDomain();
-		new App\Setup\Assets();
+		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/App/Setup/*.php' ) as $file ) {
+			$class_name = '\\Snow_Monkey\\Plugin\\Editor\\App\\Setup\\' . str_replace( '.php', '', basename( $file ) );
+			if ( class_exists( $class_name ) ) {
+				new $class_name();
+			}
+		}
+	}
+
+	public function _render_block( $content, $block ) {
+		$attributes = $block['attrs'];
+		$has_hidden_by_roles = isset( $attributes['smeIsHiddenRoles'] ) ? $attributes['smeIsHiddenRoles'] : false;
+		if ( $has_hidden_by_roles ) {
+			$user = wp_get_current_user();
+			foreach ( $has_hidden_by_roles as $role ) {
+				if ( in_array( $role, (array) $user->roles ) || 'sme-guest' === $role && ! $user->roles ) {
+					return '';
+				}
+			}
+		}
+		return $content;
 	}
 }
 

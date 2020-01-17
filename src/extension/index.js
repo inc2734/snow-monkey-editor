@@ -1,3 +1,4 @@
 'use strict';
 
-import './hidden';
+import './hidden-by-size';
+import './hidden-by-role';
