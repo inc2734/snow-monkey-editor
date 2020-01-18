@@ -17,7 +17,7 @@
     "sass-basis": "^9.5.8"
   },
   "scripts": {
-    "lint:js": "wp-scripts lint-js src/js",
+    "lint:js": "wp-scripts lint-js src",
     "lint": "npm-run-all -p lint:*",
     "clean:css": "rimraf dist/css",
     "clean:js": "rimraf dist/js",

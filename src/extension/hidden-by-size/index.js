@@ -1,9 +1,10 @@
 'use select';
 
-import classnames from 'classnames';
+import {
+	uniq,
+} from 'lodash';
 
 import {
-	getBlockDefaultClassName,
 	hasBlockSupport,
 	getBlockType,
 } from '@wordpress/blocks';
@@ -80,39 +81,14 @@ addFilter(
 					return <BlockEdit { ...props } />;
 				}
 
-				const sizes = [
-					{
-						className: 'sme-hidden-sm',
-						attribute: smeIsHiddenSm,
-					},
-					{
-						className: 'sme-hidden-md',
-						attribute: smeIsHiddenMd,
-					},
-					{
-						className: 'sme-hidden-lg-up',
-						attribute: smeIsHiddenLg,
-					}
-				];
+				const getUpdatedClassName = ( addedClassName, enable ) => {
+					const arrayClassName = className ? className.split( ' ' ) : [];
+					const newClassName = true === enable ?
+						[ ...arrayClassName, addedClassName ] :
+						arrayClassName.filter( ( element ) => addedClassName !== element );
 
-				const arrayClassName = className ? className.split( ' ' ) : [];
-				const allClassName = [ ...arrayClassName, ...sizes.map( ( e ) => e.className ) ];
-
-				const extraClassName = sizes.map( ( element ) => {
-					if ( true === element.attribute ) {
-						return element.className;
-					}
-				} ).filter( ( element ) => element );
-
-				const newClassName = allClassName.map( ( element ) => {
-					if ( ! sizes.map( ( e ) => e.className ).includes( element ) || extraClassName.includes( element ) ) {
-						return element;
-					}
-				} ).filter( ( element, index, self ) => element && self.indexOf( element ) === index );
-
-				if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
-					props.attributes.className = classnames( newClassName );
-				}
+					return uniq( newClassName ).join( ' ' );
+				};
 
 				return (
 					<>
@@ -123,19 +99,34 @@ addFilter(
 								<ToggleControl
 									label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
 									checked={ smeIsHiddenSm }
-									onChange={ ( value ) => setAttributes( { smeIsHiddenSm: value } ) }
+									onChange={ ( value ) => {
+										setAttributes( { smeIsHiddenSm: value } );
+										if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
+											setAttributes( { className: getUpdatedClassName( 'sme-hidden-sm', value ) } );
+										}
+									} }
 								/>
 
 								<ToggleControl
 									label={ __( 'Hide on tablet size', 'snow-monkey-editor' ) }
 									checked={ smeIsHiddenMd }
-									onChange={ ( value ) => setAttributes( { smeIsHiddenMd: value } ) }
+									onChange={ ( value ) => {
+										setAttributes( { smeIsHiddenMd: value } );
+										if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
+											setAttributes( { className: getUpdatedClassName( 'sme-hidden-md', value ) } );
+										}
+									} }
 								/>
 
 								<ToggleControl
 									label={ __( 'Hide on PC size', 'snow-monkey-editor' ) }
 									checked={ smeIsHiddenLg }
-									onChange={ ( value ) => setAttributes( { smeIsHiddenLg: value } ) }
+									onChange={ ( value ) => {
+										setAttributes( { smeIsHiddenLg: value } );
+										if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
+											setAttributes( { className: getUpdatedClassName( 'sme-hidden-lg-up', value ) } );
+										}
+									} }
 								/>
 							</PanelBody>
 						</InspectorControls>

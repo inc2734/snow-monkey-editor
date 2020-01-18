@@ -1,6 +1,15 @@
 'use select';
 
 import {
+	uniq,
+} from 'lodash';
+
+import {
+	hasBlockSupport,
+	getBlockType,
+} from '@wordpress/blocks';
+
+import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 
@@ -56,11 +65,18 @@ addFilter(
 				const {
 					attributes,
 					setAttributes,
+					name,
 				} = props;
 
 				const {
 					smeIsHiddenRoles,
+					className,
 				} = attributes;
+
+				const blockType = getBlockType( name );
+				if ( ! blockType ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				const roles = useSelect( ( select ) => {
 					return {
@@ -69,8 +85,17 @@ addFilter(
 					};
 				}, [] );
 
+				const getUpdatedClassName = ( addedClassName, enable ) => {
+					const arrayClassName = className ? className.split( ' ' ) : [];
+					const newClassName = true === enable ?
+						[ ...arrayClassName, addedClassName ] :
+						arrayClassName.filter( ( element ) => addedClassName !== element );
+
+					return uniq( newClassName ).join( ' ' );
+				};
+
 				const newAttributes = ( key, newValue ) => {
-					let newSmeIsHiddenRoles = smeIsHiddenRoles;
+					let newSmeIsHiddenRoles = [ ...smeIsHiddenRoles ];
 					if ( true === newValue ) {
 						newSmeIsHiddenRoles.push( key );
 					} else {
@@ -81,22 +106,26 @@ addFilter(
 
 				return (
 					<>
-						{ smeIsHiddenRoles.length ? (
-							<div className="sme-hidden-role">
-								<BlockEdit { ...props } />
-							</div>
-						) : (
-							<BlockEdit { ...props } />
-						) }
+						<BlockEdit { ...props } />
 
 						<InspectorControls>
 							<PanelBody title={ __( 'Display setting (By roles)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
 								{ Object.keys( roles ).map( ( key ) => {
 									return (
 										<ToggleControl
+											key={ `sme-hidden-role-${ key }` }
 											label={ sprintf( __( 'Hide if %1$s', 'snow-monkey-editor' ), roles[ key ] ) }
-											checked={ -1 !== smeIsHiddenRoles.indexOf( key ) }
-											onChange={ ( value ) => setAttributes( { smeIsHiddenRoles: newAttributes( key, value ) } ) }
+											checked={ smeIsHiddenRoles.includes( key ) }
+											onChange={ ( value ) => {
+												const newSmeIsHiddenRoles = newAttributes( key, value );
+												setAttributes( { smeIsHiddenRoles: newSmeIsHiddenRoles } );
+												if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
+													console.log( newSmeIsHiddenRoles.length );
+													console.log( newSmeIsHiddenRoles );
+													console.log( '-----' );
+													setAttributes( { className: getUpdatedClassName( 'sme-hidden-role', 0 < newSmeIsHiddenRoles.length ) } );
+												}
+											} }
 										/>
 									);
 								} ) }
