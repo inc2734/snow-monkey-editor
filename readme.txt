@@ -17,8 +17,6 @@ The Snow Monkey Editor is a plugin that extends the block editor.
 
 GitHub: https://github.com/inc2734/snow-monkey-editor/
 
-= Module blocks =
-
 = Formatter =
 
 Click Snow Monkey button in toolbar.
