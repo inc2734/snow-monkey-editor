@@ -120,9 +120,6 @@ addFilter(
 												const newSmeIsHiddenRoles = newAttributes( key, value );
 												setAttributes( { smeIsHiddenRoles: newSmeIsHiddenRoles } );
 												if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
-													console.log( newSmeIsHiddenRoles.length );
-													console.log( newSmeIsHiddenRoles );
-													console.log( '-----' );
 													setAttributes( { className: getUpdatedClassName( 'sme-hidden-role', 0 < newSmeIsHiddenRoles.length ) } );
 												}
 											} }
