@@ -32,8 +32,8 @@ Click Snow Monkey button in toolbar.
 
 You can settings in inspector.
 
-* Hide on smartphone size or tablet size or PC size.
-* Hide by user roles.
+* Hide on smartphone size or tablet size or PC size. (Using media query)
+* Hide by user roles. (Using `render_block` filter hook. If it does not pass this filter, it is ignored.)
 
 = Block styles =
 

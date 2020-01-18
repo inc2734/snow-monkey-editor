@@ -4,6 +4,7 @@
   "devDependencies": {
     "@wordpress/scripts": "6.1.1",
     "autoprefixer": "^9.7.3",
+    "classnames": "^2.2.6",
     "cpy-cli": "^3.0.0",
     "cssnano": "^4.1.10",
     "hex-to-rgba": "^2.0.1",

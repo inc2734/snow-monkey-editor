@@ -1,5 +1,13 @@
 'use select';
 
+import classnames from 'classnames';
+
+import {
+	getBlockDefaultClassName,
+	hasBlockSupport,
+	getBlockType,
+} from '@wordpress/blocks';
+
 import {
 	InspectorControls,
 } from '@wordpress/block-editor';
@@ -57,6 +65,7 @@ addFilter(
 				const {
 					attributes,
 					setAttributes,
+					name,
 				} = props;
 
 				const {
@@ -66,33 +75,49 @@ addFilter(
 					className,
 				} = attributes;
 
-				props.attributes.className = ( () => {
-					let extraClassName = className ? className.split( ' ' ) : [];
+				const blockType = getBlockType( name );
+				if ( ! blockType ) {
+					return null;
+				}
 
-					if ( true === smeIsHiddenSm && ! extraClassName.includes( 'sme-hidden-sm' ) ) {
-						extraClassName.push( 'sme-hidden-sm' );
-					} else if ( false === smeIsHiddenSm ) {
-						extraClassName = extraClassName.filter( ( value ) => value !== 'sme-hidden-sm' );
+				const sizes = [
+					{
+						className: 'sme-hidden-sm',
+						attribute: smeIsHiddenSm,
+					},
+					{
+						className: 'sme-hidden-md',
+						attribute: smeIsHiddenMd,
+					},
+					{
+						className: 'sme-hidden-lg-up',
+						attribute: smeIsHiddenLg,
 					}
+				];
 
-					if ( true === smeIsHiddenMd && ! extraClassName.includes( 'sme-hidden-md' ) ) {
-						extraClassName.push( 'sme-hidden-md' );
-					} else if ( false === smeIsHiddenMd ) {
-						extraClassName = extraClassName.filter( ( value ) => value !== 'sme-hidden-md' );
+				const arrayClassName = className ? className.split( ' ' ) : [];
+				const allClassName = [ ...arrayClassName, ...sizes.map( ( e ) => e.className ) ];
+
+				const extraClassName = sizes.map( ( element ) => {
+					if ( true === element.attribute ) {
+						return element.className;
 					}
+				} ).filter( ( element ) => element );
 
-					if ( true === smeIsHiddenLg && ! extraClassName.includes( 'sme-hidden-lg-up' ) ) {
-						extraClassName.push( 'sme-hidden-lg-up' );
-					} else if ( false === smeIsHiddenLg ) {
-						extraClassName = extraClassName.filter( ( value ) => value !== 'sme-hidden-lg-up' );
+				const newClassName = allClassName.map( ( element ) => {
+					if ( ! sizes.map( ( e ) => e.className ).includes( element ) || extraClassName.includes( element ) ) {
+						return element;
 					}
+				} ).filter( ( element, index, self ) => element && self.indexOf( element ) === index );
 
-					return extraClassName.join( ' ' );
-				} )();
+				if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
+					props.attributes.className = classnames( newClassName );
+				}
 
 				return (
 					<>
 						<BlockEdit { ...props } />
+
 						<InspectorControls>
 							<PanelBody title={ __( 'Display setting (By the window size)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
 								<ToggleControl

@@ -81,7 +81,14 @@ addFilter(
 
 				return (
 					<>
-						<BlockEdit { ...props } />
+						{ smeIsHiddenRoles.length ? (
+							<div className="sme-hidden-role">
+								<BlockEdit { ...props } />
+							</div>
+						) : (
+							<BlockEdit { ...props } />
+						) }
+
 						<InspectorControls>
 							<PanelBody title={ __( 'Display setting (By roles)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
 								{ Object.keys( roles ).map( ( key ) => {
