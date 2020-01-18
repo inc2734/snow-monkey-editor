@@ -3,6 +3,7 @@
   background-color: _lightest($_color-gray);
   border-radius: $_border-radius;
   width: fit-content;
+  text-align: left;
 
   &::before {
     content: '';
@@ -35,5 +36,5 @@
 }
 
 p.is-style-sme-speech {
-  @include _padding(.25, .5);
+  @include _padding(1);
 }
