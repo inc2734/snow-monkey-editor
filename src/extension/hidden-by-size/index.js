@@ -77,7 +77,7 @@ addFilter(
 
 				const blockType = getBlockType( name );
 				if ( ! blockType ) {
-					return null;
+					return <BlockEdit { ...props } />;
 				}
 
 				const sizes = [
