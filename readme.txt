@@ -1,5 +1,5 @@
 === Snow Monkey Editor ===
-Contributors: inc2734
+Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.3
