@@ -101,7 +101,7 @@ addFilter(
 					} else {
 						newSmeIsHiddenRoles = newSmeIsHiddenRoles.filter( ( value ) => key !== value );
 					}
-					return newSmeIsHiddenRoles.filter( ( value, index, self ) => self.indexOf( value ) === index );
+					return uniq( newSmeIsHiddenRoles );
 				};
 
 				return (
@@ -115,7 +115,7 @@ addFilter(
 										<ToggleControl
 											key={ `sme-hidden-role-${ key }` }
 											label={ sprintf( __( 'Hide if %1$s', 'snow-monkey-editor' ), roles[ key ] ) }
-											checked={ smeIsHiddenRoles.includes( key ) }
+											checked={ 'object' === typeof smeIsHiddenRoles && smeIsHiddenRoles.includes( key ) }
 											onChange={ ( value ) => {
 												const newSmeIsHiddenRoles = newAttributes( key, value );
 												setAttributes( { smeIsHiddenRoles: newSmeIsHiddenRoles } );

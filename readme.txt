@@ -87,6 +87,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 
 == Changelog ==
 
+= 0.2.3 =
+* Fixed a bug where blocks could be destroyed.
+
 = 0.2.2 =
 * Fix the speech block style design.
 
