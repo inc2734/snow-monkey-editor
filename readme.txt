@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.3
 Tested up to: 5.3
-Stable tag: 0.2.3
+Stable tag: 0.2.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -86,6 +86,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 18. Speech
 
 == Changelog ==
+
+= 0.2.4 =
+* Change display condition of format popover.
 
 = 0.2.3 =
 * Fixed a bug where blocks could be destroyed.
