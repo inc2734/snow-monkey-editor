@@ -1,8 +1,10 @@
 'use strict';
 
 import {
-	SnowMonkeyEditorButton,
-} from '../component/snow-monkey-editor-button';
+	last,
+} from 'lodash';
+
+import hexToRgba from 'hex-to-rgba';
 
 import {
 	Fragment,
@@ -19,11 +21,11 @@ import {
 } from '@wordpress/i18n';
 
 import {
-	last,
-} from 'lodash';
+	SnowMonkeyEditorButton,
+} from '../component/snow-monkey-editor-button';
 
-import hexToRgba from 'hex-to-rgba';
 import Popover from './popover';
+import getPopoverCurrentNode from '../helper/get-popover-current-node';
 
 export const name = 'snow-monkey-editor/highlighter';
 
@@ -52,16 +54,19 @@ export const settings = {
 			}
 		};
 
+		const currentNode = getPopoverCurrentNode();
+
 		return (
 			<Fragment>
 				<SnowMonkeyEditorButton
-					icon="tag"
+					icon="admin-customizer"
 					title={ __( 'Highlighter', 'snow-monkey-editor' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 				/>
-				{ isActive && value.start < value.end && 0 < value.activeFormats.length && name === last( value.activeFormats ).type &&
+				{ isActive && !! currentNode && 0 < value.activeFormats.length && name === last( value.activeFormats ).type &&
 					<Popover
+						currentNode={ currentNode }
 						onChange={ onChangePopover }
 					/>
 				}

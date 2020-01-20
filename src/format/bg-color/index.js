@@ -1,8 +1,8 @@
 'use strict';
 
 import {
-	SnowMonkeyEditorButton,
-} from '../component/snow-monkey-editor-button';
+	last,
+} from 'lodash';
 
 import {
 	Fragment,
@@ -19,10 +19,11 @@ import {
 } from '@wordpress/i18n';
 
 import {
-	last,
-} from 'lodash';
+	SnowMonkeyEditorButton,
+} from '../component/snow-monkey-editor-button';
 
 import Popover from './popover';
+import getPopoverCurrentNode from '../helper/get-popover-current-node';
 
 export const name = 'snow-monkey-editor/bg-color';
 
@@ -50,6 +51,8 @@ export const settings = {
 			}
 		};
 
+		const currentNode = getPopoverCurrentNode();
+
 		return (
 			<Fragment>
 				<SnowMonkeyEditorButton
@@ -58,8 +61,9 @@ export const settings = {
 					onClick={ onToggle }
 					isActive={ isActive }
 				/>
-				{ isActive && value.start < value.end && 0 < value.activeFormats.length && name === last( value.activeFormats ).type &&
+				{ isActive && !! currentNode && 0 < value.activeFormats.length && name === last( value.activeFormats ).type &&
 					<Popover
+						currentNode={ currentNode }
 						onChange={ onChangePopover }
 					/>
 				}

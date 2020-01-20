@@ -5,14 +5,6 @@ import {
 } from 'lodash';
 
 import {
-	useSelect,
-} from '@wordpress/data';
-
-import {
-	useState,
-} from '@wordpress/element';
-
-import {
 	URLPopover,
 } from '@wordpress/block-editor';
 
@@ -20,57 +12,47 @@ import {
 	FontSizePicker,
 } from '@wordpress/components';
 
-import getPopoverAnchorRect from '../helper/get-popover-anchor-rect';
+import {
+	useSelect,
+} from '@wordpress/data';
 
-export default function( { onChange } ) {
-	const [ fontSize, setFontSize ] = useState( undefined );
+import {
+	useState,
+} from '@wordpress/element';
+
+export default function( { currentNode, onChange } ) {
+	const [ setting, setSetting ] = useState( undefined );
+
+	const anchorRect = currentNode.getBoundingClientRect();
+
+	const getCurrentSetting = () => {
+		const node = currentNode.closest( '.sme-font-size' );
+		if ( ! node ) {
+			return undefined;
+		}
+
+		const currentSetting = node.style.fontSize || undefined;
+		return !! currentSetting ? currentSetting : undefined;
+	};
 
 	const fontSizes = useSelect( ( select ) => select( 'core/block-editor' ).getSettings().fontSizes );
 
-	const {
-		anchorRect,
-		current,
-	} = getPopoverAnchorRect( ( currentNode ) => {
-		const node = currentNode.closest( '.sme-font-size' );
-		if ( node ) {
-			const styles = node.style;
-			return styles.fontSize ? styles.fontSize : undefined;
+	const numbered = ( value ) => {
+		if ( 'number' === typeof value ) {
+			return value;
 		}
-	} );
 
-	const numberedFontSize = ( () => {
-		if ( 'undefined' === typeof fontSize ) {
+		if ( 'string' !== typeof value ) {
 			return undefined;
 		}
 
-		if ( 'string' !== typeof fontSize.size && 'number' !== typeof fontSize.size ) {
-			return undefined;
-		}
-
-		if ( 'number' === typeof fontSize.size ) {
-			return typeof fontSize.size;
-		}
-
-		const matches = fontSize.size.match( /^([\d]*?)px$/i );
+		const matches = value.match( /^([\d]*?)px$/i );
 		if ( ! matches ) {
 			return undefined;
 		}
 
 		return Number( matches[ 1 ] );
-	} )();
-
-	const numberedCurrent = ( () => {
-		if ( 'string' !== typeof current && 'number' !== typeof current ) {
-			return undefined;
-		}
-
-		const matches = current.match( /^([\d]*?)px$/i );
-		if ( ! matches ) {
-			return undefined;
-		}
-
-		return Number( matches[ 1 ] );
-	} )();
+	};
 
 	return (
 		<URLPopover
@@ -82,17 +64,17 @@ export default function( { onChange } ) {
 				<FontSizePicker
 					fontSizes={ fontSizes }
 					disableCustomFontSizes={ true }
-					value={ numberedFontSize ? numberedFontSize : numberedCurrent }
-					onChange={ ( newFontSizeValue ) => {
-						const newFontSizeObject = find( fontSizes, [ 'size', newFontSizeValue ] );
-						const newFontSizeKey = 'undefined' !== typeof newFontSizeObject ? newFontSizeObject.slug : 'custom';
+					value={ numbered( !! setting && setting.size ) || numbered( getCurrentSetting() ) }
+					onChange={ ( value ) => {
+						const matched = find( fontSizes, [ 'size', value ] );
+						const key = 'undefined' !== typeof matched ? matched.slug : 'custom';
 
-						const newFontSize = {
-							size: newFontSizeValue,
-							class: `has-${ newFontSizeKey }-font-size`,
+						const newSetting = {
+							size: value,
+							class: `has-${ key }-font-size`,
 						};
-						setFontSize( newFontSize );
-						onChange( newFontSize );
+						setSetting( newSetting );
+						onChange( newSetting );
 					} }
 				/>
 			</div>

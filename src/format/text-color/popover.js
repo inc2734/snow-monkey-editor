@@ -1,31 +1,32 @@
 'use strict';
 
-import {
-	useState,
-} from '@wordpress/element';
+import rgb2hex from 'rgb2hex';
 
 import {
 	ColorPalette,
 	URLPopover,
 } from '@wordpress/block-editor';
 
-import rgb2hex from 'rgb2hex';
+import {
+	useState,
+} from '@wordpress/element';
+
 import hexLong2Short from '../helper/hex-long2short';
-import getPopoverAnchorRect from '../helper/get-popover-anchor-rect';
 
-export default function( { onChange } ) {
-	const [ color, setColor ] = useState( undefined );
+export default function( { currentNode, onChange } ) {
+	const [ setting, setSetting ] = useState( undefined );
 
-	const {
-		anchorRect,
-		current,
-	} = getPopoverAnchorRect( ( currentNode ) => {
+	const anchorRect = currentNode.getBoundingClientRect();
+
+	const getCurrentSetting = () => {
 		const node = currentNode.closest( '.sme-text-color' );
-		if ( node ) {
-			const styles = node.style;
-			return styles.color ? hexLong2Short( rgb2hex( styles.color ).hex ) : undefined;
+		if ( ! node ) {
+			return undefined;
 		}
-	} );
+
+		const currentSetting = node.style.color || undefined;
+		return !! currentSetting ? hexLong2Short( rgb2hex( currentSetting ).hex ) : undefined;
+	};
 
 	return (
 		<URLPopover
@@ -35,10 +36,10 @@ export default function( { onChange } ) {
 		>
 			<div className="sme-popover__inner">
 				<ColorPalette
-					value={ color ? color : current }
-					onChange={ ( newColor ) => {
-						setColor( newColor );
-						onChange( newColor );
+					value={ setting || getCurrentSetting() }
+					onChange={ ( value ) => {
+						setSetting( value );
+						onChange( value );
 					} }
 				/>
 			</div>
