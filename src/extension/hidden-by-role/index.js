@@ -39,8 +39,6 @@ import {
 	icon,
 } from '../../js/helper/icon';
 
-import './roles';
-
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/hidden-by-role/attributes',

@@ -41,8 +41,6 @@ import {
 	icon,
 } from '../../js/helper/icon';
 
-import '../hidden-by-role/roles';
-
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/editing-lock/attributes',
@@ -81,7 +79,9 @@ addFilter(
 				}
 
 				const roles = useSelect( ( select ) => {
-					return select( 'snow-monkey-editor/roles' ).receiveRoles();
+					const _roles = select( 'snow-monkey-editor/roles' ).receiveRoles();
+					delete _roles.administrator;
+					return _roles;
 				}, [] );
 
 				const currentUser = useSelect( ( select ) => {
@@ -103,9 +103,18 @@ addFilter(
 				const block = document.getElementById( `block-${ clientId }` );
 				if ( block ) {
 					if ( isLocked ) {
-						block.setAttribute( 'data-sme-editing-lock', true );
+						const tabindex = block.getAttribute( 'tabindex' );
+						if ( !! tabindex ) {
+							block.setAttribute( 'data-sme-tabindex', tabindex );
+							block.setAttribute( 'tabindex', -1 );
+						}
 					} else {
-						block.removeAttribute( 'data-sme-editing-lock' );
+						const tabindex = block.getAttribute( 'tabindex' );
+						const defaultTabindex = block.getAttribute( 'data-sme-tabindex' );
+						if ( !! tabindex && !! defaultTabindex ) {
+							block.setAttribute( 'tabindex', defaultTabindex );
+							block.removeAttribute( 'data-sme-tabindex' );
+						}
 					}
 				}
 
