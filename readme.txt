@@ -34,6 +34,7 @@ You can settings in inspector.
 
 * Hide on smartphone size or tablet size or PC size. (Using media query)
 * Hide by user roles. (Using `render_block` filter hook. If it does not pass this filter, it is ignored.)
+* Edit lock by user roles. (Only administrators can set it)
 
 = Block styles =
 
@@ -73,19 +74,23 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 5. Text color
 6. Hide on smartphone size or tablet size or PC size.
 7. Hide by user roles.
-8. Alert
-9. Alert (Remark)
-10. Alert (Success)
-11. Alert (Warning)
-12. Fluid shapes 1
-13. Fluid shapes 2
-14. Fluid shapes 3
-15. Post-it
-16. Post-it (Narrow)
-17. Shadowed
-18. Speech
+8. Edit lock by user roles.
+9. Alert
+10. Alert (Remark)
+11. Alert (Success)
+12. Alert (Warning)
+13. Fluid shapes 1
+14. Fluid shapes 2
+15. Fluid shapes 3
+16. Post-it
+17. Post-it (Narrow)
+18. Shadowed
+19. Speech
 
 == Changelog ==
+
+= 0.3.0 =
+* Add a extension that block edit lock by user roles.
 
 = 0.2.4 =
 * Change display condition of format popover.

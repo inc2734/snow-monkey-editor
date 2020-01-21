@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-17 13:59+0900\n"
-"PO-Revision-Date: 2020-01-17 14:00+0900\n"
+"POT-Creation-Date: 2020-01-21 14:33+0900\n"
+"PO-Revision-Date: 2020-01-21 14:34+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,39 +23,47 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/hidden-by-role/index.js:67
+#: src/extension/editing-lock/index.js:118
+msgid "Editing lock (By roles)"
+msgstr "編集ロック（ロール）"
+
+#: src/extension/editing-lock/index.js:123
+msgid "Edit lock if %1$s"
+msgstr "%1$sのときロック"
+
+#: src/extension/hidden-by-role/index.js:83
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/index.js:86
+#: src/extension/hidden-by-role/index.js:112
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/index.js:90
+#: src/extension/hidden-by-role/index.js:117
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/index.js:97
+#: src/extension/hidden-by-size/index.js:98
 msgid "Display setting (By the window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/index.js:99
+#: src/extension/hidden-by-size/index.js:100
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/index.js:105
+#: src/extension/hidden-by-size/index.js:111
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/index.js:111
+#: src/extension/hidden-by-size/index.js:122
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
-#: src/format/badge/index.js:30 src/format/badge/index.js:57
+#: src/format/badge/index.js:31 src/format/badge/index.js:60
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/format/bg-color/index.js:30 src/format/bg-color/index.js:57
+#: src/format/bg-color/index.js:31 src/format/bg-color/index.js:60
 msgid "Background color"
 msgstr "背景色"
 
@@ -63,11 +71,11 @@ msgstr "背景色"
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/font-size/index.js:30 src/format/font-size/index.js:59
+#: src/format/font-size/index.js:32 src/format/font-size/index.js:63
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: src/format/highlighter/index.js:31 src/format/highlighter/index.js:59
+#: src/format/highlighter/index.js:33 src/format/highlighter/index.js:63
 msgid "Highlighter"
 msgstr "蛍光ペン"
 
@@ -75,7 +83,7 @@ msgstr "蛍光ペン"
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/index.js:30 src/format/text-color/index.js:57
+#: src/format/text-color/index.js:31 src/format/text-color/index.js:60
 msgid "Text color"
 msgstr "文字色"
 
