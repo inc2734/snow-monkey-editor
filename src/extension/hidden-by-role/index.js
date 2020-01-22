@@ -75,9 +75,14 @@ addFilter(
 				}
 
 				const roles = useSelect( ( select ) => {
+					const allRoles = select( 'snow-monkey-editor/roles' ).receiveRoles();
+					const filteredRoles = { ...allRoles };
+
 					return {
-						'sme-guest': __( 'user is not logged in', 'snow-monkey-editor' ),
-						...select( 'snow-monkey-editor/roles' ).receiveRoles(),
+						'sme-guest': {
+							name: __( 'user is not logged in', 'snow-monkey-editor' ),
+						},
+						...filteredRoles,
 					};
 				}, [] );
 
@@ -106,7 +111,7 @@ addFilter(
 									return (
 										<ToggleControl
 											key={ `sme-hidden-role-${ key }` }
-											label={ sprintf( __( 'Hide if %1$s', 'snow-monkey-editor' ), roles[ key ] ) }
+											label={ sprintf( __( 'Hide if %1$s', 'snow-monkey-editor' ), roles[ key ].name ) }
 											checked={ 'object' === typeof smeIsHiddenRoles && smeIsHiddenRoles.includes( key ) }
 											onChange={ ( value ) => {
 												const newSmeIsHiddenRoles = newAttributes( key, value );

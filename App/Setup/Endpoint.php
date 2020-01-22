@@ -27,7 +27,12 @@ class Endpoint {
 					$roles = [];
 					$editable_roles = get_editable_roles();
 					foreach ( $editable_roles as $role => $detail ) {
-						$roles[ $role ] = translate_user_role( $detail['name'] );
+						$roles[ $role ] = array_merge(
+							$detail,
+							[
+								'name' => translate_user_role( $detail['name'] ),
+							]
+						);
 					}
 					return $roles;
 				},

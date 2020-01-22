@@ -79,9 +79,15 @@ addFilter(
 				}
 
 				const roles = useSelect( ( select ) => {
-					const _roles = select( 'snow-monkey-editor/roles' ).receiveRoles();
-					delete _roles.administrator;
-					return _roles;
+					const allRoles = select( 'snow-monkey-editor/roles' ).receiveRoles();
+					const filteredRoles = { ...allRoles };
+					delete filteredRoles.administrator;
+					Object.keys( filteredRoles ).forEach( ( role ) => {
+						if ( true !== filteredRoles[ role ].capabilities.edit_posts ) {
+							delete filteredRoles[ role ];
+						}
+					} );
+					return filteredRoles;
 				}, [] );
 
 				const currentUser = useSelect( ( select ) => {
@@ -142,7 +148,7 @@ addFilter(
 										return (
 											<ToggleControl
 												key={ `sme-editing-lock-role-${ key }` }
-												label={ sprintf( __( 'Edit lock if %1$s', 'snow-monkey-editor' ), roles[ key ] ) }
+												label={ sprintf( __( 'Edit lock if %1$s', 'snow-monkey-editor' ), roles[ key ].name ) }
 												checked={ 'object' === typeof smeIsEditingLockRoles && smeIsEditingLockRoles.includes( key ) }
 												onChange={ ( value ) => {
 													const newSmeIsEditingLockRoles = newAttributes( key, value );
