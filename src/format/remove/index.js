@@ -5,10 +5,6 @@ import {
 } from 'lodash';
 
 import {
-	SnowMonkeyEditorButton,
-} from '../component/snow-monkey-editor-button';
-
-import {
 	select,
 } from '@wordpress/data';
 
@@ -19,6 +15,10 @@ import {
 import {
 	__,
 } from '@wordpress/i18n';
+
+import {
+	SnowMonkeyEditorButton,
+} from '../component/snow-monkey-editor-button';
 
 export const name = 'snow-monkey-editor/remove-fomatting';
 

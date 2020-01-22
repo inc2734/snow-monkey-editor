@@ -8,8 +8,16 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	BaseControl,
+} from '@wordpress/components';
+
+import {
 	useState,
 } from '@wordpress/element';
+
+import {
+	__,
+} from '@wordpress/i18n';
 
 import hexLong2Short from '../helper/hex-long2short';
 
@@ -35,13 +43,18 @@ export default function( { currentNode, onChange } ) {
 			anchorRect={ anchorRect }
 		>
 			<div className="sme-popover__inner">
-				<ColorPalette
-					value={ setting || getCurrentSetting() }
-					onChange={ ( value ) => {
-						setSetting( value );
-						onChange( value );
-					} }
-				/>
+				<BaseControl
+					id="snow-monkey-editor/format/bg-color/popover"
+					label={ __( 'Background color', 'snow-monkey-editor' ) }
+				>
+					<ColorPalette
+						value={ setting || getCurrentSetting() }
+						onChange={ ( value ) => {
+							setSetting( value );
+							onChange( value );
+						} }
+					/>
+				</BaseControl>
 			</div>
 		</URLPopover>
 	);

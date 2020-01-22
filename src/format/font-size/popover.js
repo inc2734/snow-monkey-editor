@@ -9,6 +9,7 @@ import {
 } from '@wordpress/block-editor';
 
 import {
+	BaseControl,
 	FontSizePicker,
 } from '@wordpress/components';
 
@@ -19,6 +20,10 @@ import {
 import {
 	useState,
 } from '@wordpress/element';
+
+import {
+	__,
+} from '@wordpress/i18n';
 
 export default function( { currentNode, onChange } ) {
 	const [ setting, setSetting ] = useState( undefined );
@@ -61,22 +66,27 @@ export default function( { currentNode, onChange } ) {
 			anchorRect={ anchorRect }
 		>
 			<div className="sme-popover__inner">
-				<FontSizePicker
-					fontSizes={ fontSizes }
-					disableCustomFontSizes={ true }
-					value={ numbered( !! setting && setting.size ) || numbered( getCurrentSetting() ) }
-					onChange={ ( value ) => {
-						const matched = find( fontSizes, [ 'size', value ] );
-						const key = 'undefined' !== typeof matched ? matched.slug : 'custom';
+				<BaseControl
+					id="snow-monkey-editor/format/font-size/popover"
+					label={ __( 'Font size', 'snow-monkey-editor' ) }
+				>
+					<FontSizePicker
+						fontSizes={ fontSizes }
+						disableCustomFontSizes={ true }
+						value={ numbered( !! setting && setting.size ) || numbered( getCurrentSetting() ) }
+						onChange={ ( value ) => {
+							const matched = find( fontSizes, [ 'size', value ] );
+							const key = 'undefined' !== typeof matched ? matched.slug : 'custom';
 
-						const newSetting = {
-							size: value,
-							class: `has-${ key }-font-size`,
-						};
-						setSetting( newSetting );
-						onChange( newSetting );
-					} }
-				/>
+							const newSetting = {
+								size: value,
+								class: `has-${ key }-font-size`,
+							};
+							setSetting( newSetting );
+							onChange( newSetting );
+						} }
+					/>
+				</BaseControl>
 			</div>
 		</URLPopover>
 	);
