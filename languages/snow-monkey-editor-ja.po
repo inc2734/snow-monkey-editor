@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
 "POT-Creation-Date: 2020-01-22 11:53+0900\n"
-"PO-Revision-Date: 2020-01-22 11:53+0900\n"
+"PO-Revision-Date: 2020-01-22 18:14+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -33,7 +33,7 @@ msgstr "公開設定"
 
 #: src/extension/date-time/index.js:86
 msgid "Unpublish setting"
-msgstr "非公開設定"
+msgstr "公開終了設定"
 
 #: src/extension/editing-lock/index.js:135
 msgid "Editing lock (By roles)"
