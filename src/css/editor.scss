@@ -15,3 +15,9 @@
     min-width: 270px;
   }
 }
+
+.sme-extension-enabled {
+  .components-panel__icon {
+    fill: $color-accent;
+  }
+}

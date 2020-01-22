@@ -132,7 +132,12 @@ addFilter(
 
 						{ canEditingLockSetting &&
 							<InspectorControls>
-								<PanelBody title={ __( 'Editing lock (By roles)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
+								<PanelBody
+									title={ __( 'Editing lock (By roles)', 'snow-monkey-editor' ) }
+									initialOpen={ false }
+									icon={ icon }
+									className={ 0 < smeIsEditingLockRoles.length ? `sme-extension-enabled` : undefined }
+								>
 									{ Object.keys( roles ).map( ( key ) => {
 										return (
 											<ToggleControl

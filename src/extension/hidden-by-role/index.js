@@ -5,7 +5,6 @@ import {
 } from 'lodash';
 
 import {
-	hasBlockSupport,
 	getBlockType,
 } from '@wordpress/blocks';
 
@@ -68,7 +67,6 @@ addFilter(
 
 				const {
 					smeIsHiddenRoles,
-					className,
 				} = attributes;
 
 				const blockType = getBlockType( name );
@@ -82,15 +80,6 @@ addFilter(
 						...select( 'snow-monkey-editor/roles' ).receiveRoles(),
 					};
 				}, [] );
-
-				const getUpdatedClassName = ( addedClassName, enable ) => {
-					const arrayClassName = className ? className.split( ' ' ) : [];
-					const newClassName = true === enable ?
-						[ ...arrayClassName, addedClassName ] :
-						arrayClassName.filter( ( element ) => addedClassName !== element );
-
-					return uniq( newClassName ).join( ' ' );
-				};
 
 				const newAttributes = ( key, newValue ) => {
 					let newSmeIsHiddenRoles = [ ...smeIsHiddenRoles ];
@@ -107,7 +96,12 @@ addFilter(
 						<BlockEdit { ...props } />
 
 						<InspectorControls>
-							<PanelBody title={ __( 'Display setting (By roles)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
+							<PanelBody
+								title={ __( 'Display setting (By roles)', 'snow-monkey-editor' ) }
+								initialOpen={ false }
+								icon={ icon }
+								className={ 0 < smeIsHiddenRoles.length ? `sme-extension-enabled` : undefined }
+							>
 								{ Object.keys( roles ).map( ( key ) => {
 									return (
 										<ToggleControl
@@ -117,9 +111,6 @@ addFilter(
 											onChange={ ( value ) => {
 												const newSmeIsHiddenRoles = newAttributes( key, value );
 												setAttributes( { smeIsHiddenRoles: newSmeIsHiddenRoles } );
-												if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
-													setAttributes( { className: getUpdatedClassName( 'sme-hidden-role', 0 < newSmeIsHiddenRoles.length ) } );
-												}
 											} }
 										/>
 									);

@@ -2,6 +2,7 @@
 
 import {
 	uniq,
+	compact,
 } from 'lodash';
 
 import {
@@ -95,7 +96,12 @@ addFilter(
 						<BlockEdit { ...props } />
 
 						<InspectorControls>
-							<PanelBody title={ __( 'Display setting (By the window size)', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
+							<PanelBody
+								title={ __( 'Display setting (By the window size)', 'snow-monkey-editor' ) }
+								initialOpen={ false }
+								icon={ icon }
+								className={ 0 < compact( [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] ).length ? `sme-extension-enabled` : undefined }
+							>
 								<ToggleControl
 									label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
 									checked={ smeIsHiddenSm }

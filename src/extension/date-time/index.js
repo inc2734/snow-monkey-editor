@@ -76,14 +76,25 @@ addFilter(
 						<BlockEdit { ...props } />
 
 						<InspectorControls>
-							<PanelBody title={ __( 'Publish setting', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
+							<PanelBody
+								title={ __( 'Publish setting', 'snow-monkey-editor' ) }
+								initialOpen={ false }
+								icon={ icon }
+								className={ startDateTime ? `sme-extension-enabled` : undefined }
+							>
 								<DateTimePicker
 									currentDate={ startDateTime }
 									onChange={ ( value ) => setAttributes( { startDateTime: value } ) }
 									onReset={ () => setAttributes( { startDateTime: null } ) }
 								/>
 							</PanelBody>
-							<PanelBody title={ __( 'Unpublish setting', 'snow-monkey-editor' ) } initialOpen={ false } icon={ icon }>
+
+							<PanelBody
+								title={ __( 'Unpublish setting', 'snow-monkey-editor' ) }
+								initialOpen={ false }
+								icon={ icon }
+								className={ endDateTime ? `sme-extension-enabled` : undefined }
+							>
 								<DateTimePicker
 									currentDate={ endDateTime }
 									onChange={ ( value ) => setAttributes( { endDateTime: value } ) }
