@@ -95,6 +95,7 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 * Add the extension that publish setting for each blocks.
 * Add the extension that unpublish setting for each blocks.
 * IF the block is enabled extension, the extension icon colored.
+* Roles that can be selected with the edit lock function are limited to roles that have edit_posts capability.
 
 = 0.3.0 =
 * Add the extension that block edit lock by user roles.
