@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-21 14:33+0900\n"
-"PO-Revision-Date: 2020-01-21 14:34+0900\n"
+"POT-Creation-Date: 2020-01-22 11:53+0900\n"
+"PO-Revision-Date: 2020-01-22 11:53+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,23 +23,35 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/editing-lock/index.js:118
+#: src/extension/date-time/date-time-picker.js:34
+msgid "Clear"
+msgstr "クリア"
+
+#: src/extension/date-time/index.js:79
+msgid "Publish setting"
+msgstr "公開設定"
+
+#: src/extension/date-time/index.js:86
+msgid "Unpublish setting"
+msgstr "非公開設定"
+
+#: src/extension/editing-lock/index.js:135
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
-#: src/extension/editing-lock/index.js:123
+#: src/extension/editing-lock/index.js:140
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/index.js:83
+#: src/extension/hidden-by-role/index.js:81
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/index.js:112
+#: src/extension/hidden-by-role/index.js:110
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/index.js:117
+#: src/extension/hidden-by-role/index.js:115
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 

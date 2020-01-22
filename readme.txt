@@ -75,22 +75,28 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 6. Hide on smartphone size or tablet size or PC size.
 7. Hide by user roles.
 8. Edit lock by user roles.
-9. Alert
-10. Alert (Remark)
-11. Alert (Success)
-12. Alert (Warning)
-13. Fluid shapes 1
-14. Fluid shapes 2
-15. Fluid shapes 3
-16. Post-it
-17. Post-it (Narrow)
-18. Shadowed
-19. Speech
+9. Publish setting
+10. Unpublish setting
+11. Alert
+12. Alert (Remark)
+13. Alert (Success)
+14. Alert (Warning)
+15. Fluid shapes 1
+16. Fluid shapes 2
+17. Fluid shapes 3
+18. Post-it
+19. Post-it (Narrow)
+20. Shadowed
+21. Speech
 
 == Changelog ==
 
+= 0.4.0 =
+* Add the extension that publish setting for each blocks.
+* Add the extension that unpublish setting for each blocks.
+
 = 0.3.0 =
-* Add a extension that block edit lock by user roles.
+* Add the extension that block edit lock by user roles.
 
 = 0.2.4 =
 * Change display condition of format popover.

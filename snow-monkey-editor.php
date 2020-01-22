@@ -36,7 +36,11 @@ class Bootstrap {
 
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
-		add_action( 'render_block', [ $this, '_render_block' ], 10, 2 );
+
+		if ( ! is_admin() ) {
+			add_action( 'render_block', [ $this, '_hidden_by_roles' ], 10, 2 );
+			add_action( 'render_block', [ $this, '_date_time' ], 10, 2 );
+		}
 	}
 
 	public function _bootstrap() {
@@ -48,7 +52,7 @@ class Bootstrap {
 		}
 	}
 
-	public function _render_block( $content, $block ) {
+	public function _hidden_by_roles( $content, $block ) {
 		$attributes = $block['attrs'];
 		$has_hidden_by_roles = isset( $attributes['smeIsHiddenRoles'] ) ? $attributes['smeIsHiddenRoles'] : false;
 		if ( $has_hidden_by_roles ) {
@@ -59,6 +63,38 @@ class Bootstrap {
 				}
 			}
 		}
+		return $content;
+	}
+
+	public function _date_time( $content, $block ) {
+		// Dates entered in the block editor are localized.
+		$attributes = $block['attrs'];
+		$start_date_time = isset( $attributes['startDateTime'] ) ? $attributes['startDateTime'] : false;
+		$end_date_time   = isset( $attributes['endDateTime'] ) ? $attributes['endDateTime'] : false;
+
+		if ( ! $start_date_time && ! $end_date_time ) {
+			return $content;
+		}
+
+		$current_date_time = wp_date( 'Y-m-d\TH:i:s' );
+		$current_date_time = strtotime( $current_date_time );
+
+		if ( $start_date_time ) {
+			$start_date_time = strtotime( $start_date_time );
+
+			if ( $start_date_time > $current_date_time ) {
+				return '';
+			}
+		}
+
+		if ( $end_date_time ) {
+			$end_date_time = strtotime( $end_date_time );
+
+			if ( $end_date_time < $current_date_time ) {
+				return '';
+			}
+		}
+
 		return $content;
 	}
 }

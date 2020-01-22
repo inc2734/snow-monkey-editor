@@ -1,0 +1,16 @@
+.sme-date-time-picker {
+  &__action {
+    display: flex;
+    justify-content: space-between;
+
+    .components-button {
+      flex: 0 0 auto;
+    }
+  }
+
+  .components-datetime {
+    .components-datetime__date-help-button {
+      display: none;
+    }
+  }
+}
