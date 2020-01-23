@@ -97,7 +97,7 @@ addFilter(
 
 						<InspectorControls>
 							<PanelBody
-								title={ __( 'Display setting (By the window size)', 'snow-monkey-editor' ) }
+								title={ __( 'Display setting (By window size)', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
 								className={ 0 < compact( [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] ).length ? `sme-extension-enabled` : undefined }

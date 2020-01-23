@@ -74,9 +74,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 5. Text color
 6. Hide on smartphone size or tablet size or PC size.
 7. Hide by user roles.
-8. Edit lock by user roles.
-9. Publish setting
-10. Unpublish setting
+8. Publish setting
+9. Unpublish setting
+10. Edit lock by user roles.
 11. Alert
 12. Alert (Remark)
 13. Alert (Success)
