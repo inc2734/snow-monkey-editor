@@ -43,5 +43,11 @@ class TextDomain {
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_PATH . '/languages'
 		);
+
+		wp_set_script_translations(
+			'snow-monkey-editor@editor-extension',
+			'snow-monkey-editor',
+			SNOW_MONKEY_EDITOR_PATH . '/languages'
+		);
 	}
 }

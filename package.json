@@ -24,6 +24,7 @@
     "clean:zip": "rimraf snow-monkey-editor.zip",
     "css": "npm run clean:css && node-sass src/css -o dist/css && postcss dist/css/*.css -r",
     "js:editor": "wp-scripts build src/js/editor.js --output-path dist/js",
+    "js:editor-extension": "wp-scripts build src/js/editor-extension.js --output-path dist/js",
     "js": "npm run clean:js && npm-run-all -p js:*",
     "po2json:snow-monkey-editor@editor": "po2json languages/snow-monkey-editor-ja.po languages/snow-monkey-editor-ja-snow-monkey-editor@editor.json -f jed",
     "po2json": "npm-run-all -p po2json:*",

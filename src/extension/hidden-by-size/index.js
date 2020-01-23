@@ -77,6 +77,10 @@ addFilter(
 					className,
 				} = attributes;
 
+				if ( 'undefined' === typeof smeIsHiddenSm || 'undefined' === typeof smeIsHiddenMd || 'undefined' === typeof smeIsHiddenLg ) {
+					return <BlockEdit { ...props } />;
+				}
+
 				const blockType = getBlockType( name );
 				if ( ! blockType ) {
 					return <BlockEdit { ...props } />;

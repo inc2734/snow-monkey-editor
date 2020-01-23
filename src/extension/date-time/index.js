@@ -66,6 +66,10 @@ addFilter(
 					endDateTime,
 				} = attributes;
 
+				if ( 'undefined' === typeof startDateTime || 'undefined' === typeof endDateTime ) {
+					return <BlockEdit { ...props } />;
+				}
+
 				const blockType = getBlockType( name );
 				if ( ! blockType ) {
 					return <BlockEdit { ...props } />;
