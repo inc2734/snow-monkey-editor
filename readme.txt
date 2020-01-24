@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.3
 Tested up to: 5.3
-Stable tag: 0.4.1
+Stable tag: 0.5.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,7 +33,10 @@ Click Snow Monkey button in toolbar.
 You can settings in inspector.
 
 * Hide on smartphone size or tablet size or PC size. (Using media query)
-* Hide by user roles. (Using `render_block` filter hook. If it does not pass this filter, it is ignored.)
+* Hide by user roles. (Using `render_block` filter hook. If it does not pass this filter, it is ignored)
+* Scroll animation
+* Publish date time settings
+* Unpublish date time settings
 * Edit lock by user roles. (Only administrators can set it)
 
 = Block styles =
@@ -74,22 +77,28 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 5. Text color
 6. Hide on smartphone size or tablet size or PC size.
 7. Hide by user roles.
-8. Publish setting
-9. Unpublish setting
-10. Edit lock by user roles.
-11. Alert
-12. Alert (Remark)
-13. Alert (Success)
-14. Alert (Warning)
-15. Fluid shapes 1
-16. Fluid shapes 2
-17. Fluid shapes 3
-18. Post-it
-19. Post-it (Narrow)
-20. Shadowed
-21. Speech
+8. Scroll animation settings
+9. Publish settings
+10. Unpublish settings
+11. Edit lock by user roles.
+12. Alert
+13. Alert (Remark)
+14. Alert (Success)
+15. Alert (Warning)
+16. Fluid shapes 1
+17. Fluid shapes 2
+18. Fluid shapes 3
+19. Post-it
+20. Post-it (Narrow)
+21. Shadowed
+22. Speech
 
 == Changelog ==
+
+= 0.5.0 =
+* Add the extension that setting scroll animation.
+* Fix publish/unpublish setting bug. RESETTING IS REQUIRED.
+* Fix bug that dynamic blocks were not displayed.
 
 = 0.4.1 =
 * Fixed a bug that the block may be broken by the effect of extension.
