@@ -36,11 +36,11 @@ addFilter(
 	( settings ) => {
 		settings.attributes = {
 			...settings.attributes,
-			startDateTime: {
+			smeStartDateTime: {
 				type: 'date',
 				default: null,
 			},
-			endDateTime: {
+			smeEndDateTime: {
 				type: 'date',
 				default: null,
 			},
@@ -62,11 +62,11 @@ addFilter(
 				} = props;
 
 				const {
-					startDateTime,
-					endDateTime,
+					smeStartDateTime,
+					smeEndDateTime,
 				} = attributes;
 
-				if ( 'undefined' === typeof startDateTime || 'undefined' === typeof endDateTime ) {
+				if ( 'undefined' === typeof smeStartDateTime || 'undefined' === typeof smeEndDateTime ) {
 					return <BlockEdit { ...props } />;
 				}
 
@@ -84,12 +84,12 @@ addFilter(
 								title={ __( 'Publish setting', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
-								className={ startDateTime ? `sme-extension-enabled` : undefined }
+								className={ smeStartDateTime ? `sme-extension-enabled` : undefined }
 							>
 								<DateTimePicker
-									currentDate={ startDateTime }
-									onChange={ ( value ) => setAttributes( { startDateTime: value } ) }
-									onReset={ () => setAttributes( { startDateTime: null } ) }
+									currentDate={ smeStartDateTime }
+									onChange={ ( value ) => setAttributes( { smeStartDateTime: value } ) }
+									onReset={ () => setAttributes( { smeStartDateTime: null } ) }
 								/>
 							</PanelBody>
 
@@ -97,12 +97,12 @@ addFilter(
 								title={ __( 'Unpublish setting', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
-								className={ endDateTime ? `sme-extension-enabled` : undefined }
+								className={ smeEndDateTime ? `sme-extension-enabled` : undefined }
 							>
 								<DateTimePicker
-									currentDate={ endDateTime }
-									onChange={ ( value ) => setAttributes( { endDateTime: value } ) }
-									onReset={ () => setAttributes( { endDateTime: null } ) }
+									currentDate={ smeEndDateTime }
+									onChange={ ( value ) => setAttributes( { smeEndDateTime: value } ) }
+									onReset={ () => setAttributes( { smeEndDateTime: null } ) }
 								/>
 							</PanelBody>
 						</InspectorControls>
