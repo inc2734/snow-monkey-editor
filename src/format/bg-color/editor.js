@@ -1,14 +1,6 @@
 'use strict';
 
 import {
-	last,
-} from 'lodash';
-
-import {
-	Fragment,
-} from '@wordpress/element';
-
-import {
 	toggleFormat,
 	applyFormat,
 	removeFormat,
@@ -24,6 +16,7 @@ import {
 
 import Popover from './popover';
 import getPopoverCurrentNode from '../helper/get-popover-current-node';
+import isPopoverOpen from '../helper/is-popover-open';
 
 export const name = 'snow-monkey-editor/bg-color';
 
@@ -54,20 +47,20 @@ export const settings = {
 		const currentNode = getPopoverCurrentNode();
 
 		return (
-			<Fragment>
+			<>
 				<SnowMonkeyEditorButton
 					icon="buddicons-topics"
 					title={ __( 'Background color', 'snow-monkey-editor' ) }
 					onClick={ onToggle }
 					isActive={ isActive }
 				/>
-				{ isActive && !! currentNode && 0 < value.activeFormats.length && name === last( value.activeFormats ).type &&
+				{ isPopoverOpen( name, value ) &&
 					<Popover
 						currentNode={ currentNode }
 						onChange={ onChangePopover }
 					/>
 				}
-			</Fragment>
+			</>
 		);
 	},
 };
