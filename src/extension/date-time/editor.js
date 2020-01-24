@@ -26,8 +26,9 @@ import {
 
 import {
 	icon,
-} from '../../js/helper/icon';
+} from '../../helper/icon';
 
+import customAttributes from './attributes';
 import DateTimePicker from './date-time-picker';
 
 addFilter(
@@ -36,14 +37,7 @@ addFilter(
 	( settings ) => {
 		settings.attributes = {
 			...settings.attributes,
-			smeStartDateTime: {
-				type: 'date',
-				default: null,
-			},
-			smeEndDateTime: {
-				type: 'date',
-				default: null,
-			},
+			...customAttributes,
 		};
 		return settings;
 	}

@@ -59,6 +59,14 @@ class Assets {
 	 * @return void
 	 */
 	public function _wp_enqueue_scripts() {
+		$asset = include( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.asset.php' );
+		wp_enqueue_script(
+			'snow-monkey-editor',
+			SNOW_MONKEY_EDITOR_URL . '/dist/js/app.js',
+			$asset['dependencies'],
+			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.js' )
+		);
+
 		wp_enqueue_style(
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/css/app.css',

@@ -6,12 +6,12 @@ import {
 	registerFormat,
 } from './helper/register-format';
 
-import * as remove from './remove';
-import * as fontSize from './font-size';
-import * as textColor from './text-color';
-import * as bgColor from './bg-color';
-import * as highlighter from './highlighter';
-import * as badge from './badge';
+import * as remove from './remove/editor';
+import * as fontSize from './font-size/editor';
+import * as textColor from './text-color/editor';
+import * as bgColor from './bg-color/editor';
+import * as highlighter from './highlighter/editor';
+import * as badge from './badge/editor';
 
 registerFormat( remove );
 registerFormat( fontSize );

@@ -1,4 +1,4 @@
 'use strict';
 
-import '../format';
-import '../style';
+import '../format/editor';
+import '../style/editor';

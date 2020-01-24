@@ -36,7 +36,9 @@ import {
 
 import {
 	icon,
-} from '../../js/helper/icon';
+} from '../../helper/icon';
+
+import customAttributes from './attributes';
 
 addFilter(
 	'blocks.registerBlockType',
@@ -44,10 +46,7 @@ addFilter(
 	( settings ) => {
 		settings.attributes = {
 			...settings.attributes,
-			smeIsHiddenRoles: {
-				type: 'array',
-				default: [],
-			},
+			...customAttributes,
 		};
 		return settings;
 	}

@@ -1,3 +1,3 @@
 'use strict';
 
-import '../extension';
+import '../extension/editor';

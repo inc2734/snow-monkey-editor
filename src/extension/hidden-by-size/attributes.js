@@ -1,0 +1,16 @@
+'use strict';
+
+export default {
+	smeIsHiddenSm: {
+		type: 'boolean',
+		default: false,
+	},
+	smeIsHiddenMd: {
+		type: 'boolean',
+		default: false,
+	},
+	smeIsHiddenLg: {
+		type: 'boolean',
+		default: false,
+	},
+};

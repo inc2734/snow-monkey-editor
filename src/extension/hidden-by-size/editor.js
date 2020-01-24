@@ -1,9 +1,10 @@
 'use select';
 
 import {
-	uniq,
 	compact,
 } from 'lodash';
+
+import classnames from 'classnames/dedupe';
 
 import {
 	hasBlockSupport,
@@ -33,7 +34,9 @@ import {
 
 import {
 	icon,
-} from '../../js/helper/icon';
+} from '../../helper/icon';
+
+import customAttributes from './attributes';
 
 addFilter(
 	'blocks.registerBlockType',
@@ -41,18 +44,7 @@ addFilter(
 	( settings ) => {
 		settings.attributes = {
 			...settings.attributes,
-			smeIsHiddenSm: {
-				type: 'boolean',
-				default: false,
-			},
-			smeIsHiddenMd: {
-				type: 'boolean',
-				default: false,
-			},
-			smeIsHiddenLg: {
-				type: 'boolean',
-				default: false,
-			},
+			...customAttributes,
 		};
 		return settings;
 	}
@@ -86,14 +78,9 @@ addFilter(
 					return <BlockEdit { ...props } />;
 				}
 
-				const getUpdatedClassName = ( addedClassName, enable ) => {
-					const arrayClassName = className ? className.split( ' ' ) : [];
-					const newClassName = true === enable ?
-						[ ...arrayClassName, addedClassName ] :
-						arrayClassName.filter( ( element ) => addedClassName !== element );
-
-					return uniq( newClassName ).join( ' ' );
-				};
+				if ( ! hasBlockSupport( blockType, 'customClassName', true ) ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				return (
 					<>
@@ -111,9 +98,7 @@ addFilter(
 									checked={ smeIsHiddenSm }
 									onChange={ ( value ) => {
 										setAttributes( { smeIsHiddenSm: value } );
-										if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
-											setAttributes( { className: getUpdatedClassName( 'sme-hidden-sm', value ) } );
-										}
+										setAttributes( { className: classnames( className, { 'sme-hidden-sm': value } ) } );
 									} }
 								/>
 
@@ -122,9 +107,7 @@ addFilter(
 									checked={ smeIsHiddenMd }
 									onChange={ ( value ) => {
 										setAttributes( { smeIsHiddenMd: value } );
-										if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
-											setAttributes( { className: getUpdatedClassName( 'sme-hidden-md', value ) } );
-										}
+										setAttributes( { className: classnames( className, { 'sme-hidden-md': value } ) } );
 									} }
 								/>
 
@@ -133,9 +116,7 @@ addFilter(
 									checked={ smeIsHiddenLg }
 									onChange={ ( value ) => {
 										setAttributes( { smeIsHiddenLg: value } );
-										if ( hasBlockSupport( blockType, 'customClassName', true ) ) {
-											setAttributes( { className: getUpdatedClassName( 'sme-hidden-lg-up', value ) } );
-										}
+										setAttributes( { className: classnames( className, { 'sme-hidden-lg-up': value } ) } );
 									} }
 								/>
 							</PanelBody>

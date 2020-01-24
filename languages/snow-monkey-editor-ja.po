@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-23 08:48+0900\n"
-"PO-Revision-Date: 2020-01-23 08:48+0900\n"
+"POT-Creation-Date: 2020-01-24 15:55+0900\n"
+"PO-Revision-Date: 2020-01-24 15:56+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,60 +23,76 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
+#: src/extension/animation/editor.js:97 src/extension/animation/editor.js:103
+msgid "Animation"
+msgstr "アニメーション"
+
+#: src/extension/animation/helper.js:9
+msgid "bounce-in"
+msgstr "バウンス・イン"
+
+#: src/extension/animation/helper.js:10
+msgid "bounce-down"
+msgstr "バウンス・ダウン"
+
+#: src/extension/animation/helper.js:11
+msgid "fade-in"
+msgstr "フェード・イン"
+
 #: src/extension/date-time/date-time-picker.js:34
 msgid "Clear"
 msgstr "クリア"
 
-#: src/extension/date-time/index.js:80
+#: src/extension/date-time/editor.js:78
 msgid "Publish setting"
 msgstr "公開設定"
 
-#: src/extension/date-time/index.js:93
+#: src/extension/date-time/editor.js:91
 msgid "Unpublish setting"
 msgstr "公開終了設定"
 
-#: src/extension/editing-lock/index.js:142
+#: src/extension/editing-lock/editor.js:145
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
-#: src/extension/editing-lock/index.js:151
+#: src/extension/editing-lock/editor.js:154
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/index.js:83
+#: src/extension/hidden-by-role/editor.js:86
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/index.js:105
+#: src/extension/hidden-by-role/editor.js:108
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/index.js:114
+#: src/extension/hidden-by-role/editor.js:117
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/index.js:100
+#: src/extension/hidden-by-size/editor.js:95
 msgid "Display setting (By window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/index.js:106
+#: src/extension/hidden-by-size/editor.js:101
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/index.js:117
+#: src/extension/hidden-by-size/editor.js:112
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/index.js:128
+#: src/extension/hidden-by-size/editor.js:123
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
-#: src/format/badge/index.js:31 src/format/badge/index.js:60
+#: src/format/badge/editor.js:31 src/format/badge/editor.js:60
 #: src/format/badge/popover.js:48
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/format/bg-color/index.js:31 src/format/bg-color/index.js:60
+#: src/format/bg-color/editor.js:31 src/format/bg-color/editor.js:60
 #: src/format/bg-color/popover.js:48
 msgid "Background color"
 msgstr "背景色"
@@ -85,21 +101,21 @@ msgstr "背景色"
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/font-size/index.js:32 src/format/font-size/index.js:63
+#: src/format/font-size/editor.js:32 src/format/font-size/editor.js:63
 #: src/format/font-size/popover.js:71
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: src/format/highlighter/index.js:33 src/format/highlighter/index.js:63
+#: src/format/highlighter/editor.js:33 src/format/highlighter/editor.js:63
 #: src/format/highlighter/popover.js:62
 msgid "Highlighter"
 msgstr "蛍光ペン"
 
-#: src/format/remove/index.js:26 src/format/remove/index.js:44
+#: src/format/remove/editor.js:26 src/format/remove/editor.js:44
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/index.js:31 src/format/text-color/index.js:60
+#: src/format/text-color/editor.js:31 src/format/text-color/editor.js:60
 #: src/format/text-color/popover.js:48
 msgid "Text color"
 msgstr "文字色"

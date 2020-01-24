@@ -20,7 +20,7 @@ import {
 
 import {
 	icon,
-} from '../../js/helper/icon';
+} from '../../helper/icon';
 
 registerFormatType(
 	'snow-monkey-editor/dropdown',
