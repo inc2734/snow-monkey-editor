@@ -40,6 +40,7 @@ class Bootstrap {
 		if ( ! is_admin() ) {
 			add_action( 'render_block', [ $this, '_hidden_by_roles' ], 10, 2 );
 			add_action( 'render_block', [ $this, '_date_time' ], 10, 2 );
+			add_action( 'init', array( $this, '_add_attributes_to_blocks' ), 11 );
 		}
 	}
 
@@ -69,8 +70,8 @@ class Bootstrap {
 	public function _date_time( $content, $block ) {
 		// Dates entered in the block editor are localized.
 		$attributes = $block['attrs'];
-		$start_date_time = isset( $attributes['startDateTime'] ) ? $attributes['startDateTime'] : false;
-		$end_date_time   = isset( $attributes['endDateTime'] ) ? $attributes['endDateTime'] : false;
+		$start_date_time = isset( $attributes['smeStartDateTime'] ) ? $attributes['smeStartDateTime'] : false;
+		$end_date_time   = isset( $attributes['smeEndDateTime'] ) ? $attributes['smeEndDateTime'] : false;
 
 		if ( ! $start_date_time && ! $end_date_time ) {
 			return $content;
@@ -96,6 +97,28 @@ class Bootstrap {
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Adds attributes to all blocks, to avoid `Invalid parameter(s): attributes` error in Gutenberg.
+	 *
+	 * @see https://plugins.trac.wordpress.org/browser/blocks-animation/trunk/vendor/codeinwp/gutenberg-animation/class-gutenberg-animation.php#L109
+	 */
+	public function _add_attributes_to_blocks() {
+		$attributes = [];
+		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/src/extension/*', GLOB_ONLYDIR ) as $dir ) {
+			foreach ( glob( $dir . '/attributes.php' ) as $file ) {
+				$attributes = array_merge( $attributes, include( $file ) );
+			}
+		}
+
+		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
+
+		foreach ( $registered_blocks as $name => $block ) {
+			foreach ( $attributes as $name => $detail ) {
+				$block->attributes[ $name ] = $detail;
+			}
+		}
 	}
 }
 
