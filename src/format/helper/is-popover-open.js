@@ -12,9 +12,8 @@ export default function( name, value ) {
 		return false;
 	}
 
-	// When open custom color popover
 	if ( 'undefined' === typeof value.activeFormats ) {
-		return true;
+		return false;
 	}
 
 	if ( 1 > value.activeFormats.length ) {
