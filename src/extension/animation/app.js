@@ -1,5 +1,7 @@
 'use strict';
 
+import forEachHtmlNodes from '@inc2734/for-each-html-nodes';
+
 import {
 	classes,
 } from './helper';
@@ -7,7 +9,17 @@ import {
 document.addEventListener(
 	'DOMContentLoaded',
 	() => {
+		const targets = document.querySelectorAll( '[class*="sme-animation-"]' );
+
 		if ( 'undefined' === typeof IntersectionObserver ) {
+			forEachHtmlNodes(
+				targets,
+				( target ) => {
+					classes.forEach( ( element ) => {
+						target.classList.remove( element );
+					} );
+				}
+			);
 			return;
 		}
 
@@ -31,21 +43,22 @@ document.addEventListener(
 
 		const observer = new IntersectionObserver( callback, options );
 
-		const targets = [ ...document.querySelectorAll( '[class*="sme-animation-"]' ) ];
+		forEachHtmlNodes(
+			targets,
+			( target ) => {
+				observer.observe( target );
 
-		targets.forEach( ( target ) => {
-			observer.observe( target );
-
-			target.addEventListener(
-				'animationend',
-				() => {
-					classes.forEach( ( element ) => {
-						target.classList.remove( `${ element }-fired` );
-					} );
-				},
-				false
-			);
-		} );
+				target.addEventListener(
+					'animationend',
+					() => {
+						classes.forEach( ( element ) => {
+							target.classList.remove( `${ element }-fired` );
+						} );
+					},
+					false
+				);
+			}
+		);
 	},
 	false
 );

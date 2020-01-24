@@ -38,7 +38,6 @@ import {
 
 import {
 	classes,
-	options,
 } from './helper';
 
 import customAttributes from './attributes';
@@ -84,6 +83,13 @@ addFilter(
 				if ( ! hasBlockSupport( blockType, 'customClassName', true ) ) {
 					return <BlockEdit { ...props } />;
 				}
+
+				const options = [
+					{ label: '', value: '' },
+					{ label: __( 'bounce-in', 'snow-monkey-editor' ), value: 'bounce-in' },
+					{ label: __( 'bounce-down', 'snow-monkey-editor' ), value: 'bounce-down' },
+					{ label: __( 'fade-in', 'snow-monkey-editor' ), value: 'fade-in' },
+				];
 
 				return (
 					<>
