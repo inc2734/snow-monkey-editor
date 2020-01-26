@@ -5,12 +5,9 @@ import {
 } from 'lodash';
 
 import {
-	URLPopover,
-} from '@wordpress/block-editor';
-
-import {
 	BaseControl,
 	FontSizePicker,
+	Popover,
 } from '@wordpress/components';
 
 import {
@@ -60,7 +57,7 @@ export default function( { currentNode, onChange } ) {
 	};
 
 	return (
-		<URLPopover
+		<Popover
 			className="sme-popover"
 			focusOnMount={ false }
 			anchorRect={ anchorRect }
@@ -88,6 +85,6 @@ export default function( { currentNode, onChange } ) {
 					/>
 				</BaseControl>
 			</div>
-		</URLPopover>
+		</Popover>
 	);
 }

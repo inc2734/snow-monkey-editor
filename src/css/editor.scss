@@ -8,6 +8,7 @@
 
 .sme-popover {
   &__inner {
+    position: relative;
     padding: 14px;
   }
 
@@ -26,6 +27,11 @@
 
   .components-color-palette {
     padding: 0;
+  }
+
+  .sme-custom-colors-link {
+    position: absolute;
+    bottom: 14px;
   }
 }
 

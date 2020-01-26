@@ -3,12 +3,8 @@
 import rgb2hex from 'rgb2hex';
 
 import {
-	ColorPalette,
-	URLPopover,
-} from '@wordpress/block-editor';
-
-import {
 	BaseControl,
+	Popover,
 } from '@wordpress/components';
 
 import {
@@ -19,6 +15,7 @@ import {
 	__,
 } from '@wordpress/i18n';
 
+import ColorPalette from '../component/color-palette';
 import hexLong2Short from '../helper/hex-long2short';
 
 export default function( { currentNode, onChange } ) {
@@ -51,7 +48,7 @@ export default function( { currentNode, onChange } ) {
 	};
 
 	return (
-		<URLPopover
+		<Popover
 			className="sme-popover"
 			focusOnMount={ false }
 			anchorRect={ anchorRect }
@@ -64,12 +61,13 @@ export default function( { currentNode, onChange } ) {
 					<ColorPalette
 						value={ setting || getCurrentSetting() }
 						onChange={ ( value ) => {
-							setSetting( value );
-							onChange( value );
+							const hex = value.hex || value;
+							setSetting( hex );
+							onChange( hex );
 						} }
 					/>
 				</BaseControl>
 			</div>
-		</URLPopover>
+		</Popover>
 	);
 }

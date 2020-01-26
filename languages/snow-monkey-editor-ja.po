@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-24 15:55+0900\n"
-"PO-Revision-Date: 2020-01-24 15:56+0900\n"
+"POT-Creation-Date: 2020-01-27 02:15+0900\n"
+"PO-Revision-Date: 2020-01-27 02:15+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,21 +23,21 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/animation/editor.js:97 src/extension/animation/editor.js:103
-msgid "Animation"
-msgstr "アニメーション"
-
-#: src/extension/animation/helper.js:9
+#: src/extension/animation/editor.js:89
 msgid "bounce-in"
 msgstr "バウンス・イン"
 
-#: src/extension/animation/helper.js:10
+#: src/extension/animation/editor.js:90
 msgid "bounce-down"
 msgstr "バウンス・ダウン"
 
-#: src/extension/animation/helper.js:11
+#: src/extension/animation/editor.js:91
 msgid "fade-in"
 msgstr "フェード・イン"
+
+#: src/extension/animation/editor.js:100 src/extension/animation/editor.js:106
+msgid "Animation"
+msgstr "アニメーション"
 
 #: src/extension/date-time/date-time-picker.js:34
 msgid "Clear"
@@ -71,43 +71,47 @@ msgstr "表示設定（ロール）"
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/editor.js:95
+#: src/extension/hidden-by-size/editor.js:91
 msgid "Display setting (By window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/editor.js:101
+#: src/extension/hidden-by-size/editor.js:97
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:112
+#: src/extension/hidden-by-size/editor.js:106
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:123
+#: src/extension/hidden-by-size/editor.js:115
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
-#: src/format/badge/editor.js:31 src/format/badge/editor.js:60
-#: src/format/badge/popover.js:48
+#: src/format/badge/editor.js:24 src/format/badge/editor.js:53
+#: src/format/badge/popover.js:45
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/format/bg-color/editor.js:31 src/format/bg-color/editor.js:60
-#: src/format/bg-color/popover.js:48
+#: src/format/bg-color/editor.js:24 src/format/bg-color/editor.js:53
+#: src/format/bg-color/popover.js:45
 msgid "Background color"
 msgstr "背景色"
+
+#: src/format/component/color-palette.js:40
+msgid "Custom colors"
+msgstr "カスタムカラー"
 
 #: src/format/component/format-toolbar.js:42
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/font-size/editor.js:32 src/format/font-size/editor.js:63
-#: src/format/font-size/popover.js:71
+#: src/format/font-size/editor.js:24 src/format/font-size/editor.js:55
+#: src/format/font-size/popover.js:68
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: src/format/highlighter/editor.js:33 src/format/highlighter/editor.js:63
-#: src/format/highlighter/popover.js:62
+#: src/format/highlighter/editor.js:26 src/format/highlighter/editor.js:56
+#: src/format/highlighter/popover.js:59
 msgid "Highlighter"
 msgstr "蛍光ペン"
 
@@ -115,8 +119,8 @@ msgstr "蛍光ペン"
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/editor.js:31 src/format/text-color/editor.js:60
-#: src/format/text-color/popover.js:48
+#: src/format/text-color/editor.js:24 src/format/text-color/editor.js:53
+#: src/format/text-color/popover.js:45
 msgid "Text color"
 msgstr "文字色"
 
