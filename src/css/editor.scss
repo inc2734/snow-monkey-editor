@@ -35,8 +35,12 @@
   }
 }
 
-.sme-extension-enabled {
+.sme-extension-panel {
   .components-panel__icon {
+    fill: _light($_color-gray);
+  }
+
+  &--enabled .components-panel__icon {
     fill: $color-accent;
   }
 }

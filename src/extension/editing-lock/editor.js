@@ -145,7 +145,7 @@ addFilter(
 									title={ __( 'Editing lock (By roles)', 'snow-monkey-editor' ) }
 									initialOpen={ false }
 									icon={ icon }
-									className={ 0 < smeIsEditingLockRoles.length ? `sme-extension-enabled` : undefined }
+									className={ 0 < smeIsEditingLockRoles.length ? 'sme-extension-panel sme-extension-panel--enabled' : 'sme-extension-panel' }
 								>
 									{ Object.keys( roles ).map( ( key ) => {
 										return (

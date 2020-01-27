@@ -91,7 +91,7 @@ addFilter(
 								title={ __( 'Display setting (By window size)', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
-								className={ 0 < compact( [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] ).length ? `sme-extension-enabled` : undefined }
+								className={ 0 < compact( [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] ).length ? 'sme-extension-panel sme-extension-panel--enabled' : 'sme-extension-panel' }
 							>
 								<ToggleControl
 									label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }

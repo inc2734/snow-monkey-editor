@@ -78,7 +78,7 @@ addFilter(
 								title={ __( 'Publish setting', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
-								className={ smeStartDateTime ? `sme-extension-enabled` : undefined }
+								className={ smeStartDateTime ? 'sme-extension-panel sme-extension-panel--enabled' : 'sme-extension-panel' }
 							>
 								<DateTimePicker
 									currentDate={ smeStartDateTime }
@@ -91,7 +91,7 @@ addFilter(
 								title={ __( 'Unpublish setting', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
-								className={ smeEndDateTime ? `sme-extension-enabled` : undefined }
+								className={ smeEndDateTime ? 'sme-extension-panel sme-extension-panel--enabled' : 'sme-extension-panel' }
 							>
 								<DateTimePicker
 									currentDate={ smeEndDateTime }

@@ -100,7 +100,7 @@ addFilter(
 								title={ __( 'Animation', 'snow-monkey-editor' ) }
 								initialOpen={ false }
 								icon={ icon }
-								className={ !! smeAnimation ? `sme-extension-enabled` : undefined }
+								className={ !! smeAnimation ? 'sme-extension-panel sme-extension-panel--enabled' : 'sme-extension-panel' }
 							>
 								<SelectControl
 									label={ __( 'Animation', 'snow-monkey-editor' ) }
