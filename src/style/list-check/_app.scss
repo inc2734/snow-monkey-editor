@@ -1,0 +1,25 @@
+.is-style-sme-list-check {
+  &,
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(-1.5rem + 7px);
+      top: calc(#{$_between-lines} + 3px);
+      display: block;
+      width: 8px;
+      height: 6px;
+      border-color: adjust-hue(darken($alert-color, 55%), 40deg);
+      border-style: solid;
+      border-width: 0 0 2px 2px;
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-27 02:15+0900\n"
-"PO-Revision-Date: 2020-01-27 02:15+0900\n"
+"POT-Creation-Date: 2020-01-30 13:06+0900\n"
+"PO-Revision-Date: 2020-01-30 13:07+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -125,16 +125,16 @@ msgid "Text color"
 msgstr "文字色"
 
 #: src/style/alert-remark/settings.js:9
-msgid "Alert (Remark)"
-msgstr "アラート（Remark）"
+msgid "Alert (Remarks)"
+msgstr "アラート（備考）"
 
 #: src/style/alert-success/settings.js:9
 msgid "Alert (Success)"
-msgstr "アラート（Success）"
+msgstr "アラート（サクセス）"
 
 #: src/style/alert-warning/settings.js:9
 msgid "Alert (Warning)"
-msgstr "アラート（Warning）"
+msgstr "アラート（ワーニング）"
 
 #: src/style/alert/settings.js:9
 msgid "Alert"
@@ -151,6 +151,18 @@ msgstr "流体シェイプ2"
 #: src/style/fluid-shape-3/settings.js:9
 msgid "Fluid Shape 3"
 msgstr "流体シェイプ3"
+
+#: src/style/list-arrow/settings.js:9
+msgid "Arrow"
+msgstr "矢印"
+
+#: src/style/list-check/settings.js:9
+msgid "Check"
+msgstr "チェック"
+
+#: src/style/list-remark/settings.js:9
+msgid "Remarks"
+msgstr "備考"
 
 #: src/style/post-it-narrow/settings.js:9
 msgid "Post-it (Narrow)"

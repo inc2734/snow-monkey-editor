@@ -6,5 +6,5 @@ import {
 
 export default {
 	name: 'sme-alert-remark',
-	label: __( 'Alert (Remark)', 'snow-monkey-editor' ),
+	label: __( 'Alert (Remarks)', 'snow-monkey-editor' ),
 };

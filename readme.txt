@@ -44,7 +44,7 @@ You can settings in inspector.
 There can be used in paragraph blocks, group blocks, image blocks, etc.
 
 * Alert
-* Alert (Remark)
+* Alert (Remarks)
 * Alert (Success)
 * Alert (Warning)
 * Fluid shapes
@@ -82,7 +82,7 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 10. Unpublish settings
 11. Edit lock by user roles.
 12. Alert
-13. Alert (Remark)
+13. Alert (Remarks)
 14. Alert (Success)
 15. Alert (Warning)
 16. Fluid shapes 1
@@ -92,8 +92,14 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 20. Post-it (Narrow)
 21. Shadowed
 22. Speech
+23. List (Arrow)
+24. List (Check)
+25. List (Remarks)
 
 == Changelog ==
+
+= 0.6.0 =
+* Add block styles of list block.
 
 = 0.5.4 =
 * Change extension panel monkey icon color.

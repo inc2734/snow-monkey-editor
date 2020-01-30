@@ -1,0 +1,17 @@
+.is-style-sme-list-remark {
+  &,
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+
+    &::before {
+      content: '※';
+      position: absolute;
+      left: calc(-1.5rem + 2px);
+    }
+  }
+}
