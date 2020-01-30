@@ -52,6 +52,9 @@ There can be used in paragraph blocks, group blocks, image blocks, etc.
 * Post-it (Narrow)
 * Shadowed
 * Speech
+* List (Arrow)
+* List (Check)
+* List (Remarks)
 
 == Installation ==
 
