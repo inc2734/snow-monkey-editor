@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-30 13:06+0900\n"
-"PO-Revision-Date: 2020-01-30 13:07+0900\n"
+"POT-Creation-Date: 2020-01-30 13:48+0900\n"
+"PO-Revision-Date: 2020-01-30 13:49+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -163,6 +163,10 @@ msgstr "チェック"
 #: src/style/list-remark/settings.js:9
 msgid "Remarks"
 msgstr "備考"
+
+#: src/style/list-times/settings.js:9
+msgid "Times"
+msgstr "✗"
 
 #: src/style/post-it-narrow/settings.js:9
 msgid "Post-it (Narrow)"
