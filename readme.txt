@@ -55,6 +55,7 @@ There can be used in paragraph blocks, group blocks, image blocks, etc.
 * List (Arrow)
 * List (Check)
 * List (Remarks)
+* List (Times)
 
 == Installation ==
 
@@ -98,8 +99,12 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 23. List (Arrow)
 24. List (Check)
 25. List (Remarks)
+26. List (Times)
 
 == Changelog ==
+
+= 0.6.1 =
+* Add block styles of list block.
 
 = 0.6.0 =
 * Add block styles of list block.
