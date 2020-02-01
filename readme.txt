@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.3
 Tested up to: 5.3
-Stable tag: 0.6.1
+Stable tag: 0.7.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -94,14 +94,19 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 18. Fluid shapes 3
 19. Post-it
 20. Post-it (Narrow)
-21. Shadowed
-22. Speech
-23. List (Arrow)
-24. List (Check)
-25. List (Remarks)
-26. List (Times)
+21. Shadowed images
+22. Shadowed button
+23. Speech
+24. List (Arrow)
+25. List (Check)
+26. List (Remarks)
+27. List (Times)
 
 == Changelog ==
+
+= 0.7.0 =
+* Add shadowed button block style.
+* Update browserslist. Using @wordpress/browserslist-config
 
 = 0.6.1 =
 * Add block styles of list block.
