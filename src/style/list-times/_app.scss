@@ -12,7 +12,7 @@
     &::after {
       content: '';
       position: absolute;
-      left: calc(-1.5rem + 5px);
+      left: calc(-1.5em + 5px);
       top: calc(#{$_between-lines} + 6px);
       width: 10px;
       height: 0;

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-01-30 13:48+0900\n"
-"PO-Revision-Date: 2020-01-30 13:49+0900\n"
+"POT-Creation-Date: 2020-02-03 16:05+0900\n"
+"PO-Revision-Date: 2020-02-03 16:06+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -168,6 +168,14 @@ msgstr "備考"
 msgid "Times"
 msgstr "✗"
 
+#: src/style/ordered-list-circle/settings.js:9
+msgid "Ordered list (Circle)"
+msgstr "序列リスト（丸）"
+
+#: src/style/ordered-list-square/settings.js:9
+msgid "Ordered list (Square)"
+msgstr "序列リスト（四角）"
+
 #: src/style/post-it-narrow/settings.js:9
 msgid "Post-it (Narrow)"
 msgstr "付箋（細）"
@@ -183,3 +191,9 @@ msgstr "影付き"
 #: src/style/speech/settings.js:9
 msgid "Speech"
 msgstr "吹きだし"
+
+#~ msgid "Circle ordered list"
+#~ msgstr "丸形序列リスト"
+
+#~ msgid "Square ordered list"
+#~ msgstr "四角序列リスト"

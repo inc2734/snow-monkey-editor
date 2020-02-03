@@ -1,0 +1,28 @@
+%ordered-list {
+  list-style: none;
+  counter-reset: sme-count 0;
+  margin-left: 1.8em;
+}
+
+%ordered-list__item {
+  position: relative;
+
+  &::before {
+    counter-increment: sme-count 1;
+    content: counter(sme-count);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+%ordered-list--reserved {
+  counter-reset: sme-count 1;
+}
+
+%ordered-list--reserved__item {
+  &::before {
+    counter-increment: sme-count -1;
+  }
+}

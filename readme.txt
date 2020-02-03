@@ -56,6 +56,8 @@ There can be used in paragraph blocks, group blocks, image blocks, etc.
 * List (Check)
 * List (Remarks)
 * List (Times)
+* Ordered list (Circle)
+* Ordered list (Square)
 
 == Installation ==
 
@@ -103,6 +105,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 27. List (Times)
 
 == Changelog ==
+
+= 0.8.0 =
+* Add block styles for ordered list.
 
 = 0.7.0 =
 * Add shadowed button block style.

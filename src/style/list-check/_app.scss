@@ -11,7 +11,7 @@
     &::before {
       content: '';
       position: absolute;
-      left: calc(-1.5rem + 7px);
+      left: calc(-1.5em + 7px);
       top: calc(#{$_between-lines} + 3px);
       display: block;
       width: 8px;

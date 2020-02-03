@@ -42,6 +42,7 @@ class Bootstrap {
 		if ( ! is_admin() ) {
 			add_action( 'render_block', [ $this, '_hidden_by_roles' ], 10, 2 );
 			add_action( 'render_block', [ $this, '_date_time' ], 10, 2 );
+			add_action( 'render_block', [ $this, '_ordered_list_counter' ], 10, 2 );
 			add_action( 'init', array( $this, '_add_attributes_to_blocks' ), 11 );
 		}
 	}
@@ -96,6 +97,24 @@ class Bootstrap {
 			if ( $end_date_time < $current_date_time ) {
 				return '';
 			}
+		}
+
+		return $content;
+	}
+
+	public function _ordered_list_counter( $content, $block ) {
+		if ( 'core/list' !== $block['blockName'] ) {
+			return $content;
+		}
+
+		$attributes   = $block['attrs'];
+		$is_ol_circle = strpos( $attributes['className'], 'is-style-sme-ordered-list-circle' );
+		$is_ol_square = strpos( $attributes['className'], 'is-style-sme-ordered-list-square' );
+
+		if ( $attributes['ordered'] && ( false !== $is_ol_circle || false !== $is_ol_square ) ) {
+			$start     = $attributes['start'];
+			$sme_count = ! empty( $attributes['reversed'] ) ? 'sme-count ' . ( $start + 1 ) : 'sme-count ' . ( $start - 1 );
+			$content   = preg_replace( '|^<ol|ms', '<ol style="counter-reset: ' . esc_attr( $sme_count ) . '"', $content );
 		}
 
 		return $content;

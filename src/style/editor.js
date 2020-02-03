@@ -15,23 +15,33 @@ import listArrow from './list-arrow/editor';
 import listCheck from './list-check/editor';
 import listRemark from './list-remark/editor';
 import listTimes from './list-times/editor';
+import orderedListCircle from './ordered-list-circle/editor';
+import orderedListSquare from './ordered-list-square/editor';
 import postIt from './post-it/editor';
 import postItNarrow from './post-it-narrow/editor';
 import shadowed from './shadowed/editor';
 import speech from './speech/editor';
 
-alert.forEach( ( props ) => registerStyle( props ) );
-alertSuccess.forEach( ( props ) => registerStyle( props ) );
-alertWarning.forEach( ( props ) => registerStyle( props ) );
-alertRemark.forEach( ( props ) => registerStyle( props ) );
-fluidShape1.forEach( ( props ) => registerStyle( props ) );
-fluidShape2.forEach( ( props ) => registerStyle( props ) );
-fluidShape3.forEach( ( props ) => registerStyle( props ) );
-listArrow.forEach( ( props ) => registerStyle( props ) );
-listCheck.forEach( ( props ) => registerStyle( props ) );
-listRemark.forEach( ( props ) => registerStyle( props ) );
-listTimes.forEach( ( props ) => registerStyle( props ) );
-postIt.forEach( ( props ) => registerStyle( props ) );
-postItNarrow.forEach( ( props ) => registerStyle( props ) );
-shadowed.forEach( ( props ) => registerStyle( props ) );
-speech.forEach( ( props ) => registerStyle( props ) );
+[
+	alert,
+	alertSuccess,
+	alertWarning,
+	alertRemark,
+	fluidShape1,
+	fluidShape2,
+	fluidShape3,
+	listArrow,
+	listCheck,
+	listRemark,
+	listTimes,
+	orderedListCircle,
+	orderedListSquare,
+	postIt,
+	postItNarrow,
+	shadowed,
+	speech,
+].forEach(
+	( component ) => {
+		component.forEach( ( props ) => registerStyle( props ) );
+	}
+);
