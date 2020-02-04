@@ -16,7 +16,7 @@
     "postcss-cli": "^7.1.0",
     "rgb2hex": "^0.1.10",
     "rimraf": "^3.0.1",
-    "sass-basis": "^9.5.9"
+    "sass-basis": "^9.5.10"
   },
   "scripts": {
     "lint:js": "wp-scripts lint-js src",
