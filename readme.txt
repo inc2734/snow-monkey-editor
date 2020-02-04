@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.3
 Tested up to: 5.3
-Stable tag: 0.8.0
+Stable tag: 0.8.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -105,6 +105,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 27. List (Times)
 
 == Changelog ==
+
+= 0.8.1 =
+* Fixed a bug that start and reverse were not reflected in the order list (square).
 
 = 0.8.0 =
 * Add block styles for ordered list.
