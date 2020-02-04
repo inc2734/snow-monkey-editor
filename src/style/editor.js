@@ -4,6 +4,14 @@ import {
 	registerStyle,
 } from './helper/register-style';
 
+import {
+	addFilter,
+} from '@wordpress/hooks';
+
+import {
+	createHigherOrderComponent,
+} from '@wordpress/compose';
+
 import alert from './alert/editor';
 import alertSuccess from './alert-success/editor';
 import alertWarning from './alert-warning/editor';
@@ -44,4 +52,49 @@ import speech from './speech/editor';
 	( component ) => {
 		component.forEach( ( props ) => registerStyle( props ) );
 	}
+);
+
+addFilter(
+	'editor.BlockEdit',
+	'snow-monkey-editor/ordered-list/block-edit',
+	createHigherOrderComponent(
+		( BlockEdit ) => {
+			return ( props ) => {
+				const {
+					attributes,
+					name,
+					clientId,
+				} = props;
+
+				const {
+					start,
+					reversed,
+					ordered,
+				} = attributes;
+
+				if ( 'core/list' !== name ) {
+					return <BlockEdit { ...props } />;
+				}
+
+				const block = document.querySelector( `[data-block="${ clientId }"] .rich-text` );
+				if ( ! block ) {
+					return <BlockEdit { ...props } />;
+				}
+
+				if ( ! block.classList.contains( 'is-style-sme-ordered-list-square' ) && ! block.classList.contains( 'is-style-sme-ordered-list-circle' ) ) {
+					block.style.counterReset = '';
+					return <BlockEdit { ...props } />;
+				}
+
+				if ( ! ordered ) {
+					block.style.counterReset = '';
+				} else {
+					block.style.counterReset = reversed ? `sme-count ${ start + 1 }` : `sme-count ${ start - 1 }`;
+				}
+
+				return <BlockEdit { ...props } />;
+			};
+		},
+		'withSnowMonkeyEditorOrderdListBlockEdit'
+	)
 );
