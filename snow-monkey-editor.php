@@ -107,12 +107,19 @@ class Bootstrap {
 			return $content;
 		}
 
-		$attributes   = $block['attrs'];
-		$is_ol_circle = strpos( $attributes['className'], 'is-style-sme-ordered-list-circle' );
-		$is_ol_square = strpos( $attributes['className'], 'is-style-sme-ordered-list-square' );
+		$attributes = $block['attrs'];
+		$class_name = isset( $attributes['className'] ) ? $attributes['className'] : false;
+		$ordered    = isset( $attributes['ordered'] ) ? $attributes['ordered'] : false;
 
-		if ( $attributes['ordered'] && ( false !== $is_ol_circle || false !== $is_ol_square ) ) {
-			$start     = $attributes['start'];
+		if ( ! $class_name || ! $ordered ) {
+			return $content;
+		}
+
+		$is_ol_circle = strpos( $class_name, 'is-style-sme-ordered-list-circle' );
+		$is_ol_square = strpos( $class_name, 'is-style-sme-ordered-list-square' );
+
+		if ( false !== $is_ol_circle || false !== $is_ol_square ) {
+			$start     = ! empty( $attributes['start'] ) ? $attributes['start'] : 1;
 			$sme_count = ! empty( $attributes['reversed'] ) ? 'sme-count ' . ( $start + 1 ) : 'sme-count ' . ( $start - 1 );
 			$content   = preg_replace( '|^<ol|ms', '<ol style="counter-reset: ' . esc_attr( $sme_count ) . '"', $content );
 		}
