@@ -4,7 +4,7 @@
   "devDependencies": {
     "@inc2734/for-each-html-nodes": "^0.4.0",
     "@wordpress/browserslist-config": "^2.6.0",
-    "@wordpress/scripts": "6.2.0",
+    "@wordpress/scripts": "7.0.1",
     "autoprefixer": "^9.7.4",
     "classnames": "^2.2.6",
     "cpy-cli": "^3.0.0",
@@ -16,7 +16,7 @@
     "postcss-cli": "^7.1.0",
     "rgb2hex": "^0.1.10",
     "rimraf": "^3.0.1",
-    "sass-basis": "^9.5.10"
+    "sass-basis": "^9.6.0"
   },
   "scripts": {
     "lint:js": "wp-scripts lint-js src",
@@ -38,6 +38,6 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@wordpress/i18n": "^3.8.0"
+    "@wordpress/i18n": "^3.9.0"
   }
 }
