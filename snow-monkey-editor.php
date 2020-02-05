@@ -109,9 +109,8 @@ class Bootstrap {
 
 		$attributes = $block['attrs'];
 		$class_name = isset( $attributes['className'] ) ? $attributes['className'] : false;
-		$ordered    = isset( $attributes['ordered'] ) ? $attributes['ordered'] : false;
 
-		if ( ! $class_name || ! $ordered ) {
+		if ( ! $class_name || ! isset( $attributes['ordered'] ) ) {
 			return $content;
 		}
 
