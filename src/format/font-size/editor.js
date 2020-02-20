@@ -38,8 +38,13 @@ export const settings = {
 		const onChangePopover = ( fontSize ) => {
 			const attributes = {};
 			if ( fontSize ) {
-				attributes.style = `font-size: ${ fontSize.size }px`;
-				attributes.className = fontSize.class;
+				attributes.style = (fontSize.size !== 'undefined') ? '':`font-size: ${ fontSize.size }px;`;
+				if( fontSize.weight ) {
+					attributes.style += `font-weight: ${ fontSize.weight }`;
+				}
+				if( fontSize.class ) {
+					attributes.className = fontSize.class;
+				}
 				onChange( applyFormat( value, { type: name, attributes } ) );
 			} else {
 				onChange( removeFormat( value, name ) );
