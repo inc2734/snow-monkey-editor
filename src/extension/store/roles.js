@@ -3,15 +3,17 @@
 import apiFetch from '@wordpress/api-fetch';
 import { registerStore } from '@wordpress/data';
 
-const reducer = ( state = { roles: {} }, action ) => {
+const DEFAULT_STATE = {
+	roles: {},
+};
+
+const reducer = ( state = DEFAULT_STATE, action ) => {
 	switch ( action.type ) {
 		case 'SET_ROLES':
 			return {
 				...state,
 				roles: action.roles,
 			};
-		case 'RECEIVE_ROLES':
-			return action.roles;
 	}
 	return state;
 };
