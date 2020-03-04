@@ -13,4 +13,16 @@
       display: none;
     }
   }
+
+  .CalendarMonth {
+    padding: 0 !important;
+  }
+
+  .CalendarMonthGrid__horizontal {
+    left: 0;
+  }
+
+  .DayPicker_weekHeaders__horizontal {
+    margin-left: 0;
+  }
 }
