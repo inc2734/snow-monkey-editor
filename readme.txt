@@ -59,6 +59,47 @@ There can be used in paragraph blocks, group blocks, image blocks, etc.
 * Ordered list (Circle)
 * Ordered list (Square)
 
+= Filter hooks (JavaScript) =
+
+**SnowMonkeyEditor.extension.allowedNameSpaces**
+
+JavaScript
+
+`import { addFilter } from '@wordpress/hooks';
+
+addFilter(
+  'SnowMonkeyEditor.extension.allowedNameSpaces',
+  'snow-monkey-blocks/apply-snow-monkey-editor-extensions',
+  ( allowedNameSpaces ) => {
+    return [
+      ...allowedNameSpaces,
+      'snow-monkey-blocks',
+    ];
+  }
+);`
+
+PHP
+
+`add_action(
+	'admin_enqueue_scripts',
+	function() {
+		$data = "wp.hooks.addFilter(
+			'SnowMonkeyEditor.extension.allowedNameSpaces',
+			'snow-monkey-blocks/apply-snow-monkey-editor-extensions',
+			( allowedNameSpaces ) => {
+				return [
+					...allowedNameSpaces,
+					'snow-monkey-blocks',
+				];
+			}
+		);";
+		wp_add_inline_script(
+			'wp-hooks',
+			$data
+		);
+	}
+);`
+
 == Installation ==
 
 This plugin can be installed directly from your site.
