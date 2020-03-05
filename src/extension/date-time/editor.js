@@ -28,6 +28,10 @@ import {
 	icon,
 } from '../../helper/icon';
 
+import {
+	isApplyExtension,
+} from '../helper';
+
 import customAttributes from './attributes';
 import DateTimePicker from './date-time-picker';
 
@@ -35,6 +39,11 @@ addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/date-time/attributes',
 	( settings ) => {
+		const isApply = isApplyExtension( settings.name );
+		if ( ! isApply ) {
+			return settings;
+		}
+
 		settings.attributes = {
 			...settings.attributes,
 			...customAttributes,
@@ -59,6 +68,11 @@ addFilter(
 					smeStartDateTime,
 					smeEndDateTime,
 				} = attributes;
+
+				const isApply = isApplyExtension( name );
+				if ( ! isApply ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				if ( 'undefined' === typeof smeStartDateTime || 'undefined' === typeof smeEndDateTime ) {
 					return <BlockEdit { ...props } />;

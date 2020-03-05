@@ -40,12 +40,21 @@ import {
 	classes,
 } from './helper';
 
+import {
+	isApplyExtension,
+} from '../helper';
+
 import customAttributes from './attributes';
 
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/animation/attributes',
 	( settings ) => {
+		const isApply = isApplyExtension( settings.name );
+		if ( ! isApply ) {
+			return settings;
+		}
+
 		settings.attributes = {
 			...settings.attributes,
 			...customAttributes,
@@ -70,6 +79,11 @@ addFilter(
 					smeAnimation,
 					className,
 				} = attributes;
+
+				const isApply = isApplyExtension( name );
+				if ( ! isApply ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				if ( 'undefined' === typeof smeAnimation ) {
 					return <BlockEdit { ...props } />;

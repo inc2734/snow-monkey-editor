@@ -36,12 +36,21 @@ import {
 	icon,
 } from '../../helper/icon';
 
+import {
+	isApplyExtension,
+} from '../helper';
+
 import customAttributes from './attributes';
 
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/hidden-by-size/attributes',
 	( settings ) => {
+		const isApply = isApplyExtension( settings.name );
+		if ( ! isApply ) {
+			return settings;
+		}
+
 		settings.attributes = {
 			...settings.attributes,
 			...customAttributes,
@@ -68,6 +77,11 @@ addFilter(
 					smeIsHiddenLg,
 					className,
 				} = attributes;
+
+				const isApply = isApplyExtension( name );
+				if ( ! isApply ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				if ( 'undefined' === typeof smeIsHiddenSm || 'undefined' === typeof smeIsHiddenMd || 'undefined' === typeof smeIsHiddenLg ) {
 					return <BlockEdit { ...props } />;

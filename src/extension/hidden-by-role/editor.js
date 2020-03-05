@@ -38,12 +38,21 @@ import {
 	icon,
 } from '../../helper/icon';
 
+import {
+	isApplyExtension,
+} from '../helper';
+
 import customAttributes from './attributes';
 
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/hidden-by-role/attributes',
 	( settings ) => {
+		const isApply = isApplyExtension( settings.name );
+		if ( ! isApply ) {
+			return settings;
+		}
+
 		settings.attributes = {
 			...settings.attributes,
 			...customAttributes,
@@ -67,6 +76,11 @@ addFilter(
 				const {
 					smeIsHiddenRoles,
 				} = attributes;
+
+				const isApply = isApplyExtension( name );
+				if ( ! isApply ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				if ( 'undefined' === typeof smeIsHiddenRoles ) {
 					return <BlockEdit { ...props } />;
