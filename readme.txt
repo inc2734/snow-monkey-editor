@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.4
 Tested up to: 5.4
-Stable tag: 0.8.2
+Stable tag: 1.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -146,6 +146,10 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 27. List (Times)
 
 == Changelog ==
+
+= 1.0.0 =
+* Extensions has been changed to apply only to core blocks and Snow Monkey Blocks.
+* Add filter hook `SnowMonkeyEditor.extension.allowedNameSpaces`.
 
 = 0.8.2 =
 * Fix php notice error.
