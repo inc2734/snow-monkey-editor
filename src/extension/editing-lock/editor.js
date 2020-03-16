@@ -21,16 +21,16 @@ import {
 } from '@wordpress/components';
 
 import {
+	useSelect,
+} from '@wordpress/data';
+
+import {
 	addFilter,
 } from '@wordpress/hooks';
 
 import {
 	createHigherOrderComponent,
 } from '@wordpress/compose';
-
-import {
-	useSelect,
-} from '@wordpress/data';
 
 import {
 	sprintf,
@@ -42,7 +42,8 @@ import {
 } from '../../helper/icon';
 
 import {
-	isApplyExtension,
+	isApplyExtensionToBlock,
+	isApplyExtensionToUser,
 } from '../helper';
 
 import customAttributes from './attributes';
@@ -51,11 +52,6 @@ addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/editing-lock/attributes',
 	( settings ) => {
-		const isApply = isApplyExtension( settings.name );
-		if ( ! isApply ) {
-			return settings;
-		}
-
 		settings.attributes = {
 			...settings.attributes,
 			...customAttributes,
@@ -81,19 +77,9 @@ addFilter(
 					smeIsEditingLockRoles,
 				} = attributes;
 
-				const isApply = isApplyExtension( name );
-				if ( ! isApply ) {
-					return <BlockEdit { ...props } />;
-				}
-
-				if ( 'undefined' === typeof smeIsEditingLockRoles ) {
-					return <BlockEdit { ...props } />;
-				}
-
-				const blockType = getBlockType( name );
-				if ( ! blockType ) {
-					return <BlockEdit { ...props } />;
-				}
+				const currentUser = useSelect( ( select ) => {
+					return select( 'core' ).getCurrentUser();
+				}, [] );
 
 				const roles = useSelect( ( select ) => {
 					const allRoles = select( 'snow-monkey-editor/roles' ).receiveRoles();
@@ -107,9 +93,26 @@ addFilter(
 					return filteredRoles;
 				}, [] );
 
-				const currentUser = useSelect( ( select ) => {
-					return select( 'core' ).getCurrentUser();
-				}, [] );
+				if ( 0 < Object.keys( currentUser ).length ) {
+					const isApplyToUser = isApplyExtensionToUser( currentUser, 'editing-lock' );
+					if ( ! isApplyToUser ) {
+						return <BlockEdit { ...props } />;
+					}
+				}
+
+				const isApplyToBlock = isApplyExtensionToBlock( name, 'editing-lock' );
+				if ( ! isApplyToBlock ) {
+					return <BlockEdit { ...props } />;
+				}
+
+				if ( 'undefined' === typeof smeIsEditingLockRoles ) {
+					return <BlockEdit { ...props } />;
+				}
+
+				const blockType = getBlockType( name );
+				if ( ! blockType ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				const newAttributes = ( key, newValue ) => {
 					let newSmeIsEditingLockRoles = [ ...smeIsEditingLockRoles ];

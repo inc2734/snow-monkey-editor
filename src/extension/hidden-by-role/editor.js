@@ -18,16 +18,16 @@ import {
 } from '@wordpress/components';
 
 import {
-	addFilter,
-} from '@wordpress/hooks';
-
-import {
 	createHigherOrderComponent,
 } from '@wordpress/compose';
 
 import {
 	useSelect,
 } from '@wordpress/data';
+
+import {
+	addFilter,
+} from '@wordpress/hooks';
 
 import {
 	sprintf,
@@ -39,7 +39,8 @@ import {
 } from '../../helper/icon';
 
 import {
-	isApplyExtension,
+	isApplyExtensionToBlock,
+	isApplyExtensionToUser,
 } from '../helper';
 
 import customAttributes from './attributes';
@@ -48,11 +49,6 @@ addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/hidden-by-role/attributes',
 	( settings ) => {
-		const isApply = isApplyExtension( settings.name );
-		if ( ! isApply ) {
-			return settings;
-		}
-
 		settings.attributes = {
 			...settings.attributes,
 			...customAttributes,
@@ -77,19 +73,9 @@ addFilter(
 					smeIsHiddenRoles,
 				} = attributes;
 
-				const isApply = isApplyExtension( name );
-				if ( ! isApply ) {
-					return <BlockEdit { ...props } />;
-				}
-
-				if ( 'undefined' === typeof smeIsHiddenRoles ) {
-					return <BlockEdit { ...props } />;
-				}
-
-				const blockType = getBlockType( name );
-				if ( ! blockType ) {
-					return <BlockEdit { ...props } />;
-				}
+				const currentUser = useSelect( ( select ) => {
+					return select( 'core' ).getCurrentUser();
+				}, [] );
 
 				const roles = useSelect( ( select ) => {
 					const allRoles = select( 'snow-monkey-editor/roles' ).receiveRoles();
@@ -102,6 +88,27 @@ addFilter(
 						...filteredRoles,
 					};
 				}, [] );
+
+				if ( 0 < Object.keys( currentUser ).length ) {
+					const isApplyToUser = isApplyExtensionToUser( currentUser, 'hidden-by-role' );
+					if ( ! isApplyToUser ) {
+						return <BlockEdit { ...props } />;
+					}
+				}
+
+				const isApplyToBlock = isApplyExtensionToBlock( name, 'hidden-by-role' );
+				if ( ! isApplyToBlock ) {
+					return <BlockEdit { ...props } />;
+				}
+
+				if ( 'undefined' === typeof smeIsHiddenRoles ) {
+					return <BlockEdit { ...props } />;
+				}
+
+				const blockType = getBlockType( name );
+				if ( ! blockType ) {
+					return <BlockEdit { ...props } />;
+				}
 
 				const newAttributes = ( key, newValue ) => {
 					let newSmeIsHiddenRoles = [ ...smeIsHiddenRoles ];

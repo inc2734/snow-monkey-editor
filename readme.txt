@@ -70,7 +70,7 @@ JavaScript
 addFilter(
   'SnowMonkeyEditor.extension.allowedNameSpaces',
   'snow-monkey-blocks/apply-snow-monkey-editor-extensions',
-  ( allowedNameSpaces ) => {
+  ( allowedNameSpaces, extensionName ) => {
     return [
       ...allowedNameSpaces,
       'snow-monkey-blocks',
@@ -86,7 +86,7 @@ PHP
 		$data = "wp.hooks.addFilter(
 			'SnowMonkeyEditor.extension.allowedNameSpaces',
 			'snow-monkey-blocks/apply-snow-monkey-editor-extensions',
-			( allowedNameSpaces ) => {
+			( allowedNameSpaces, extensionName ) => {
 				return [
 					...allowedNameSpaces,
 					'snow-monkey-blocks',
@@ -94,7 +94,40 @@ PHP
 			}
 		);";
 		wp_add_inline_script(
-			'wp-hooks',
+			'snow-monkey-editor@editor',
+			$data
+		);
+	}
+);`
+
+**SnowMonkeyEditor.extension.allowedRoles**
+
+JavaScript
+
+`import { addFilter } from '@wordpress/hooks';
+
+addFilter(
+  'SnowMonkeyEditor.extension.allowedRoles',
+  'snow-monkey-blocks/apply-snow-monkey-editor-extensions',
+  ( allowedNameSpaces, extensionName ) => {
+    return [ 'administrator' ];
+  }
+);`
+
+PHP
+
+`add_action(
+	'admin_enqueue_scripts',
+	function() {
+		$data = "wp.hooks.addFilter(
+			'SnowMonkeyEditor.extension.allowedRoles',
+			'snow-monkey-blocks/apply-snow-monkey-editor-extensions',
+			( allowedRoles, extensionName ) => {
+				return [ 'administrator' ];
+			}
+		);";
+		wp_add_inline_script(
+			'snow-monkey-editor@editor',
 			$data
 		);
 	}

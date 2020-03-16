@@ -2,23 +2,48 @@ import {
 	applyFilters,
 } from '@wordpress/hooks';
 
-function getAllowedNameSpaces() {
+function getAllowedNameSpaces( extensionName ) {
 	return applyFilters(
 		'SnowMonkeyEditor.extension.allowedNameSpaces',
 		[
 			'core',
 			'snow-monkey-blocks',
-		]
+		],
+		extensionName
 	);
 }
 
-export function isApplyExtension( blockName ) {
-	const allowedNameSpaces = getAllowedNameSpaces();
-	const isApply = allowedNameSpaces.filter(
+function getAllowedRoles( extensionName ) {
+	return applyFilters(
+		'SnowMonkeyEditor.extension.allowedRoles',
+		[
+			'administrator',
+			'editor',
+			'author',
+			'contributor',
+		],
+		extensionName
+	);
+}
+
+export function isApplyExtensionToBlock( blockName, extensionName ) {
+	const allowedNameSpaces = getAllowedNameSpaces( extensionName );
+	const filteredAllowedNameSpaces = allowedNameSpaces.filter(
 		( namespace ) => {
 			return 0 === blockName.indexOf( namespace )
 		}
 	);
 
-	return 0 < isApply.length;
+	return 0 < filteredAllowedNameSpaces.length;
+}
+
+export function isApplyExtensionToUser( user, extensionName ) {
+	const allowedRoles = getAllowedRoles( extensionName );
+	const filteredUserRoles = user.roles.filter(
+		( role ) => {
+			return -1 < allowedRoles.indexOf( role );
+		}
+	);
+
+	return 0 < filteredUserRoles.length;
 }
