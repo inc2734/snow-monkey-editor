@@ -103,6 +103,7 @@ addFilter(
 					{ label: __( 'bounce-in', 'snow-monkey-editor' ), value: 'bounce-in' },
 					{ label: __( 'bounce-down', 'snow-monkey-editor' ), value: 'bounce-down' },
 					{ label: __( 'fade-in', 'snow-monkey-editor' ), value: 'fade-in' },
+					{ label: __( 'fade-in-up', 'snow-monkey-editor' ), value: 'fade-in-up' },
 				];
 
 				return (
