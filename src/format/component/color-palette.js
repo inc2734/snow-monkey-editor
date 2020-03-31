@@ -65,7 +65,7 @@ export default function( { ...props } ) {
 					<ColorPicker
 						color={ props.value }
 						onChangeComplete={ props.onChange }
-						disableAlpha={ props.disableAlpha }
+						disableAlpha={ true }
 					/>
 				</Popover>
 			}

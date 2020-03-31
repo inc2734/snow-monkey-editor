@@ -4,6 +4,7 @@ import {
 	toggleFormat,
 	applyFormat,
 	removeFormat,
+	getActiveFormat,
 } from '@wordpress/rich-text';
 
 import {
@@ -44,7 +45,19 @@ export const settings = {
 			}
 		};
 
-		const currentNode = getPopoverCurrentNode();
+		const getCurrentSetting = () => {
+			const activeFormat = getActiveFormat( value, name );
+			if ( ! activeFormat || ! activeFormat.attributes ) {
+				return;
+			}
+
+			const currentStyle = activeFormat.attributes.style;
+			if ( ! currentStyle ) {
+				return;
+			}
+
+			return currentStyle.replace( new RegExp( `^color:\\s*` ), '' );
+		};
 
 		return (
 			<>
@@ -56,7 +69,8 @@ export const settings = {
 				/>
 				{ isPopoverOpen( name, value ) &&
 					<Popover
-						currentNode={ currentNode }
+						currentNode={ getPopoverCurrentNode() }
+						currentSetting={ getCurrentSetting() }
 						onChange={ onChangePopover }
 					/>
 				}

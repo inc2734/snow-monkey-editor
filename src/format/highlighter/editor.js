@@ -1,11 +1,13 @@
 'use strict';
 
+import rgb2hex from 'rgb2hex';
 import hexToRgba from 'hex-to-rgba';
 
 import {
 	toggleFormat,
 	applyFormat,
 	removeFormat,
+	getActiveFormat,
 } from '@wordpress/rich-text';
 
 import {
@@ -19,6 +21,7 @@ import {
 import Popover from './popover';
 import getPopoverCurrentNode from '../helper/get-popover-current-node';
 import isPopoverOpen from '../helper/is-popover-open';
+import hexLong2Short from '../helper/hex-long2short';
 
 export const name = 'snow-monkey-editor/highlighter';
 
@@ -47,7 +50,27 @@ export const settings = {
 			}
 		};
 
-		const currentNode = getPopoverCurrentNode();
+		const getCurrentSetting = () => {
+			const activeFormat = getActiveFormat( value, name );
+			if ( ! activeFormat || ! activeFormat.attributes ) {
+				return;
+			}
+
+			const currentStyle = activeFormat.attributes.style;
+			if ( ! currentStyle ) {
+				return;
+			}
+
+			const hex = currentStyle.match( /(#[0-9A-F]{3,6}) /i );
+			if ( hex ) {
+				return hex;
+			}
+
+			const rgb = currentStyle.match( /,\s*?(rgba?\([^)]+\)) /i );
+			if ( rgb ) {
+				return hexLong2Short( rgb2hex( rgb[ 1 ] ).hex );
+			}
+		};
 
 		return (
 			<>
@@ -59,7 +82,8 @@ export const settings = {
 				/>
 				{ isPopoverOpen( name, value ) &&
 					<Popover
-						currentNode={ currentNode }
+						currentNode={ getPopoverCurrentNode() }
+						currentSetting={ getCurrentSetting() }
 						onChange={ onChangePopover }
 					/>
 				}

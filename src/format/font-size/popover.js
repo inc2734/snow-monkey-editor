@@ -22,20 +22,10 @@ import {
 	__,
 } from '@wordpress/i18n';
 
-export default function( { currentNode, onChange } ) {
+export default function( { currentNode, currentSetting, onChange } ) {
 	const [ setting, setSetting ] = useState( undefined );
 
 	const anchorRect = currentNode.getBoundingClientRect();
-
-	const getCurrentSetting = () => {
-		const node = currentNode.closest( '.sme-font-size' );
-		if ( ! node ) {
-			return undefined;
-		}
-
-		const currentSetting = node.style.fontSize || undefined;
-		return !! currentSetting ? currentSetting : undefined;
-	};
 
 	const fontSizes = useSelect( ( select ) => select( 'core/block-editor' ).getSettings().fontSizes );
 
@@ -70,7 +60,7 @@ export default function( { currentNode, onChange } ) {
 					<FontSizePicker
 						fontSizes={ fontSizes }
 						disableCustomFontSizes={ true }
-						value={ numbered( !! setting && setting.size ) || numbered( getCurrentSetting() ) }
+						value={ numbered( !! setting && setting.size ) || numbered( currentSetting ) }
 						onChange={ ( value ) => {
 							const matched = find( fontSizes, [ 'size', value ] );
 							const key = 'undefined' !== typeof matched ? matched.slug : 'custom';

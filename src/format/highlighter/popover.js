@@ -1,7 +1,5 @@
 'use strict';
 
-import rgb2hex from 'rgb2hex';
-
 import {
 	BaseControl,
 	Popover,
@@ -16,36 +14,11 @@ import {
 } from '@wordpress/i18n';
 
 import ColorPalette from '../component/color-palette';
-import hexLong2Short from '../helper/hex-long2short';
 
-export default function( { currentNode, onChange } ) {
+export default function( { currentNode, currentSetting, onChange } ) {
 	const [ setting, setSetting ] = useState( undefined );
 
 	const anchorRect = currentNode.getBoundingClientRect();
-
-	const getCurrentSetting = () => {
-		const node = currentNode.closest( '.sme-highlighter' );
-		if ( ! node ) {
-			return undefined;
-		}
-
-		const currentSetting = node.style.backgroundImage || undefined;
-		if ( ! currentSetting ) {
-			return undefined;
-		}
-
-		const hex = currentSetting.match( /(#[0-9A-F]{3,6}) /i );
-		if ( hex ) {
-			return hexLong2Short( hex[ 1 ] );
-		}
-
-		const rgb = currentSetting.match( /,\s*?(rgba?\([^)]+\)) /i );
-		if ( rgb ) {
-			return hexLong2Short( rgb2hex( rgb[ 1 ] ).hex );
-		}
-
-		return undefined;
-	};
 
 	return (
 		<Popover
@@ -59,9 +32,9 @@ export default function( { currentNode, onChange } ) {
 					label={ __( 'Highlighter', 'snow-monkey-editor' ) }
 				>
 					<ColorPalette
-						value={ setting || getCurrentSetting() }
+						value={ setting || currentSetting }
 						onChange={ ( value ) => {
-							const hex = value.hex || value;
+							const hex = value && value.hex || value;
 							setSetting( hex );
 							onChange( hex );
 						} }
