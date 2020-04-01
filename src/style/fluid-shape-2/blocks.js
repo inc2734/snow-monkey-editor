@@ -1,6 +1,1 @@
-'use strict';
-
-export default [
-	'core/image',
-	'core/media-text',
-];
+export default [ 'core/image', 'core/media-text' ];

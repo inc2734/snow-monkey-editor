@@ -1,8 +1,4 @@
-'use strict';
-
-import {
-	registerBlockStyle,
-} from '@wordpress/blocks';
+import { registerBlockStyle } from '@wordpress/blocks';
 
 export const registerStyle = ( style ) => {
 	if ( ! style ) {

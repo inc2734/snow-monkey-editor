@@ -1,5 +1,1 @@
-'use strict';
-
-export default [
-	'core/list',
-];
+export default [ 'core/list' ];

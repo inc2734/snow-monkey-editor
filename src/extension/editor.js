@@ -1,5 +1,3 @@
-'use strict';
-
 import './store/roles';
 
 import './hidden-by-size/editor';

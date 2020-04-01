@@ -1,9 +1,12 @@
-'use strict';
-
 import { Fill, ToolbarButton } from '@wordpress/components';
 import { displayShortcut } from '@wordpress/keycodes';
 
-export function SnowMonkeyEditorButton( { name, shortcutType, shortcutCharacter, ...props } ) {
+export function SnowMonkeyEditorButton( {
+	name,
+	shortcutType,
+	shortcutCharacter,
+	...props
+} ) {
 	let shortcut;
 	let fillName = 'SnowMonkeyEditorButtonControls';
 
@@ -17,10 +20,7 @@ export function SnowMonkeyEditorButton( { name, shortcutType, shortcutCharacter,
 
 	return (
 		<Fill name={ fillName }>
-			<ToolbarButton
-				{ ...props }
-				shortcut={ shortcut }
-			/>
+			<ToolbarButton { ...props } shortcut={ shortcut } />
 		</Fill>
 	);
 }

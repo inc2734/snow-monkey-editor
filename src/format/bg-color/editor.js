@@ -1,5 +1,3 @@
-'use strict';
-
 import {
 	applyFormat,
 	removeFormat,
@@ -8,15 +6,9 @@ import {
 
 import { Icon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
-import {
-	__,
-} from '@wordpress/i18n';
-
-import {
-	SnowMonkeyEditorButton,
-} from '../component/snow-monkey-editor-button';
-
+import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
 import Popover from './popover';
 
 export const name = 'snow-monkey-editor/bg-color';
@@ -47,7 +39,10 @@ const Edit = ( props ) => {
 			return;
 		}
 
-		return currentStyle.replace( new RegExp( `^background-color:\\s*` ), '' );
+		return currentStyle.replace(
+			new RegExp( `^background-color:\\s*` ),
+			''
+		);
 	};
 
 	return (
@@ -64,13 +59,15 @@ const Edit = ( props ) => {
 						{ isActive && (
 							<span
 								className="format-library-text-color-button__indicator"
-								style={ { backgroundColor: getCurrentSetting() } }
+								style={ {
+									backgroundColor: getCurrentSetting(),
+								} }
 							/>
 						) }
 					</>
 				}
 			/>
-			{ addingSetting &&
+			{ addingSetting && (
 				<Popover
 					addingSetting={ addingSetting }
 					currentSetting={ getCurrentSetting() }
@@ -78,7 +75,7 @@ const Edit = ( props ) => {
 					onChange={ onChangePopover }
 					onClose={ () => setAddingSetting( false ) }
 				/>
-			}
+			) }
 		</>
 	);
 };

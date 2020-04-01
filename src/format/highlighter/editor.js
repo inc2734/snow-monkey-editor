@@ -1,5 +1,3 @@
-'use strict';
-
 import rgb2hex from 'rgb2hex';
 import hexToRgba from 'hex-to-rgba';
 
@@ -11,17 +9,11 @@ import {
 
 import { Icon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
-import {
-	__,
-} from '@wordpress/i18n';
-
-import {
-	SnowMonkeyEditorButton,
-} from '../component/snow-monkey-editor-button';
-
-import Popover from './popover';
+import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
 import hexLong2Short from '../helper/hex-long2short';
+import Popover from './popover';
 
 export const name = 'snow-monkey-editor/highlighter';
 const title = __( 'Highlighter', 'snow-monkey-editor' );
@@ -66,7 +58,9 @@ const Edit = ( props ) => {
 	return (
 		<>
 			<SnowMonkeyEditorButton
-				key={ isActive ? 'sme-highlighter' : 'sme-highlighter-not-active' }
+				key={
+					isActive ? 'sme-highlighter' : 'sme-highlighter-not-active'
+				}
 				name={ isActive ? 'sme-highlighter' : undefined }
 				title={ title }
 				className="format-library-text-color-button"
@@ -77,13 +71,15 @@ const Edit = ( props ) => {
 						{ isActive && (
 							<span
 								className="format-library-text-color-button__indicator"
-								style={ { backgroundColor: getCurrentSetting() } }
+								style={ {
+									backgroundColor: getCurrentSetting(),
+								} }
 							/>
 						) }
 					</>
 				}
 			/>
-			{ addingSetting &&
+			{ addingSetting && (
 				<Popover
 					addingSetting={ addingSetting }
 					currentSetting={ getCurrentSetting() }
@@ -91,7 +87,7 @@ const Edit = ( props ) => {
 					onChange={ onChangePopover }
 					onClose={ () => setAddingSetting( false ) }
 				/>
-			}
+			) }
 		</>
 	);
 };

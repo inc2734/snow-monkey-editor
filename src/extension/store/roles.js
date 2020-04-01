@@ -1,5 +1,3 @@
-'use strict';
-
 import apiFetch from '@wordpress/api-fetch';
 import { registerStore } from '@wordpress/data';
 
@@ -48,20 +46,17 @@ const selectors = {
 };
 
 const resolvers = {
-	* receiveRoles() {
+	*receiveRoles() {
 		const path = '/snow-monkey-editor/v1/roles';
 		const roles = yield actions.receiveRoles( path );
 		yield actions.setRoles( roles );
 	},
 };
 
-registerStore(
-	'snow-monkey-editor/roles',
-	{
-		reducer,
-		actions,
-		selectors,
-		controls,
-		resolvers,
-	}
-);
+registerStore( 'snow-monkey-editor/roles', {
+	reducer,
+	actions,
+	selectors,
+	controls,
+	resolvers,
+} );

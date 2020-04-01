@@ -1,6 +1,1 @@
-'use strict';
-
-export default [
-	'core/image',
-	'core/button',
-];
+export default [ 'core/image', 'core/button' ];

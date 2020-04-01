@@ -1,5 +1,1 @@
-'use strict';
-
-export default [
-	'core/paragraph',
-];
+export default [ 'core/paragraph' ];

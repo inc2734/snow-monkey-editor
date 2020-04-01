@@ -1,14 +1,9 @@
-import {
-	applyFilters,
-} from '@wordpress/hooks';
+import { applyFilters } from '@wordpress/hooks';
 
 function getAllowedNameSpaces( extensionName ) {
 	return applyFilters(
 		'SnowMonkeyEditor.extension.allowedNameSpaces',
-		[
-			'core',
-			'snow-monkey-blocks',
-		],
+		[ 'core', 'snow-monkey-blocks' ],
 		extensionName
 	);
 }
@@ -16,12 +11,7 @@ function getAllowedNameSpaces( extensionName ) {
 function getAllowedRoles( extensionName ) {
 	return applyFilters(
 		'SnowMonkeyEditor.extension.allowedRoles',
-		[
-			'administrator',
-			'editor',
-			'author',
-			'contributor',
-		],
+		[ 'administrator', 'editor', 'author', 'contributor' ],
 		extensionName
 	);
 }
@@ -30,7 +20,7 @@ export function isApplyExtensionToBlock( blockName, extensionName ) {
 	const allowedNameSpaces = getAllowedNameSpaces( extensionName );
 	const filteredAllowedNameSpaces = allowedNameSpaces.filter(
 		( namespace ) => {
-			return 0 === blockName.indexOf( namespace )
+			return 0 === blockName.indexOf( namespace );
 		}
 	);
 
@@ -39,11 +29,9 @@ export function isApplyExtensionToBlock( blockName, extensionName ) {
 
 export function isApplyExtensionToUser( user, extensionName ) {
 	const allowedRoles = getAllowedRoles( extensionName );
-	const filteredUserRoles = user.roles.filter(
-		( role ) => {
-			return -1 < allowedRoles.indexOf( role );
-		}
-	);
+	const filteredUserRoles = user.roles.filter( ( role ) => {
+		return -1 < allowedRoles.indexOf( role );
+	} );
 
 	return 0 < filteredUserRoles.length;
 }

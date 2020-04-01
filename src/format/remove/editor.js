@@ -1,29 +1,16 @@
-'use strict';
+import { map } from 'lodash';
 
-import {
-	map,
-} from 'lodash';
+import { select } from '@wordpress/data';
+import { removeFormat } from '@wordpress/rich-text';
+import { __ } from '@wordpress/i18n';
 
-import {
-	select,
-} from '@wordpress/data';
-
-import {
-	removeFormat,
-} from '@wordpress/rich-text';
-
-import {
-	__,
-} from '@wordpress/i18n';
-
-import {
-	SnowMonkeyEditorButton,
-} from '../component/snow-monkey-editor-button';
+import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
 
 export const name = 'snow-monkey-editor/remove-fomatting';
+const title = __( 'Remove formatting', 'snow-monkey-editor' );
 
 export const settings = {
-	title: __( 'Remove formatting', 'snow-monkey-editor' ),
+	title,
 	tagName: 'span',
 	className: 'sme-remove-fomatting',
 	edit( { isActive, value, onChange } ) {
@@ -41,7 +28,7 @@ export const settings = {
 		return (
 			<SnowMonkeyEditorButton
 				icon="editor-removeformatting"
-				title={ __( 'Remove formatting', 'snow-monkey-editor' ) }
+				title={ title }
 				onClick={ onToggle }
 				isActive={ isActive }
 			/>

@@ -1,5 +1,3 @@
-'use strict';
-
 import { getRectangleFromRange } from '@wordpress/dom';
 
 export default function( addingSetting = false ) {
