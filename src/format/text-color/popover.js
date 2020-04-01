@@ -1,46 +1,40 @@
 'use strict';
 
 import {
-	BaseControl,
-	Popover,
-} from '@wordpress/components';
-
-import {
 	useState,
+	useMemo,
 } from '@wordpress/element';
 
 import {
-	__,
-} from '@wordpress/i18n';
+	ColorPalette,
+	URLPopover,
+} from '@wordpress/block-editor';
 
-import ColorPalette from '../component/color-palette';
+import getPopoverAnchorRect from '../helper/get-popover-anchor-rect';
 
-export default function( { currentNode, currentSetting, onChange } ) {
+export default function( props ) {
+	const { addingSetting, currentSetting, onChange } = props;
 	const [ setting, setSetting ] = useState( undefined );
 
-	const anchorRect = currentNode.getBoundingClientRect();
+	const anchorRect = useMemo( () => getPopoverAnchorRect( addingSetting ), [] );
+	if ( ! anchorRect ) {
+		return null;
+	}
 
 	return (
-		<Popover
-			className="sme-popover"
-			focusOnMount={ false }
+		<URLPopover
 			anchorRect={ anchorRect }
+			className="sme-popover components-inline-color-popover"
+			{ ...props }
 		>
-			<div className="sme-popover__inner">
-				<BaseControl
-					id="snow-monkey-editor/format/text-color/popover"
-					label={ __( 'Text color', 'snow-monkey-editor' ) }
-				>
-					<ColorPalette
-						value={ setting || currentSetting }
-						onChange={ ( value ) => {
-							const hex = value && value.hex || value;
-							setSetting( hex );
-							onChange( hex );
-						} }
-					/>
-				</BaseControl>
-			</div>
-		</Popover>
+			<ColorPalette
+				value={ setting || currentSetting }
+				onChange={ ( value ) => {
+					const hex = value && value.hex || value;
+					setSetting( hex );
+					onChange( hex );
+				} }
+			/>
+		</URLPopover>
 	);
 }

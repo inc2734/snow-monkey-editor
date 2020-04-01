@@ -5,27 +5,32 @@ import {
 } from 'lodash';
 
 import {
-	BaseControl,
+	useState,
+	useMemo,
+} from '@wordpress/element';
+
+import {
 	FontSizePicker,
-	Popover,
 } from '@wordpress/components';
+
+import {
+	URLPopover,
+} from '@wordpress/block-editor';
 
 import {
 	useSelect,
 } from '@wordpress/data';
 
-import {
-	useState,
-} from '@wordpress/element';
+import getPopoverAnchorRect from '../helper/get-popover-anchor-rect';
 
-import {
-	__,
-} from '@wordpress/i18n';
-
-export default function( { currentNode, currentSetting, onChange } ) {
+export default function( props ) {
+	const { addingSetting, currentSetting, onChange } = props;
 	const [ setting, setSetting ] = useState( undefined );
 
-	const anchorRect = currentNode.getBoundingClientRect();
+	const anchorRect = useMemo( () => getPopoverAnchorRect( addingSetting ), [] );
+	if ( ! anchorRect ) {
+		return null;
+	}
 
 	const fontSizes = useSelect( ( select ) => select( 'core/block-editor' ).getSettings().fontSizes );
 
@@ -47,34 +52,27 @@ export default function( { currentNode, currentSetting, onChange } ) {
 	};
 
 	return (
-		<Popover
-			className="sme-popover"
-			focusOnMount={ false }
+		<URLPopover
 			anchorRect={ anchorRect }
+			className="sme-popover components-inline-color-popover"
+			{ ...props }
 		>
-			<div className="sme-popover__inner">
-				<BaseControl
-					id="snow-monkey-editor/format/font-size/popover"
-					label={ __( 'Font size', 'snow-monkey-editor' ) }
-				>
-					<FontSizePicker
-						fontSizes={ fontSizes }
-						disableCustomFontSizes={ true }
-						value={ numbered( !! setting && setting.size ) || numbered( currentSetting ) }
-						onChange={ ( value ) => {
-							const matched = find( fontSizes, [ 'size', value ] );
-							const key = 'undefined' !== typeof matched ? matched.slug : 'custom';
+			<FontSizePicker
+				fontSizes={ fontSizes }
+				disableCustomFontSizes={ true }
+				value={ numbered( !! setting && setting.size ) || numbered( currentSetting ) }
+				onChange={ ( value ) => {
+					const matched = find( fontSizes, [ 'size', value ] );
+					const key = 'undefined' !== typeof matched ? matched.slug : 'custom';
 
-							const newSetting = {
-								size: value,
-								class: `has-${ key }-font-size`,
-							};
-							setSetting( newSetting );
-							onChange( newSetting );
-						} }
-					/>
-				</BaseControl>
-			</div>
-		</Popover>
+					const newSetting = {
+						size: value,
+						class: `has-${ key }-font-size`,
+					};
+					setSetting( newSetting );
+					onChange( newSetting );
+				} }
+			/>
+		</URLPopover>
 	);
 }

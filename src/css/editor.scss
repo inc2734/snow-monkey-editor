@@ -7,6 +7,11 @@
 @import '../style/editor';
 
 .sme-popover {
+  .components-popover__content {
+    overflow: visible;
+  }
+
+  /*
   &__inner {
     position: relative;
     padding: 14px;
@@ -14,10 +19,6 @@
 
   &.components-popover:not(.is-mobile) .components-popover__content {
     min-width: 270px;
-  }
-
-  .components-popover__content {
-    overflow: visible;
   }
 
   .components-base-control__field {
@@ -37,6 +38,7 @@
     position: absolute;
     bottom: 14px;
   }
+  */
 }
 
 .sme-extension-panel {

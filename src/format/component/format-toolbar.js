@@ -2,7 +2,7 @@
 
 import {
 	BlockFormatControls,
-} from '@wordpress/editor';
+} from '@wordpress/block-editor';
 
 import {
 	Slot,
@@ -31,7 +31,7 @@ registerFormatType(
 		edit() {
 			return (
 				<BlockFormatControls>
-					<div className="editor-format-toolbar block-editor-format-toolbar">
+					<div className="block-editor-format-toolbar">
 						<Toolbar>
 							<Slot name="SnowMonkeyEditorButtonControls">
 								{ ( fills ) => fills.length &&
@@ -44,6 +44,14 @@ registerFormatType(
 									/>
 								}
 							</Slot>
+							{ [ 'sme-font-size', 'sme-text-color', 'sme-bg-color', 'sme-highlighter', 'sme-badge' ].map(
+								( format ) => (
+									<Slot
+										name={ `SnowMonkeyEditorButtonControls.${ format }` }
+										key={ format }
+									/>
+								)
+							) }
 						</Toolbar>
 					</div>
 				</BlockFormatControls>
