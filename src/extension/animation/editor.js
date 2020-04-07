@@ -87,6 +87,10 @@ addFilter(
 					label: __( 'fade-in-up', 'snow-monkey-editor' ),
 					value: 'fade-in-up',
 				},
+				{
+					label: __( 'fade-in-down', 'snow-monkey-editor' ),
+					value: 'fade-in-down',
+				},
 			];
 
 			return (

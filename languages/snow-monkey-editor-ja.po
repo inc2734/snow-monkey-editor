@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-03-16 14:20+0900\n"
-"PO-Revision-Date: 2020-03-16 14:20+0900\n"
+"POT-Creation-Date: 2020-04-07 13:47+0900\n"
+"PO-Revision-Date: 2020-04-07 13:47+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,178 +23,176 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/animation/editor.js:103
+#: src/extension/animation/editor.js:75
 msgid "bounce-in"
 msgstr "バウンス・イン"
 
-#: src/extension/animation/editor.js:104
+#: src/extension/animation/editor.js:79
 msgid "bounce-down"
 msgstr "バウンス・ダウン"
 
-#: src/extension/animation/editor.js:105
+#: src/extension/animation/editor.js:83
 msgid "fade-in"
 msgstr "フェード・イン"
 
-#: src/extension/animation/editor.js:106
+#: src/extension/animation/editor.js:87
 msgid "fade-in-up"
 msgstr "フェード・イン・アップ"
 
-#: src/extension/animation/editor.js:115 src/extension/animation/editor.js:121
+#: src/extension/animation/editor.js:91
+msgid "fade-in-down"
+msgstr "フェード・イン・ダウン"
+
+#: src/extension/animation/editor.js:102 src/extension/animation/editor.js:113
 msgid "Animation"
 msgstr "アニメーション"
 
-#: src/extension/date-time/date-time-picker.js:34
+#: src/extension/date-time/date-time-picker.js:30
 msgid "Clear"
 msgstr "クリア"
 
-#: src/extension/date-time/editor.js:92
+#: src/extension/date-time/editor.js:76
 msgid "Publish setting"
 msgstr "公開設定"
 
-#: src/extension/date-time/editor.js:105
+#: src/extension/date-time/editor.js:100
 msgid "Unpublish setting"
 msgstr "公開終了設定"
 
-#: src/extension/editing-lock/editor.js:159
+#: src/extension/editing-lock/editor.js:140
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
-#: src/extension/editing-lock/editor.js:168
+#: src/extension/editing-lock/editor.js:157
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/editor.js:100
+#: src/extension/hidden-by-role/editor.js:51
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/editor.js:122
+#: src/extension/hidden-by-role/editor.js:105
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/editor.js:131
+#: src/extension/hidden-by-role/editor.js:122
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/editor.js:105
+#: src/extension/hidden-by-size/editor.js:90
 msgid "Display setting (By window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/editor.js:111
+#: src/extension/hidden-by-size/editor.js:108
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:120
+#: src/extension/hidden-by-size/editor.js:124
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:129
+#: src/extension/hidden-by-size/editor.js:140
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
-#: src/format/badge/editor.js:24 src/format/badge/editor.js:53
-#: src/format/badge/popover.js:45
+#: src/format/badge/editor.js:15
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/format/bg-color/editor.js:24 src/format/bg-color/editor.js:53
-#: src/format/bg-color/popover.js:45
+#: src/format/bg-color/editor.js:15
 msgid "Background color"
 msgstr "背景色"
 
-#: src/format/component/color-palette.js:40
-msgid "Custom colors"
-msgstr "カスタムカラー"
-
-#: src/format/component/format-toolbar.js:42
+#: src/format/component/format-toolbar.js:25
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/font-size/editor.js:24 src/format/font-size/editor.js:55
-#: src/format/font-size/popover.js:68
+#: src/format/font-size/editor.js:15
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: src/format/highlighter/editor.js:26 src/format/highlighter/editor.js:56
-#: src/format/highlighter/popover.js:59
+#: src/format/highlighter/editor.js:19
 msgid "Highlighter"
 msgstr "蛍光ペン"
 
-#: src/format/remove/editor.js:26 src/format/remove/editor.js:44
+#: src/format/remove/editor.js:10
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/editor.js:24 src/format/text-color/editor.js:53
-#: src/format/text-color/popover.js:45
+#: src/format/text-color/editor.js:15
 msgid "Text color"
 msgstr "文字色"
 
-#: src/style/alert-remark/settings.js:9
+#: src/style/alert-remark/settings.js:5
 msgid "Alert (Remarks)"
 msgstr "アラート（備考）"
 
-#: src/style/alert-success/settings.js:9
+#: src/style/alert-success/settings.js:5
 msgid "Alert (Success)"
 msgstr "アラート（サクセス）"
 
-#: src/style/alert-warning/settings.js:9
+#: src/style/alert-warning/settings.js:5
 msgid "Alert (Warning)"
 msgstr "アラート（ワーニング）"
 
-#: src/style/alert/settings.js:9
+#: src/style/alert/settings.js:5
 msgid "Alert"
 msgstr "アラート"
 
-#: src/style/fluid-shape-1/settings.js:9
+#: src/style/fluid-shape-1/settings.js:5
 msgid "Fluid Shape 1"
 msgstr "流体シェイプ1"
 
-#: src/style/fluid-shape-2/settings.js:9
+#: src/style/fluid-shape-2/settings.js:5
 msgid "Fluid Shape 2"
 msgstr "流体シェイプ2"
 
-#: src/style/fluid-shape-3/settings.js:9
+#: src/style/fluid-shape-3/settings.js:5
 msgid "Fluid Shape 3"
 msgstr "流体シェイプ3"
 
-#: src/style/list-arrow/settings.js:9
+#: src/style/list-arrow/settings.js:5
 msgid "Arrow"
 msgstr "矢印"
 
-#: src/style/list-check/settings.js:9
+#: src/style/list-check/settings.js:5
 msgid "Check"
 msgstr "チェック"
 
-#: src/style/list-remark/settings.js:9
+#: src/style/list-remark/settings.js:5
 msgid "Remarks"
 msgstr "備考"
 
-#: src/style/list-times/settings.js:9
+#: src/style/list-times/settings.js:5
 msgid "Times"
 msgstr "✗"
 
-#: src/style/ordered-list-circle/settings.js:9
+#: src/style/ordered-list-circle/settings.js:5
 msgid "Ordered list (Circle)"
 msgstr "序列リスト（丸）"
 
-#: src/style/ordered-list-square/settings.js:9
+#: src/style/ordered-list-square/settings.js:5
 msgid "Ordered list (Square)"
 msgstr "序列リスト（四角）"
 
-#: src/style/post-it-narrow/settings.js:9
+#: src/style/post-it-narrow/settings.js:5
 msgid "Post-it (Narrow)"
 msgstr "付箋（細）"
 
-#: src/style/post-it/settings.js:9
+#: src/style/post-it/settings.js:5
 msgid "Post-it"
 msgstr "付箋"
 
-#: src/style/shadowed/settings.js:9
+#: src/style/shadowed/settings.js:5
 msgid "Shadowed"
 msgstr "影付き"
 
-#: src/style/speech/settings.js:9
+#: src/style/speech/settings.js:5
 msgid "Speech"
 msgstr "吹きだし"
+
+#~ msgid "Custom colors"
+#~ msgstr "カスタムカラー"
 
 #~ msgid "Circle ordered list"
 #~ msgstr "丸形序列リスト"

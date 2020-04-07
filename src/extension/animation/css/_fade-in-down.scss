@@ -1,0 +1,13 @@
+@keyframes smeFadeInDown {
+  0%   { opacity: 0; transform: translateY(-10px) }
+  100% { opacity: 1; transform: translateY(0) }
+}
+
+.sme-animation-fade-in-down {
+  opacity: 0;
+  will-change: opacity;
+}
+
+.sme-animation-fade-in-down-fired {
+  animation: smeFadeInDown .6s cubic-bezier(0, 0, 0, 1);
+}

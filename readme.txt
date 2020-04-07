@@ -180,6 +180,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 
 == Changelog ==
 
+= 2.1.0 =
+* Add animation "Fade in down".
+
 = 2.0.0 =
 * WordPress 5.4 compatible
 
