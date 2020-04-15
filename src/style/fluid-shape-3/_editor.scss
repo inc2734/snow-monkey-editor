@@ -1,21 +1,3 @@
 .editor-styles-wrapper {
   @import 'app';
-
-  .wp-block-media-text.is-style-sme-fluid-shape-3 {
-    > .components-resizable-box__container {
-      > .block-library-media-text__media-container {
-        @extend %fluid-shape__media;
-        mask-image: url(../../src/style/fluid-shape-3/shape.svg);
-      }
-    }
-  }
-
-  .wp-block-image.is-style-sme-fluid-shape-3 {
-    > div {
-      > .components-resizable-box__container {
-        @extend %fluid-shape__media;
-        mask-image: url(../../src/style/fluid-shape-3/shape.svg);
-      }
-    }
-  }
 }

@@ -1,11 +1,15 @@
 .wp-block-media-text.is-style-sme-fluid-shape-1 {
-  > .wp-block-media-text__media {
-    @extend %fluid-shape__media;
-    mask-image: url(../../src/style/fluid-shape-1/shape.svg);
+  .wp-block-media-text__media {
+    img {
+      @extend %fluid-shape__media;
+      mask-image: url(../../src/style/fluid-shape-1/shape.svg);
+    }
   }
 }
 
 .wp-block-image.is-style-sme-fluid-shape-1 {
-  @extend %fluid-shape__media;
-  mask-image: url(../../src/style/fluid-shape-1/shape.svg);
+  img {
+    @extend %fluid-shape__media;
+    mask-image: url(../../src/style/fluid-shape-1/shape.svg);
+  }
 }
