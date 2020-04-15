@@ -18,18 +18,7 @@ const Edit = ( props ) => {
 	const { value, isActive, onChange } = props;
 	const [ addingSetting, setAddingSetting ] = useState( false );
 
-	const onChangePopover = ( fontSize ) => {
-		const attributes = {};
-		if ( fontSize && 'undefined' !== typeof fontSize.size ) {
-			attributes.style = `font-size: ${ fontSize.size }px`;
-			attributes.className = fontSize.class;
-			onChange( applyFormat( value, { type: name, attributes } ) );
-		} else {
-			onChange( removeFormat( value, name ) );
-		}
-	};
-
-	const getCurrentSetting = () => {
+	const currentSetting = ( () => {
 		const activeFormat = getActiveFormat( value, name );
 		if ( ! activeFormat || ! activeFormat.attributes ) {
 			return;
@@ -41,7 +30,34 @@ const Edit = ( props ) => {
 		}
 
 		return currentStyle.replace( new RegExp( `^font-size:\\s*` ), '' );
+	} )();
+
+	const icon = (
+		<>
+			<Icon icon="editor-textcolor" />
+			{ isActive && (
+				<span
+					className="format-library-text-color-button__indicator"
+					style={ { backgroundColor: '#cd162c' } }
+				/>
+			) }
+		</>
+	);
+
+	const onClickButton = () => setAddingSetting( true );
+
+	const onChangePopover = ( fontSize ) => {
+		const attributes = {};
+		if ( fontSize && 'undefined' !== typeof fontSize.size ) {
+			attributes.style = `font-size: ${ fontSize.size }px`;
+			attributes.className = fontSize.class;
+			onChange( applyFormat( value, { type: name, attributes } ) );
+		} else {
+			onChange( removeFormat( value, name ) );
+		}
 	};
+
+	const onClosePopover = () => setAddingSetting( false );
 
 	return (
 		<>
@@ -50,26 +66,16 @@ const Edit = ( props ) => {
 				name={ isActive ? 'sme-font-size' : undefined }
 				title={ title }
 				className="format-library-text-color-button"
-				onClick={ () => setAddingSetting( true ) }
-				icon={
-					<>
-						<Icon icon="editor-textcolor" />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator"
-								style={ { backgroundColor: '#cd162c' } }
-							/>
-						) }
-					</>
-				}
+				onClick={ onClickButton }
+				icon={ icon }
 			/>
 			{ addingSetting && (
 				<Popover
 					addingSetting={ addingSetting }
-					currentSetting={ getCurrentSetting() }
+					currentSetting={ currentSetting }
 					isActive={ isActive }
 					onChange={ onChangePopover }
-					onClose={ () => setAddingSetting( false ) }
+					onClose={ onClosePopover }
 				/>
 			) }
 		</>

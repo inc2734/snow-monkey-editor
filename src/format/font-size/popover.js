@@ -41,6 +41,18 @@ export default function( props ) {
 		return Number( matches[ 1 ] );
 	};
 
+	const onChangeSetting = ( value ) => {
+		const matched = find( fontSizes, [ 'size', value ] );
+		const key = 'undefined' !== typeof matched ? matched.slug : 'custom';
+
+		const newSetting = {
+			size: value,
+			class: `has-${ key }-font-size`,
+		};
+		setSetting( newSetting );
+		onChange( newSetting );
+	};
+
 	return (
 		<URLPopover
 			anchorRect={ anchorRect }
@@ -54,20 +66,7 @@ export default function( props ) {
 					numbered( !! setting && setting.size ) ||
 					numbered( currentSetting )
 				}
-				onChange={ ( value ) => {
-					const matched = find( fontSizes, [ 'size', value ] );
-					const key =
-						'undefined' !== typeof matched
-							? matched.slug
-							: 'custom';
-
-					const newSetting = {
-						size: value,
-						class: `has-${ key }-font-size`,
-					};
-					setSetting( newSetting );
-					onChange( newSetting );
-				} }
+				onChange={ onChangeSetting }
 			/>
 		</URLPopover>
 	);

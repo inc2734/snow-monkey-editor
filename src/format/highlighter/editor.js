@@ -22,18 +22,7 @@ const Edit = ( props ) => {
 	const { value, isActive, onChange } = props;
 	const [ addingSetting, setAddingSetting ] = useState( false );
 
-	const onChangePopover = ( color ) => {
-		const attributes = {};
-		if ( color ) {
-			const lineColor = hexToRgba( color, 0.5 );
-			attributes.style = `background-image: linear-gradient(transparent 60%, ${ lineColor } 60%)`;
-			onChange( applyFormat( value, { type: name, attributes } ) );
-		} else {
-			onChange( removeFormat( value, name ) );
-		}
-	};
-
-	const getCurrentSetting = () => {
+	const currentSetting = ( () => {
 		const activeFormat = getActiveFormat( value, name );
 		if ( ! activeFormat || ! activeFormat.attributes ) {
 			return;
@@ -53,7 +42,36 @@ const Edit = ( props ) => {
 		if ( rgb ) {
 			return hexLong2Short( rgb2hex( rgb[ 1 ] ).hex );
 		}
+	} )();
+
+	const icon = (
+		<>
+			<Icon icon="admin-customizer" />
+			{ isActive && (
+				<span
+					className="format-library-text-color-button__indicator"
+					style={ {
+						backgroundColor: currentSetting,
+					} }
+				/>
+			) }
+		</>
+	);
+
+	const onClickButton = () => setAddingSetting( true );
+
+	const onChangePopover = ( color ) => {
+		const attributes = {};
+		if ( color ) {
+			const lineColor = hexToRgba( color, 0.5 );
+			attributes.style = `background-image: linear-gradient(transparent 60%, ${ lineColor } 60%)`;
+			onChange( applyFormat( value, { type: name, attributes } ) );
+		} else {
+			onChange( removeFormat( value, name ) );
+		}
 	};
+
+	const onClosePopover = () => setAddingSetting( false );
 
 	return (
 		<>
@@ -64,28 +82,16 @@ const Edit = ( props ) => {
 				name={ isActive ? 'sme-highlighter' : undefined }
 				title={ title }
 				className="format-library-text-color-button"
-				onClick={ () => setAddingSetting( true ) }
-				icon={
-					<>
-						<Icon icon="admin-customizer" />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator"
-								style={ {
-									backgroundColor: getCurrentSetting(),
-								} }
-							/>
-						) }
-					</>
-				}
+				onClick={ onClickButton }
+				icon={ icon }
 			/>
 			{ addingSetting && (
 				<Popover
 					addingSetting={ addingSetting }
-					currentSetting={ getCurrentSetting() }
+					currentSetting={ currentSetting }
 					isActive={ isActive }
 					onChange={ onChangePopover }
-					onClose={ () => setAddingSetting( false ) }
+					onClose={ onClosePopover }
 				/>
 			) }
 		</>

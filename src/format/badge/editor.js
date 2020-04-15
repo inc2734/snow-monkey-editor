@@ -18,17 +18,7 @@ const Edit = ( props ) => {
 	const { value, isActive, onChange } = props;
 	const [ addingSetting, setAddingSetting ] = useState( false );
 
-	const onChangePopover = ( color ) => {
-		const attributes = {};
-		if ( color ) {
-			attributes.style = `background-color: ${ color }`;
-			onChange( applyFormat( value, { type: name, attributes } ) );
-		} else {
-			onChange( removeFormat( value, name ) );
-		}
-	};
-
-	const getCurrentSetting = () => {
+	const currentSetting = ( () => {
 		const activeFormat = getActiveFormat( value, name );
 		if ( ! activeFormat || ! activeFormat.attributes ) {
 			return;
@@ -43,7 +33,35 @@ const Edit = ( props ) => {
 			new RegExp( `^background-color:\\s*` ),
 			''
 		);
+	} )();
+
+	const icon = (
+		<>
+			<Icon icon="tag" />
+			{ isActive && (
+				<span
+					className="format-library-text-color-button__indicator"
+					style={ {
+						backgroundColor: currentSetting,
+					} }
+				/>
+			) }
+		</>
+	);
+
+	const onClickButton = () => setAddingSetting( true );
+
+	const onChangePopover = ( color ) => {
+		const attributes = {};
+		if ( color ) {
+			attributes.style = `background-color: ${ color }`;
+			onChange( applyFormat( value, { type: name, attributes } ) );
+		} else {
+			onChange( removeFormat( value, name ) );
+		}
 	};
+
+	const onClosePopover = () => setAddingSetting( false );
 
 	return (
 		<>
@@ -52,28 +70,16 @@ const Edit = ( props ) => {
 				name={ isActive ? 'sme-badge' : undefined }
 				title={ title }
 				className="format-library-text-color-button"
-				onClick={ () => setAddingSetting( true ) }
-				icon={
-					<>
-						<Icon icon="tag" />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator"
-								style={ {
-									backgroundColor: getCurrentSetting(),
-								} }
-							/>
-						) }
-					</>
-				}
+				onClick={ onClickButton }
+				icon={ icon }
 			/>
 			{ addingSetting && (
 				<Popover
 					addingSetting={ addingSetting }
-					currentSetting={ getCurrentSetting() }
+					currentSetting={ currentSetting }
 					isActive={ isActive }
 					onChange={ onChangePopover }
-					onClose={ () => setAddingSetting( false ) }
+					onClose={ onClosePopover }
 				/>
 			) }
 		</>

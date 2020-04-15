@@ -1,0 +1,6 @@
+{
+  "smeIsHiddenRoles": {
+    "type": "array",
+    "default": []
+  }
+}

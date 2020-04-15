@@ -9,29 +9,31 @@ import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
 export const name = 'snow-monkey-editor/remove-fomatting';
 const title = __( 'Remove formatting', 'snow-monkey-editor' );
 
+const Edit = ( { isActive, value, onChange } ) => {
+	const onToggle = () => {
+		const formatTypes = select( 'core/rich-text' ).getFormatTypes();
+		if ( 0 < formatTypes.length ) {
+			let newValue = value;
+			map( formatTypes, ( activeFormat ) => {
+				newValue = removeFormat( newValue, activeFormat.name );
+			} );
+			onChange( { ...newValue } );
+		}
+	};
+
+	return (
+		<SnowMonkeyEditorButton
+			icon="editor-removeformatting"
+			title={ title }
+			onClick={ onToggle }
+			isActive={ isActive }
+		/>
+	);
+};
+
 export const settings = {
 	title,
 	tagName: 'span',
 	className: 'sme-remove-fomatting',
-	edit( { isActive, value, onChange } ) {
-		const onToggle = () => {
-			const formatTypes = select( 'core/rich-text' ).getFormatTypes();
-			if ( 0 < formatTypes.length ) {
-				let newValue = value;
-				map( formatTypes, ( activeFormat ) => {
-					newValue = removeFormat( newValue, activeFormat.name );
-				} );
-				onChange( { ...newValue } );
-			}
-		};
-
-		return (
-			<SnowMonkeyEditorButton
-				icon="editor-removeformatting"
-				title={ title }
-				onClick={ onToggle }
-				isActive={ isActive }
-			/>
-		);
-	},
+	edit: Edit,
 };

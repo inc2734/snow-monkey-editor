@@ -16,6 +16,12 @@ export default function( props ) {
 		return null;
 	}
 
+	const onChangeSetting = ( value ) => {
+		const hex = ( value && value.hex ) || value;
+		setSetting( hex );
+		onChange( hex );
+	};
+
 	return (
 		<URLPopover
 			anchorRect={ anchorRect }
@@ -24,11 +30,7 @@ export default function( props ) {
 		>
 			<ColorPalette
 				value={ setting || currentSetting }
-				onChange={ ( value ) => {
-					const hex = ( value && value.hex ) || value;
-					setSetting( hex );
-					onChange( hex );
-				} }
+				onChange={ onChangeSetting }
 			/>
 		</URLPopover>
 	);

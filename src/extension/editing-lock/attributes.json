@@ -1,0 +1,6 @@
+{
+  "smeIsEditingLockRoles": {
+    "type": "array",
+    "default": []
+  }
+}

@@ -134,8 +134,10 @@ class Bootstrap {
 	public function _add_attributes_to_blocks() {
 		$attributes = [];
 		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/src/extension/*', GLOB_ONLYDIR ) as $dir ) {
-			foreach ( glob( $dir . '/attributes.php' ) as $file ) {
-				$attributes = array_merge( $attributes, include( $file ) );
+			foreach ( glob( $dir . '/attributes.json' ) as $file ) {
+				$_attributes = file_get_contents( $file );
+				$_attributes = json_decode( $_attributes, true );
+				$attributes = array_merge( $attributes, $_attributes );
 			}
 		}
 
