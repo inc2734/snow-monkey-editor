@@ -1,6 +1,5 @@
-import { map } from 'lodash';
-
-import { select } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
+import { useCallback } from '@wordpress/element';
 import { removeFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -10,16 +9,20 @@ export const name = 'snow-monkey-editor/remove-fomatting';
 const title = __( 'Remove formatting', 'snow-monkey-editor' );
 
 const Edit = ( { isActive, value, onChange } ) => {
-	const onToggle = () => {
-		const formatTypes = select( 'core/rich-text' ).getFormatTypes();
+	const formatTypes = useSelect(
+		( select ) => select( 'core/rich-text' ).getFormatTypes(),
+		[]
+	);
+
+	const onToggle = useCallback( () => {
 		if ( 0 < formatTypes.length ) {
 			let newValue = value;
-			map( formatTypes, ( activeFormat ) => {
-				newValue = removeFormat( newValue, activeFormat.name );
+			formatTypes.forEach( ( formatType ) => {
+				newValue = removeFormat( newValue, formatType.name );
 			} );
 			onChange( { ...newValue } );
 		}
-	};
+	}, [ value, formatTypes ] );
 
 	return (
 		<SnowMonkeyEditorButton

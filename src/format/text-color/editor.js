@@ -5,7 +5,7 @@ import {
 } from '@wordpress/rich-text';
 
 import { Icon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useCallback, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
@@ -32,21 +32,24 @@ const Edit = ( props ) => {
 		return currentStyle.replace( new RegExp( `^color:\\s*` ), '' );
 	} )();
 
-	const icon = (
-		<>
-			<Icon icon="edit" />
-			{ isActive && (
-				<span
-					className="format-library-text-color-button__indicator"
-					style={ {
-						backgroundColor: currentSetting,
-					} }
-				/>
-			) }
-		</>
+	const icon = useMemo(
+		() => (
+			<>
+				<Icon icon="edit" />
+				{ isActive && (
+					<span
+						className="format-library-text-color-button__indicator"
+						style={ {
+							backgroundColor: currentSetting,
+						} }
+					/>
+				) }
+			</>
+		),
+		[ isActive, currentSetting ]
 	);
 
-	const onClickButton = () => setAddingSetting( true );
+	const onClickButton = useCallback( () => setAddingSetting( true ), [] );
 
 	const onChangePopover = ( color ) => {
 		const attributes = {};

@@ -5,7 +5,7 @@ import {
 } from '@wordpress/rich-text';
 
 import { Icon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useState, useCallback, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
@@ -32,19 +32,22 @@ const Edit = ( props ) => {
 		return currentStyle.replace( new RegExp( `^font-size:\\s*` ), '' );
 	} )();
 
-	const icon = (
-		<>
-			<Icon icon="editor-textcolor" />
-			{ isActive && (
-				<span
-					className="format-library-text-color-button__indicator"
-					style={ { backgroundColor: '#cd162c' } }
-				/>
-			) }
-		</>
+	const icon = useMemo(
+		() => (
+			<>
+				<Icon icon="editor-textcolor" />
+				{ isActive && (
+					<span
+						className="format-library-text-color-button__indicator"
+						style={ { backgroundColor: '#cd162c' } }
+					/>
+				) }
+			</>
+		),
+		[ isActive ]
 	);
 
-	const onClickButton = () => setAddingSetting( true );
+	const onClickButton = useCallback( () => setAddingSetting( true ), [] );
 
 	const onChangePopover = ( fontSize ) => {
 		const attributes = {};
