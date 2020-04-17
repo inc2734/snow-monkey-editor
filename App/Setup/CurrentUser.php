@@ -23,6 +23,10 @@ class CurrentUser {
 		}
 
 		$data = $response->get_data();
+		if ( isset( $data['roles'] ) ) {
+			return $response;
+		}
+
 		$data = array_merge( $data, [ 'roles' => $user->roles ] );
 		$response->set_data( $data );
 
