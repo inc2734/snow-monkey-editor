@@ -64,7 +64,8 @@ class Assets {
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/app.js',
 			$asset['dependencies'],
-			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.js' )
+			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.js' ),
+			true
 		);
 
 		wp_enqueue_style(
