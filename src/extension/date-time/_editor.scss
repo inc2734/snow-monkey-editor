@@ -13,4 +13,10 @@
       display: none;
     }
   }
+
+  [aria-label="Calendar"] {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
