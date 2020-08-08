@@ -1,10 +1,5 @@
 import { BlockFormatControls } from '@wordpress/block-editor';
-import {
-	Slot,
-	__experimentalToolbarItem as ToolbarItem,
-	ToolbarGroup,
-	DropdownMenu
-} from '@wordpress/components';
+import { Slot, __experimentalToolbarItem as ToolbarItem, ToolbarGroup, DropdownMenu } from '@wordpress/components';
 import { registerFormatType } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -12,7 +7,7 @@ import { icon } from '../../helper/icon';
 
 const POPOVER_PROPS = {
 	position: 'bottom left',
-	isAlternate: true,
+	isAlternate: true
 };
 
 const Edit = () => {
