@@ -44,6 +44,9 @@ import speech from './speech/editor';
 	component.forEach( ( props ) => registerStyle( props ) );
 } );
 
+/**
+ * For orderd list styles
+ */
 addFilter(
 	'editor.BlockEdit',
 	'snow-monkey-editor/ordered-list/block-edit',
@@ -58,7 +61,7 @@ addFilter(
 			}
 
 			const block = document.querySelector(
-				`[data-block="${ clientId }"] .rich-text`
+				`[data-block="${ clientId }"].rich-text`
 			);
 			if ( ! block ) {
 				return <BlockEdit { ...props } />;
