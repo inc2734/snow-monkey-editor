@@ -110,6 +110,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 					>
 						{ Object.keys( roles ).map( ( key ) => {
 							const hiddenRoleLabel = sprintf(
+								// translators: %1$s: The role name
 								__( 'Hide if %1$s', 'snow-monkey-editor' ),
 								roles[ key ].name
 							);

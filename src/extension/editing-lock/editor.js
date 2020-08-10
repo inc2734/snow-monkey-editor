@@ -142,6 +142,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 						>
 							{ Object.keys( roles ).map( ( key ) => {
 								const labelEditingLockRole = sprintf(
+									// translators: %1$s: The role name
 									__(
 										'Edit lock if %1$s',
 										'snow-monkey-editor'
