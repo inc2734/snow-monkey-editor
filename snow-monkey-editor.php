@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey Editor
- * Version: 2.2.0
+ * Version: 3.0.0
  * Description: Extends gutenberg block editor
  * Author: inc2734
  * Author URI: https://2inc.org
@@ -43,7 +43,6 @@ class Bootstrap {
 			add_action( 'render_block', [ $this, '_hidden_by_roles' ], 10, 2 );
 			add_action( 'render_block', [ $this, '_date_time' ], 10, 2 );
 			add_action( 'render_block', [ $this, '_ordered_list_counter' ], 10, 2 );
-			add_action( 'init', array( $this, '_add_attributes_to_blocks' ), 11 );
 		}
 	}
 
@@ -124,30 +123,6 @@ class Bootstrap {
 		}
 
 		return $content;
-	}
-
-	/**
-	 * Adds attributes to all blocks, to avoid `Invalid parameter(s): attributes` error in Gutenberg.
-	 *
-	 * @see https://plugins.trac.wordpress.org/browser/blocks-animation/trunk/vendor/codeinwp/gutenberg-animation/class-gutenberg-animation.php#L109
-	 */
-	public function _add_attributes_to_blocks() {
-		$attributes = [];
-		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/src/extension/*', GLOB_ONLYDIR ) as $dir ) {
-			foreach ( glob( $dir . '/attributes.json' ) as $file ) {
-				$_attributes = file_get_contents( $file );
-				$_attributes = json_decode( $_attributes, true );
-				$attributes = array_merge( $attributes, $_attributes );
-			}
-		}
-
-		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
-
-		foreach ( $registered_blocks as $name => $block ) {
-			foreach ( $attributes as $name => $detail ) {
-				$block->attributes[ $name ] = $detail;
-			}
-		}
 	}
 }
 
