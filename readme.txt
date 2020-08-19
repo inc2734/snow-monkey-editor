@@ -180,6 +180,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 
 == Changelog ==
 
+= 3.0.2 =
+* Fix block styles CSS bug in editor.
+
 = 3.0.1 =
 * Bug fixes.
 
