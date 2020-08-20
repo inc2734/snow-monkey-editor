@@ -1,80 +1,117 @@
 import rgb2hex from 'rgb2hex';
 import hexToRgba from 'hex-to-rgba';
 
+import { get, isEmpty } from 'lodash';
+
 import {
 	applyFormat,
-	removeFormat,
 	getActiveFormat,
+	removeFormat,
 } from '@wordpress/rich-text';
 
 import { Icon } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { useState, useCallback, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
+import { default as InlineColorUI } from '../component/inline';
 import hexLong2Short from '../helper/hex-long2short';
-import Popover from './popover';
 
 export const name = 'snow-monkey-editor/highlighter';
 const title = __( 'Highlighter', 'snow-monkey-editor' );
 
+const EMPTY_ARRAY = [];
+
 const Edit = ( props ) => {
-	const { value, isActive, onChange } = props;
-	const [ addingSetting, setAddingSetting ] = useState( false );
+	const { value, onChange, isActive } = props;
 
-	const currentSetting = ( () => {
-		const activeFormat = getActiveFormat( value, name );
-		if ( ! activeFormat || ! activeFormat.attributes ) {
+	const { colors, disableCustomColors } = useSelect( ( select ) => {
+		const blockEditorSelect = select( 'core/block-editor' );
+
+		let settings;
+
+		if ( blockEditorSelect && blockEditorSelect.getSettings ) {
+			settings = blockEditorSelect.getSettings();
+		} else {
+			settings = {};
+		}
+
+		return {
+			colors: get( settings, [ 'colors' ], EMPTY_ARRAY ),
+			disableCustomColors: settings.disableCustomColors,
+		};
+	} );
+
+	const [ isAddingColor, setIsAddingColor ] = useState( false );
+
+	const enableIsAddingColor = useCallback( () => setIsAddingColor( true ), [
+		setIsAddingColor,
+	] );
+
+	const disableIsAddingColor = useCallback( () => setIsAddingColor( false ), [
+		setIsAddingColor,
+	] );
+
+	const onColorChange = useCallback(
+		( color ) => {
+			if ( color ) {
+				onChange(
+					applyFormat( value, {
+						type: name,
+						attributes: {
+							style: `background-image: linear-gradient(transparent 60%, ${ hexToRgba(
+								color,
+								0.5
+							) } 60%)`,
+						},
+					} )
+				);
+			} else {
+				onChange( removeFormat( value, name ) );
+			}
+		},
+		[ colors, onChange ]
+	);
+
+	const getActiveColor = ( formatName, formatValue ) => {
+		const activeColorFormat = getActiveFormat( formatValue, formatName );
+		if ( ! activeColorFormat ) {
 			return;
 		}
 
-		const currentStyle = activeFormat.attributes.style;
-		if ( ! currentStyle ) {
+		const styleColor = activeColorFormat.attributes.style;
+		if ( ! styleColor ) {
 			return;
 		}
 
-		const hex = currentStyle.match( /(#[0-9A-F]{3,6}) /i );
+		const hex = styleColor.match( /(#[0-9A-F]{3,6}) /i );
 		if ( hex ) {
 			return hex;
 		}
 
-		const rgb = currentStyle.match( /,\s*?(rgba?\([^)]+\)) /i );
+		const rgb = styleColor.match( /,\s*?(rgba?\([^)]+\)) /i );
 		if ( rgb ) {
 			return hexLong2Short( rgb2hex( rgb[ 1 ] ).hex );
 		}
-	} )();
-
-	const icon = useMemo(
-		() => (
-			<>
-				<Icon icon="admin-customizer" />
-				{ isActive && (
-					<span
-						className="format-library-text-color-button__indicator"
-						style={ {
-							backgroundColor: currentSetting,
-						} }
-					/>
-				) }
-			</>
-		),
-		[ isActive, currentSetting ]
-	);
-
-	const onClickButton = useCallback( () => setAddingSetting( true ), [] );
-
-	const onChangePopover = ( color ) => {
-		const attributes = {};
-		if ( color ) {
-			const lineColor = hexToRgba( color, 0.5 );
-			attributes.style = `background-image: linear-gradient(transparent 60%, ${ lineColor } 60%)`;
-			onChange( applyFormat( value, { type: name, attributes } ) );
-		} else {
-			onChange( removeFormat( value, name ) );
-		}
 	};
 
-	const onClosePopover = () => setAddingSetting( false );
+	const colorIndicatorStyle = useMemo( () => {
+		const activeColor = getActiveColor( name, value, colors );
+		if ( ! activeColor ) {
+			return undefined;
+		}
+
+		return {
+			backgroundColor: activeColor,
+		};
+	}, [ value, colors ] );
+
+	const hasColorsToChoose =
+		! isEmpty( colors ) || disableCustomColors !== true;
+	if ( ! hasColorsToChoose && ! isActive ) {
+		return null;
+	}
 
 	return (
 		<>
@@ -85,16 +122,33 @@ const Edit = ( props ) => {
 				name={ isActive ? 'sme-highlighter' : undefined }
 				title={ title }
 				className="format-library-text-color-button"
-				onClick={ onClickButton }
-				icon={ icon }
+				onClick={
+					hasColorsToChoose
+						? enableIsAddingColor
+						: () => onChange( removeFormat( value, name ) )
+				}
+				icon={
+					<>
+						<Icon icon="admin-customizer" />
+						{ isActive && (
+							<span
+								className="format-library-text-color-button__indicator"
+								style={ colorIndicatorStyle }
+							/>
+						) }
+					</>
+				}
 			/>
-			{ addingSetting && (
-				<Popover
-					addingSetting={ addingSetting }
-					currentSetting={ currentSetting }
+
+			{ isAddingColor && (
+				<InlineColorUI
+					name={ name }
+					addingColor={ isAddingColor }
+					onClose={ disableIsAddingColor }
 					isActive={ isActive }
-					onChange={ onChangePopover }
-					onClose={ onClosePopover }
+					value={ value }
+					onColorChange={ onColorChange }
+					getActiveColor={ getActiveColor }
 				/>
 			) }
 		</>

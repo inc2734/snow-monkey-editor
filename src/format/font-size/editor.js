@@ -1,66 +1,95 @@
+import { isEmpty, find } from 'lodash';
+
 import {
 	applyFormat,
-	removeFormat,
 	getActiveFormat,
+	removeFormat,
 } from '@wordpress/rich-text';
 
 import { Icon } from '@wordpress/components';
-import { useState, useCallback, useMemo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
-import Popover from './popover';
+import { default as InlineFontSizeUI } from './inline';
 
 export const name = 'snow-monkey-editor/font-size';
 const title = __( 'Font size', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
 	const { value, isActive, onChange } = props;
-	const [ addingSetting, setAddingSetting ] = useState( false );
 
-	const currentSetting = ( () => {
-		const activeFormat = getActiveFormat( value, name );
-		if ( ! activeFormat || ! activeFormat.attributes ) {
-			return;
+	const { fontSizes, disableCustomFontSizes } = useSelect( ( select ) => {
+		const blockEditorSelect = select( 'core/block-editor' );
+
+		let settings;
+
+		if ( blockEditorSelect && blockEditorSelect.getSettings ) {
+			settings = blockEditorSelect.getSettings();
+		} else {
+			settings = {};
 		}
 
-		const currentStyle = activeFormat.attributes.style;
-		if ( ! currentStyle ) {
-			return;
-		}
+		return {
+			fontSizes: settings.fontSizes,
+			disableCustomFontSizes: settings.disableCustomFontSizes,
+		};
+	} );
 
-		return currentStyle.replace( new RegExp( `^font-size:\\s*` ), '' );
-	} )();
+	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
 
-	const icon = useMemo(
-		() => (
-			<>
-				<Icon icon="editor-textcolor" />
-				{ isActive && (
-					<span
-						className="format-library-text-color-button__indicator"
-						style={ { backgroundColor: '#cd162c' } }
-					/>
-				) }
-			</>
-		),
-		[ isActive ]
+	const enableIsAddingFontSize = useCallback(
+		() => setIsAddingFontSize( true ),
+		[ setIsAddingFontSize ]
 	);
 
-	const onClickButton = useCallback( () => setAddingSetting( true ), [] );
+	const disableIsAddingFontSize = useCallback(
+		() => setIsAddingFontSize( false ),
+		[ setIsAddingFontSize ]
+	);
 
-	const onChangePopover = ( fontSize ) => {
-		const attributes = {};
-		if ( fontSize && 'undefined' !== typeof fontSize.size ) {
-			attributes.style = `font-size: ${ fontSize.size }px`;
-			attributes.className = fontSize.class;
-			onChange( applyFormat( value, { type: name, attributes } ) );
-		} else {
-			onChange( removeFormat( value, name ) );
+	const onFontSizeChange = useCallback(
+		( fontSize ) => {
+			if ( fontSize ) {
+				const matched = find( fontSizes, [ 'size', fontSize ] );
+				const slug = !! matched ? matched.slug : 'custom';
+
+				onChange(
+					applyFormat( value, {
+						type: name,
+						attributes: {
+							style: `font-size: ${ fontSize }px`,
+							className: `has-${ slug }-font-size`,
+						},
+					} )
+				);
+			} else {
+				onChange( removeFormat( value, name ) );
+			}
+		},
+		[ fontSizes, onChange ]
+	);
+
+	const getActiveFontSize = ( formatName, formatValue ) => {
+		const activeFontSizeFormat = getActiveFormat( formatValue, formatName );
+		if ( ! activeFontSizeFormat ) {
+			return;
+		}
+
+		const styleFontSize = activeFontSizeFormat.attributes.style;
+		if ( styleFontSize ) {
+			return styleFontSize
+				.replace( new RegExp( `^font-size:\\s*` ), '' )
+				.replace( 'px', '' );
 		}
 	};
 
-	const onClosePopover = () => setAddingSetting( false );
+	const hasFontSizesToChoose =
+		! isEmpty( fontSizes ) || disableCustomFontSizes !== true;
+	if ( ! hasFontSizesToChoose && ! isActive ) {
+		return null;
+	}
 
 	return (
 		<>
@@ -69,16 +98,33 @@ const Edit = ( props ) => {
 				name={ isActive ? 'sme-font-size' : undefined }
 				title={ title }
 				className="format-library-text-color-button"
-				onClick={ onClickButton }
-				icon={ icon }
+				onClick={
+					hasFontSizesToChoose
+						? enableIsAddingFontSize
+						: () => onChange( removeFormat( value, name ) )
+				}
+				icon={
+					<>
+						<Icon icon="editor-textcolor" />
+						{ isActive && (
+							<span
+								className="format-library-text-color-button__indicator"
+								style={ { backgroundColor: '#cd162c' } }
+							/>
+						) }
+					</>
+				}
 			/>
-			{ addingSetting && (
-				<Popover
-					addingSetting={ addingSetting }
-					currentSetting={ currentSetting }
+
+			{ isAddingFontSize && (
+				<InlineFontSizeUI
+					name={ name }
+					addingFontSize={ isAddingFontSize }
+					onClose={ disableIsAddingFontSize }
 					isActive={ isActive }
-					onChange={ onChangePopover }
-					onClose={ onClosePopover }
+					value={ value }
+					onFontSizeChange={ onFontSizeChange }
+					getActiveFontSize={ getActiveFontSize }
 				/>
 			) }
 		</>
