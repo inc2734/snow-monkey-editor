@@ -7,7 +7,7 @@ import { getRectangleFromRange } from '@wordpress/dom';
 
 import { ColorPalette, URLPopover } from '@wordpress/block-editor';
 
-const ColorPopoverAtLink = ( { isActive, addingColor, value, ...props } ) => {
+const ColorPopoverAtLink = ( { addingColor, ...props } ) => {
 	const anchorRect = useMemo( () => {
 		const selection = window.getSelection();
 		const range =
@@ -33,7 +33,7 @@ const ColorPopoverAtLink = ( { isActive, addingColor, value, ...props } ) => {
 		if ( closest ) {
 			return closest.getBoundingClientRect();
 		}
-	}, [ isActive, addingColor, value.start, value.end ] );
+	}, [] );
 
 	if ( ! anchorRect ) {
 		return null;

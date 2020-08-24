@@ -7,12 +7,7 @@ import {
 	URLPopover,
 } from '@wordpress/block-editor';
 
-const FontsiePopoverAtLink = ( {
-	isActive,
-	addingFontSize,
-	value,
-	...props
-} ) => {
+const FontsiePopoverAtLink = ( { addingFontSize, ...props } ) => {
 	const anchorRect = useMemo( () => {
 		const selection = window.getSelection();
 		const range =
@@ -38,7 +33,7 @@ const FontsiePopoverAtLink = ( {
 		if ( closest ) {
 			return closest.getBoundingClientRect();
 		}
-	}, [ isActive, addingFontSize, value.start, value.end ] );
+	}, [] );
 
 	if ( ! anchorRect ) {
 		return null;
