@@ -31,6 +31,7 @@ install:
 - npm install
 - npm rebuild node-sass
 - composer install
+- npm run build
 script:
 - npm run test
 before_deploy:
