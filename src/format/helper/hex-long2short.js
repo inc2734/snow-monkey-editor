@@ -2,7 +2,7 @@
  * @param  { string } hex
  * @return { string } rgb
  */
-export default function( hex ) {
+export default function ( hex ) {
 	if ( ! hex || 4 === hex.length ) {
 		return hex;
 	}

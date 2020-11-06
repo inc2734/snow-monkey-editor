@@ -124,7 +124,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 					>
 						<SelectControl
 							label={ __( 'Animation', 'snow-monkey-editor' ) }
-							value={ smeAnimation }
+							value={ smeAnimation || undefined }
 							options={ options }
 							onChange={ onChangeAnimation }
 						/>

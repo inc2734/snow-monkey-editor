@@ -9,6 +9,7 @@ import { ColorPalette, URLPopover } from '@wordpress/block-editor';
 
 const ColorPopoverAtLink = ( { addingColor, ...props } ) => {
 	const anchorRect = useMemo( () => {
+		// eslint-disable-next-line @wordpress/no-global-get-selection
 		const selection = window.getSelection();
 		const range =
 			selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;

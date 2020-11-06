@@ -8,6 +8,10 @@
 namespace Snow_Monkey\Plugin\Editor\App\Setup;
 
 class Assets {
+
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'enqueue_block_editor_assets', [ $this, '_enqueue_block_editor_extension' ], 9 );
 		add_action( 'enqueue_block_editor_assets', [ $this, '_enqueue_block_editor_assets' ] );
@@ -16,8 +20,6 @@ class Assets {
 
 	/**
 	 * Enqueue editor extension
-	 *
-	 * @return void
 	 */
 	public function _enqueue_block_editor_extension() {
 		$asset = include( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor-extension.asset.php' );
@@ -32,8 +34,6 @@ class Assets {
 
 	/**
 	 * Enqueue editor assets
-	 *
-	 * @return void
 	 */
 	public function _enqueue_block_editor_assets() {
 		$asset = include( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor.asset.php' );
@@ -55,15 +55,12 @@ class Assets {
 
 	/**
 	 * Enqueue front assets
-	 *
-	 * @return void
 	 */
 	public function _wp_enqueue_scripts() {
-		$asset = include( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.asset.php' );
 		wp_enqueue_script(
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/app.js',
-			$asset['dependencies'],
+			[],
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.js' ),
 			true
 		);

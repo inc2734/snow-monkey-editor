@@ -36,6 +36,9 @@ define( 'SNOW_MONKEY_EDITOR_PATH', untrailingslashit( plugin_dir_path( __FILE__ 
 
 class Bootstrap {
 
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
 
@@ -47,6 +50,9 @@ class Bootstrap {
 		}
 	}
 
+	/**
+	 * Bootstrap.
+	 */
 	public function _bootstrap() {
 		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/App/Setup/*.php' ) as $file ) {
 			$class_name = '\\Snow_Monkey\\Plugin\\Editor\\App\\Setup\\' . str_replace( '.php', '', basename( $file ) );
@@ -56,13 +62,23 @@ class Bootstrap {
 		}
 	}
 
+	/**
+	 * Apply hidden by roles setting to blocks.
+	 *
+	 * @param string $content The block content about to be appended.
+	 * @param array  $block   The full block, including name and attributes.
+	 * @return string
+	 */
 	public function _hidden_by_roles( $content, $block ) {
-		$attributes = $block['attrs'];
+		$attributes          = $block['attrs'];
 		$has_hidden_by_roles = isset( $attributes['smeIsHiddenRoles'] ) ? $attributes['smeIsHiddenRoles'] : false;
 		if ( $has_hidden_by_roles ) {
 			$user = wp_get_current_user();
 			foreach ( $has_hidden_by_roles as $role ) {
-				if ( in_array( $role, (array) $user->roles ) || 'sme-guest' === $role && ! $user->roles ) {
+				if (
+					in_array( $role, (array) $user->roles, true )
+					|| 'sme-guest' === $role && ! $user->roles
+				) {
 					return '';
 				}
 			}
@@ -70,9 +86,16 @@ class Bootstrap {
 		return $content;
 	}
 
+	/**
+	 * Apply datetime setting to blocks.
+	 *
+	 * @param string $content The block content about to be appended.
+	 * @param array  $block   The full block, including name and attributes.
+	 * @return string
+	 */
 	public function _date_time( $content, $block ) {
 		// Dates entered in the block editor are localized.
-		$attributes = $block['attrs'];
+		$attributes      = $block['attrs'];
 		$start_date_time = isset( $attributes['smeStartDateTime'] ) ? $attributes['smeStartDateTime'] : false;
 		$end_date_time   = isset( $attributes['smeEndDateTime'] ) ? $attributes['smeEndDateTime'] : false;
 
@@ -102,6 +125,13 @@ class Bootstrap {
 		return $content;
 	}
 
+	/**
+	 * Set counter to ordered list.
+	 *
+	 * @param string $content The block content about to be appended.
+	 * @param array  $block   The full block, including name and attributes.
+	 * @return string
+	 */
 	public function _ordered_list_counter( $content, $block ) {
 		if ( 'core/list' !== $block['blockName'] ) {
 			return $content;
@@ -119,8 +149,14 @@ class Bootstrap {
 
 		if ( false !== $is_ol_circle || false !== $is_ol_square ) {
 			$start     = ! empty( $attributes['start'] ) ? $attributes['start'] : 1;
-			$sme_count = ! empty( $attributes['reversed'] ) ? 'sme-count ' . ( $start + 1 ) : 'sme-count ' . ( $start - 1 );
-			$content   = preg_replace( '|^<ol|ms', '<ol style="counter-reset: ' . esc_attr( $sme_count ) . '"', $content );
+			$sme_count = ! empty( $attributes['reversed'] )
+				? 'sme-count ' . ( $start + 1 )
+				: 'sme-count ' . ( $start - 1 );
+			$content   = preg_replace(
+				'|^<ol|ms',
+				'<ol style="counter-reset: ' . esc_attr( $sme_count ) . '"',
+				$content
+			);
 		}
 
 		return $content;
@@ -137,7 +173,7 @@ class Bootstrap {
 			foreach ( glob( $dir . '/attributes.json' ) as $file ) {
 				$_attributes = file_get_contents( $file );
 				$_attributes = json_decode( $_attributes, true );
-				$attributes = array_merge( $attributes, $_attributes );
+				$attributes  = array_merge( $attributes, $_attributes );
 			}
 		}
 

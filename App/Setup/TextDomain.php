@@ -8,8 +8,17 @@
 namespace Snow_Monkey\Plugin\Editor\App\Setup;
 
 class TextDomain {
+
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
-		load_plugin_textdomain( 'snow-monkey-editor', false, basename( SNOW_MONKEY_EDITOR_PATH ) . '/languages' );
+		load_plugin_textdomain(
+			'snow-monkey-editor',
+			false,
+			basename( SNOW_MONKEY_EDITOR_PATH ) . '/languages'
+		);
+
 		add_filter( 'load_textdomain_mofile', [ $this, '_load_textdomain_mofile' ], 10, 2 );
 		add_action( 'enqueue_block_editor_assets', [ $this, '_set_script_translations' ], 11 );
 	}
@@ -17,8 +26,8 @@ class TextDomain {
 	/**
 	 * When local .mo file exists, load this.
 	 *
-	 * @param string $mofile
-	 * @param string $domain
+	 * @param string $mofile Path to the MO file.
+	 * @param string $domain Text domain. Unique identifier for retrieving translated strings.
 	 * @return string
 	 */
 	public function _load_textdomain_mofile( $mofile, $domain ) {
@@ -34,8 +43,6 @@ class TextDomain {
 
 	/**
 	 * Translate script files
-	 *
-	 * @return void
 	 */
 	public function _set_script_translations() {
 		wp_set_script_translations(
