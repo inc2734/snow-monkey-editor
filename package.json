@@ -44,7 +44,7 @@
     "po2json:snow-monkey-editor@editor": "po2json languages/snow-monkey-editor-ja.po languages/snow-monkey-editor-ja-snow-monkey-editor@editor.json -f jed",
     "po2json": "npm-run-all -p po2json:*",
     "build": "npm-run-all -s css js po2json",
-    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/tests' --exclude='package*.json' . snow-monkey-editor && cd snow-monkey-editor && composer install --no-dev",
+    "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='/sql' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/tests' --exclude='package*.json' . snow-monkey-editor && cd snow-monkey-editor && composer install --no-dev",
     "zip:archive": "zip -9 -qmr snow-monkey-editor.zip snow-monkey-editor",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   },
