@@ -11,10 +11,10 @@ import { useSelect } from '@wordpress/data';
 import { useState, useCallback, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
+import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import { default as InlineColorUI } from '../component/inline';
 
-export const name = 'snow-monkey-editor/text-color';
+const name = 'snow-monkey-editor/text-color';
 const title = __( 'Text color', 'snow-monkey-editor' );
 
 const EMPTY_ARRAY = [];
@@ -98,7 +98,7 @@ const Edit = ( props ) => {
 
 	return (
 		<>
-			<SnowMonkeyEditorButton
+			<SnowMonkeyToolbarButton
 				key={
 					isActive ? 'sme-text-color' : 'sme-text-color-not-active'
 				}
@@ -128,7 +128,6 @@ const Edit = ( props ) => {
 					name={ name }
 					addingColor={ isAddingColor }
 					onClose={ disableIsAddingColor }
-					isActive={ isActive }
 					value={ value }
 					onColorChange={ onColorChange }
 					getActiveColor={ getActiveColor }
@@ -139,6 +138,7 @@ const Edit = ( props ) => {
 };
 
 export const settings = {
+	name,
 	title,
 	tagName: 'span',
 	className: 'sme-text-color',

@@ -1,14 +1,14 @@
 import { Fill, ToolbarButton } from '@wordpress/components';
 import { displayShortcut } from '@wordpress/keycodes';
 
-export function SnowMonkeyEditorButton( {
+export function SnowMonkeyToolbarButton( {
 	name,
 	shortcutType,
 	shortcutCharacter,
 	...props
 } ) {
 	let shortcut;
-	let fillName = 'SnowMonkeyEditorButtonControls';
+	let fillName = 'SnowMonkey.ToolbarControls';
 
 	if ( name ) {
 		fillName += `.${ name }`;

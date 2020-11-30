@@ -66,7 +66,6 @@ const InlineFontSizeUI = ( {
 	name,
 	value,
 	onClose,
-	isActive,
 	addingFontSize,
 	getActiveFontSize,
 	onFontSizeChange,
@@ -74,7 +73,6 @@ const InlineFontSizeUI = ( {
 	return (
 		<FontsiePopoverAtLink
 			value={ value }
-			isActive={ isActive }
 			addingFontSize={ addingFontSize }
 			onClose={ onClose }
 			className="sme-popover components-inline-color-popover"

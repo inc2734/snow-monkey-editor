@@ -3,12 +3,12 @@ import { useCallback } from '@wordpress/element';
 import { removeFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
-import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
+import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 
-export const name = 'snow-monkey-editor/remove-fomatting';
+const name = 'snow-monkey-editor/remove-fomatting';
 const title = __( 'Remove formatting', 'snow-monkey-editor' );
 
-const Edit = ( { isActive, value, onChange } ) => {
+const Edit = ( { value, onChange } ) => {
 	const formatTypes = useSelect(
 		( select ) => select( 'core/rich-text' ).getFormatTypes(),
 		[]
@@ -25,16 +25,16 @@ const Edit = ( { isActive, value, onChange } ) => {
 	}, [ value, formatTypes ] );
 
 	return (
-		<SnowMonkeyEditorButton
+		<SnowMonkeyToolbarButton
 			icon="editor-removeformatting"
 			title={ title }
 			onClick={ onToggle }
-			isActive={ isActive }
 		/>
 	);
 };
 
 export const settings = {
+	name,
 	title,
 	tagName: 'span',
 	className: 'sme-remove-fomatting',

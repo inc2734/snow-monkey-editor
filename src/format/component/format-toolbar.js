@@ -1,11 +1,16 @@
+import { orderBy } from 'lodash';
+
 import { BlockFormatControls } from '@wordpress/block-editor';
+
 import {
 	Slot,
-	__experimentalToolbarItem as ToolbarItem,
+	ToolbarItem,
 	ToolbarGroup,
 	DropdownMenu,
 } from '@wordpress/components';
+
 import { registerFormatType } from '@wordpress/rich-text';
+
 import { __ } from '@wordpress/i18n';
 
 import { icon } from '../../helper/icon';
@@ -20,7 +25,7 @@ const Edit = () => {
 		<BlockFormatControls>
 			<div className="block-editor-format-toolbar">
 				<ToolbarGroup>
-					<Slot name="SnowMonkeyEditorButtonControls">
+					<Slot name="SnowMonkey.ToolbarControls">
 						{ ( fills ) =>
 							fills.length !== 0 && (
 								<ToolbarItem>
@@ -32,10 +37,13 @@ const Edit = () => {
 												'snow-monkey-editor'
 											) }
 											toggleProps={ toggleProps }
-											popoverProps={ POPOVER_PROPS }
-											controls={ fills.map(
-												( [ { props } ] ) => props
+											controls={ orderBy(
+												fills.map(
+													( [ { props } ] ) => props
+												),
+												'title'
 											) }
+											popoverProps={ POPOVER_PROPS }
 										/>
 									) }
 								</ToolbarItem>
@@ -51,7 +59,7 @@ const Edit = () => {
 						'sme-badge',
 					].map( ( format ) => (
 						<Slot
-							name={ `SnowMonkeyEditorButtonControls.${ format }` }
+							name={ `SnowMonkey.ToolbarControls.${ format }` }
 							key={ format }
 						/>
 					) ) }

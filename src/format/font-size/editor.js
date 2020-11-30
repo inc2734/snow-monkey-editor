@@ -11,10 +11,10 @@ import { useSelect } from '@wordpress/data';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import { SnowMonkeyEditorButton } from '../component/snow-monkey-editor-button';
+import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import { default as InlineFontSizeUI } from './inline';
 
-export const name = 'snow-monkey-editor/font-size';
+const name = 'snow-monkey-editor/font-size';
 const title = __( 'Font size', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
@@ -93,7 +93,7 @@ const Edit = ( props ) => {
 
 	return (
 		<>
-			<SnowMonkeyEditorButton
+			<SnowMonkeyToolbarButton
 				key={ isActive ? 'sme-font-size' : 'sme-font-size-not-active' }
 				name={ isActive ? 'sme-font-size' : undefined }
 				title={ title }
@@ -121,7 +121,6 @@ const Edit = ( props ) => {
 					name={ name }
 					addingFontSize={ isAddingFontSize }
 					onClose={ disableIsAddingFontSize }
-					isActive={ isActive }
 					value={ value }
 					onFontSizeChange={ onFontSizeChange }
 					getActiveFontSize={ getActiveFontSize }
@@ -132,6 +131,7 @@ const Edit = ( props ) => {
 };
 
 export const settings = {
+	name,
 	title,
 	tagName: 'span',
 	className: 'sme-font-size',

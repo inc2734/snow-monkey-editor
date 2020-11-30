@@ -62,7 +62,6 @@ const InlineColorUI = ( {
 	name,
 	value,
 	onClose,
-	isActive,
 	addingColor,
 	getActiveColor,
 	onColorChange,
@@ -70,7 +69,6 @@ const InlineColorUI = ( {
 	return (
 		<ColorPopoverAtLink
 			value={ value }
-			isActive={ isActive }
 			addingColor={ addingColor }
 			onClose={ onClose }
 			className="sme-popover components-inline-color-popover"
