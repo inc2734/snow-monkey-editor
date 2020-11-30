@@ -1,10 +1,10 @@
 {
 	"smeStartDateTime": {
-		"type": "date",
+		"type": "string",
 		"default": null
 	},
 	"smeEndDateTime": {
-		"type": "date",
+		"type": "string",
 		"default": null
 	}
 }
