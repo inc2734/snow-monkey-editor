@@ -23,7 +23,7 @@
   &::after {
     content: '';
     position: absolute;
-    top: 100%;
+    top: calc(100% - 1px);
     right: _space(1);
     left: 0;
     display: block;

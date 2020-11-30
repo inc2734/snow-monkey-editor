@@ -3,5 +3,9 @@
 
   .is-style-sme-post-it {
     @include _margin-bottom(2);
+
+    &.wp-block {
+      max-width: 300px;
+    }
   }
 }
