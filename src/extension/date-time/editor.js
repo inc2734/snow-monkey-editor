@@ -71,7 +71,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes( { smeStartDateTime: value } );
 
 		const onResetStartDateTime = () =>
-			setAttributes( { smeStartDateTime: null } );
+			setAttributes( { smeStartDateTime: undefined } );
 
 		const endDateTimePanelClassName = smeEndDateTime
 			? 'sme-extension-panel sme-extension-panel--enabled'
@@ -81,7 +81,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes( { smeEndDateTime: value } );
 
 		const onResetEndDateTime = () =>
-			setAttributes( { smeEndDateTime: null } );
+			setAttributes( { smeEndDateTime: undefined } );
 
 		return (
 			<>

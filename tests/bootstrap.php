@@ -10,13 +10,11 @@ if ( 'build' === getenv( 'LOCAL_DIR' ) ) {
 // Determine the tests directory (from a WP dev checkout).
 // Try the WP_TESTS_DIR environment variable first.
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
-var_dump( $_tests_dir );
 
 // Next, try the WP_PHPUNIT composer package.
 if ( ! $_tests_dir ) {
 	$_tests_dir = getenv( 'WP_PHPUNIT__DIR' );
 }
-var_dump( $_tests_dir );
 
 // See if we're installed inside an existing WP dev instance.
 if ( ! $_tests_dir ) {
@@ -25,15 +23,12 @@ if ( ! $_tests_dir ) {
 		$_tests_dir = $_try_tests_dir;
 	}
 }
-var_dump( $_tests_dir );
 // Fallback.
 if ( ! $_tests_dir ) {
 	$_tests_dir = '/tmp/wordpress-tests-lib';
 }
-var_dump( $_tests_dir );
 
 // Give access to tests_add_filter() function.
-var_dump( $_tests_dir );
 require_once $_tests_dir . '/includes/functions.php';
 
 // Do not try to load JavaScript files from an external URL - this takes a

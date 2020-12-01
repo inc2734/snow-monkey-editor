@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { PanelBody, SelectControl, RangeControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
@@ -32,7 +32,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { attributes, setAttributes, name } = props;
 
-		const { smeAnimation, className } = attributes;
+		const {
+			smeAnimation,
+			smeAnimationDelay,
+			smeAnimationDuration,
+			className,
+		} = attributes;
 
 		const currentUser = useSelect( ( select ) => {
 			return select( 'core' ).getCurrentUser();
@@ -53,10 +58,6 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
-		if ( 'undefined' === typeof smeAnimation ) {
-			return <BlockEdit { ...props } />;
-		}
-
 		const blockType = getBlockType( name );
 		if ( ! blockType ) {
 			return <BlockEdit { ...props } />;
@@ -67,7 +68,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const options = [
-			{ label: '', value: '' },
+			{ label: '', value: undefined },
 			{
 				label: __( 'bounce-in', 'snow-monkey-editor' ),
 				value: 'bounce-in',
@@ -97,6 +98,10 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const onChangeAnimation = ( value ) => {
 			setAttributes( { smeAnimation: value } );
 
+			if ( ! value ) {
+				setAttributes( { smeAnimationDelay: undefined } );
+			}
+
 			const removeAnimationClassNames = classes.filter(
 				( element ) => `sme-animation-${ value }` !== element
 			);
@@ -109,6 +114,14 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 					removeAnimationClassNames
 				).join( ' ' ),
 			} );
+		};
+
+		const onChangeAnimationDelay = ( value ) => {
+			setAttributes( { smeAnimationDelay: value } );
+		};
+
+		const onChangeAnimationDuration = ( value ) => {
+			setAttributes( { smeAnimationDuration: value } );
 		};
 
 		return (
@@ -127,6 +140,26 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 							value={ smeAnimation || undefined }
 							options={ options }
 							onChange={ onChangeAnimation }
+						/>
+
+						<RangeControl
+							label={ __( 'Delay', 'snow-monkey-editor' ) }
+							value={ smeAnimationDelay || 0 }
+							onChange={ onChangeAnimationDelay }
+							allowReset={ true }
+							min={ 0 }
+							max={ 5 }
+							step={ 0.1 }
+						/>
+
+						<RangeControl
+							label={ __( 'Duration', 'snow-monkey-editor' ) }
+							value={ smeAnimationDuration || undefined }
+							onChange={ onChangeAnimationDuration }
+							allowReset={ true }
+							min={ 0 }
+							max={ 5 }
+							step={ 0.1 }
 						/>
 					</PanelBody>
 				</InspectorControls>

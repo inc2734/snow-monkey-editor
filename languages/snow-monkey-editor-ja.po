@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-04-07 13:47+0900\n"
-"PO-Revision-Date: 2020-04-07 13:47+0900\n"
+"POT-Creation-Date: 2020-12-01 12:16+0900\n"
+"PO-Revision-Date: 2020-12-01 12:16+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
@@ -23,103 +23,111 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/animation/editor.js:75
+#: src/extension/animation/editor.js:73
 msgid "bounce-in"
 msgstr "バウンス・イン"
 
-#: src/extension/animation/editor.js:79
+#: src/extension/animation/editor.js:77
 msgid "bounce-down"
 msgstr "バウンス・ダウン"
 
-#: src/extension/animation/editor.js:83
+#: src/extension/animation/editor.js:81
 msgid "fade-in"
 msgstr "フェード・イン"
 
-#: src/extension/animation/editor.js:87
+#: src/extension/animation/editor.js:85
 msgid "fade-in-up"
 msgstr "フェード・イン・アップ"
 
-#: src/extension/animation/editor.js:91
+#: src/extension/animation/editor.js:89
 msgid "fade-in-down"
 msgstr "フェード・イン・ダウン"
 
-#: src/extension/animation/editor.js:102 src/extension/animation/editor.js:113
+#: src/extension/animation/editor.js:133 src/extension/animation/editor.js:139
 msgid "Animation"
 msgstr "アニメーション"
 
-#: src/extension/date-time/date-time-picker.js:30
+#: src/extension/animation/editor.js:146
+msgid "Delay"
+msgstr "遅延"
+
+#: src/extension/animation/editor.js:156
+msgid "Duration"
+msgstr "所要時間"
+
+#: src/extension/date-time/date-time-picker.js:28
 msgid "Clear"
 msgstr "クリア"
 
-#: src/extension/date-time/editor.js:76
+#: src/extension/date-time/editor.js:92
 msgid "Publish setting"
 msgstr "公開設定"
 
-#: src/extension/date-time/editor.js:100
+#: src/extension/date-time/editor.js:106
 msgid "Unpublish setting"
 msgstr "公開終了設定"
 
-#: src/extension/editing-lock/editor.js:140
+#: src/extension/editing-lock/editor.js:132
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
-#: src/extension/editing-lock/editor.js:157
+#: src/extension/editing-lock/editor.js:143
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/editor.js:51
+#: src/extension/hidden-by-role/editor.js:47
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/editor.js:105
+#: src/extension/hidden-by-role/editor.js:100
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/editor.js:122
+#: src/extension/hidden-by-role/editor.js:110
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/editor.js:90
+#: src/extension/hidden-by-size/editor.js:120
 msgid "Display setting (By window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/editor.js:108
+#: src/extension/hidden-by-size/editor.js:129
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:124
+#: src/extension/hidden-by-size/editor.js:138
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:140
+#: src/extension/hidden-by-size/editor.js:147
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
-#: src/format/badge/editor.js:15
+#: src/format/badge/editor.js:18
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/format/bg-color/editor.js:15
+#: src/format/bg-color/editor.js:18
 msgid "Background color"
 msgstr "背景色"
 
-#: src/format/component/format-toolbar.js:25
+#: src/format/component/format-toolbar.js:36
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/font-size/editor.js:15
+#: src/format/font-size/editor.js:18
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: src/format/highlighter/editor.js:19
+#: src/format/highlighter/editor.js:22
 msgid "Highlighter"
 msgstr "蛍光ペン"
 
-#: src/format/remove/editor.js:10
+#: src/format/remove/editor.js:9
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/editor.js:15
+#: src/format/text-color/editor.js:18
 msgid "Text color"
 msgstr "文字色"
 

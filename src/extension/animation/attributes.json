@@ -1,6 +1,12 @@
 {
 	"smeAnimation": {
-		"type": "string",
-		"default": null
+		"type": "string"
+	},
+	"smeAnimationDelay": {
+		"type": "number",
+    "default": 0
+	},
+	"smeAnimationDuration": {
+		"type": "number"
 	}
 }

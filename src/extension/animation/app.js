@@ -27,6 +27,20 @@ document.addEventListener(
 							element,
 							`${ element }-fired`
 						);
+
+						const animationDelay = target.getAttribute(
+							'data-sme-animation-delay'
+						);
+						if ( 0 < animationDelay ) {
+							target.style.animationDelay = `${ animationDelay }s`;
+						}
+
+						const animationDuration = target.getAttribute(
+							'data-sme-animation-duration'
+						);
+						if ( 0 < animationDuration ) {
+							target.style.animationDuration = `${ animationDuration }s`;
+						}
 					} );
 					observer.unobserve( target );
 				}

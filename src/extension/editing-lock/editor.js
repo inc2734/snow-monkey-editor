@@ -65,10 +65,6 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			return <BlockEdit { ...props } />;
 		}
 
-		if ( 'undefined' === typeof smeIsEditingLockRoles ) {
-			return <BlockEdit { ...props } />;
-		}
-
 		const blockType = getBlockType( name );
 		if ( ! blockType ) {
 			return <BlockEdit { ...props } />;

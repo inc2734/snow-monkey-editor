@@ -46,6 +46,8 @@ class Bootstrap {
 			add_action( 'render_block', [ $this, '_hidden_by_roles' ], 10, 2 );
 			add_action( 'render_block', [ $this, '_date_time' ], 10, 2 );
 			add_action( 'render_block', [ $this, '_ordered_list_counter' ], 10, 2 );
+			add_action( 'render_block', [ $this, '_animation_delay' ], 10, 2 );
+			add_action( 'render_block', [ $this, '_animation_duration' ], 10, 2 );
 			add_action( 'init', [ $this, '_add_attributes_to_blocks' ], 11 );
 		}
 	}
@@ -160,6 +162,56 @@ class Bootstrap {
 		}
 
 		return $content;
+	}
+
+	/**
+	 * Set animation delay
+	 *
+	 * @param string $content The block content about to be appended.
+	 * @param array  $block   The full block, including name and attributes.
+	 * @return string
+	 */
+	public function _animation_delay( $content, $block ) {
+		$attributes = $block['attrs'];
+		$delay      = isset( $attributes['smeAnimationDelay'] )
+			? $attributes['smeAnimationDelay']
+			: false;
+
+		if ( 0 >= $delay ) {
+			return $content;
+		}
+
+		return preg_replace(
+			'|(\/?>)|ms',
+			' data-sme-animation-delay="' . esc_attr( $delay ) . '"$1',
+			$content,
+			1
+		);
+	}
+
+	/**
+	 * Set animation duration
+	 *
+	 * @param string $content The block content about to be appended.
+	 * @param array  $block   The full block, including name and attributes.
+	 * @return string
+	 */
+	public function _animation_duration( $content, $block ) {
+		$attributes = $block['attrs'];
+		$duration   = isset( $attributes['smeAnimationDuration'] )
+			? $attributes['smeAnimationDuration']
+			: false;
+
+		if ( 0 >= $duration ) {
+			return $content;
+		}
+
+		return preg_replace(
+			'|(\/?>)|ms',
+			' data-sme-animation-duration="' . esc_attr( $duration ) . '"$1',
+			$content,
+			1
+		);
 	}
 
 	/**
