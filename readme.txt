@@ -3,8 +3,8 @@ Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.5
-Tested up to: 5.5
-Stable tag: 3.0.5
+Tested up to: 5.6
+Stable tag: 4.0.0-beata1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -179,6 +179,11 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 27. List (Times)
 
 == Changelog ==
+
+= 4.0.0 =
+* WordPress 5.6 compatibility.
+* Add animation delay setting.
+* Add animation speed setting.
 
 = 3.0.5 =
 * Remove wp-polyfill on frontend.
