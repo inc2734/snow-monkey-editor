@@ -56,12 +56,10 @@ class Bootstrap {
 	 * Bootstrap.
 	 */
 	public function _bootstrap() {
-		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/App/Setup/*.php' ) as $file ) {
-			$class_name = '\\Snow_Monkey\\Plugin\\Editor\\App\\Setup\\' . str_replace( '.php', '', basename( $file ) );
-			if ( class_exists( $class_name ) ) {
-				new $class_name();
-			}
-		}
+		new App\Setup\Assets();
+		new App\Setup\CurrentUser();
+		new App\Setup\Endpoint();
+		new App\Setup\TextDomain();
 	}
 
 	/**
