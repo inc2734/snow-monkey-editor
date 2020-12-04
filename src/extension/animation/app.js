@@ -20,30 +20,35 @@ document.addEventListener(
 
 		const callback = ( entries, observer ) => {
 			entries.forEach( ( entry ) => {
-				if ( entry.isIntersecting ) {
-					const target = entry.target;
-					classes.forEach( ( element ) => {
-						target.classList.replace(
-							element,
-							`${ element }-fired`
-						);
-
-						const animationDelay = target.getAttribute(
-							'data-sme-animation-delay'
-						);
-						if ( 0 < animationDelay ) {
-							target.style.animationDelay = `${ animationDelay }s`;
-						}
-
-						const animationDuration = target.getAttribute(
-							'data-sme-animation-duration'
-						);
-						if ( 0 < animationDuration ) {
-							target.style.animationDuration = `${ animationDuration }s`;
-						}
-					} );
-					observer.unobserve( target );
+				if ( ! entry.isIntersecting ) {
+					return;
 				}
+
+				const target = entry.target;
+
+				classes.forEach( ( element ) => {
+					if ( ! target.classList.contains( element ) ) {
+						return;
+					}
+
+					target.classList.add( `${ element }-fired` );
+
+					const animationDelay = target.getAttribute(
+						'data-sme-animation-delay'
+					);
+					if ( 0 < animationDelay ) {
+						target.style.animationDelay = `${ animationDelay }s`;
+					}
+
+					const animationDuration = target.getAttribute(
+						'data-sme-animation-duration'
+					);
+					if ( 0 < animationDuration ) {
+						target.style.animationDuration = `${ animationDuration }s`;
+					}
+				} );
+
+				observer.unobserve( target );
 			} );
 		};
 
@@ -62,6 +67,7 @@ document.addEventListener(
 				'animationend',
 				() => {
 					classes.forEach( ( element ) => {
+						target.classList.remove( element );
 						target.classList.remove( `${ element }-fired` );
 					} );
 				},
