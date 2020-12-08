@@ -31,7 +31,7 @@ document.addEventListener(
 						return;
 					}
 
-					target.classList.add( `${ element }-fired` );
+					target.classList.replace( element, `${ element }-fired` );
 
 					const animationDelay = target.getAttribute(
 						'data-sme-animation-delay'
@@ -67,7 +67,7 @@ document.addEventListener(
 				'animationend',
 				() => {
 					classes.forEach( ( element ) => {
-						target.classList.remove( element );
+						//target.classList.remove( element );
 						target.classList.remove( `${ element }-fired` );
 					} );
 				},

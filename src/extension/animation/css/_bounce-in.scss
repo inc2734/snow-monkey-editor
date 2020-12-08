@@ -7,10 +7,7 @@
   100% { transform: scale(1); }
 }
 
-.sme-animation-bounce-in {
-  will-change: transform;
-}
-
 .sme-animation-bounce-in-fired {
+  will-change: animation;
   animation: smeBounceIn .8s cubic-bezier(0, 0, 0, 1);
 }
