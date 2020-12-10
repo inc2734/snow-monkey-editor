@@ -1,13 +1,11 @@
 import { useMemo } from '@wordpress/element';
-import { withSpokenMessages } from '@wordpress/components';
+import { withSpokenMessages, RangeControl } from '@wordpress/components';
 import { getRectangleFromRange } from '@wordpress/dom';
+import { __ } from '@wordpress/i18n';
 
-import {
-	FontSizePicker as BaseFontSizePicker,
-	URLPopover,
-} from '@wordpress/block-editor';
+import { URLPopover } from '@wordpress/block-editor';
 
-const FontSizePopoverAtLink = ( { addingFontSize, ...props } ) => {
+const LetterSpacingPopoverAtLink = ( { addingLetterSpacing, ...props } ) => {
 	const anchorRect = useMemo( () => {
 		// eslint-disable-next-line @wordpress/no-global-get-selection
 		const selection = window.getSelection();
@@ -17,7 +15,7 @@ const FontSizePopoverAtLink = ( { addingFontSize, ...props } ) => {
 			return;
 		}
 
-		if ( addingFontSize ) {
+		if ( addingLetterSpacing ) {
 			return getRectangleFromRange( range );
 		}
 
@@ -43,48 +41,54 @@ const FontSizePopoverAtLink = ( { addingFontSize, ...props } ) => {
 	return <URLPopover anchorRect={ anchorRect } { ...props } />;
 };
 
-const FontSizePicker = ( {
+const LetterSpacingPicker = ( {
 	name,
 	value,
-	getActiveFontSize,
-	onFontSizeChange,
+	getActiveLetterSpacing,
+	onLetterSpacingChange,
 } ) => {
-	const activeFontSize = useMemo( () => getActiveFontSize( name, value ), [
-		name,
-		value,
-	] );
+	const activeLetterSpacing = useMemo(
+		() => getActiveLetterSpacing( name, value ),
+		[ name, value ]
+	);
 
 	return (
-		<BaseFontSizePicker
-			value={ activeFontSize }
-			onChange={ onFontSizeChange }
+		<RangeControl
+			label={ __( 'Letter spacing', 'snow-monkey-editor' ) }
+			value={ activeLetterSpacing }
+			onChange={ onLetterSpacingChange }
+			min="0"
+			max="2"
+			step="0.1"
+			initialPosition="0"
+			allowReset
 		/>
 	);
 };
 
-const InlineFontSizeUI = ( {
+const InlineLetterSpacingUI = ( {
 	name,
 	value,
 	onClose,
-	addingFontSize,
-	getActiveFontSize,
-	onFontSizeChange,
+	addingLetterSpacing,
+	getActiveLetterSpacing,
+	onLetterSpacingChange,
 } ) => {
 	return (
-		<FontSizePopoverAtLink
+		<LetterSpacingPopoverAtLink
 			value={ value }
-			addingFontSize={ addingFontSize }
+			addingLetterSpacing={ addingLetterSpacing }
 			onClose={ onClose }
 			className="sme-popover components-inline-color-popover"
 		>
-			<FontSizePicker
+			<LetterSpacingPicker
 				name={ name }
 				value={ value }
-				getActiveFontSize={ getActiveFontSize }
-				onFontSizeChange={ onFontSizeChange }
+				getActiveLetterSpacing={ getActiveLetterSpacing }
+				onLetterSpacingChange={ onLetterSpacingChange }
 			/>
-		</FontSizePopoverAtLink>
+		</LetterSpacingPopoverAtLink>
 	);
 };
 
-export default withSpokenMessages( InlineFontSizeUI );
+export default withSpokenMessages( InlineLetterSpacingUI );

@@ -97,7 +97,7 @@ const Edit = ( props ) => {
 				key={ isActive ? 'sme-font-size' : 'sme-font-size-not-active' }
 				name={ isActive ? 'sme-font-size' : undefined }
 				title={ title }
-				className="format-library-text-color-button"
+				className="format-library-text-color-button sme-toolbar-button"
 				onClick={
 					hasFontSizesToChoose
 						? enableIsAddingFontSize
@@ -108,7 +108,7 @@ const Edit = ( props ) => {
 						<Icon icon="editor-textcolor" />
 						{ isActive && (
 							<span
-								className="format-library-text-color-button__indicator"
+								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
 								style={ { backgroundColor: '#cd162c' } }
 							/>
 						) }

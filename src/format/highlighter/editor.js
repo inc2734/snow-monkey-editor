@@ -121,7 +121,7 @@ const Edit = ( props ) => {
 				}
 				name={ isActive ? 'sme-highlighter' : undefined }
 				title={ title }
-				className="format-library-text-color-button"
+				className="format-library-text-color-button sme-toolbar-button"
 				onClick={
 					hasColorsToChoose
 						? enableIsAddingColor
@@ -132,7 +132,7 @@ const Edit = ( props ) => {
 						<Icon icon="admin-customizer" />
 						{ isActive && (
 							<span
-								className="format-library-text-color-button__indicator"
+								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
 								style={ colorIndicatorStyle }
 							/>
 						) }

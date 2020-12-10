@@ -105,7 +105,7 @@ const Edit = ( props ) => {
 				key={ isActive ? 'sme-bg-color' : 'sme-bg-color-not-active' }
 				name={ isActive ? 'sme-bg-color' : undefined }
 				title={ title }
-				className="format-library-text-color-button"
+				className="format-library-text-color-button sme-toolbar-button"
 				onClick={
 					hasColorsToChoose
 						? enableIsAddingColor
@@ -116,7 +116,7 @@ const Edit = ( props ) => {
 						<Icon icon="buddicons-topics" />
 						{ isActive && (
 							<span
-								className="format-library-text-color-button__indicator"
+								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
 								style={ colorIndicatorStyle }
 							/>
 						) }

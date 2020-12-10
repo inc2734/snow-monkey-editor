@@ -26,6 +26,7 @@ Click Snow Monkey button in toolbar.
 * Text font size
 * Text highlighter
 * Text color
+* Text letter spacing
 * Format clear
 
 = Extensions =
@@ -153,30 +154,31 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 1. Text badge
 2. Text background color
 3. Text font size
-4. Text highlighter
-5. Text color
-6. Hide on smartphone size or tablet size or PC size.
-7. Hide by user roles.
-8. Scroll animation settings
-9. Publish settings
-10. Unpublish settings
-11. Edit lock by user roles.
-12. Alert
-13. Alert (Remarks)
-14. Alert (Success)
-15. Alert (Warning)
-16. Fluid shapes 1
-17. Fluid shapes 2
-18. Fluid shapes 3
-19. Post-it
-20. Post-it (Narrow)
-21. Shadowed images
-22. Shadowed button
-23. Speech
-24. List (Arrow)
-25. List (Check)
-26. List (Remarks)
-27. List (Times)
+4. Text letter spacing
+5. Text highlighter
+6. Text color
+7. Hide on smartphone size or tablet size or PC size.
+8. Hide by user roles.
+9. Scroll animation settings
+10. Publish settings
+11. Unpublish settings
+12. Edit lock by user roles.
+13. Alert
+14. Alert (Remarks)
+15. Alert (Success)
+16. Alert (Warning)
+17. Fluid shapes 1
+18. Fluid shapes 2
+19. Fluid shapes 3
+20. Post-it
+21. Post-it (Narrow)
+22. Shadowed images
+23. Shadowed button
+24. Speech
+25. List (Arrow)
+26. List (Check)
+27. List (Remarks)
+28. List (Times)
 
 == Changelog ==
 
@@ -184,6 +186,7 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 * WordPress 5.6 compatibility.
 * Add animation delay setting.
 * Add animation speed setting.
+* Add text letter spacing format.
 
 = 3.0.5 =
 * Remove wp-polyfill on frontend.

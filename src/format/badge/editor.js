@@ -105,7 +105,7 @@ const Edit = ( props ) => {
 				key={ isActive ? 'sme-badge' : 'sme-badge-not-active' }
 				name={ isActive ? 'sme-badge' : undefined }
 				title={ title }
-				className="format-library-text-color-button"
+				className="format-library-text-color-button sme-toolbar-button"
 				onClick={
 					hasColorsToChoose
 						? enableIsAddingColor
@@ -116,7 +116,7 @@ const Edit = ( props ) => {
 						<Icon icon="tag" />
 						{ isActive && (
 							<span
-								className="format-library-text-color-button__indicator"
+								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
 								style={ colorIndicatorStyle }
 							/>
 						) }
