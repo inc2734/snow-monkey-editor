@@ -3,10 +3,10 @@
   "license": "GPL-2.0+",
   "devDependencies": {
     "@inc2734/for-each-html-nodes": "^0.4.0",
-    "@wordpress/browserslist-config": "^2.7.0",
-    "@wordpress/env": "^2.1.0",
-    "@wordpress/scripts": "12.5.0",
-    "autoprefixer": "^10.1.0",
+    "@wordpress/browserslist-config": "^3.0.0",
+    "@wordpress/env": "^3.0.1",
+    "@wordpress/scripts": "13.0.1",
+    "autoprefixer": "^10.2.4",
     "classnames": "^2.2.6",
     "cpy-cli": "^3.1.1",
     "cssnano": "^4.1.10",
@@ -14,10 +14,10 @@
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "po2json": "^1.0.0-alpha",
-    "postcss": "^8.2.1",
-    "postcss-cli": "^8.3.0",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.1",
     "prettier": "npm:wp-prettier@2.0.5",
-    "rgb2hex": "^0.2.3",
+    "rgb2hex": "^0.2.5",
     "rimraf": "^3.0.2",
     "sass-basis": "^12.2.0"
   },
@@ -49,6 +49,6 @@
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   },
   "dependencies": {
-    "@wordpress/i18n": "^3.16.0"
+    "@wordpress/i18n": "^3.17.0"
   }
 }

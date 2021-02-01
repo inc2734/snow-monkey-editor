@@ -1,5 +1,3 @@
-'use select';
-
 import { difference } from 'lodash';
 import classnames from 'classnames';
 

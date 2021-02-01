@@ -1,5 +1,3 @@
-'use select';
-
 import { getBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
@@ -48,13 +46,6 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const isApplyToBlock = isApplyExtensionToBlock( name, 'date-time' );
 		if ( ! isApplyToBlock ) {
-			return <BlockEdit { ...props } />;
-		}
-
-		if (
-			'undefined' === typeof smeStartDateTime ||
-			'undefined' === typeof smeEndDateTime
-		) {
 			return <BlockEdit { ...props } />;
 		}
 

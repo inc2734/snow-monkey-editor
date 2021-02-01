@@ -1,5 +1,3 @@
-'use select';
-
 import { compact } from 'lodash';
 import classnames from 'classnames/dedupe';
 

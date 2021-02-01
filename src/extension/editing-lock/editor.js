@@ -1,5 +1,3 @@
-'use select';
-
 import { uniq, intersection, includes } from 'lodash';
 
 import { getBlockType } from '@wordpress/blocks';

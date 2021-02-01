@@ -6,4 +6,10 @@ module.exports = {
 		...defaultConfig.globals,
 		IntersectionObserver: true,
 	},
+	rules: {
+		...defaultConfig.rules,
+		'import/no-extraneous-dependencies': 'off',
+		'import/no-unresolved': 'off',
+		'@wordpress/no-unsafe-wp-apis': 'off',
+	},
 };
