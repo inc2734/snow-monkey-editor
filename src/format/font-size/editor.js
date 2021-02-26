@@ -1,4 +1,4 @@
-import { isEmpty, find } from 'lodash';
+import { isEmpty, find, isNumber } from 'lodash';
 
 import {
 	applyFormat,
@@ -50,16 +50,19 @@ const Edit = ( props ) => {
 	);
 
 	const onFontSizeChange = useCallback(
-		( fontSize ) => {
-			if ( fontSize ) {
-				const matched = find( fontSizes, [ 'size', fontSize ] );
-				const slug = !! matched ? matched.slug : 'custom';
+		( size ) => {
+			if ( size ) {
+				const fontSize = find( fontSizes, [ 'size', size ] );
+				const slug = !! fontSize ? fontSize.slug : 'custom';
+				const sizeWithUnit = isNumber( size ) ? `${ size }px` : size;
 
 				onChange(
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							style: `font-size: ${ fontSize }px`,
+							style: ! fontSize
+								? `font-size: ${ sizeWithUnit }`
+								: '',
 							className: `has-${ slug }-font-size`,
 						},
 					} )
@@ -77,12 +80,20 @@ const Edit = ( props ) => {
 			return;
 		}
 
-		const styleFontSize = activeFontSizeFormat.attributes.style;
-		if ( styleFontSize ) {
-			return styleFontSize
-				.replace( new RegExp( `^font-size:\\s*` ), '' )
-				.replace( 'px', '' );
+		const className = activeFontSizeFormat.attributes.className;
+		const style = activeFontSizeFormat?.attributes?.style;
+
+		if ( 'has-custom-font-size' !== className ) {
+			const matched = className.match( /has-(.*?)-font-size/ );
+			if ( matched ) {
+				const slug = matched[ 1 ];
+				const fontSize = find( fontSizes, [ 'slug', slug ] );
+				return !! fontSize ? fontSize.size : undefined;
+			}
 		}
+
+		const matched = style.match( /font-size:\s([0-9A-Za-z]*)/ );
+		return !! matched ? matched[ 1 ] : undefined;
 	};
 
 	const hasFontSizesToChoose =
@@ -124,6 +135,7 @@ const Edit = ( props ) => {
 					value={ value }
 					onFontSizeChange={ onFontSizeChange }
 					getActiveFontSize={ getActiveFontSize }
+					fontSizes={ fontSizes }
 				/>
 			) }
 		</>

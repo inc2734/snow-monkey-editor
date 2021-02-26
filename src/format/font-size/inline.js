@@ -48,6 +48,7 @@ const FontSizePicker = ( {
 	value,
 	getActiveFontSize,
 	onFontSizeChange,
+	fontSizes,
 } ) => {
 	const activeFontSize = useMemo( () => getActiveFontSize( name, value ), [
 		name,
@@ -58,6 +59,7 @@ const FontSizePicker = ( {
 		<BaseFontSizePicker
 			value={ activeFontSize }
 			onChange={ onFontSizeChange }
+			fontSizes={ fontSizes }
 		/>
 	);
 };
@@ -69,6 +71,7 @@ const InlineFontSizeUI = ( {
 	addingFontSize,
 	getActiveFontSize,
 	onFontSizeChange,
+	fontSizes,
 } ) => {
 	return (
 		<FontSizePopoverAtLink
@@ -82,6 +85,7 @@ const InlineFontSizeUI = ( {
 				value={ value }
 				getActiveFontSize={ getActiveFontSize }
 				onFontSizeChange={ onFontSizeChange }
+				fontSizes={ fontSizes }
 			/>
 		</FontSizePopoverAtLink>
 	);
