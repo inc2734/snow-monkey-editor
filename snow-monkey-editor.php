@@ -60,6 +60,7 @@ class Bootstrap {
 		new App\Setup\CurrentUser();
 		new App\Setup\Endpoint();
 		new App\Setup\TextDomain();
+		new App\Setup\Kses();
 	}
 
 	/**

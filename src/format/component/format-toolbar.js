@@ -58,6 +58,7 @@ const Edit = () => {
 						'sme-bg-color',
 						'sme-highlighter',
 						'sme-badge',
+						'sme-br',
 					].map( ( format ) => (
 						<Slot
 							name={ `SnowMonkey.ToolbarControls.${ format }` }
