@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2020-12-10 10:38+0900\n"
-"PO-Revision-Date: 2020-12-10 10:38+0900\n"
+"POT-Creation-Date: 2021-02-27 13:00+0900\n"
+"PO-Revision-Date: 2021-02-27 13:02+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -23,35 +23,35 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/animation/editor.js:73
+#: src/extension/animation/editor.js:71
 msgid "bounce-in"
 msgstr "バウンス・イン"
 
-#: src/extension/animation/editor.js:77
+#: src/extension/animation/editor.js:75
 msgid "bounce-down"
 msgstr "バウンス・ダウン"
 
-#: src/extension/animation/editor.js:81
+#: src/extension/animation/editor.js:79
 msgid "fade-in"
 msgstr "フェード・イン"
 
-#: src/extension/animation/editor.js:85
+#: src/extension/animation/editor.js:83
 msgid "fade-in-up"
 msgstr "フェード・イン・アップ"
 
-#: src/extension/animation/editor.js:89
+#: src/extension/animation/editor.js:87
 msgid "fade-in-down"
 msgstr "フェード・イン・ダウン"
 
-#: src/extension/animation/editor.js:133 src/extension/animation/editor.js:139
+#: src/extension/animation/editor.js:131 src/extension/animation/editor.js:137
 msgid "Animation"
 msgstr "アニメーション"
 
-#: src/extension/animation/editor.js:146
+#: src/extension/animation/editor.js:144
 msgid "Delay"
 msgstr "遅延"
 
-#: src/extension/animation/editor.js:156
+#: src/extension/animation/editor.js:154
 msgid "Duration"
 msgstr "所要時間"
 
@@ -59,47 +59,47 @@ msgstr "所要時間"
 msgid "Clear"
 msgstr "クリア"
 
-#: src/extension/date-time/editor.js:92
+#: src/extension/date-time/editor.js:83
 msgid "Publish setting"
 msgstr "公開設定"
 
-#: src/extension/date-time/editor.js:106
+#: src/extension/date-time/editor.js:97
 msgid "Unpublish setting"
 msgstr "公開終了設定"
 
-#: src/extension/editing-lock/editor.js:132
+#: src/extension/editing-lock/editor.js:130
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
-#: src/extension/editing-lock/editor.js:143
+#: src/extension/editing-lock/editor.js:141
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/editor.js:47
+#: src/extension/hidden-by-role/editor.js:45
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/editor.js:100
+#: src/extension/hidden-by-role/editor.js:98
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/editor.js:110
+#: src/extension/hidden-by-role/editor.js:108
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/editor.js:120
+#: src/extension/hidden-by-size/editor.js:118
 msgid "Display setting (By window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/editor.js:129
+#: src/extension/hidden-by-size/editor.js:127
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:138
+#: src/extension/hidden-by-size/editor.js:136
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:147
+#: src/extension/hidden-by-size/editor.js:145
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
@@ -127,6 +127,10 @@ msgstr "蛍光ペン"
 #: src/format/letter-spacing/inline.js:57
 msgid "Letter spacing"
 msgstr "文字間隔"
+
+#: src/format/line-height/editor.js:15 src/format/line-height/inline.js:57
+msgid "Line height"
+msgstr "行の高さ"
 
 #: src/format/remove/editor.js:9
 msgid "Remove formatting"

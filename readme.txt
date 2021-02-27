@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.6
 Tested up to: 5.6
-Stable tag: 4.0.1
+Stable tag: 4.1.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,10 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 4.1.0 =
+* Add line-height format.
+* Fixed a bug that the text size setting doesn't work properly on WordPress 5.6.2.
 
 = 4.0.1 =
 * Fix bug that prevented the date time setting extension from being displayed.
