@@ -5,7 +5,7 @@ import { __ } from '@wordpress/i18n';
 
 import { URLPopover } from '@wordpress/block-editor';
 
-const LetterSpacingPopoverAtLink = ( { addingLetterSpacing, ...props } ) => {
+const LineHeightPopoverAtLink = ( { addingLineHeight, ...props } ) => {
 	const anchorRect = useMemo( () => {
 		// eslint-disable-next-line @wordpress/no-global-get-selection
 		const selection = window.getSelection();
@@ -15,7 +15,7 @@ const LetterSpacingPopoverAtLink = ( { addingLetterSpacing, ...props } ) => {
 			return;
 		}
 
-		if ( addingLetterSpacing ) {
+		if ( addingLineHeight ) {
 			return getRectangleFromRange( range );
 		}
 
@@ -41,24 +41,24 @@ const LetterSpacingPopoverAtLink = ( { addingLetterSpacing, ...props } ) => {
 	return <URLPopover anchorRect={ anchorRect } { ...props } />;
 };
 
-const LetterSpacingPicker = ( {
+const LineHeightPicker = ( {
 	name,
 	value,
-	getActiveLetterSpacing,
-	onLetterSpacingChange,
+	getActiveLineHeight,
+	onLineHeightChange,
 } ) => {
-	const activeLetterSpacing = useMemo(
-		() => getActiveLetterSpacing( name, value ),
+	const activeLineHeight = useMemo(
+		() => getActiveLineHeight( name, value ),
 		[ name, value ]
 	);
 
 	return (
 		<RangeControl
-			label={ __( 'Letter spacing', 'snow-monkey-editor' ) }
-			value={ activeLetterSpacing }
-			onChange={ onLetterSpacingChange }
+			label={ __( 'Line height', 'snow-monkey-editor' ) }
+			value={ activeLineHeight }
+			onChange={ onLineHeightChange }
 			min="0"
-			max="2"
+			max="5"
 			step="0.1"
 			initialPosition={ undefined }
 			allowReset
@@ -66,29 +66,29 @@ const LetterSpacingPicker = ( {
 	);
 };
 
-const InlineLetterSpacingUI = ( {
+const InlineLineHeightUI = ( {
 	name,
 	value,
 	onClose,
-	addingLetterSpacing,
-	getActiveLetterSpacing,
-	onLetterSpacingChange,
+	addingLineHeight,
+	getActiveLineHeight,
+	onLineHeightChange,
 } ) => {
 	return (
-		<LetterSpacingPopoverAtLink
+		<LineHeightPopoverAtLink
 			value={ value }
-			addingLetterSpacing={ addingLetterSpacing }
+			addingLineHeight={ addingLineHeight }
 			onClose={ onClose }
 			className="sme-popover components-inline-color-popover"
 		>
-			<LetterSpacingPicker
+			<LineHeightPicker
 				name={ name }
 				value={ value }
-				getActiveLetterSpacing={ getActiveLetterSpacing }
-				onLetterSpacingChange={ onLetterSpacingChange }
+				getActiveLineHeight={ getActiveLineHeight }
+				onLineHeightChange={ onLineHeightChange }
 			/>
-		</LetterSpacingPopoverAtLink>
+		</LineHeightPopoverAtLink>
 	);
 };
 
-export default withSpokenMessages( InlineLetterSpacingUI );
+export default withSpokenMessages( InlineLineHeightUI );

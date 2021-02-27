@@ -54,6 +54,7 @@ const Edit = () => {
 					{ [
 						'sme-font-size',
 						'sme-letter-spacing',
+						'sme-line-height',
 						'sme-text-color',
 						'sme-bg-color',
 						'sme-highlighter',

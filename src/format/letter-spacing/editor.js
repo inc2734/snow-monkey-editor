@@ -44,6 +44,7 @@ const Edit = ( props ) => {
 				);
 			} else {
 				onChange( removeFormat( value, name ) );
+				disableIsAddingLetterSpacing();
 			}
 		},
 		[ onChange ]
