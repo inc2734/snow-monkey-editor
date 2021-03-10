@@ -1,21 +1,16 @@
-import {
-	applyFormat,
-	getActiveFormat,
-	removeFormat,
-} from '@wordpress/rich-text';
-
 import { Icon } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { removeFormat } from '@wordpress/rich-text';
 
 import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
-import { default as InlineLetterSpacingUI } from './inline';
+import { default as InlineLetterSpacingUI } from '../component/inline-letter-spacing';
 
 const name = 'snow-monkey-editor/letter-spacing';
 const title = __( 'Letter spacing', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
-	const { value, isActive, onChange } = props;
+	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
 	const [ isAddingLetterSpacing, setIsAddingLetterSpacing ] = useState(
 		false
@@ -30,44 +25,6 @@ const Edit = ( props ) => {
 		() => setIsAddingLetterSpacing( false ),
 		[ setIsAddingLetterSpacing ]
 	);
-
-	const onLetterSpacingChange = useCallback(
-		( letterSpacing ) => {
-			if ( letterSpacing ) {
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: {
-							style: `letter-spacing: ${ letterSpacing }rem`,
-						},
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
-				disableIsAddingLetterSpacing();
-			}
-		},
-		[ onChange ]
-	);
-
-	const getActiveLetterSpacing = ( formatName, formatValue ) => {
-		const activeLetterSpacingFormat = getActiveFormat(
-			formatValue,
-			formatName
-		);
-		if ( ! activeLetterSpacingFormat ) {
-			return;
-		}
-
-		const styleLetterSpacing = activeLetterSpacingFormat.attributes.style;
-		if ( styleLetterSpacing ) {
-			return parseFloat(
-				styleLetterSpacing
-					.replace( new RegExp( `^letter-spacing:\\s*` ), '' )
-					.replace( 'rem', '' )
-			);
-		}
-	};
 
 	const hasLetterSpacingsToChoose = true;
 	if ( ! hasLetterSpacingsToChoose && ! isActive ) {
@@ -106,11 +63,15 @@ const Edit = ( props ) => {
 			{ isAddingLetterSpacing && (
 				<InlineLetterSpacingUI
 					name={ name }
-					addingLetterSpacing={ isAddingLetterSpacing }
+					title={ title }
 					onClose={ disableIsAddingLetterSpacing }
+					activeAttributes={ activeAttributes }
 					value={ value }
-					onLetterSpacingChange={ onLetterSpacingChange }
-					getActiveLetterSpacing={ getActiveLetterSpacing }
+					onChange={ ( ...args ) => {
+						onChange( ...args );
+					} }
+					contentRef={ contentRef }
+					settings={ settings }
 				/>
 			) }
 		</>
@@ -124,7 +85,6 @@ export const settings = {
 	className: 'sme-letter-spacing',
 	attributes: {
 		style: 'style',
-		className: 'class',
 	},
 	edit: Edit,
 };

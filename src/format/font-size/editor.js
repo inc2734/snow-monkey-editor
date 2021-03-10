@@ -1,103 +1,38 @@
-import { isEmpty, find, isNumber } from 'lodash';
+import { isEmpty } from 'lodash';
 
-import {
-	applyFormat,
-	getActiveFormat,
-	removeFormat,
-} from '@wordpress/rich-text';
-
+import { __experimentalUseEditorFeature as useEditorFeature } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { removeFormat } from '@wordpress/rich-text';
 
 import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
-import { default as InlineFontSizeUI } from './inline';
+import { default as InlineFontSizeUI } from '../component/inline-font-size';
 
 const name = 'snow-monkey-editor/font-size';
 const title = __( 'Font size', 'snow-monkey-editor' );
 
+const EMPTY_ARRAY = [];
+
 const Edit = ( props ) => {
-	const { value, isActive, onChange } = props;
+	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const { fontSizes, disableCustomFontSizes } = useSelect( ( select ) => {
-		const blockEditorSelect = select( 'core/block-editor' );
-
-		let settings;
-
-		if ( blockEditorSelect && blockEditorSelect.getSettings ) {
-			settings = blockEditorSelect.getSettings();
-		} else {
-			settings = {};
-		}
-
-		return {
-			fontSizes: settings.fontSizes,
-			disableCustomFontSizes: settings.disableCustomFontSizes,
-		};
-	} );
-
+	const allowCustomControl = useEditorFeature(
+		'typography.customFontSize',
+		name
+	);
+	const fontSizes = useEditorFeature( 'typography.fontSizes' ) || EMPTY_ARRAY;
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
-
 	const enableIsAddingFontSize = useCallback(
 		() => setIsAddingFontSize( true ),
 		[ setIsAddingFontSize ]
 	);
-
 	const disableIsAddingFontSize = useCallback(
 		() => setIsAddingFontSize( false ),
 		[ setIsAddingFontSize ]
 	);
 
-	const onFontSizeChange = useCallback(
-		( size ) => {
-			if ( size ) {
-				const fontSize = find( fontSizes, [ 'size', size ] );
-				const slug = !! fontSize ? fontSize.slug : 'custom';
-				const sizeWithUnit = isNumber( size ) ? `${ size }px` : size;
-
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: {
-							style: ! fontSize
-								? `font-size: ${ sizeWithUnit }`
-								: '',
-							className: `has-${ slug }-font-size`,
-						},
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
-			}
-		},
-		[ fontSizes, onChange ]
-	);
-
-	const getActiveFontSize = ( formatName, formatValue ) => {
-		const activeFontSizeFormat = getActiveFormat( formatValue, formatName );
-		if ( ! activeFontSizeFormat ) {
-			return;
-		}
-
-		const className = activeFontSizeFormat.attributes.className;
-		const style = activeFontSizeFormat?.attributes?.style;
-
-		if ( 'has-custom-font-size' !== className ) {
-			const matched = className.match( /has-(.*?)-font-size/ );
-			if ( matched ) {
-				const slug = matched[ 1 ];
-				const fontSize = find( fontSizes, [ 'slug', slug ] );
-				return !! fontSize ? fontSize.size : undefined;
-			}
-		}
-
-		const matched = style.match( /font-size:\s([0-9A-Za-z]*)/ );
-		return !! matched ? matched[ 1 ] : undefined;
-	};
-
-	const hasFontSizesToChoose =
-		! isEmpty( fontSizes ) || disableCustomFontSizes !== true;
+	const hasFontSizesToChoose = ! isEmpty( fontSizes ) || ! allowCustomControl;
 	if ( ! hasFontSizesToChoose && ! isActive ) {
 		return null;
 	}
@@ -130,12 +65,14 @@ const Edit = ( props ) => {
 			{ isAddingFontSize && (
 				<InlineFontSizeUI
 					name={ name }
-					addingFontSize={ isAddingFontSize }
 					onClose={ disableIsAddingFontSize }
+					activeAttributes={ activeAttributes }
 					value={ value }
-					onFontSizeChange={ onFontSizeChange }
-					getActiveFontSize={ getActiveFontSize }
-					fontSizes={ fontSizes }
+					onChange={ ( ...args ) => {
+						onChange( ...args );
+					} }
+					contentRef={ contentRef }
+					settings={ settings }
 				/>
 			) }
 		</>
@@ -149,7 +86,7 @@ export const settings = {
 	className: 'sme-font-size',
 	attributes: {
 		style: 'style',
-		className: 'class',
+		class: 'class',
 	},
 	edit: Edit,
 };

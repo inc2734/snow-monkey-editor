@@ -12,9 +12,3 @@
   transform: translateY(-2px);
   white-space: nowrap;
 }
-
-.sme-badge,
-.sme-badge[data-rich-text-format-boundary],
-.rich-text:focus .sme-badge[data-rich-text-format-boundary] {
-  background-color: $_color-text;
-}

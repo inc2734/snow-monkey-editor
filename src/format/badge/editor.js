@@ -1,18 +1,16 @@
-import { get, isEmpty } from 'lodash';
+import { isEmpty } from 'lodash';
 
-import {
-	applyFormat,
-	getActiveFormat,
-	removeFormat,
-} from '@wordpress/rich-text';
-
+import { __experimentalUseEditorFeature as useEditorFeature } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { useState, useCallback, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+import { removeFormat } from '@wordpress/rich-text';
 
 import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
-import { default as InlineColorUI } from '../component/inline';
+import {
+	default as InlineColorUI,
+	getActiveBackgroundColor,
+} from '../component/inline-background-color';
 
 const name = 'snow-monkey-editor/badge';
 const title = __( 'Badge', 'snow-monkey-editor' );
@@ -20,81 +18,28 @@ const title = __( 'Badge', 'snow-monkey-editor' );
 const EMPTY_ARRAY = [];
 
 const Edit = ( props ) => {
-	const { value, onChange, isActive } = props;
+	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const { colors, disableCustomColors } = useSelect( ( select ) => {
-		const blockEditorSelect = select( 'core/block-editor' );
-
-		let settings;
-
-		if ( blockEditorSelect && blockEditorSelect.getSettings ) {
-			settings = blockEditorSelect.getSettings();
-		} else {
-			settings = {};
-		}
-
-		return {
-			colors: get( settings, [ 'colors' ], EMPTY_ARRAY ),
-			disableCustomColors: settings.disableCustomColors,
-		};
-	} );
-
+	const allowCustomControl = useEditorFeature( 'color.custom' );
+	const colors = useEditorFeature( 'color.palette' ) || EMPTY_ARRAY;
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
-
 	const enableIsAddingColor = useCallback( () => setIsAddingColor( true ), [
 		setIsAddingColor,
 	] );
-
 	const disableIsAddingColor = useCallback( () => setIsAddingColor( false ), [
 		setIsAddingColor,
 	] );
-
-	const onColorChange = useCallback(
-		( color ) => {
-			if ( color ) {
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: {
-							style: `background-color: ${ color }`,
-						},
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
-			}
-		},
-		[ colors, onChange ]
-	);
-
-	const getActiveColor = ( formatName, formatValue ) => {
-		const activeColorFormat = getActiveFormat( formatValue, formatName );
-		if ( ! activeColorFormat ) {
-			return;
-		}
-
-		const styleColor = activeColorFormat.attributes.style;
-		if ( styleColor ) {
-			return styleColor.replace(
-				new RegExp( `^background-color:\\s*` ),
-				''
-			);
-		}
-	};
-
 	const colorIndicatorStyle = useMemo( () => {
-		const activeColor = getActiveColor( name, value, colors );
+		const activeColor = getActiveBackgroundColor( name, value, colors );
 		if ( ! activeColor ) {
 			return undefined;
 		}
-
 		return {
 			backgroundColor: activeColor,
 		};
 	}, [ value, colors ] );
 
-	const hasColorsToChoose =
-		! isEmpty( colors ) || disableCustomColors !== true;
+	const hasColorsToChoose = ! isEmpty( colors ) || ! allowCustomControl;
 	if ( ! hasColorsToChoose && ! isActive ) {
 		return null;
 	}
@@ -127,11 +72,14 @@ const Edit = ( props ) => {
 			{ isAddingColor && (
 				<InlineColorUI
 					name={ name }
-					addingColor={ isAddingColor }
 					onClose={ disableIsAddingColor }
+					activeAttributes={ activeAttributes }
 					value={ value }
-					onColorChange={ onColorChange }
-					getActiveColor={ getActiveColor }
+					onChange={ ( ...args ) => {
+						onChange( ...args );
+					} }
+					contentRef={ contentRef }
+					settings={ settings }
 				/>
 			) }
 		</>
@@ -145,6 +93,7 @@ export const settings = {
 	className: 'sme-badge',
 	attributes: {
 		style: 'style',
+		class: 'class',
 	},
 	edit: Edit,
 };
