@@ -4,7 +4,7 @@
   "devDependencies": {
     "@inc2734/for-each-html-nodes": "^0.4.0",
     "@wordpress/browserslist-config": "^3.0.1",
-    "@wordpress/env": "^3.0.2",
+    "@wordpress/env": "github:team-hamworks/wordpress-env",
     "@wordpress/scripts": "13.0.3",
     "autoprefixer": "^10.2.5",
     "classnames": "^2.2.6",
