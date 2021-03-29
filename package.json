@@ -4,8 +4,8 @@
   "devDependencies": {
     "@inc2734/for-each-html-nodes": "^0.4.0",
     "@wordpress/browserslist-config": "^3.0.1",
-    "@wordpress/env": "github:team-hamworks/wordpress-env",
-    "@wordpress/scripts": "13.0.3",
+    "@wordpress/env": "^4.0.0",
+    "@wordpress/scripts": "14.0.1",
     "autoprefixer": "^10.2.5",
     "classnames": "^2.2.6",
     "cpy-cli": "^3.1.1",
@@ -19,7 +19,7 @@
     "prettier": "npm:wp-prettier@2.0.5",
     "rgb2hex": "^0.2.5",
     "rimraf": "^3.0.2",
-    "sass-basis": "^12.3.1"
+    "sass-basis": "^12.4.0"
   },
   "scripts": {
     "wp-env": "wp-env",
@@ -49,6 +49,6 @@
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   },
   "dependencies": {
-    "@wordpress/i18n": "^3.18.0"
+    "@wordpress/i18n": "^3.19.0"
   }
 }
