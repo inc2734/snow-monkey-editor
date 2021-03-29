@@ -45,7 +45,17 @@ const FontSizePicker = ( { name, value, onChange } ) => {
 	const onFontSizeChange = useCallback(
 		( fontSize ) => {
 			if ( fontSize ) {
-				const fontSizObject = find( fontSizes, { size: fontSize } );
+				const isPixelValue =
+					typeof fontSize === 'string' && fontSize.endsWith( 'px' );
+				const fontSizeWithPx = isPixelValue
+					? fontSize
+					: `${ fontSize }px`;
+				const fontSizeNumber = ! isPixelValue
+					? fontSize
+					: Number( fontSizeWithPx.replace( 'px', '' ) );
+				const fontSizObject = find( fontSizes, {
+					size: fontSizeNumber,
+				} );
 				onChange(
 					applyFormat( value, {
 						type: name,
@@ -56,7 +66,7 @@ const FontSizePicker = ( { name, value, onChange } ) => {
 									),
 							  }
 							: {
-									style: `font-size: ${ fontSize }`,
+									style: `font-size: ${ fontSizeWithPx }`,
 							  },
 					} )
 				);
