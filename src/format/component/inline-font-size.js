@@ -36,7 +36,7 @@ export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 	}
 }
 
-const FontSizePicker = ( { name, value, onChange } ) => {
+const FontSizePicker = ( { name, value, onChange, onClose } ) => {
 	const fontSizes = useSelect( ( select ) => {
 		const { getSettings } = select( 'core/block-editor' );
 		return get( getSettings(), [ 'fontSizes' ], [] );
@@ -72,6 +72,7 @@ const FontSizePicker = ( { name, value, onChange } ) => {
 				);
 			} else {
 				onChange( removeFormat( value, name ) );
+				onClose();
 			}
 		},
 		[ fontSizes, onChange ]
@@ -111,6 +112,7 @@ const InlineFontSizeUI = ( {
 				name={ name }
 				value={ value }
 				onChange={ onChange }
+				onClose={ onClose }
 			/>
 		</URLPopover>
 	);

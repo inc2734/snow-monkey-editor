@@ -43,7 +43,7 @@ export function getActiveBackgroundColor( formatName, formatValue, colors ) {
 	}
 }
 
-const ColorPicker = ( { name, value, onChange } ) => {
+const ColorPicker = ( { name, value, onChange, onClose } ) => {
 	const colors = useSelect( ( select ) => {
 		const { getSettings } = select( 'core/block-editor' );
 		return get( getSettings(), [ 'colors' ], [] );
@@ -70,6 +70,7 @@ const ColorPicker = ( { name, value, onChange } ) => {
 				);
 			} else {
 				onChange( removeFormat( value, name ) );
+				onClose();
 			}
 		},
 		[ colors, onChange ]
@@ -104,7 +105,12 @@ const InlineBackgroundColorUI = ( {
 			className="sme-popover components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
-			<ColorPicker name={ name } value={ value } onChange={ onChange } />
+			<ColorPicker
+				name={ name }
+				value={ value }
+				onChange={ onChange }
+				onClose={ onClose }
+			/>
 		</URLPopover>
 	);
 };

@@ -24,7 +24,7 @@ export function getActiveLineHeight( formatName, formatValue ) {
 	}
 }
 
-const LineHeightPicker = ( { name, title, value, onChange } ) => {
+const LineHeightPicker = ( { name, title, value, onChange, onClose } ) => {
 	const onLineHeightChange = useCallback(
 		( lineHeight ) => {
 			if ( lineHeight ) {
@@ -38,6 +38,7 @@ const LineHeightPicker = ( { name, title, value, onChange } ) => {
 				);
 			} else {
 				onChange( removeFormat( value, name ) );
+				onClose();
 			}
 		},
 		[ onChange ]
@@ -54,7 +55,7 @@ const LineHeightPicker = ( { name, title, value, onChange } ) => {
 			value={ activeLineHeight }
 			onChange={ onLineHeightChange }
 			min="0"
-			max="2"
+			max="5"
 			step="0.1"
 			initialPosition={ undefined }
 			allowReset
@@ -84,6 +85,7 @@ const InlineLineHeightUI = ( {
 				title={ title }
 				value={ value }
 				onChange={ onChange }
+				onClose={ onClose }
 			/>
 		</URLPopover>
 	);

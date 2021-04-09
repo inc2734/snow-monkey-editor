@@ -79,7 +79,6 @@ const Edit = ( props ) => {
 					value={ value }
 					onChange={ ( ...args ) => {
 						onChange( ...args );
-						disableIsAddingColor();
 					} }
 					contentRef={ contentRef }
 					settings={ settings }
