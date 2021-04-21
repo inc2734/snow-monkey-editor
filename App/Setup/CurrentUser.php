@@ -13,7 +13,7 @@ class CurrentUser {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 11 );
+		add_action( 'admin_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 9 );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class CurrentUser {
 		];
 
 		wp_localize_script(
-			'snow-monkey-editor@editor',
+			'snow-monkey-editor@editor-extension',
 			'snowmonkeyeditor',
 			[
 				'currentUser' => $data,
