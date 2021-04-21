@@ -5,6 +5,7 @@ module.exports = {
 	globals: {
 		...defaultConfig.globals,
 		IntersectionObserver: true,
+		snowmonkeyeditor: true,
 	},
 	rules: {
 		...defaultConfig.rules,

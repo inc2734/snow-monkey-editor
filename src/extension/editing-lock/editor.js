@@ -12,16 +12,36 @@ import { icon } from '../../helper/icon';
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
 import customAttributes from './attributes.json';
 
+import { store } from '../store/roles';
+
+const addBlockAttributes = ( settings ) => {
+	const isApplyToUser = isApplyExtensionToUser(
+		snowmonkeyeditor.currentUser,
+		'editing-lock'
+	);
+	if ( ! isApplyToUser ) {
+		return settings;
+	}
+
+	const isApplyToBlock = isApplyExtensionToBlock(
+		settings.name,
+		'editing-lock'
+	);
+	if ( ! isApplyToBlock ) {
+		return settings;
+	}
+
+	settings.attributes = {
+		...settings.attributes,
+		...customAttributes,
+	};
+	return settings;
+};
+
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/editing-lock/attributes',
-	( settings ) => {
-		settings.attributes = {
-			...settings.attributes,
-			...customAttributes,
-		};
-		return settings;
-	}
+	addBlockAttributes
 );
 
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
@@ -30,14 +50,8 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const { smeIsEditingLockRoles } = attributes;
 
-		const currentUser = useSelect( ( select ) => {
-			return select( 'core' ).getCurrentUser();
-		}, [] );
-
 		const roles = useSelect( ( select ) => {
-			const allRoles = select(
-				'snow-monkey-editor/roles'
-			).receiveRoles();
+			const allRoles = select( store ).getRoles();
 			const filteredRoles = { ...allRoles };
 			delete filteredRoles.administrator;
 			Object.keys( filteredRoles ).forEach( ( role ) => {
@@ -48,14 +62,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			return filteredRoles;
 		}, [] );
 
-		if ( 0 < Object.keys( currentUser ).length ) {
-			const isApplyToUser = isApplyExtensionToUser(
-				currentUser,
-				'editing-lock'
-			);
-			if ( ! isApplyToUser ) {
-				return <BlockEdit { ...props } />;
-			}
+		const isApplyToUser = isApplyExtensionToUser(
+			snowmonkeyeditor.currentUser,
+			'editing-lock'
+		);
+		if ( ! isApplyToUser ) {
+			return <BlockEdit { ...props } />;
 		}
 
 		const isApplyToBlock = isApplyExtensionToBlock( name, 'editing-lock' );
@@ -81,7 +93,11 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 		};
 
 		const isLocked =
-			0 < intersection( smeIsEditingLockRoles, currentUser.roles ).length;
+			0 <
+			intersection(
+				smeIsEditingLockRoles,
+				snowmonkeyeditor.currentUser.roles
+			).length;
 
 		const block = document.getElementById( `block-${ clientId }` );
 		if ( block ) {
@@ -104,7 +120,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const canEditingLockSetting = includes(
-			currentUser.roles,
+			snowmonkeyeditor.currentUser.roles,
 			'administrator'
 		);
 

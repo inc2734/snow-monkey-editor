@@ -5,7 +5,6 @@ import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, RangeControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -14,16 +13,34 @@ import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
 import { classes } from './helper';
 import customAttributes from './attributes.json';
 
+const addBlockAttributes = ( settings ) => {
+	const isApplyToUser = isApplyExtensionToUser(
+		snowmonkeyeditor.currentUser,
+		'animation'
+	);
+	if ( ! isApplyToUser ) {
+		return settings;
+	}
+
+	const isApplyToBlock = isApplyExtensionToBlock(
+		settings.name,
+		'animation'
+	);
+	if ( ! isApplyToBlock ) {
+		return settings;
+	}
+
+	settings.attributes = {
+		...settings.attributes,
+		...customAttributes,
+	};
+	return settings;
+};
+
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/animation/attributes',
-	( settings ) => {
-		settings.attributes = {
-			...settings.attributes,
-			...customAttributes,
-		};
-		return settings;
-	}
+	addBlockAttributes
 );
 
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
@@ -37,18 +54,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			className,
 		} = attributes;
 
-		const currentUser = useSelect( ( select ) => {
-			return select( 'core' ).getCurrentUser();
-		}, [] );
-
-		if ( 0 < Object.keys( currentUser ).length ) {
-			const isApplyToUser = isApplyExtensionToUser(
-				currentUser,
-				'animation'
-			);
-			if ( ! isApplyToUser ) {
-				return <BlockEdit { ...props } />;
-			}
+		const isApplyToUser = isApplyExtensionToUser(
+			snowmonkeyeditor.currentUser,
+			'animation'
+		);
+		if ( ! isApplyToUser ) {
+			return <BlockEdit { ...props } />;
 		}
 
 		const isApplyToBlock = isApplyExtensionToBlock( name, 'animation' );

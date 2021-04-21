@@ -13,34 +13,31 @@ class CurrentUser {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'rest_prepare_user', [ $this, '_rest_prepare_user' ], 10, 3 );
+		add_action( 'admin_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ], 11 );
 	}
 
 	/**
-	 * Add roles to /wp/v2/users/me.
-	 *
-	 * @param WP_REST_Response $response The response object.
-	 * @param WP_User          $user     User object used to create response.
-	 * @param WP_REST_Request  $request  Request object.
-	 * @return WP_REST_Response
+	 * Add user data to script.
 	 */
-	public function _rest_prepare_user( $response, $user, $request ) {
+	public function _wp_enqueue_scripts() {
 		if ( ! current_user_can( 'edit_posts' ) ) {
-			return $response;
+			return;
 		}
 
-		if ( '/wp/v2/users/me' !== $request->get_route() ) {
-			return $response;
-		}
+		$current_user = wp_get_current_user();
+		$data         = [
+			'id'    => $current_user->data->ID,
+			'name'  => $current_user->data->user_login,
+			'slug'  => $current_user->data->user_nicename,
+			'roles' => $current_user->roles,
+		];
 
-		$data = $response->get_data();
-		if ( isset( $data['roles'] ) ) {
-			return $response;
-		}
-
-		$data = array_merge( $data, [ 'roles' => $user->roles ] );
-		$response->set_data( $data );
-
-		return $response;
+		wp_localize_script(
+			'snow-monkey-editor@editor',
+			'snowmonkeyeditor',
+			[
+				'currentUser' => $data,
+			]
+		);
 	}
 }

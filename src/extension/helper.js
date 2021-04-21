@@ -28,6 +28,10 @@ export function isApplyExtensionToBlock( blockName, extensionName ) {
 }
 
 export function isApplyExtensionToUser( user, extensionName ) {
+	if ( ! user || ! Object.keys( user ).length ) {
+		return false;
+	}
+
 	const allowedRoles = getAllowedRoles( extensionName );
 	const filteredUserRoles = user.roles.filter( ( role ) => {
 		return -1 < allowedRoles.indexOf( role );

@@ -5,7 +5,6 @@ import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -13,16 +12,34 @@ import { icon } from '../../helper/icon';
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
 import customAttributes from './attributes.json';
 
+const addBlockAttributes = ( settings ) => {
+	const isApplyToUser = isApplyExtensionToUser(
+		snowmonkeyeditor.currentUser,
+		'hidden-by-size'
+	);
+	if ( ! isApplyToUser ) {
+		return settings;
+	}
+
+	const isApplyToBlock = isApplyExtensionToBlock(
+		settings.name,
+		'hidden-by-size'
+	);
+	if ( ! isApplyToBlock ) {
+		return settings;
+	}
+
+	settings.attributes = {
+		...settings.attributes,
+		...customAttributes,
+	};
+	return settings;
+};
+
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/hidden-by-size/attributes',
-	( settings ) => {
-		settings.attributes = {
-			...settings.attributes,
-			...customAttributes,
-		};
-		return settings;
-	}
+	addBlockAttributes
 );
 
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
@@ -36,18 +53,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			className,
 		} = attributes;
 
-		const currentUser = useSelect( ( select ) => {
-			return select( 'core' ).getCurrentUser();
-		}, [] );
-
-		if ( 0 < Object.keys( currentUser ).length ) {
-			const isApplyToUser = isApplyExtensionToUser(
-				currentUser,
-				'hidden-by-size'
-			);
-			if ( ! isApplyToUser ) {
-				return <BlockEdit { ...props } />;
-			}
+		const isApplyToUser = isApplyExtensionToUser(
+			snowmonkeyeditor.currentUser,
+			'hidden-by-size'
+		);
+		if ( ! isApplyToUser ) {
+			return <BlockEdit { ...props } />;
 		}
 
 		const isApplyToBlock = isApplyExtensionToBlock(

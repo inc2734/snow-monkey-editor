@@ -2,7 +2,6 @@ import { getBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { PanelBody } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { useSelect } from '@wordpress/data';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -12,16 +11,34 @@ import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
 import customAttributes from './attributes.json';
 import DateTimePicker from './date-time-picker';
 
+const addBlockAttributes = ( settings ) => {
+	const isApplyToUser = isApplyExtensionToUser(
+		snowmonkeyeditor.currentUser,
+		'date-time'
+	);
+	if ( ! isApplyToUser ) {
+		return settings;
+	}
+
+	const isApplyToBlock = isApplyExtensionToBlock(
+		settings.name,
+		'date-time'
+	);
+	if ( ! isApplyToBlock ) {
+		return settings;
+	}
+
+	settings.attributes = {
+		...settings.attributes,
+		...customAttributes,
+	};
+	return settings;
+};
+
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/date-time/attributes',
-	( settings ) => {
-		settings.attributes = {
-			...settings.attributes,
-			...customAttributes,
-		};
-		return settings;
-	}
+	addBlockAttributes
 );
 
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
@@ -30,18 +47,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const { smeStartDateTime, smeEndDateTime } = attributes;
 
-		const currentUser = useSelect( ( select ) => {
-			return select( 'core' ).getCurrentUser();
-		}, [] );
-
-		if ( 0 < Object.keys( currentUser ).length ) {
-			const isApplyToUser = isApplyExtensionToUser(
-				currentUser,
-				'date-time'
-			);
-			if ( ! isApplyToUser ) {
-				return <BlockEdit { ...props } />;
-			}
+		const isApplyToUser = isApplyExtensionToUser(
+			snowmonkeyeditor.currentUser,
+			'date-time'
+		);
+		if ( ! isApplyToUser ) {
+			return <BlockEdit { ...props } />;
 		}
 
 		const isApplyToBlock = isApplyExtensionToBlock( name, 'date-time' );

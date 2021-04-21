@@ -12,16 +12,36 @@ import { icon } from '../../helper/icon';
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
 import customAttributes from './attributes.json';
 
+import { store } from '../store/roles';
+
+const addBlockAttributes = ( settings ) => {
+	const isApplyToUser = isApplyExtensionToUser(
+		snowmonkeyeditor.currentUser,
+		'hidden-by-role'
+	);
+	if ( ! isApplyToUser ) {
+		return settings;
+	}
+
+	const isApplyToBlock = isApplyExtensionToBlock(
+		settings.name,
+		'hidden-by-role'
+	);
+	if ( ! isApplyToBlock ) {
+		return settings;
+	}
+
+	settings.attributes = {
+		...settings.attributes,
+		...customAttributes,
+	};
+	return settings;
+};
+
 addFilter(
 	'blocks.registerBlockType',
 	'snow-monkey-editor/hidden-by-role/attributes',
-	( settings ) => {
-		settings.attributes = {
-			...settings.attributes,
-			...customAttributes,
-		};
-		return settings;
-	}
+	addBlockAttributes
 );
 
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
@@ -30,14 +50,8 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const { smeIsHiddenRoles } = attributes;
 
-		const currentUser = useSelect( ( select ) => {
-			return select( 'core' ).getCurrentUser();
-		}, [] );
-
 		const roles = useSelect( ( select ) => {
-			const allRoles = select(
-				'snow-monkey-editor/roles'
-			).receiveRoles();
+			const allRoles = select( store ).getRoles();
 			const filteredRoles = { ...allRoles };
 
 			return {
@@ -48,14 +62,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			};
 		}, [] );
 
-		if ( 0 < Object.keys( currentUser ).length ) {
-			const isApplyToUser = isApplyExtensionToUser(
-				currentUser,
-				'hidden-by-role'
-			);
-			if ( ! isApplyToUser ) {
-				return <BlockEdit { ...props } />;
-			}
+		const isApplyToUser = isApplyExtensionToUser(
+			snowmonkeyeditor.currentUser,
+			'hidden-by-role'
+		);
+		if ( ! isApplyToUser ) {
+			return <BlockEdit { ...props } />;
 		}
 
 		const isApplyToBlock = isApplyExtensionToBlock(
