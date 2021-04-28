@@ -3,28 +3,33 @@
   "license": "GPL-2.0+",
   "devDependencies": {
     "@inc2734/for-each-html-nodes": "^0.4.0",
-    "@wordpress/browserslist-config": "^3.0.2",
-    "@wordpress/env": "^4.0.1",
-    "@wordpress/scripts": "14.1.0",
+    "@wordpress/browserslist-config": "^3.0.3",
+    "@wordpress/env": "^4.0.2",
+    "@wordpress/scripts": "14.1.1",
     "autoprefixer": "^10.2.5",
     "classnames": "^2.3.1",
     "cpy-cli": "^3.1.1",
-    "cssnano": "^4.1.11",
+    "cssnano": "^5.0.1",
     "hex-to-rgba": "^2.0.1",
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "po2json": "^1.0.0-alpha",
-    "postcss": "^8.2.9",
+    "postcss": "^8.2.13",
     "postcss-cli": "^8.3.1",
     "prettier": "npm:wp-prettier@2.0.5",
     "rgb2hex": "^0.2.5",
     "rimraf": "^3.0.2",
-    "sass-basis": "^12.4.0"
+    "sass-basis": "^13.0.1"
   },
   "scripts": {
+    "export:wp-content:themes": "npm run cli 'cp -r wp-content/themes .export/wp-content'",
+    "export:wp-content:uploads": "npm run cli 'cp -r wp-content/uploads .export/wp-content'",
+    "export:wp-content": "npm run cli 'rm -rf .export/wp-content' && mkdir -p .export/wp-content/uploads && run-p export:wp-content:*",
+    "export:db": "mkdir -p .export/sql && npm run wp 'db export .export/sql/local.sql'",
+    "export": "run-p export:*",
     "wp-env": "wp-env",
     "start": "wp-env start && open http://localhost:8888",
-    "stop": "npm run wp db export sql/local.sql && wp-env stop",
+    "stop": "npm run export && wp-env stop",
     "cli": "wp-env run cli",
     "wp": "wp-env run cli wp",
     "pretest": "wp-env start && wp-env run composer 'install --no-interaction'",
@@ -49,6 +54,6 @@
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   },
   "dependencies": {
-    "@wordpress/i18n": "^3.19.1"
+    "@wordpress/i18n": "^3.19.2"
   }
 }
