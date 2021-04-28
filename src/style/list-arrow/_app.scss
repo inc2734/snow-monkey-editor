@@ -12,7 +12,7 @@
       content: '';
       position: absolute;
       left: calc(-1.5em + 7px);
-      top: calc(#{$_between-lines} + 4px);
+      top: calc(#{ $_half-leading * 1rem } + 4px);
       display: block;
       width: 6px;
       height: 6px;
@@ -31,7 +31,7 @@
       border-style: solid;
       border-width: 2px 0 0 0;
       left: calc(-1.5em + 5px);
-      top: calc(#{$_between-lines} + 6px);
+      top: calc(#{ $_half-leading * 1rem } + 6px);
     }
   }
 }

@@ -12,7 +12,7 @@
       content: '';
       position: absolute;
       left: calc(-1.5em + 7px);
-      top: calc(#{$_between-lines} + 3px);
+      top: calc(#{ $_half-leading * 1rem } + 3px);
       display: block;
       width: 8px;
       height: 6px;

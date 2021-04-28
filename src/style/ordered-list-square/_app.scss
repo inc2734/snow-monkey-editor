@@ -10,7 +10,7 @@
 
     &::before {
       left: calc(-1.8em - 6px);
-      top: $_between-lines / 2;
+      top: $_half-leading / 2 * 1rem;
       width: 20px;
       height: 20px;
       background-color: _lighter($_color-gray);
