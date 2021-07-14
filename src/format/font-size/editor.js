@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { __experimentalUseEditorFeature as useEditorFeature } from '@wordpress/block-editor';
+import { useSetting } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -17,11 +17,8 @@ const EMPTY_ARRAY = [];
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const allowCustomControl = useEditorFeature(
-		'typography.customFontSize',
-		name
-	);
-	const fontSizes = useEditorFeature( 'typography.fontSizes' ) || EMPTY_ARRAY;
+	const allowCustomControl = useSetting( 'typography.customFontSize', name );
+	const fontSizes = useSetting( 'typography.fontSizes' ) || EMPTY_ARRAY;
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
 	const enableIsAddingFontSize = useCallback(
 		() => setIsAddingFontSize( true ),

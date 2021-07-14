@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash';
 
-import { __experimentalUseEditorFeature as useEditorFeature } from '@wordpress/block-editor';
+import { useSetting } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import { useState, useCallback, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -20,8 +20,8 @@ const EMPTY_ARRAY = [];
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const allowCustomControl = useEditorFeature( 'color.custom' );
-	const colors = useEditorFeature( 'color.palette' ) || EMPTY_ARRAY;
+	const allowCustomControl = useSetting( 'color.custom' );
+	const colors = useSetting( 'color.palette' ) || EMPTY_ARRAY;
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
 	const enableIsAddingColor = useCallback( () => setIsAddingColor( true ), [
 		setIsAddingColor,

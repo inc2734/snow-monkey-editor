@@ -3,23 +3,23 @@
   "license": "GPL-2.0+",
   "devDependencies": {
     "@inc2734/for-each-html-nodes": "^0.4.0",
-    "@wordpress/browserslist-config": "^3.0.3",
-    "@wordpress/env": "^4.0.2",
-    "@wordpress/scripts": "14.1.1",
-    "autoprefixer": "^10.2.5",
+    "@wordpress/browserslist-config": "^4.0.1",
+    "@wordpress/env": "^4.0.5",
+    "@wordpress/scripts": "16.1.4",
+    "autoprefixer": "^10.3.1",
     "classnames": "^2.3.1",
     "cpy-cli": "^3.1.1",
-    "cssnano": "^5.0.1",
+    "cssnano": "^5.0.6",
     "hex-to-rgba": "^2.0.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^6.0.1",
     "npm-run-all": "^4.1.5",
     "po2json": "^1.0.0-alpha",
-    "postcss": "^8.2.13",
+    "postcss": "^8.3.5",
     "postcss-cli": "^8.3.1",
     "prettier": "npm:wp-prettier@2.0.5",
     "rgb2hex": "^0.2.5",
     "rimraf": "^3.0.2",
-    "sass-basis": "^13.0.1"
+    "sass-basis": "^14.0.1"
   },
   "scripts": {
     "export:wp-content:themes": "npm run cli 'cp -r wp-content/themes .export/wp-content'",
@@ -39,7 +39,7 @@
     "test:unit:php": "wp-env run phpunit 'phpunit -c /var/www/html/wp-content/plugins/snow-monkey-editor/.phpunit.xml.dist --verbose'",
     "test:unit": "run-s test:unit:*",
     "test": "run-s test:*",
-    "format:js": "wp-scripts format-js src",
+    "format:js": "wp-scripts format src",
     "format": "npm-run-all -p format:*",
     "clean:css": "rimraf dist/css",
     "clean:js": "rimraf dist/js",
@@ -54,6 +54,6 @@
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
   },
   "dependencies": {
-    "@wordpress/i18n": "^3.19.2"
+    "@wordpress/i18n": "^4.1.1"
   }
 }
