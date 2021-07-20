@@ -56,8 +56,8 @@ class Assets {
 		$color_style = '';
 		if ( is_array( $palette ) && ! empty( $palette ) ) {
 			foreach ( $palette[0] as $color ) {
-				$color_style .= ':root .editor-styles-wrapper .has-' . esc_attr( $color['slug'] ) . '-color[class*="sme-"]{color:' . esc_attr( $color['color'] ) . '}';
-				$color_style .= ':root .editor-styles-wrapper .has-' . esc_attr( $color['slug'] ) . '-background-color[class*="sme-"]{background-color:' . esc_attr( $color['color'] ) . '}';
+				$color_style .= ':root .editor-styles-wrapper .has-' . esc_attr( $color['slug'] ) . '-color[class*="sme-"],:root .customize-control-sidebar_block_editor .has-' . esc_attr( $color['slug'] ) . '-color[class*="sme-"]{color:' . esc_attr( $color['color'] ) . '}';
+				$color_style .= ':root .editor-styles-wrapper .has-' . esc_attr( $color['slug'] ) . '-background-color[class*="sme-"],:root .customize-control-sidebar_block_editor .has-' . esc_attr( $color['slug'] ) . '-background-color[class*="sme-"]{background-color:' . esc_attr( $color['color'] ) . '}';
 			}
 			if ( $color_style ) {
 				wp_add_inline_style( 'snow-monkey-editor@editor', $color_style );

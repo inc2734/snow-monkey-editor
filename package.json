@@ -19,7 +19,7 @@
     "prettier": "npm:wp-prettier@2.0.5",
     "rgb2hex": "^0.2.5",
     "rimraf": "^3.0.2",
-    "sass-basis": "^14.0.1"
+    "sass-basis": "^14.0.3"
   },
   "scripts": {
     "export:wp-content:themes": "npm run cli 'cp -r wp-content/themes .export/wp-content'",

@@ -125,7 +125,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 		);
 
 		const panelClassName =
-			0 < smeIsEditingLockRoles.length
+			! smeIsEditingLockRoles || 0 < smeIsEditingLockRoles.length
 				? 'sme-extension-panel sme-extension-panel--enabled'
 				: 'sme-extension-panel';
 
