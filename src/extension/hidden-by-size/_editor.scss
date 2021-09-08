@@ -1,0 +1,17 @@
+.sme-hidden-sm {
+  @include _media-only(sm) {
+    opacity: .3 !important;
+  }
+}
+
+.sme-hidden-md {
+  @include _media-only(md) {
+    opacity: .3 !important;
+  }
+}
+
+.sme-hidden-lg-up {
+  @include _media-min(lg) {
+    opacity: .3 !important;
+  }
+}

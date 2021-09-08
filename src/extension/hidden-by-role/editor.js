@@ -1,4 +1,5 @@
 import { uniq } from 'lodash';
+import classnames from 'classnames/dedupe';
 
 import { getBlockType } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
@@ -48,7 +49,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { attributes, setAttributes, name } = props;
 
-		const { smeIsHiddenRoles } = attributes;
+		const { smeIsHiddenRoles, className } = attributes;
 
 		const roles = useSelect( ( select ) => {
 			const allRoles = select( store ).getRoles();
@@ -61,6 +62,22 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 				...filteredRoles,
 			};
 		}, [] );
+
+		let rolesForHiddenByRoles = {};
+		if ( snowmonkeyeditor.currentUser.roles.includes( 'administrator' ) ) {
+			rolesForHiddenByRoles = { ...roles };
+		} else {
+			Object.keys( roles ).forEach( ( role, index ) => {
+				const hasRole = snowmonkeyeditor.currentUser.roles.includes(
+					role
+				);
+				if ( ! hasRole ) {
+					rolesForHiddenByRoles[ role ] = Object.values( roles )[
+						index
+					];
+				}
+			} );
+		}
 
 		const isApplyToUser = isApplyExtensionToUser(
 			snowmonkeyeditor.currentUser,
@@ -100,9 +117,22 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 				? 'sme-extension-panel sme-extension-panel--enabled'
 				: 'sme-extension-panel';
 
+		const isHidden =
+			!! className &&
+			! snowmonkeyeditor.currentUser.roles.includes( 'administrator' ) &&
+			smeIsHiddenRoles.some( ( role ) =>
+				snowmonkeyeditor.currentUser.roles.includes( role )
+			);
+
 		return (
 			<>
-				<BlockEdit { ...props } />
+				{ isHidden ? (
+					<div className="sme-hidden-by-role">
+						<BlockEdit { ...props } />
+					</div>
+				) : (
+					<BlockEdit { ...props } />
+				) }
 
 				<InspectorControls>
 					<PanelBody
@@ -114,11 +144,11 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 						icon={ icon }
 						className={ panelClassName }
 					>
-						{ Object.keys( roles ).map( ( key ) => {
+						{ Object.keys( rolesForHiddenByRoles ).map( ( key ) => {
 							const hiddenRoleLabel = sprintf(
 								// translators: %1$s: The role name
 								__( 'Hide if %1$s', 'snow-monkey-editor' ),
-								roles[ key ].name
+								rolesForHiddenByRoles[ key ].name
 							);
 
 							const checkedHiddenRole =
@@ -130,8 +160,12 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 									key,
 									value
 								);
+
 								setAttributes( {
 									smeIsHiddenRoles: newSmeIsHiddenRoles,
+									className: classnames( className, {
+										[ `sme-hidden-by-role--${ key }` ]: value,
+									} ),
 								} );
 							};
 
