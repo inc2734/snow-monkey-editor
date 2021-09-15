@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.8
 Tested up to: 5.8
-Stable tag: 6.0.1
+Stable tag: 6.1.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 6.1.0 =
+* Add block styles for code block. "No wrap" and "Wrap".
 
 = 6.0.1 =
 * If you set "hidden-by-size", the target block is translucent on editor when the editor is at that size.
