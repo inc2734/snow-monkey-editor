@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://make.wordpress.org/polyglots/\n"
-"POT-Creation-Date: 2021-02-27 13:00+0900\n"
-"PO-Revision-Date: 2021-02-27 13:02+0900\n"
+"POT-Creation-Date: 2021-09-15 17:40+0900\n"
+"PO-Revision-Date: 2021-09-15 17:41+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
@@ -23,35 +23,35 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-3: tests\n"
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
-#: src/extension/animation/editor.js:71
+#: src/extension/animation/editor.js:82
 msgid "bounce-in"
 msgstr "バウンス・イン"
 
-#: src/extension/animation/editor.js:75
+#: src/extension/animation/editor.js:86
 msgid "bounce-down"
 msgstr "バウンス・ダウン"
 
-#: src/extension/animation/editor.js:79
+#: src/extension/animation/editor.js:90
 msgid "fade-in"
 msgstr "フェード・イン"
 
-#: src/extension/animation/editor.js:83
+#: src/extension/animation/editor.js:94
 msgid "fade-in-up"
 msgstr "フェード・イン・アップ"
 
-#: src/extension/animation/editor.js:87
+#: src/extension/animation/editor.js:98
 msgid "fade-in-down"
 msgstr "フェード・イン・ダウン"
 
-#: src/extension/animation/editor.js:131 src/extension/animation/editor.js:137
+#: src/extension/animation/editor.js:142 src/extension/animation/editor.js:148
 msgid "Animation"
 msgstr "アニメーション"
 
-#: src/extension/animation/editor.js:144
+#: src/extension/animation/editor.js:155
 msgid "Delay"
 msgstr "遅延"
 
-#: src/extension/animation/editor.js:154
+#: src/extension/animation/editor.js:165
 msgid "Duration"
 msgstr "所要時間"
 
@@ -59,55 +59,55 @@ msgstr "所要時間"
 msgid "Clear"
 msgstr "クリア"
 
-#: src/extension/date-time/editor.js:83
+#: src/extension/date-time/editor.js:94
 msgid "Publish setting"
 msgstr "公開設定"
 
-#: src/extension/date-time/editor.js:97
+#: src/extension/date-time/editor.js:108
 msgid "Unpublish setting"
 msgstr "公開終了設定"
 
-#: src/extension/editing-lock/editor.js:130
+#: src/extension/editing-lock/editor.js:146
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
-#: src/extension/editing-lock/editor.js:141
+#: src/extension/editing-lock/editor.js:157
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/editor.js:45
+#: src/extension/hidden-by-role/editor.js:60
 msgid "user is not logged in"
 msgstr "非ログインユーザー"
 
-#: src/extension/hidden-by-role/editor.js:98
+#: src/extension/hidden-by-role/editor.js:140
 msgid "Display setting (By roles)"
 msgstr "表示設定（ロール）"
 
-#: src/extension/hidden-by-role/editor.js:108
+#: src/extension/hidden-by-role/editor.js:150
 msgid "Hide if %1$s"
 msgstr "%1$sのとき非表示"
 
-#: src/extension/hidden-by-size/editor.js:118
+#: src/extension/hidden-by-size/editor.js:129
 msgid "Display setting (By window size)"
 msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/hidden-by-size/editor.js:127
+#: src/extension/hidden-by-size/editor.js:138
 msgid "Hide on smartphone size"
 msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:136
+#: src/extension/hidden-by-size/editor.js:147
 msgid "Hide on tablet size"
 msgstr "タブレットサイズで非表示"
 
-#: src/extension/hidden-by-size/editor.js:145
+#: src/extension/hidden-by-size/editor.js:156
 msgid "Hide on PC size"
 msgstr "PC サイズで非表示"
 
-#: src/format/badge/editor.js:18
+#: src/format/badge/editor.js:16
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/format/bg-color/editor.js:18
+#: src/format/bg-color/editor.js:16
 msgid "Background color"
 msgstr "背景色"
 
@@ -115,20 +115,19 @@ msgstr "背景色"
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/font-size/editor.js:18
+#: src/format/font-size/editor.js:13
 msgid "Font size"
 msgstr "文字サイズ"
 
-#: src/format/highlighter/editor.js:22
+#: src/format/highlighter/editor.js:16
 msgid "Highlighter"
 msgstr "蛍光ペン"
 
-#: src/format/letter-spacing/editor.js:15
-#: src/format/letter-spacing/inline.js:57
+#: src/format/letter-spacing/editor.js:10
 msgid "Letter spacing"
 msgstr "文字間隔"
 
-#: src/format/line-height/editor.js:15 src/format/line-height/inline.js:57
+#: src/format/line-height/editor.js:10
 msgid "Line height"
 msgstr "行の高さ"
 
@@ -136,7 +135,7 @@ msgstr "行の高さ"
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/editor.js:18
+#: src/format/text-color/editor.js:16
 msgid "Text color"
 msgstr "文字色"
 
@@ -155,6 +154,14 @@ msgstr "アラート（ワーニング）"
 #: src/style/alert/settings.js:5
 msgid "Alert"
 msgstr "アラート"
+
+#: src/style/block-code-nowrap/settings.js:5
+msgid "No wrap"
+msgstr "折り返さない"
+
+#: src/style/block-code-wrap/settings.js:5
+msgid "Wrap"
+msgstr "折り返す"
 
 #: src/style/fluid-shape-1/settings.js:5
 msgid "Fluid Shape 1"

@@ -8,6 +8,8 @@ import alert from './alert/editor';
 import alertSuccess from './alert-success/editor';
 import alertWarning from './alert-warning/editor';
 import alertRemark from './alert-remark/editor';
+import blockCodeNowrap from './block-code-nowrap/editor';
+import blockCodeWrap from './block-code-wrap/editor';
 import fluidShape1 from './fluid-shape-1/editor';
 import fluidShape2 from './fluid-shape-2/editor';
 import fluidShape3 from './fluid-shape-3/editor';
@@ -27,6 +29,8 @@ import speech from './speech/editor';
 	alertSuccess,
 	alertWarning,
 	alertRemark,
+	blockCodeNowrap,
+	blockCodeWrap,
 	fluidShape1,
 	fluidShape2,
 	fluidShape3,

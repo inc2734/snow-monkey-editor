@@ -1,0 +1,15 @@
+.wp-block-code.is-style-sme-block-code-wrap {
+  white-space: pre-wrap !important;
+  overflow: auto;
+  padding: 0;
+
+  code {
+    white-space: inherit !important;
+    display: block;
+    @include _padding(.5);
+
+    @include _media-min(md) {
+      @include _padding(.75);
+    }
+  }
+}
