@@ -32,6 +32,9 @@ export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 			'$1'
 		);
 		const fontSizeObject = find( fontSizes, { slug: fontSizeSlug } );
+		if ( ! fontSizeObject ) {
+			return;
+		}
 		return fontSizeObject.size;
 	}
 }
@@ -61,6 +64,10 @@ const FontSizePicker = ( { name, value, onChange, onClose } ) => {
 				const fontSizeObject = find( fontSizes, {
 					size: fontSize,
 				} );
+
+				if ( ! fontSizeObject ) {
+					return;
+				}
 
 				onChange(
 					applyFormat( value, {
