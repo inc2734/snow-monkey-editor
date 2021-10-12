@@ -1,4 +1,4 @@
-import { get, find } from 'lodash';
+import { get, find, isNumber, isString } from 'lodash';
 
 import {
 	FontSizePicker as BaseFontSizePicker,
@@ -31,8 +31,8 @@ export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 			/.*has-([^\s]*)-font-size.*/,
 			'$1'
 		);
-		const fontSizObject = find( fontSizes, { slug: fontSizeSlug } );
-		return fontSizObject.size;
+		const fontSizeObject = find( fontSizes, { slug: fontSizeSlug } );
+		return fontSizeObject.size;
 	}
 }
 
@@ -45,28 +45,34 @@ const FontSizePicker = ( { name, value, onChange, onClose } ) => {
 	const onFontSizeChange = useCallback(
 		( fontSize ) => {
 			if ( fontSize ) {
-				const isPixelValue =
-					typeof fontSize === 'string' && fontSize.endsWith( 'px' );
-				const fontSizeWithPx = isPixelValue
-					? fontSize
-					: `${ fontSize }px`;
-				const fontSizeNumber = ! isPixelValue
-					? fontSize
-					: Number( fontSizeWithPx.replace( 'px', '' ) );
-				const fontSizObject = find( fontSizes, {
-					size: fontSizeNumber,
+				const hasUnits =
+					isString( fontSize ) ||
+					( fontSizes[ 0 ] && isString( fontSizes[ 0 ].size ) );
+
+				let newFontSize;
+				if ( hasUnits ) {
+					newFontSize = fontSize;
+				} else if ( isNumber( fontSize ) ) {
+					newFontSize = `${ fontSize }px`;
+				} else {
+					return;
+				}
+
+				const fontSizeObject = find( fontSizes, {
+					size: fontSize,
 				} );
+
 				onChange(
 					applyFormat( value, {
 						type: name,
-						attributes: fontSizObject
+						attributes: fontSizeObject
 							? {
 									class: getFontSizeClass(
-										fontSizObject.slug
+										fontSizeObject.slug
 									),
 							  }
 							: {
-									style: `font-size: ${ fontSizeWithPx }`,
+									style: `font-size: ${ newFontSize }`,
 							  },
 					} )
 				);
