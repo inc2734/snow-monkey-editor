@@ -1,8 +1,8 @@
 /**
  * HEX to RGB
  *
- * @param { string } HEX
- * @return { string } RGB
+ * @param { string } hex
+ * @return { string }
  */
 export default function ( hex ) {
 	if ( ! hex || 4 === hex.length ) {
