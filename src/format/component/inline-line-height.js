@@ -19,7 +19,7 @@ export function getActiveLineHeight( formatName, formatValue ) {
 		return parseFloat(
 			styleLineHeight
 				.replace( new RegExp( `^line-height:\\s*` ), '' )
-				.replace( 'rem', '' )
+				// .replace( 'rem', '' )
 		);
 	}
 }
@@ -32,7 +32,8 @@ const LineHeightPicker = ( { name, title, value, onChange, onClose } ) => {
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							style: `line-height: ${ lineHeight }rem`,
+							// style: `line-height: ${ lineHeight }rem`,
+							style: `line-height: ${ lineHeight }`,
 						},
 					} )
 				);
