@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 5.8
 Tested up to: 5.8
-Stable tag: 6.1.0
+Stable tag: 6.2.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,11 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 6.2.0 =
+* Fixed a bug that selecting a font size would not add the class, but px value.
+* Changed so that rem is not added to the unit when line-height is set.
+* Changed `.sme-font-size` and `.sme-line-height` to `inline-block`.
 
 = 6.1.0 =
 * Add block styles for code block. "No wrap" and "Wrap".
