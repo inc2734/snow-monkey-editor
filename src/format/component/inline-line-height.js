@@ -75,7 +75,7 @@ const InlineLineHeightUI = ( {
 		<URLPopover
 			value={ value }
 			onClose={ onClose }
-			className="sme-popover components-inline-color-popover"
+			className="sme-popover sme-popover--inline-line-height components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
 			<LineHeightPicker

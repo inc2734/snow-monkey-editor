@@ -87,7 +87,7 @@ const InlineColorUI = ( {
 		<URLPopover
 			value={ value }
 			onClose={ onClose }
-			className="sme-popover components-inline-color-popover"
+			className="sme-popover sme-popover--inline-color components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
 			<ColorPicker

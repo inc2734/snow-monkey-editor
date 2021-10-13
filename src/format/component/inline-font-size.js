@@ -118,7 +118,7 @@ const InlineFontSizeUI = ( {
 		<URLPopover
 			value={ value }
 			onClose={ onClose }
-			className="sme-popover components-inline-color-popover"
+			className="sme-popover sme-popover--inline-font-size components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
 			<FontSizePicker

@@ -102,7 +102,7 @@ const InlineBackgroundColorUI = ( {
 		<URLPopover
 			value={ value }
 			onClose={ onClose }
-			className="sme-popover components-inline-color-popover"
+			className="sme-popover sme-popover--inline-background-color components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
 			<ColorPicker

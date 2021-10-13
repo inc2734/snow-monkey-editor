@@ -80,7 +80,7 @@ const InlineLetterSpacingUI = ( {
 		<URLPopover
 			value={ value }
 			onClose={ onClose }
-			className="sme-popover components-inline-color-popover"
+			className="sme-popover sme-popover--inline-letter-spacing components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
 			<LetterSpacingPicker

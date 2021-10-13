@@ -13,6 +13,12 @@
   }
 }
 
+.sme-popover--inline-font-size {
+  .components-custom-select-control__menu {
+    max-height: 200px;
+  }
+}
+
 .sme-extension-panel {
   .components-panel__icon {
     fill: _light($_color-gray);
