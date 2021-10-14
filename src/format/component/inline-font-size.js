@@ -65,10 +65,6 @@ const FontSizePicker = ( { name, value, onChange, onClose } ) => {
 					size: fontSize,
 				} );
 
-				if ( ! fontSizeObject ) {
-					return;
-				}
-
 				onChange(
 					applyFormat( value, {
 						type: name,
