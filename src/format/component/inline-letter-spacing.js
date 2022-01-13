@@ -83,13 +83,15 @@ const InlineLetterSpacingUI = ( {
 			className="sme-popover sme-popover--inline-letter-spacing components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
-			<LetterSpacingPicker
-				name={ name }
-				title={ title }
-				value={ value }
-				onChange={ onChange }
-				onClose={ onClose }
-			/>
+			<fieldset>
+				<LetterSpacingPicker
+					name={ name }
+					title={ title }
+					value={ value }
+					onChange={ onChange }
+					onClose={ onClose }
+				/>
+			</fieldset>
 		</URLPopover>
 	);
 };

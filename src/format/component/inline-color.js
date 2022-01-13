@@ -1,7 +1,7 @@
 import { get } from 'lodash';
 
 import {
-	ColorPalette,
+	__experimentalColorGradientControl as ColorGradientControl,
 	URLPopover,
 	getColorClassName,
 	getColorObjectByColorValue,
@@ -10,12 +10,14 @@ import {
 import { withSpokenMessages } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
 } from '@wordpress/rich-text';
 
+import { useMultipleOriginColorsAndGradients } from '../../hooks/hooks';
 import { useAnchorRef } from './use-anchor-ref';
 
 export function getActiveColor( formatName, formatValue, colors ) {
@@ -76,7 +78,18 @@ const ColorPicker = ( { name, value, onChange, onClose } ) => {
 		colors,
 	] );
 
-	return <ColorPalette value={ activeColor } onChange={ onColorChange } />;
+	const multipleOriginColorsAndGradients = useMultipleOriginColorsAndGradients();
+
+	return (
+		<ColorGradientControl
+			label={ __( 'Color', 'snow-monkey-editor' ) }
+			colorValue={ activeColor }
+			onColorChange={ onColorChange }
+			{ ...multipleOriginColorsAndGradients }
+			__experimentalHasMultipleOrigins={ true }
+			__experimentalIsRenderedInSidebar={ true }
+		/>
+	);
 };
 
 const InlineColorUI = ( {

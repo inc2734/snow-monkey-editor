@@ -78,13 +78,15 @@ const InlineLineHeightUI = ( {
 			className="sme-popover sme-popover--inline-line-height components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
-			<LineHeightPicker
-				name={ name }
-				title={ title }
-				value={ value }
-				onChange={ onChange }
-				onClose={ onClose }
-			/>
+			<fieldset>
+				<LineHeightPicker
+					name={ name }
+					title={ title }
+					value={ value }
+					onChange={ onChange }
+					onClose={ onClose }
+				/>
+			</fieldset>
 		</URLPopover>
 	);
 };

@@ -117,12 +117,14 @@ const InlineFontSizeUI = ( {
 			className="sme-popover sme-popover--inline-font-size components-inline-color-popover"
 			anchorRef={ anchorRef }
 		>
-			<FontSizePicker
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-				onClose={ onClose }
-			/>
+			<fieldset>
+				<FontSizePicker
+					name={ name }
+					value={ value }
+					onChange={ onChange }
+					onClose={ onClose }
+				/>
+			</fieldset>
 		</URLPopover>
 	);
 };

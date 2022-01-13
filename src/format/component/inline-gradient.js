@@ -2,16 +2,21 @@ import { get } from 'lodash';
 import rgb2hex from 'rgb2hex';
 import hexToRgba from 'hex-to-rgba';
 
-import { ColorPalette, URLPopover } from '@wordpress/block-editor';
+import {
+	__experimentalColorGradientControl as ColorGradientControl,
+	URLPopover,
+} from '@wordpress/block-editor';
 import { withSpokenMessages } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
 } from '@wordpress/rich-text';
 
+import { useMultipleOriginColorsAndGradients } from '../../hooks/hooks';
 import { useAnchorRef } from './use-anchor-ref';
 import hexLong2Short from '../helper/hex-long2short';
 
@@ -71,7 +76,18 @@ const ColorPicker = ( { name, value, onChange, onClose } ) => {
 		colors,
 	] );
 
-	return <ColorPalette value={ activeColor } onChange={ onColorChange } />;
+	const multipleOriginColorsAndGradients = useMultipleOriginColorsAndGradients();
+
+	return (
+		<ColorGradientControl
+			label={ __( 'Color', 'snow-monkey-editor' ) }
+			colorValue={ activeColor }
+			onColorChange={ onColorChange }
+			{ ...multipleOriginColorsAndGradients }
+			__experimentalHasMultipleOrigins={ true }
+			__experimentalIsRenderedInSidebar={ true }
+		/>
+	);
 };
 
 const InlineColorUI = ( {
