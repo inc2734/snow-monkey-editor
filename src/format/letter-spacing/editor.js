@@ -1,3 +1,5 @@
+import classnames from 'classnames';
+
 import { Icon } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -41,23 +43,15 @@ const Edit = ( props ) => {
 				}
 				name={ isActive ? 'sme-letter-spacing' : undefined }
 				title={ title }
-				className="format-library-text-color-button sme-toolbar-button"
+				className={ classnames( 'sme-toolbar-button', {
+					'is-pressed': !! isActive,
+				} ) }
 				onClick={
 					hasLetterSpacingsToChoose
 						? enableIsAddingLetterSpacing
 						: () => onChange( removeFormat( value, name ) )
 				}
-				icon={
-					<>
-						<Icon icon="controls-pause" />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
-								style={ { backgroundColor: '#cd162c' } }
-							/>
-						) }
-					</>
-				}
+				icon={ <Icon icon="controls-pause" /> }
 			/>
 
 			{ isAddingLetterSpacing && (

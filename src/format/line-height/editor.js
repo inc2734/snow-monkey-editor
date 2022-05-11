@@ -1,3 +1,5 @@
+import classnames from 'classnames';
+
 import { Icon } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -37,23 +39,15 @@ const Edit = ( props ) => {
 				}
 				name={ isActive ? 'sme-line-height' : undefined }
 				title={ title }
-				className="format-library-text-color-button sme-toolbar-button"
+				className={ classnames( 'sme-toolbar-button', {
+					'is-pressed': !! isActive,
+				} ) }
 				onClick={
 					hasLineHeightToChoose
 						? enableIsAddingLineHeight
 						: () => onChange( removeFormat( value, name ) )
 				}
-				icon={
-					<>
-						<Icon icon="editor-insertmore" />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
-								style={ { backgroundColor: '#cd162c' } }
-							/>
-						) }
-					</>
-				}
+				icon={ <Icon icon="editor-insertmore" /> }
 			/>
 
 			{ isAddingLineHeight && (

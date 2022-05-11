@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { isEmpty } from 'lodash';
 
 import { useSetting } from '@wordpress/block-editor';
@@ -29,14 +30,8 @@ const Edit = ( props ) => {
 	const disableIsAddingColor = useCallback( () => setIsAddingColor( false ), [
 		setIsAddingColor,
 	] );
-	const colorIndicatorStyle = useMemo( () => {
-		const activeColor = getActiveBackgroundColor( name, value, colors );
-		if ( ! activeColor ) {
-			return undefined;
-		}
-		return {
-			backgroundColor: activeColor,
-		};
+	const activeColor = useMemo( () => {
+		return getActiveBackgroundColor( name, value, colors );
 	}, [ value, colors ] );
 
 	const hasColorsToChoose = ! isEmpty( colors ) || ! allowCustomControl;
@@ -50,23 +45,16 @@ const Edit = ( props ) => {
 				key={ isActive ? 'sme-badge' : 'sme-badge-not-active' }
 				name={ isActive ? 'sme-badge' : undefined }
 				title={ title }
-				className="format-library-text-color-button sme-toolbar-button"
+				style={ { color: activeColor } }
+				className={ classnames( 'sme-toolbar-button', {
+					'is-pressed': !! isActive,
+				} ) }
 				onClick={
 					hasColorsToChoose
 						? enableIsAddingColor
 						: () => onChange( removeFormat( value, name ) )
 				}
-				icon={
-					<>
-						<Icon icon="tag" />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator sme-toolbar-button__indicator"
-								style={ colorIndicatorStyle }
-							/>
-						) }
-					</>
-				}
+				icon={ <Icon icon="tag" /> }
 			/>
 
 			{ isAddingColor && (
