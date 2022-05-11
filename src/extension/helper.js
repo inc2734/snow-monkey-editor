@@ -17,6 +17,10 @@ function getAllowedRoles( extensionName ) {
 }
 
 export function isApplyExtensionToBlock( blockName, extensionName ) {
+	if ( 'core/freeform' === blockName ) {
+		return false;
+	}
+
 	const allowedNameSpaces = getAllowedNameSpaces( extensionName );
 	const filteredAllowedNameSpaces = allowedNameSpaces.filter(
 		( namespace ) => {
