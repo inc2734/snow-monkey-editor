@@ -2,9 +2,9 @@
 Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
-Requires at least: 5.9
-Tested up to: 5.9
-Stable tag: 7.0.1
+Requires at least: 6.0
+Tested up to: 6.0
+Stable tag: 8.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,12 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 8.0.0 =
+* Requires WordPress 6.0 or later.
+* Changed font-size and line-height format `display` from `inline-block` to `inline` in the list.
+* Changed so that extensions settings are not displayed in the classic block.
+* Fixed a bug that the icons displayed on the block toolbar did not reflect the proper color when formatting was applied.
 
 = 7.0.1 =
 * Update sass-basis@17.0.0
