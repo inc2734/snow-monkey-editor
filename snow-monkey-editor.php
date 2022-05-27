@@ -230,6 +230,9 @@ class Bootstrap {
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
 		foreach ( $registered_blocks as $name => $block ) {
+			if ( ! isset( $block->attributes ) || ! is_array( $block->attributes ) ) {
+				$block->attributes = [];
+			}
 			foreach ( $attributes as $name => $detail ) {
 				$block->attributes[ $name ] = $detail;
 			}
