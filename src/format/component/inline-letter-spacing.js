@@ -27,10 +27,10 @@ export function getActiveLetterSpacing( formatName, formatValue ) {
 	}
 }
 
-const LetterSpacingPicker = ( { name, title, value, onChange, onClose } ) => {
+const LetterSpacingPicker = ( { name, title, value, onChange } ) => {
 	const onLetterSpacingChange = useCallback(
 		( letterSpacing ) => {
-			if ( letterSpacing ) {
+			if ( !! letterSpacing ) {
 				onChange(
 					applyFormat( value, {
 						type: name,
@@ -41,7 +41,6 @@ const LetterSpacingPicker = ( { name, title, value, onChange, onClose } ) => {
 				);
 			} else {
 				onChange( removeFormat( value, name ) );
-				onClose();
 			}
 		},
 		[ onChange ]
@@ -89,7 +88,6 @@ const InlineLetterSpacingUI = ( {
 					title={ title }
 					value={ value }
 					onChange={ onChange }
-					onClose={ onClose }
 				/>
 			</fieldset>
 		</URLPopover>
