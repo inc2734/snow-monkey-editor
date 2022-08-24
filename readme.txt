@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.0
 Tested up to: 6.0
-Stable tag: 8.0.1
+Stable tag: 8.0.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 8.0.2 =
+* Fixed that the picker closes when a number is crossed out or 0 is entered for font size, letter spacing, and line height.
 
 = 8.0.1 =
 * Fix PHP error.
