@@ -63,6 +63,16 @@ class Assets {
 				wp_add_inline_style( 'snow-monkey-editor@editor', $color_style );
 			}
 		}
+
+		$current_user = wp_get_current_user();
+		$roles        = $current_user->roles;
+		$role_style   = '';
+		foreach ( $roles as $role ) {
+			$role_style .= '.sme-hidden-by-role--' . $role . '{opacity: .3}';
+		}
+		if ( $role_style ) {
+			wp_add_inline_style( 'snow-monkey-editor@editor', $role_style );
+		}
 	}
 
 	/**

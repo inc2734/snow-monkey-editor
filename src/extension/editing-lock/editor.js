@@ -109,9 +109,8 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 				}
 			} else {
 				const tabindex = block.getAttribute( 'tabindex' );
-				const defaultTabindex = block.getAttribute(
-					'data-sme-tabindex'
-				);
+				const defaultTabindex =
+					block.getAttribute( 'data-sme-tabindex' );
 				if ( !! tabindex && !! defaultTabindex ) {
 					block.setAttribute( 'tabindex', defaultTabindex );
 					block.removeAttribute( 'data-sme-tabindex' );
@@ -165,12 +164,11 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 									smeIsEditingLockRoles.includes( key );
 
 								const onChangeEditingLockRole = ( value ) => {
-									const newSmeIsEditingLockRoles = newAttributes(
-										key,
-										value
-									);
+									const newSmeIsEditingLockRoles =
+										newAttributes( key, value );
 									setAttributes( {
-										smeIsEditingLockRoles: newSmeIsEditingLockRoles,
+										smeIsEditingLockRoles:
+											newSmeIsEditingLockRoles,
 									} );
 								};
 

@@ -4,7 +4,7 @@
 	},
 	"smeAnimationDelay": {
 		"type": "number",
-    "default": 0
+		"default": 0
 	},
 	"smeAnimationDuration": {
 		"type": "number"

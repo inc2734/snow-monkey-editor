@@ -46,12 +46,8 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const { attributes, setAttributes, name } = props;
 
-		const {
-			smeIsHiddenSm,
-			smeIsHiddenMd,
-			smeIsHiddenLg,
-			className,
-		} = attributes;
+		const { smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg, className } =
+			attributes;
 
 		const isApplyToUser = isApplyExtensionToUser(
 			snowmonkeyeditor.currentUser,

@@ -1,6 +1,6 @@
 {
-  "smeIsHiddenRoles": {
-    "type": "array",
-    "default": []
-  }
+	"smeIsHiddenRoles": {
+		"type": "array",
+		"default": []
+	}
 }

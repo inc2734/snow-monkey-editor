@@ -1,6 +1,6 @@
 {
-  "smeIsEditingLockRoles": {
-    "type": "array",
-    "default": []
-  }
+	"smeIsEditingLockRoles": {
+		"type": "array",
+		"default": []
+	}
 }

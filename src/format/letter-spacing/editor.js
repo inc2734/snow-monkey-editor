@@ -14,9 +14,8 @@ const title = __( 'Letter spacing', 'snow-monkey-editor' );
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const [ isAddingLetterSpacing, setIsAddingLetterSpacing ] = useState(
-		false
-	);
+	const [ isAddingLetterSpacing, setIsAddingLetterSpacing ] =
+		useState( false );
 
 	const enableIsAddingLetterSpacing = useCallback(
 		() => setIsAddingLetterSpacing( true ),

@@ -68,13 +68,11 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 			rolesForHiddenByRoles = { ...roles };
 		} else {
 			Object.keys( roles ).forEach( ( role, index ) => {
-				const hasRole = snowmonkeyeditor.currentUser.roles.includes(
-					role
-				);
+				const hasRole =
+					snowmonkeyeditor.currentUser.roles.includes( role );
 				if ( ! hasRole ) {
-					rolesForHiddenByRoles[ role ] = Object.values( roles )[
-						index
-					];
+					rolesForHiddenByRoles[ role ] =
+						Object.values( roles )[ index ];
 				}
 			} );
 		}
@@ -164,7 +162,8 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 								setAttributes( {
 									smeIsHiddenRoles: newSmeIsHiddenRoles,
 									className: classnames( className, {
-										[ `sme-hidden-by-role--${ key }` ]: value,
+										[ `sme-hidden-by-role--${ key }` ]:
+											value,
 									} ),
 								} );
 							};

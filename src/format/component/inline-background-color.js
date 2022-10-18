@@ -83,7 +83,8 @@ const ColorPicker = ( { name, value, onChange, onClose } ) => {
 		[ name, value, colors ]
 	);
 
-	const multipleOriginColorsAndGradients = useMultipleOriginColorsAndGradients();
+	const multipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradients();
 
 	return (
 		<ColorGradientControl

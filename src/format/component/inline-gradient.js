@@ -70,13 +70,13 @@ const ColorPicker = ( { name, value, onChange, onClose } ) => {
 		[ colors, onChange ]
 	);
 
-	const activeColor = useMemo( () => getActiveColor( name, value, colors ), [
-		name,
-		value,
-		colors,
-	] );
+	const activeColor = useMemo(
+		() => getActiveColor( name, value, colors ),
+		[ name, value, colors ]
+	);
 
-	const multipleOriginColorsAndGradients = useMultipleOriginColorsAndGradients();
+	const multipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradients();
 
 	return (
 		<ColorGradientControl
