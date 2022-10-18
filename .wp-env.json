@@ -2,7 +2,8 @@
   "core": "https://wordpress.org/latest.zip",
   "plugins": [ "." ],
   "config": {
-    "WP_DEBUG": true
+    "WP_DEBUG": true,
+    "WP_MEMORY_LIMIT": "256M"
   },
   "mappings": {
     ".export": "./.export"

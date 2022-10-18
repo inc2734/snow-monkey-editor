@@ -1,32 +1,22 @@
-# Copyright (C) 2018 {package-name}
-# This file is distributed under the same license as the {package-name} package.
+# Copyright (C) 2022 inc2734
+# This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Snow Monkey Editor\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
-"editor\n"
-"POT-Creation-Date: 2022-10-18T04:22:31+00:00\n"
-"PO-Revision-Date: 2022-10-18 13:23+0900\n"
-"Last-Translator: inc2734 <inc@2inc.org>\n"
-"Language-Team: Takashi Kitajima <inc@2inc.org>\n"
-"Language: ja_JP\n"
+"Project-Id-Version: Snow Monkey Editor 8.0.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-editor\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: vendor\n"
-"X-Poedit-SearchPathExcluded-1: node_modules\n"
-"X-Poedit-SearchPathExcluded-2: dist\n"
-"X-Poedit-SearchPathExcluded-3: tests\n"
-"X-Poedit-SearchPathExcluded-4: languages\n"
+"POT-Creation-Date: 2022-10-18T04:22:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.0\n"
+"X-Domain: snow-monkey-editor\n"
 
 #. Plugin Name of the plugin
 msgid "Snow Monkey Editor"
-msgstr "Snow Monkey Editor"
+msgstr ""
 
 #. Description of the plugin
 msgid "Extends gutenberg block editor"
@@ -34,217 +24,209 @@ msgstr ""
 
 #. Author of the plugin
 msgid "inc2734"
-msgstr "inc2734"
+msgstr ""
 
 #. Author URI of the plugin
 msgid "https://2inc.org"
-msgstr "https://2inc.org"
+msgstr ""
 
 #: src/extension/animation/editor.js:82
 msgid "bounce-in"
-msgstr "バウンス・イン"
+msgstr ""
 
 #: src/extension/animation/editor.js:86
 msgid "bounce-down"
-msgstr "バウンス・ダウン"
+msgstr ""
 
 #: src/extension/animation/editor.js:90
 msgid "fade-in"
-msgstr "フェード・イン"
+msgstr ""
 
 #: src/extension/animation/editor.js:94
 msgid "fade-in-up"
-msgstr "フェード・イン・アップ"
+msgstr ""
 
 #: src/extension/animation/editor.js:98
 msgid "fade-in-down"
-msgstr "フェード・イン・ダウン"
+msgstr ""
 
-#: src/extension/animation/editor.js:142 src/extension/animation/editor.js:148
+#: src/extension/animation/editor.js:142
+#: src/extension/animation/editor.js:148
 msgid "Animation"
-msgstr "アニメーション"
+msgstr ""
 
 #: src/extension/animation/editor.js:155
 msgid "Delay"
-msgstr "遅延"
+msgstr ""
 
 #: src/extension/animation/editor.js:165
 msgid "Duration"
-msgstr "所要時間"
+msgstr ""
 
 #: src/extension/date-time/date-time-picker.js:28
 msgid "Clear"
-msgstr "クリア"
+msgstr ""
 
 #: src/extension/date-time/editor.js:94
 msgid "Publish setting"
-msgstr "公開設定"
+msgstr ""
 
 #: src/extension/date-time/editor.js:107
 msgid "Unpublish setting"
-msgstr "公開終了設定"
+msgstr ""
 
 #: src/extension/editing-lock/editor.js:144
 msgid "Editing lock (By roles)"
-msgstr "編集ロック（ロール）"
+msgstr ""
 
 #. translators: %1$s: The role name
 #: src/extension/editing-lock/editor.js:155
 msgid "Edit lock if %1$s"
-msgstr "%1$sのときロック"
+msgstr ""
 
 #: src/extension/hidden-by-role/editor.js:60
 msgid "user is not logged in"
-msgstr "非ログインユーザー"
+msgstr ""
 
 #: src/extension/hidden-by-role/editor.js:137
 msgid "Display setting (By roles)"
-msgstr "表示設定（ロール）"
+msgstr ""
 
 #. translators: %1$s: The role name
 #: src/extension/hidden-by-role/editor.js:148
 msgid "Hide if %1$s"
-msgstr "%1$sのとき非表示"
+msgstr ""
 
 #: src/extension/hidden-by-size/editor.js:124
 msgid "Display setting (By window size)"
-msgstr "表示設定（ウィンドウサイズ）"
+msgstr ""
 
 #: src/extension/hidden-by-size/editor.js:133
 msgid "Hide on smartphone size"
-msgstr "スマートフォンサイズで非表示"
+msgstr ""
 
 #: src/extension/hidden-by-size/editor.js:142
 msgid "Hide on tablet size"
-msgstr "タブレットサイズで非表示"
+msgstr ""
 
 #: src/extension/hidden-by-size/editor.js:151
 msgid "Hide on PC size"
-msgstr "PC サイズで非表示"
+msgstr ""
 
 #: src/format/badge/editor.js:17
 msgid "Badge"
-msgstr "バッジ"
+msgstr ""
 
 #: src/format/bg-color/editor.js:17
 msgid "Background color"
-msgstr "背景色"
+msgstr ""
 
 #: src/format/component/format-toolbar.js:35
 msgid "Snow Monkey Editor Controls"
-msgstr "Snow Monkey Editor コントロール"
+msgstr ""
 
 #: src/format/component/inline-background-color.js:91
 #: src/format/component/inline-color.js:85
 #: src/format/component/inline-gradient.js:83
 msgid "Color"
-msgstr "色"
+msgstr ""
 
 #: src/format/font-size/editor.js:14
 msgid "Font size"
-msgstr "文字サイズ"
+msgstr ""
 
 #: src/format/highlighter/editor.js:17
 msgid "Highlighter"
-msgstr "蛍光ペン"
+msgstr ""
 
 #: src/format/letter-spacing/editor.js:12
 msgid "Letter spacing"
-msgstr "文字間隔"
+msgstr ""
 
 #: src/format/line-height/editor.js:12
 msgid "Line height"
-msgstr "行の高さ"
+msgstr ""
 
 #: src/format/remove/editor.js:9
 msgid "Remove formatting"
-msgstr "書式設定をクリア"
+msgstr ""
 
 #: src/format/text-color/editor.js:17
 msgid "Text color"
-msgstr "文字色"
+msgstr ""
 
 #: src/style/alert-remark/settings.js:5
 msgid "Alert (Remarks)"
-msgstr "アラート（備考）"
+msgstr ""
 
 #: src/style/alert-success/settings.js:5
 msgid "Alert (Success)"
-msgstr "アラート（サクセス）"
+msgstr ""
 
 #: src/style/alert-warning/settings.js:5
 msgid "Alert (Warning)"
-msgstr "アラート（ワーニング）"
+msgstr ""
 
 #: src/style/alert/settings.js:5
 msgid "Alert"
-msgstr "アラート"
+msgstr ""
 
 #: src/style/block-code-nowrap/settings.js:5
 msgid "No wrap"
-msgstr "折り返さない"
+msgstr ""
 
 #: src/style/block-code-wrap/settings.js:5
 msgid "Wrap"
-msgstr "折り返す"
+msgstr ""
 
 #: src/style/fluid-shape-1/settings.js:5
 msgid "Fluid Shape 1"
-msgstr "流体シェイプ1"
+msgstr ""
 
 #: src/style/fluid-shape-2/settings.js:5
 msgid "Fluid Shape 2"
-msgstr "流体シェイプ2"
+msgstr ""
 
 #: src/style/fluid-shape-3/settings.js:5
 msgid "Fluid Shape 3"
-msgstr "流体シェイプ3"
+msgstr ""
 
 #: src/style/list-arrow/settings.js:5
 msgid "Arrow"
-msgstr "矢印"
+msgstr ""
 
 #: src/style/list-check/settings.js:5
 msgid "Check"
-msgstr "チェック"
+msgstr ""
 
 #: src/style/list-remark/settings.js:5
 msgid "Remarks"
-msgstr "備考"
+msgstr ""
 
 #: src/style/list-times/settings.js:5
 msgid "Times"
-msgstr "✗"
+msgstr ""
 
 #: src/style/ordered-list-circle/settings.js:5
 msgid "Ordered list (Circle)"
-msgstr "序列リスト（丸）"
+msgstr ""
 
 #: src/style/ordered-list-square/settings.js:5
 msgid "Ordered list (Square)"
-msgstr "序列リスト（四角）"
+msgstr ""
 
 #: src/style/post-it-narrow/settings.js:5
 msgid "Post-it (Narrow)"
-msgstr "付箋（細）"
+msgstr ""
 
 #: src/style/post-it/settings.js:5
 msgid "Post-it"
-msgstr "付箋"
+msgstr ""
 
 #: src/style/shadowed/settings.js:5
 msgid "Shadowed"
-msgstr "影付き"
+msgstr ""
 
 #: src/style/speech/settings.js:5
 msgid "Speech"
-msgstr "吹きだし"
-
-#~ msgid "Custom colors"
-#~ msgstr "カスタムカラー"
-
-#~ msgid "Circle ordered list"
-#~ msgstr "丸形序列リスト"
-
-#~ msgid "Square ordered list"
-#~ msgstr "四角序列リスト"
+msgstr ""

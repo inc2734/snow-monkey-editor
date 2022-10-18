@@ -13,7 +13,6 @@
     "hex-to-rgba": "^2.0.1",
     "node-sass": "^7.0.3",
     "npm-run-all": "^4.1.5",
-    "po2json": "^1.0.0-alpha",
     "postcss": "^8.4.18",
     "postcss-cli": "^10.0.0",
     "prettier": "npm:wp-prettier@2.6.2",
@@ -53,14 +52,11 @@
     "clean:zip": "rimraf snow-monkey-editor.zip",
     "css": "npm run clean:css && node-sass src/css -o dist/css && postcss dist/css/*.css -r",
     "js": "npm run clean:js && wp-scripts build src/js/app.js src/js/editor.js src/js/editor-extension.js --output-path dist/js",
-    "po2json:snow-monkey-editor@editor": "po2json languages/snow-monkey-editor-ja.po languages/snow-monkey-editor-ja-snow-monkey-editor@editor.json -f jed",
-    "po2json": "npm-run-all -p po2json:*",
-    "build": "npm-run-all -s css js po2json",
+    "build": "npm-run-all -s css js",
+    "make-pot": "npm run wp 'i18n make-pot wp-content/plugins/snow-monkey-editor wp-content/plugins/snow-monkey-editor/languages/snow-monkey-editor.pot --exclude=.*,dist,languages'",
+    "make-json": "rimraf languages/*.json && npm run wp 'i18n make-json wp-content/plugins/snow-monkey-editor/languages/snow-monkey-editor-ja.po --no-purge'",
     "zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='/sql' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/tests' --exclude='package*.json' . snow-monkey-editor && wp-env start && wp-env run composer 'install --no-dev -d snow-monkey-editor'",
     "zip:archive": "zip -9 -qmr snow-monkey-editor.zip snow-monkey-editor",
     "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
-  },
-  "dependencies": {
-    "@wordpress/i18n": "^4.19.0"
   }
 }
