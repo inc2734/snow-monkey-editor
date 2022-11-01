@@ -11,6 +11,10 @@
     min-width: 240px;
     overflow: visible !important;
   }
+
+  fieldset {
+    padding: .35em .75em .625em;
+  }
 }
 
 .sme-popover--inline-font-size {
