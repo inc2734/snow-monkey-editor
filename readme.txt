@@ -2,9 +2,9 @@
 Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
-Requires at least: 6.0
-Tested up to: 6.0
-Stable tag: 8.0.2
+Requires at least: 6.1
+Tested up to: 6.1
+Stable tag: 9.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,11 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.0.0 =
+* Requires WordPress 6.1 or later.
+* Updated the display to make it easier to see the display restrictions by role on the editor.
+* Fixed a bug where margins were not given inside the formatting popover for non-Snow Monkey themes.
 
 = 8.0.2 =
 * Fixed that the picker closes when a number is crossed out or 0 is entered for font size, letter spacing, and line height.
