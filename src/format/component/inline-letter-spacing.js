@@ -9,10 +9,12 @@ import {
 	RangeControl,
 	withSpokenMessages,
 	Popover,
+	Button,
 } from '@wordpress/components';
 
 import { useCachedTruthy } from '@wordpress/block-editor';
 import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 export function getActiveLetterSpacing( formatName, formatValue ) {
 	const activeLetterSpacingFormat = getActiveFormat(
@@ -32,7 +34,7 @@ export function getActiveLetterSpacing( formatName, formatValue ) {
 	}
 }
 
-const LetterSpacingPicker = ( { name, title, value, onChange } ) => {
+const LetterSpacingPicker = ( { name, title, value, onChange, onClose } ) => {
 	const onLetterSpacingChange = useCallback(
 		( letterSpacing ) => {
 			if ( !! letterSpacing ) {
@@ -57,16 +59,29 @@ const LetterSpacingPicker = ( { name, title, value, onChange } ) => {
 	);
 
 	return (
-		<RangeControl
-			label={ title }
-			value={ activeLetterSpacing }
-			onChange={ onLetterSpacingChange }
-			min="0"
-			max="2"
-			step="0.1"
-			initialPosition={ undefined }
-			allowReset
-		/>
+		<>
+			<RangeControl
+				label={ title }
+				value={ activeLetterSpacing }
+				onChange={ onLetterSpacingChange }
+				min="0"
+				max="2"
+				step="0.1"
+				initialPosition={ undefined }
+			/>
+
+			<Button
+				disabled={ value === undefined }
+				variant="secondary"
+				isSmall
+				onClick={ () => {
+					onChange( removeFormat( value, name ) );
+					onClose();
+				} }
+			>
+				{ __( 'Reset' ) }
+			</Button>
+		</>
 	);
 };
 
@@ -99,6 +114,7 @@ const InlineLetterSpacingUI = ( {
 					title={ title }
 					value={ value }
 					onChange={ onChange }
+					onClose={ onClose }
 				/>
 			</fieldset>
 		</Popover>

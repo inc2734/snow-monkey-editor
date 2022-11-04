@@ -2,6 +2,7 @@ import {
 	RangeControl,
 	withSpokenMessages,
 	Popover,
+	Button,
 } from '@wordpress/components';
 
 import {
@@ -13,6 +14,7 @@ import {
 
 import { useCachedTruthy } from '@wordpress/block-editor';
 import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 export function getActiveLineHeight( formatName, formatValue ) {
 	const activeLineHeightFormat = getActiveFormat( formatValue, formatName );
@@ -27,7 +29,7 @@ export function getActiveLineHeight( formatName, formatValue ) {
 	}
 }
 
-const LineHeightPicker = ( { name, title, value, onChange } ) => {
+const LineHeightPicker = ( { name, title, value, onChange, onClose } ) => {
 	const onLineHeightChange = useCallback(
 		( lineHeight ) => {
 			if ( !! lineHeight ) {
@@ -52,16 +54,29 @@ const LineHeightPicker = ( { name, title, value, onChange } ) => {
 	);
 
 	return (
-		<RangeControl
-			label={ title }
-			value={ activeLineHeight }
-			onChange={ onLineHeightChange }
-			min="0"
-			max="5"
-			step="0.1"
-			initialPosition={ undefined }
-			allowReset
-		/>
+		<>
+			<RangeControl
+				label={ title }
+				value={ activeLineHeight }
+				onChange={ onLineHeightChange }
+				min="0"
+				max="5"
+				step="0.1"
+				initialPosition={ undefined }
+			/>
+
+			<Button
+				disabled={ value === undefined }
+				variant="secondary"
+				isSmall
+				onClick={ () => {
+					onChange( removeFormat( value, name ) );
+					onClose();
+				} }
+			>
+				{ __( 'Reset' ) }
+			</Button>
+		</>
 	);
 };
 
@@ -95,6 +110,7 @@ const InlineLineHeightUI = ( {
 					title={ title }
 					value={ value }
 					onChange={ onChange }
+					onClose={ onClose }
 				/>
 			</fieldset>
 		</Popover>
