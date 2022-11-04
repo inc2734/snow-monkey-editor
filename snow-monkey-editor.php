@@ -40,15 +40,15 @@ class Bootstrap {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'plugins_loaded', [ $this, '_bootstrap' ] );
+		add_action( 'plugins_loaded', array( $this, '_bootstrap' ) );
 
 		if ( ! is_admin() ) {
-			add_action( 'render_block', [ $this, '_hidden_by_roles' ], 10, 2 );
-			add_action( 'render_block', [ $this, '_date_time' ], 10, 2 );
-			add_action( 'render_block', [ $this, '_ordered_list_counter' ], 10, 2 );
-			add_action( 'render_block', [ $this, '_animation_delay' ], 10, 2 );
-			add_action( 'render_block', [ $this, '_animation_duration' ], 10, 2 );
-			add_action( 'init', [ $this, '_add_attributes_to_blocks' ], 11 );
+			add_action( 'render_block', array( $this, '_hidden_by_roles' ), 10, 2 );
+			add_action( 'render_block', array( $this, '_date_time' ), 10, 2 );
+			add_action( 'render_block', array( $this, '_ordered_list_counter' ), 10, 2 );
+			add_action( 'render_block', array( $this, '_animation_delay' ), 10, 2 );
+			add_action( 'render_block', array( $this, '_animation_duration' ), 10, 2 );
+			add_action( 'init', array( $this, '_add_attributes_to_blocks' ), 11 );
 		}
 	}
 
@@ -218,7 +218,7 @@ class Bootstrap {
 	 * @see https://github.com/Codeinwp/gutenberg-animation/blob/a0efe29a3ce023e0f562bb9a51d34b345431b642/class-gutenberg-animation.php#L105-L119
 	 */
 	public function _add_attributes_to_blocks() {
-		$attributes = [];
+		$attributes = array();
 		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/src/extension/*', GLOB_ONLYDIR ) as $dir ) {
 			foreach ( glob( $dir . '/attributes.json' ) as $file ) {
 				$_attributes = file_get_contents( $file );
@@ -231,7 +231,7 @@ class Bootstrap {
 
 		foreach ( $registered_blocks as $name => $block ) {
 			if ( ! isset( $block->attributes ) || ! is_array( $block->attributes ) ) {
-				$block->attributes = [];
+				$block->attributes = array();
 			}
 			foreach ( $attributes as $name => $detail ) {
 				$block->attributes[ $name ] = $detail;

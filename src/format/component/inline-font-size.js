@@ -12,9 +12,10 @@ import {
 	useAnchor,
 } from '@wordpress/rich-text';
 
-import { withSpokenMessages, Popover } from '@wordpress/components';
+import { withSpokenMessages, Popover, Button } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 	const activeFontSizeFormat = getActiveFormat( formatValue, formatName );
@@ -92,11 +93,22 @@ const FontSizePicker = ( { name, value, onChange } ) => {
 	);
 
 	return (
-		<BaseFontSizePicker
-			value={ activeFontSize }
-			onChange={ onFontSizeChange }
-			fontSizes={ fontSizes }
-		/>
+		<>
+			<BaseFontSizePicker
+				value={ activeFontSize }
+				onChange={ onFontSizeChange }
+				fontSizes={ fontSizes }
+			/>
+
+			<Button
+				disabled={ value === undefined }
+				variant="secondary"
+				isSmall
+				onClick={ () => onChange( removeFormat( value, name ) ) }
+			>
+				{ __( 'Reset' ) }
+			</Button>
+		</>
 	);
 };
 

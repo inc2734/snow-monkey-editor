@@ -13,7 +13,7 @@ class Endpoint {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'rest_api_init', [ $this, '_rest_api_init' ] );
+		add_action( 'rest_api_init', array( $this, '_rest_api_init' ) );
 	}
 
 	/**
@@ -23,21 +23,21 @@ class Endpoint {
 		register_rest_route(
 			'snow-monkey-editor/v1',
 			'/roles',
-			[
+			array(
 				'methods'             => 'GET',
 				'callback'            => function() {
 					if ( ! function_exists( '\\get_editable_roles' ) ) {
 						require_once( ABSPATH . '/wp-admin/includes/user.php' );
 					}
 
-					$roles          = [];
+					$roles          = array();
 					$editable_roles = get_editable_roles();
 					foreach ( $editable_roles as $role => $detail ) {
 						$roles[ $role ] = array_merge(
 							$detail,
-							[
+							array(
 								'name' => translate_user_role( $detail['name'] ),
-							]
+							)
 						);
 					}
 					return $roles;
@@ -45,7 +45,7 @@ class Endpoint {
 				'permission_callback' => function () {
 					return current_user_can( 'edit_posts' );
 				},
-			]
+			)
 		);
 	}
 }

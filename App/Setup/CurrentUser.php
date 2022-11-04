@@ -13,7 +13,7 @@ class CurrentUser {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'enqueue_block_editor_assets', [ $this, '_wp_enqueue_scripts' ], 9 );
+		add_action( 'enqueue_block_editor_assets', array( $this, '_wp_enqueue_scripts' ), 9 );
 	}
 
 	/**
@@ -25,19 +25,19 @@ class CurrentUser {
 		}
 
 		$current_user = wp_get_current_user();
-		$data         = [
+		$data         = array(
 			'id'    => $current_user->data->ID,
 			'name'  => $current_user->data->user_login,
 			'slug'  => $current_user->data->user_nicename,
 			'roles' => $current_user->roles,
-		];
+		);
 
 		wp_localize_script(
 			'snow-monkey-editor@editor-extension',
 			'snowmonkeyeditor',
-			[
+			array(
 				'currentUser' => $data,
-			]
+			)
 		);
 	}
 }

@@ -13,9 +13,9 @@ class Assets {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'enqueue_block_editor_assets', [ $this, '_enqueue_block_editor_extension' ], 9 );
-		add_action( 'enqueue_block_editor_assets', [ $this, '_enqueue_block_editor_assets' ] );
-		add_action( 'wp_enqueue_scripts', [ $this, '_wp_enqueue_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', array( $this, '_enqueue_block_editor_extension' ), 9 );
+		add_action( 'enqueue_block_editor_assets', array( $this, '_enqueue_block_editor_assets' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
 	}
 
 	/**
@@ -48,7 +48,7 @@ class Assets {
 		wp_enqueue_style(
 			'snow-monkey-editor@editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/css/editor.css',
-			[],
+			array(),
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/editor.css' )
 		);
 
@@ -82,7 +82,7 @@ class Assets {
 		wp_enqueue_script(
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/app.js',
-			[],
+			array(),
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.js' ),
 			true
 		);
@@ -90,7 +90,7 @@ class Assets {
 		wp_enqueue_style(
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/css/app.css',
-			[],
+			array(),
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/app.css' )
 		);
 	}

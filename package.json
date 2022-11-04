@@ -37,6 +37,7 @@
     "stop": "npm run export && wp-env stop",
     "cli": "wp-env run cli",
     "wp": "wp-env run cli wp",
+		"composer": "wp-env run composer",
     "pretest": "wp-env start && wp-env run composer 'install --no-interaction'",
     "test:lint:js": "wp-scripts lint-js src",
     "test:lint:php": "wp-env run composer run-script lint",
