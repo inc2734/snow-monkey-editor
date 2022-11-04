@@ -1,13 +1,18 @@
-import { URLPopover } from '@wordpress/block-editor';
-import { RangeControl, withSpokenMessages } from '@wordpress/components';
-import { useCallback, useMemo } from '@wordpress/element';
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
+	useAnchor,
 } from '@wordpress/rich-text';
 
-import { useAnchorRef } from './use-anchor-ref';
+import {
+	RangeControl,
+	withSpokenMessages,
+	Popover,
+} from '@wordpress/components';
+
+import { useCachedTruthy } from '@wordpress/block-editor';
+import { useCallback, useMemo } from '@wordpress/element';
 
 export function getActiveLetterSpacing( formatName, formatValue ) {
 	const activeLetterSpacingFormat = getActiveFormat(
@@ -74,13 +79,19 @@ const InlineLetterSpacingUI = ( {
 	contentRef,
 	settings,
 } ) => {
-	const anchorRef = useAnchorRef( { ref: contentRef, value, settings } );
+	const popoverAnchor = useCachedTruthy(
+		useAnchor( {
+			editableContentElement: contentRef.current,
+			value,
+			settings,
+		} )
+	);
+
 	return (
-		<URLPopover
-			value={ value }
+		<Popover
+			anchor={ popoverAnchor }
 			onClose={ onClose }
 			className="sme-popover sme-popover--inline-letter-spacing components-inline-color-popover"
-			anchorRef={ anchorRef }
 		>
 			<fieldset>
 				<LetterSpacingPicker
@@ -90,7 +101,7 @@ const InlineLetterSpacingUI = ( {
 					onChange={ onChange }
 				/>
 			</fieldset>
-		</URLPopover>
+		</Popover>
 	);
 };
 

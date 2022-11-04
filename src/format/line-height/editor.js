@@ -2,8 +2,8 @@ import classnames from 'classnames';
 
 import { Icon } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { removeFormat } from '@wordpress/rich-text';
+import { __ } from '@wordpress/i18n';
 
 import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import { default as InlineLineHeightUI } from '../component/inline-line-height';
@@ -27,9 +27,6 @@ const Edit = ( props ) => {
 	);
 
 	const hasLineHeightToChoose = true;
-	if ( ! hasLineHeightToChoose && ! isActive ) {
-		return null;
-	}
 
 	return (
 		<>
@@ -57,9 +54,7 @@ const Edit = ( props ) => {
 					onClose={ disableIsAddingLineHeight }
 					activeAttributes={ activeAttributes }
 					value={ value }
-					onChange={ ( ...args ) => {
-						onChange( ...args );
-					} }
+					onChange={ onChange }
 					contentRef={ contentRef }
 					settings={ settings }
 				/>

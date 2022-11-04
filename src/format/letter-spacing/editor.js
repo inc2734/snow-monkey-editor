@@ -2,8 +2,8 @@ import classnames from 'classnames';
 
 import { Icon } from '@wordpress/components';
 import { useState, useCallback } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { removeFormat } from '@wordpress/rich-text';
+import { __ } from '@wordpress/i18n';
 
 import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import { default as InlineLetterSpacingUI } from '../component/inline-letter-spacing';
@@ -22,15 +22,11 @@ const Edit = ( props ) => {
 		[ setIsAddingLetterSpacing ]
 	);
 
-	const disableIsAddingLetterSpacing = useCallback(
-		() => setIsAddingLetterSpacing( false ),
-		[ setIsAddingLetterSpacing ]
-	);
+	const disableIsAddingLetterSpacing = useCallback( () => {
+		setIsAddingLetterSpacing( false );
+	}, [ setIsAddingLetterSpacing ] );
 
 	const hasLetterSpacingsToChoose = true;
-	if ( ! hasLetterSpacingsToChoose && ! isActive ) {
-		return null;
-	}
 
 	return (
 		<>
@@ -60,9 +56,7 @@ const Edit = ( props ) => {
 					onClose={ disableIsAddingLetterSpacing }
 					activeAttributes={ activeAttributes }
 					value={ value }
-					onChange={ ( ...args ) => {
-						onChange( ...args );
-					} }
+					onChange={ onChange }
 					contentRef={ contentRef }
 					settings={ settings }
 				/>

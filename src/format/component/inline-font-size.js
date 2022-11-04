@@ -2,19 +2,19 @@ import { get, find, isNumber, isString } from 'lodash';
 
 import {
 	FontSizePicker as BaseFontSizePicker,
-	URLPopover,
 	getFontSizeClass,
 } from '@wordpress/block-editor';
-import { withSpokenMessages } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
-import { useCallback, useMemo } from '@wordpress/element';
+
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
+	useAnchor,
 } from '@wordpress/rich-text';
 
-import { useAnchorRef } from './use-anchor-ref';
+import { withSpokenMessages, Popover } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
+import { useCallback, useMemo } from '@wordpress/element';
 
 export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 	const activeFontSizeFormat = getActiveFormat( formatValue, formatName );
@@ -108,13 +108,17 @@ const InlineFontSizeUI = ( {
 	contentRef,
 	settings,
 } ) => {
-	const anchorRef = useAnchorRef( { ref: contentRef, value, settings } );
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		value,
+		settings,
+	} );
+
 	return (
-		<URLPopover
-			value={ value }
+		<Popover
+			anchor={ popoverAnchor }
 			onClose={ onClose }
 			className="sme-popover sme-popover--inline-font-size components-inline-color-popover"
-			anchorRef={ anchorRef }
 		>
 			<fieldset>
 				<FontSizePicker
@@ -123,7 +127,7 @@ const InlineFontSizeUI = ( {
 					onChange={ onChange }
 				/>
 			</fieldset>
-		</URLPopover>
+		</Popover>
 	);
 };
 

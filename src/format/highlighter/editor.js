@@ -4,14 +4,15 @@ import { isEmpty } from 'lodash';
 import { useSetting } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import { useState, useCallback, useMemo } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
 import { removeFormat } from '@wordpress/rich-text';
+import { __ } from '@wordpress/i18n';
 
-import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import {
 	default as InlineColorUI,
 	getActiveColor,
 } from '../component/inline-gradient';
+
+import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 
 const name = 'snow-monkey-editor/highlighter';
 const title = __( 'Highlighter', 'snow-monkey-editor' );
@@ -67,9 +68,7 @@ const Edit = ( props ) => {
 					onClose={ disableIsAddingColor }
 					activeAttributes={ activeAttributes }
 					value={ value }
-					onChange={ ( ...args ) => {
-						onChange( ...args );
-					} }
+					onChange={ onChange }
 					contentRef={ contentRef }
 					settings={ settings }
 				/>

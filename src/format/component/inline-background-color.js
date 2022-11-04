@@ -1,24 +1,24 @@
 import { get } from 'lodash';
 
 import {
-	__experimentalColorGradientControl as ColorGradientControl,
-	URLPopover,
 	getColorClassName,
 	getColorObjectByColorValue,
 	getColorObjectByAttributeValues,
+	__experimentalColorGradientControl as ColorGradientControl,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
-import { withSpokenMessages } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
-import { useCallback, useMemo } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
+	useAnchor,
 } from '@wordpress/rich-text';
 
-import { useMultipleOriginColorsAndGradients } from '../../hooks/hooks';
-import { useAnchorRef } from './use-anchor-ref';
+import { withSpokenMessages, Popover } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
+import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 export function getActiveBackgroundColor( formatName, formatValue, colors ) {
 	const activeBackgroundColorFormat = getActiveFormat(
@@ -106,13 +106,18 @@ const InlineBackgroundColorUI = ( {
 	contentRef,
 	settings,
 } ) => {
-	const anchorRef = useAnchorRef( { ref: contentRef, value, settings } );
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		value,
+		settings,
+	} );
+
 	return (
-		<URLPopover
+		<Popover
+			anchor={ popoverAnchor }
 			value={ value }
 			onClose={ onClose }
 			className="sme-popover sme-popover--inline-background-color components-inline-color-popover"
-			anchorRef={ anchorRef }
 		>
 			<ColorPicker
 				name={ name }
@@ -120,7 +125,7 @@ const InlineBackgroundColorUI = ( {
 				onChange={ onChange }
 				onClose={ onClose }
 			/>
-		</URLPopover>
+		</Popover>
 	);
 };
 
