@@ -5,15 +5,10 @@ import {
 	Button,
 } from '@wordpress/components';
 
-import {
-	applyFormat,
-	removeFormat,
-	getActiveFormat,
-	useAnchor,
-} from '@wordpress/rich-text';
+import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
 
 import { useCachedTruthy } from '@wordpress/block-editor';
-import { useCallback, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 export function getActiveLineHeight( formatName, formatValue ) {
@@ -21,6 +16,7 @@ export function getActiveLineHeight( formatName, formatValue ) {
 	if ( ! activeLineHeightFormat ) {
 		return;
 	}
+
 	const styleLineHeight = activeLineHeightFormat.attributes.style;
 	if ( styleLineHeight ) {
 		return parseFloat(
@@ -29,25 +25,7 @@ export function getActiveLineHeight( formatName, formatValue ) {
 	}
 }
 
-const LineHeightPicker = ( { name, title, value, onChange, onClose } ) => {
-	const onLineHeightChange = useCallback(
-		( lineHeight ) => {
-			if ( !! lineHeight ) {
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: {
-							style: `line-height: ${ lineHeight }`,
-						},
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
-			}
-		},
-		[ onChange ]
-	);
-
+const LineHeightPicker = ( { name, title, value, onChange, onReset } ) => {
 	const activeLineHeight = useMemo(
 		() => getActiveLineHeight( name, value ),
 		[ name, value ]
@@ -58,7 +36,7 @@ const LineHeightPicker = ( { name, title, value, onChange, onClose } ) => {
 			<RangeControl
 				label={ title }
 				value={ activeLineHeight }
-				onChange={ onLineHeightChange }
+				onChange={ onChange }
 				min="0"
 				max="5"
 				step="0.1"
@@ -69,10 +47,7 @@ const LineHeightPicker = ( { name, title, value, onChange, onClose } ) => {
 				disabled={ value === undefined }
 				variant="secondary"
 				isSmall
-				onClick={ () => {
-					onChange( removeFormat( value, name ) );
-					onClose();
-				} }
+				onClick={ onReset }
 			>
 				{ __( 'Reset' ) }
 			</Button>
@@ -86,6 +61,7 @@ const InlineLineHeightUI = ( {
 	value,
 	onChange,
 	onClose,
+	onReset,
 	contentRef,
 	settings,
 } ) => {
@@ -97,10 +73,14 @@ const InlineLineHeightUI = ( {
 		} )
 	);
 
+	const rect = useMemo( () => popoverAnchor.getBoundingClientRect(), [] );
+	if ( !! popoverAnchor?.ownerDocument ) {
+		popoverAnchor.getBoundingClientRect = () => rect;
+	}
+
 	return (
 		<Popover
 			anchor={ popoverAnchor }
-			value={ value }
 			onClose={ onClose }
 			className="sme-popover sme-popover--inline-line-height components-inline-color-popover"
 		>
@@ -110,7 +90,7 @@ const InlineLineHeightUI = ( {
 					title={ title }
 					value={ value }
 					onChange={ onChange }
-					onClose={ onClose }
+					onReset={ onReset }
 				/>
 			</fieldset>
 		</Popover>

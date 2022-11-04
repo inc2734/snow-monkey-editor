@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 
 import { Icon } from '@wordpress/components';
-import { useState, useCallback } from '@wordpress/element';
-import { removeFormat } from '@wordpress/rich-text';
+import { useState } from '@wordpress/element';
+import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
-import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import { default as InlineLineHeightUI } from '../component/inline-line-height';
+import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 
 const name = 'snow-monkey-editor/line-height';
 const title = __( 'Line height', 'snow-monkey-editor' );
@@ -15,18 +15,6 @@ const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
 	const [ isAddingLineHeight, setIsAddingLineHeight ] = useState( false );
-
-	const enableIsAddingLineHeight = useCallback(
-		() => setIsAddingLineHeight( true ),
-		[ setIsAddingLineHeight ]
-	);
-
-	const disableIsAddingLineHeight = useCallback(
-		() => setIsAddingLineHeight( false ),
-		[ setIsAddingLineHeight ]
-	);
-
-	const hasLineHeightToChoose = true;
 
 	return (
 		<>
@@ -39,11 +27,9 @@ const Edit = ( props ) => {
 				className={ classnames( 'sme-toolbar-button', {
 					'is-pressed': !! isActive,
 				} ) }
-				onClick={
-					hasLineHeightToChoose
-						? enableIsAddingLineHeight
-						: () => onChange( removeFormat( value, name ) )
-				}
+				onClick={ () => {
+					setIsAddingLineHeight( ! isAddingLineHeight );
+				} }
 				icon={ <Icon icon="editor-insertmore" /> }
 			/>
 
@@ -51,10 +37,25 @@ const Edit = ( props ) => {
 				<InlineLineHeightUI
 					name={ name }
 					title={ title }
-					onClose={ disableIsAddingLineHeight }
 					activeAttributes={ activeAttributes }
 					value={ value }
-					onChange={ onChange }
+					onClose={ () => {
+						setIsAddingLineHeight( false );
+					} }
+					onReset={ () => {
+						setIsAddingLineHeight( false );
+						onChange( removeFormat( value, name ) );
+					} }
+					onChange={ ( newValue ) => {
+						onChange(
+							applyFormat( value, {
+								type: name,
+								attributes: {
+									style: `line-height: ${ newValue }`,
+								},
+							} )
+						);
+					} }
 					contentRef={ contentRef }
 					settings={ settings }
 				/>

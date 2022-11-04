@@ -1,19 +1,14 @@
 import {
-	applyFormat,
-	removeFormat,
-	getActiveFormat,
-	useAnchor,
-} from '@wordpress/rich-text';
-
-import {
 	RangeControl,
 	withSpokenMessages,
 	Popover,
 	Button,
 } from '@wordpress/components';
 
+import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
+
 import { useCachedTruthy } from '@wordpress/block-editor';
-import { useCallback, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 export function getActiveLetterSpacing( formatName, formatValue ) {
@@ -24,7 +19,8 @@ export function getActiveLetterSpacing( formatName, formatValue ) {
 	if ( ! activeLetterSpacingFormat ) {
 		return;
 	}
-	const styleLetterSpacing = activeLetterSpacingFormat.attributes.style;
+
+	const styleLetterSpacing = activeLetterSpacingFormat.attributes?.style;
 	if ( styleLetterSpacing ) {
 		return parseFloat(
 			styleLetterSpacing
@@ -34,25 +30,7 @@ export function getActiveLetterSpacing( formatName, formatValue ) {
 	}
 }
 
-const LetterSpacingPicker = ( { name, title, value, onChange, onClose } ) => {
-	const onLetterSpacingChange = useCallback(
-		( letterSpacing ) => {
-			if ( !! letterSpacing ) {
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: {
-							style: `letter-spacing: ${ letterSpacing }rem`,
-						},
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
-			}
-		},
-		[ onChange ]
-	);
-
+const LetterSpacingPicker = ( { name, title, value, onChange, onReset } ) => {
 	const activeLetterSpacing = useMemo(
 		() => getActiveLetterSpacing( name, value ),
 		[ name, value ]
@@ -63,7 +41,7 @@ const LetterSpacingPicker = ( { name, title, value, onChange, onClose } ) => {
 			<RangeControl
 				label={ title }
 				value={ activeLetterSpacing }
-				onChange={ onLetterSpacingChange }
+				onChange={ onChange }
 				min="0"
 				max="2"
 				step="0.1"
@@ -74,10 +52,7 @@ const LetterSpacingPicker = ( { name, title, value, onChange, onClose } ) => {
 				disabled={ value === undefined }
 				variant="secondary"
 				isSmall
-				onClick={ () => {
-					onChange( removeFormat( value, name ) );
-					onClose();
-				} }
+				onClick={ onReset }
 			>
 				{ __( 'Reset' ) }
 			</Button>
@@ -91,6 +66,7 @@ const InlineLetterSpacingUI = ( {
 	value,
 	onChange,
 	onClose,
+	onReset,
 	contentRef,
 	settings,
 } ) => {
@@ -101,6 +77,11 @@ const InlineLetterSpacingUI = ( {
 			settings,
 		} )
 	);
+
+	const rect = useMemo( () => popoverAnchor.getBoundingClientRect(), [] );
+	if ( !! popoverAnchor?.ownerDocument ) {
+		popoverAnchor.getBoundingClientRect = () => rect;
+	}
 
 	return (
 		<Popover
@@ -114,7 +95,7 @@ const InlineLetterSpacingUI = ( {
 					title={ title }
 					value={ value }
 					onChange={ onChange }
-					onClose={ onClose }
+					onReset={ onReset }
 				/>
 			</fieldset>
 		</Popover>

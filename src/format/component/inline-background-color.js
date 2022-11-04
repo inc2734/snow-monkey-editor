@@ -1,23 +1,17 @@
 import { get } from 'lodash';
 
 import {
-	getColorClassName,
-	getColorObjectByColorValue,
 	getColorObjectByAttributeValues,
+	useCachedTruthy,
 	__experimentalColorGradientControl as ColorGradientControl,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
-import {
-	applyFormat,
-	removeFormat,
-	getActiveFormat,
-	useAnchor,
-} from '@wordpress/rich-text';
+import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
 
 import { withSpokenMessages, Popover } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
-import { useCallback, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 export function getActiveBackgroundColor( formatName, formatValue, colors ) {
@@ -28,6 +22,7 @@ export function getActiveBackgroundColor( formatName, formatValue, colors ) {
 	if ( ! activeBackgroundColorFormat ) {
 		return;
 	}
+
 	const styleBackgroundColor = activeBackgroundColorFormat.attributes.style;
 	if ( styleBackgroundColor ) {
 		return styleBackgroundColor.replace(
@@ -35,6 +30,7 @@ export function getActiveBackgroundColor( formatName, formatValue, colors ) {
 			''
 		);
 	}
+
 	const currentClass = activeBackgroundColorFormat.attributes.class;
 	if ( currentClass ) {
 		const colorSlug = currentClass.replace(
@@ -45,53 +41,23 @@ export function getActiveBackgroundColor( formatName, formatValue, colors ) {
 	}
 }
 
-const ColorPicker = ( { name, value, onChange, onClose } ) => {
+const ColorPicker = ( { name, value, onChange } ) => {
 	const colors = useSelect( ( select ) => {
 		const { getSettings } = select( 'core/block-editor' );
 		return get( getSettings(), [ 'colors' ], [] );
 	} );
-
-	const onBackgroundColorChange = useCallback(
-		( color ) => {
-			if ( color ) {
-				const colorObject = getColorObjectByColorValue( colors, color );
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: colorObject
-							? {
-									class: getColorClassName(
-										'background-color',
-										colorObject.slug
-									),
-							  }
-							: {
-									style: `background-color: ${ color }`,
-							  },
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
-				onClose();
-			}
-		},
-		[ colors, onChange ]
-	);
 
 	const activeBackgroundColor = useMemo(
 		() => getActiveBackgroundColor( name, value, colors ),
 		[ name, value, colors ]
 	);
 
-	const multipleOriginColorsAndGradients =
-		useMultipleOriginColorsAndGradients();
-
 	return (
 		<ColorGradientControl
 			label={ __( 'Color', 'snow-monkey-editor' ) }
 			colorValue={ activeBackgroundColor }
-			onColorChange={ onBackgroundColorChange }
-			{ ...multipleOriginColorsAndGradients }
+			onColorChange={ onChange }
+			{ ...useMultipleOriginColorsAndGradients() }
 			__experimentalHasMultipleOrigins={ true }
 			__experimentalIsRenderedInSidebar={ true }
 		/>
@@ -106,25 +72,26 @@ const InlineBackgroundColorUI = ( {
 	contentRef,
 	settings,
 } ) => {
-	const popoverAnchor = useAnchor( {
-		editableContentElement: contentRef.current,
-		value,
-		settings,
-	} );
+	const popoverAnchor = useCachedTruthy(
+		useAnchor( {
+			editableContentElement: contentRef.current,
+			value,
+			settings,
+		} )
+	);
+
+	const rect = useMemo( () => popoverAnchor.getBoundingClientRect(), [] );
+	if ( !! popoverAnchor?.ownerDocument ) {
+		popoverAnchor.getBoundingClientRect = () => rect;
+	}
 
 	return (
 		<Popover
 			anchor={ popoverAnchor }
-			value={ value }
 			onClose={ onClose }
 			className="sme-popover sme-popover--inline-background-color components-inline-color-popover"
 		>
-			<ColorPicker
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-				onClose={ onClose }
-			/>
+			<ColorPicker name={ name } value={ value } onChange={ onChange } />
 		</Popover>
 	);
 };

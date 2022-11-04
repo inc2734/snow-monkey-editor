@@ -1,12 +1,12 @@
 import classnames from 'classnames';
 
 import { Icon } from '@wordpress/components';
-import { useState, useCallback } from '@wordpress/element';
-import { removeFormat } from '@wordpress/rich-text';
+import { useState } from '@wordpress/element';
+import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
-import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 import { default as InlineLetterSpacingUI } from '../component/inline-letter-spacing';
+import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 
 const name = 'snow-monkey-editor/letter-spacing';
 const title = __( 'Letter spacing', 'snow-monkey-editor' );
@@ -16,17 +16,6 @@ const Edit = ( props ) => {
 
 	const [ isAddingLetterSpacing, setIsAddingLetterSpacing ] =
 		useState( false );
-
-	const enableIsAddingLetterSpacing = useCallback(
-		() => setIsAddingLetterSpacing( true ),
-		[ setIsAddingLetterSpacing ]
-	);
-
-	const disableIsAddingLetterSpacing = useCallback( () => {
-		setIsAddingLetterSpacing( false );
-	}, [ setIsAddingLetterSpacing ] );
-
-	const hasLetterSpacingsToChoose = true;
 
 	return (
 		<>
@@ -41,11 +30,9 @@ const Edit = ( props ) => {
 				className={ classnames( 'sme-toolbar-button', {
 					'is-pressed': !! isActive,
 				} ) }
-				onClick={
-					hasLetterSpacingsToChoose
-						? enableIsAddingLetterSpacing
-						: () => onChange( removeFormat( value, name ) )
-				}
+				onClick={ () => {
+					setIsAddingLetterSpacing( ! isAddingLetterSpacing );
+				} }
 				icon={ <Icon icon="controls-pause" /> }
 			/>
 
@@ -53,10 +40,25 @@ const Edit = ( props ) => {
 				<InlineLetterSpacingUI
 					name={ name }
 					title={ title }
-					onClose={ disableIsAddingLetterSpacing }
 					activeAttributes={ activeAttributes }
 					value={ value }
-					onChange={ onChange }
+					onClose={ () => {
+						setIsAddingLetterSpacing( false );
+					} }
+					onReset={ () => {
+						setIsAddingLetterSpacing( false );
+						onChange( removeFormat( value, name ) );
+					} }
+					onChange={ ( newValue ) => {
+						onChange(
+							applyFormat( value, {
+								type: name,
+								attributes: {
+									style: `letter-spacing: ${ newValue }rem`,
+								},
+							} )
+						);
+					} }
 					contentRef={ contentRef }
 					settings={ settings }
 				/>
