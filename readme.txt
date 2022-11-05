@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.1
 Tested up to: 6.1
-Stable tag: 9.0.0
+Stable tag: 9.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -181,6 +181,11 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.0.1 =
+* Added reset button to font size format.
+* Fixed a bug that popover sometimes jumps to the upper left corner of the screen when setting colors in text color, background color, highlighter, and badge.
+* Changed Popover to close when letter spacing, line height, and fon tsize are reset.
 
 = 9.0.0 =
 * Requires WordPress 6.1 or later.
