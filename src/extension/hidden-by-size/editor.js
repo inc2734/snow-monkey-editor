@@ -2,168 +2,145 @@ import { compact } from 'lodash';
 import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
-import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl } from '@wordpress/components';
-import { createHigherOrderComponent } from '@wordpress/compose';
-import { addFilter } from '@wordpress/hooks';
+import { ToggleControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-import { icon } from '../../helper/icon';
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
 import customAttributes from './attributes.json';
 
-const addBlockAttributes = ( settings ) => {
+const isShown = ( props ) => {
 	const isApplyToUser = isApplyExtensionToUser(
 		snowmonkeyeditor.currentUser,
 		'hidden-by-size'
 	);
 	if ( ! isApplyToUser ) {
-		return settings;
+		return false;
 	}
 
 	const isApplyToBlock = isApplyExtensionToBlock(
-		settings.name,
+		props.name,
 		'hidden-by-size'
 	);
 	if ( ! isApplyToBlock ) {
-		return settings;
+		return false;
 	}
 
-	settings.attributes = {
-		...settings.attributes,
-		...customAttributes,
-	};
-	return settings;
+	// if (
+	// 	'undefined' === typeof props.attributes?.smeIsHiddenSm ||
+	// 	'undefined' === typeof props.attributes?.smeIsHiddenMd ||
+	// 	'undefined' === typeof props.attributes?.smeIsHiddenLg
+	// ) {
+	// 	return false;
+	// }
+
+	const blockType = getBlockType( props.name );
+	if ( ! blockType ) {
+		return false;
+	}
+
+	if ( ! hasBlockSupport( blockType, 'customClassName', true ) ) {
+		return false;
+	}
+
+	return true;
 };
 
-addFilter(
-	'blocks.registerBlockType',
-	'snow-monkey-editor/hidden-by-size/attributes',
-	addBlockAttributes
-);
+const Content = ( props ) => {
+	const { attributes, setAttributes } = props;
+	const { smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg, className } =
+		attributes;
 
-const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
-	return ( props ) => {
-		const { attributes, setAttributes, name } = props;
-
-		const { smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg, className } =
-			attributes;
-
-		const isApplyToUser = isApplyExtensionToUser(
-			snowmonkeyeditor.currentUser,
-			'hidden-by-size'
-		);
-		if ( ! isApplyToUser ) {
-			return <BlockEdit { ...props } />;
-		}
-
-		const isApplyToBlock = isApplyExtensionToBlock(
-			name,
-			'hidden-by-size'
-		);
-		if ( ! isApplyToBlock ) {
-			return <BlockEdit { ...props } />;
-		}
-
-		if (
-			'undefined' === typeof smeIsHiddenSm ||
-			'undefined' === typeof smeIsHiddenMd ||
-			'undefined' === typeof smeIsHiddenLg
-		) {
-			return <BlockEdit { ...props } />;
-		}
-
-		const blockType = getBlockType( name );
-		if ( ! blockType ) {
-			return <BlockEdit { ...props } />;
-		}
-
-		if ( ! hasBlockSupport( blockType, 'customClassName', true ) ) {
-			return <BlockEdit { ...props } />;
-		}
-
-		const panelClassName =
-			0 <
-			compact( [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] ).length
-				? 'sme-extension-panel sme-extension-panel--enabled'
-				: 'sme-extension-panel';
-
-		const onChangeIsHiddenSm = ( value ) => {
-			setAttributes( {
-				smeIsHiddenSm: value,
-				className: classnames( className, {
-					'sme-hidden-sm': value,
-				} ),
-			} );
-		};
-
-		const onChangeIsHiddenMd = ( value ) => {
-			setAttributes( {
-				smeIsHiddenMd: value,
-				className: classnames( className, {
-					'sme-hidden-md': value,
-				} ),
-			} );
-		};
-
-		const onChangeIsHiddenLg = ( value ) => {
-			setAttributes( {
-				smeIsHiddenLg: value,
-				className: classnames( className, {
-					'sme-hidden-lg-up': value,
-				} ),
-			} );
-		};
-
-		return (
-			<>
-				<BlockEdit { ...props } />
-
-				<InspectorControls>
-					<PanelBody
-						title={ __(
-							'Display setting (By window size)',
-							'snow-monkey-editor'
-						) }
-						initialOpen={ false }
-						icon={ icon }
-						className={ panelClassName }
-					>
-						<ToggleControl
-							label={ __(
-								'Hide on smartphone size',
-								'snow-monkey-editor'
-							) }
-							checked={ smeIsHiddenSm }
-							onChange={ onChangeIsHiddenSm }
-						/>
-
-						<ToggleControl
-							label={ __(
-								'Hide on tablet size',
-								'snow-monkey-editor'
-							) }
-							checked={ smeIsHiddenMd }
-							onChange={ onChangeIsHiddenMd }
-						/>
-
-						<ToggleControl
-							label={ __(
-								'Hide on PC size',
-								'snow-monkey-editor'
-							) }
-							checked={ smeIsHiddenLg }
-							onChange={ onChangeIsHiddenLg }
-						/>
-					</PanelBody>
-				</InspectorControls>
-			</>
-		);
+	const onChangeIsHiddenSm = ( value ) => {
+		setAttributes( {
+			smeIsHiddenSm: value,
+			className: classnames( className, {
+				'sme-hidden-sm': value,
+			} ),
+		} );
 	};
-}, 'withSnowMonkeyEditorHiddenBySizeBlockEdit' );
 
-addFilter(
-	'editor.BlockEdit',
-	'snow-monkey-editor/hidden-by-size/block-edit',
-	addBlockControl
-);
+	const onChangeIsHiddenMd = ( value ) => {
+		setAttributes( {
+			smeIsHiddenMd: value,
+			className: classnames( className, {
+				'sme-hidden-md': value,
+			} ),
+		} );
+	};
+
+	const onChangeIsHiddenLg = ( value ) => {
+		setAttributes( {
+			smeIsHiddenLg: value,
+			className: classnames( className, {
+				'sme-hidden-lg-up': value,
+			} ),
+		} );
+	};
+
+	return (
+		<>
+			<ToggleControl
+				label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
+				checked={ smeIsHiddenSm }
+				onChange={ onChangeIsHiddenSm }
+			/>
+
+			<ToggleControl
+				label={ __( 'Hide on tablet size', 'snow-monkey-editor' ) }
+				checked={ smeIsHiddenMd }
+				onChange={ onChangeIsHiddenMd }
+			/>
+
+			<ToggleControl
+				label={ __( 'Hide on PC size', 'snow-monkey-editor' ) }
+				checked={ smeIsHiddenLg }
+				onChange={ onChangeIsHiddenLg }
+			/>
+		</>
+	);
+};
+
+export const settings = {
+	resetAll: {},
+	hasValue: ( props ) =>
+		0 <
+		compact( [
+			props.attributes?.smeIsHiddenSm,
+			props.attributes?.smeIsHiddenMd,
+			props.attributes?.smeIsHiddenLg,
+		] ).length,
+	resetValue: ( props ) =>
+		props.setAttributes( {
+			smeIsHiddenSm: undefined,
+			smeIsHiddenMd: undefined,
+			smeIsHiddenLg: undefined,
+		} ),
+	label: __( 'Display setting (By window size)', 'snow-monkey-editor' ),
+	isShown,
+	Content,
+};
+
+export const blockAttributes = ( blockType ) => {
+	const isApplyToUser = isApplyExtensionToUser(
+		snowmonkeyeditor.currentUser,
+		'hidden-by-size'
+	);
+	if ( ! isApplyToUser ) {
+		return blockType;
+	}
+
+	const isApplyToBlock = isApplyExtensionToBlock(
+		blockType.name,
+		'hidden-by-size'
+	);
+	if ( ! isApplyToBlock ) {
+		return blockType;
+	}
+
+	blockType.attributes = {
+		...blockType.attributes,
+		...customAttributes,
+	};
+
+	return blockType;
+};

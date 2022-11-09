@@ -52,7 +52,7 @@
     "clean:js": "rimraf dist/js",
     "clean:zip": "rimraf snow-monkey-editor.zip",
     "css": "npm run clean:css && node-sass src/css -o dist/css && postcss dist/css/*.css -r",
-    "js": "npm run clean:js && wp-scripts build src/js/app.js src/js/editor.js src/js/editor-extension.js --output-path dist/js",
+    "js": "npm run clean:js && npm run format:js && wp-scripts build src/js/app.js src/js/editor.js src/js/editor-extension.js --output-path dist/js",
     "build": "npm-run-all -s css js",
     "make-pot": "npm run wp 'i18n make-pot wp-content/plugins/snow-monkey-editor wp-content/plugins/snow-monkey-editor/languages/snow-monkey-editor.pot --exclude=.*,dist,languages'",
     "make-json": "rimraf languages/*.json && npm run wp 'i18n make-json wp-content/plugins/snow-monkey-editor/languages/snow-monkey-editor-ja.po --no-purge'",
