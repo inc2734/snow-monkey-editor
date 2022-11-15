@@ -62,11 +62,15 @@ const addBlockAttributes = ( blockTypes ) => {
 
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
+		const isExtensionsShown = settings.some( ( setting ) =>
+			setting.isShown( props )
+		);
+
 		return (
 			<>
 				<BlockEdit { ...props } />
 
-				{ settings && (
+				{ isExtensionsShown && (
 					<InspectorControls>
 						<ToolsPanel
 							label={ __(
