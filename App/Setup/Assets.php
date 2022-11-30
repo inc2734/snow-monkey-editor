@@ -30,6 +30,12 @@ class Assets {
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor-extension.js' ),
 			true
 		);
+
+		wp_set_script_translations(
+			'snow-monkey-editor@editor-extension',
+			'snow-monkey-editor',
+			SNOW_MONKEY_EDITOR_PATH . '/languages'
+		);
 	}
 
 	/**
@@ -43,6 +49,12 @@ class Assets {
 			$asset['dependencies'],
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor.js' ),
 			true
+		);
+
+		wp_set_script_translations(
+			'snow-monkey-editor@editor',
+			'snow-monkey-editor',
+			SNOW_MONKEY_EDITOR_PATH . '/languages'
 		);
 
 		wp_enqueue_style(

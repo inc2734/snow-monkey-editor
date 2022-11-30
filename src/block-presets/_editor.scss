@@ -1,0 +1,46 @@
+.sme-editor-block-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__preset {
+    flex: 100%;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+
+    .components-button.is-secondary {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+}
+
+.sme-editor-block-presets-inserter {
+  .sme-editor-block-presets-inserter__title {
+    margin: 0 0 8px;
+    font-weight: bold;
+  }
+
+  &__control {
+    display: flex;
+
+    .components-base-control {
+      flex: 1;
+      margin: 0 8px 0 0;
+      display: flex;
+
+      .components-base-control__field {
+        margin: 0;
+        display: flex;
+        flex: 1;
+      }
+    }
+  }
+}
+
+.sme-editor-block-presets + .sme-editor-block-presets-inserter {
+  margin-top: 1em;
+}
+
+

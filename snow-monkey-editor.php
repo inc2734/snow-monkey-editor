@@ -56,10 +56,38 @@ class Bootstrap {
 	 * Bootstrap.
 	 */
 	public function _bootstrap() {
+		add_filter( 'load_textdomain_mofile', array( $this, '_load_textdomain_mofile' ), 10, 2 );
+
+		load_plugin_textdomain(
+			'snow-monkey-editor',
+			false,
+			basename( SNOW_MONKEY_EDITOR_PATH ) . '/languages'
+		);
+
 		new App\Setup\Assets();
 		new App\Setup\CurrentUser();
 		new App\Setup\Endpoint();
-		new App\Setup\TextDomain();
+	}
+
+	/**
+	 * When local .mo file exists, load this.
+	 *
+	 * @param string $mofile Path to the MO file.
+	 * @param string $domain Text domain. Unique identifier for retrieving translated strings.
+	 * @return string
+	 */
+	public function _load_textdomain_mofile( $mofile, $domain ) {
+		if ( 'snow-monkey-editor' !== $domain ) {
+			return $mofile;
+		}
+
+		$mofilename   = basename( $mofile );
+		$local_mofile = SNOW_MONKEY_EDITOR_PATH . '/languages/' . $mofilename;
+		if ( ! file_exists( $local_mofile ) ) {
+			return $mofile;
+		}
+
+		return $local_mofile;
 	}
 
 	/**

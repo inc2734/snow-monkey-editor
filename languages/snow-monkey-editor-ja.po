@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
 "editor\n"
-"POT-Creation-Date: 2022-10-18T04:22:31+00:00\n"
-"PO-Revision-Date: 2022-10-18 13:23+0900\n"
+"POT-Creation-Date: 2022-11-30T08:18:56+00:00\n"
+"PO-Revision-Date: 2022-11-30 17:19+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -25,12 +25,13 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
 #. Plugin Name of the plugin
+#: dist/js/editor-extension.js:5
 msgid "Snow Monkey Editor"
 msgstr "Snow Monkey Editor"
 
 #. Description of the plugin
 msgid "Extends gutenberg block editor"
-msgstr ""
+msgstr "Gutenbergブロックエディターを拡張"
 
 #. Author of the plugin
 msgid "inc2734"
@@ -40,205 +41,223 @@ msgstr "inc2734"
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
-#: src/extension/animation/editor.js:82
-msgid "bounce-in"
-msgstr "バウンス・イン"
+#: dist/js/editor-extension.js:1
+msgid "Display setting (By window size)"
+msgstr "表示設定（ウィンドウサイズ）"
 
-#: src/extension/animation/editor.js:86
-msgid "bounce-down"
-msgstr "バウンス・ダウン"
+#: dist/js/editor-extension.js:1
+msgid "Hide on smartphone size"
+msgstr "スマートフォンサイズで非表示"
 
-#: src/extension/animation/editor.js:90
-msgid "fade-in"
-msgstr "フェード・イン"
+#: dist/js/editor-extension.js:1
+msgid "Hide on tablet size"
+msgstr "タブレットサイズで非表示"
 
-#: src/extension/animation/editor.js:94
-msgid "fade-in-up"
-msgstr "フェード・イン・アップ"
+#: dist/js/editor-extension.js:1
+msgid "Hide on PC size"
+msgstr "PC サイズで非表示"
 
-#: src/extension/animation/editor.js:98
-msgid "fade-in-down"
-msgstr "フェード・イン・ダウン"
+#: dist/js/editor-extension.js:1
+msgid "Display setting (By roles)"
+msgstr "表示設定（ロール）"
 
-#: src/extension/animation/editor.js:142 src/extension/animation/editor.js:148
+#: dist/js/editor-extension.js:1
+msgid "user is not logged in"
+msgstr "非ログインユーザー"
+
+#. translators: %1$s: The role name
+#: dist/js/editor-extension.js:3
+msgid "Hide if %1$s"
+msgstr "%1$sのとき非表示"
+
+#: dist/js/editor-extension.js:3
 msgid "Animation"
 msgstr "アニメーション"
 
-#: src/extension/animation/editor.js:155
+#: dist/js/editor-extension.js:3
+msgid "bounce-in"
+msgstr "バウンス・イン"
+
+#: dist/js/editor-extension.js:3
+msgid "bounce-down"
+msgstr "バウンス・ダウン"
+
+#: dist/js/editor-extension.js:3
+msgid "fade-in"
+msgstr "フェード・イン"
+
+#: dist/js/editor-extension.js:3
+msgid "fade-in-up"
+msgstr "フェード・イン・アップ"
+
+#: dist/js/editor-extension.js:3
+msgid "fade-in-down"
+msgstr "フェード・イン・ダウン"
+
+#: dist/js/editor-extension.js:3
 msgid "Delay"
 msgstr "遅延"
 
-#: src/extension/animation/editor.js:165
+#: dist/js/editor-extension.js:3
 msgid "Duration"
 msgstr "所要時間"
 
-#: src/extension/date-time/date-time-picker.js:28
+#: dist/js/editor-extension.js:3
 msgid "Clear"
 msgstr "クリア"
 
-#: src/extension/date-time/editor.js:94
+#: dist/js/editor-extension.js:3
 msgid "Publish setting"
 msgstr "公開設定"
 
-#: src/extension/date-time/editor.js:107
+#: dist/js/editor-extension.js:3
 msgid "Unpublish setting"
 msgstr "公開終了設定"
 
-#: src/extension/editing-lock/editor.js:144
+#: dist/js/editor-extension.js:3
 msgid "Editing lock (By roles)"
 msgstr "編集ロック（ロール）"
 
 #. translators: %1$s: The role name
-#: src/extension/editing-lock/editor.js:155
+#: dist/js/editor-extension.js:5
 msgid "Edit lock if %1$s"
 msgstr "%1$sのときロック"
 
-#: src/extension/hidden-by-role/editor.js:60
-msgid "user is not logged in"
-msgstr "非ログインユーザー"
-
-#: src/extension/hidden-by-role/editor.js:137
-msgid "Display setting (By roles)"
-msgstr "表示設定（ロール）"
-
-#. translators: %1$s: The role name
-#: src/extension/hidden-by-role/editor.js:148
-msgid "Hide if %1$s"
-msgstr "%1$sのとき非表示"
-
-#: src/extension/hidden-by-size/editor.js:124
-msgid "Display setting (By window size)"
-msgstr "表示設定（ウィンドウサイズ）"
-
-#: src/extension/hidden-by-size/editor.js:133
-msgid "Hide on smartphone size"
-msgstr "スマートフォンサイズで非表示"
-
-#: src/extension/hidden-by-size/editor.js:142
-msgid "Hide on tablet size"
-msgstr "タブレットサイズで非表示"
-
-#: src/extension/hidden-by-size/editor.js:151
-msgid "Hide on PC size"
-msgstr "PC サイズで非表示"
-
-#: src/format/badge/editor.js:17
-msgid "Badge"
-msgstr "バッジ"
-
-#: src/format/bg-color/editor.js:17
-msgid "Background color"
-msgstr "背景色"
-
-#: src/format/component/format-toolbar.js:35
+#: dist/js/editor.js:1
 msgid "Snow Monkey Editor Controls"
 msgstr "Snow Monkey Editor コントロール"
 
-#: src/format/component/inline-background-color.js:91
-#: src/format/component/inline-color.js:85
-#: src/format/component/inline-gradient.js:83
-msgid "Color"
-msgstr "色"
-
-#: src/format/font-size/editor.js:14
-msgid "Font size"
-msgstr "文字サイズ"
-
-#: src/format/highlighter/editor.js:17
-msgid "Highlighter"
-msgstr "蛍光ペン"
-
-#: src/format/letter-spacing/editor.js:12
-msgid "Letter spacing"
-msgstr "文字間隔"
-
-#: src/format/line-height/editor.js:12
-msgid "Line height"
-msgstr "行の高さ"
-
-#: src/format/remove/editor.js:9
+#: dist/js/editor.js:1
 msgid "Remove formatting"
 msgstr "書式設定をクリア"
 
-#: src/format/text-color/editor.js:17
+#: dist/js/editor.js:1
+msgid "Font size"
+msgstr "文字サイズ"
+
+#: dist/js/editor.js:1
+msgid "Letter spacing"
+msgstr "文字間隔"
+
+#: dist/js/editor.js:1
+msgid "Line height"
+msgstr "行の高さ"
+
+#: dist/js/editor.js:1
+msgid "Color"
+msgstr "色"
+
+#: dist/js/editor.js:1
 msgid "Text color"
 msgstr "文字色"
 
-#: src/style/alert-remark/settings.js:5
-msgid "Alert (Remarks)"
-msgstr "アラート（備考）"
+#: dist/js/editor.js:1
+msgid "Background color"
+msgstr "背景色"
 
-#: src/style/alert-success/settings.js:5
-msgid "Alert (Success)"
-msgstr "アラート（サクセス）"
+#: dist/js/editor.js:1
+msgid "Highlighter"
+msgstr "蛍光ペン"
 
-#: src/style/alert-warning/settings.js:5
-msgid "Alert (Warning)"
-msgstr "アラート（ワーニング）"
+#: dist/js/editor.js:1
+msgid "Badge"
+msgstr "バッジ"
 
-#: src/style/alert/settings.js:5
+#: dist/js/editor.js:1
 msgid "Alert"
 msgstr "アラート"
 
-#: src/style/block-code-nowrap/settings.js:5
+#: dist/js/editor.js:1
+msgid "Alert (Success)"
+msgstr "アラート（サクセス）"
+
+#: dist/js/editor.js:1
+msgid "Alert (Warning)"
+msgstr "アラート（ワーニング）"
+
+#: dist/js/editor.js:1
+msgid "Alert (Remarks)"
+msgstr "アラート（備考）"
+
+#: dist/js/editor.js:1
 msgid "No wrap"
 msgstr "折り返さない"
 
-#: src/style/block-code-wrap/settings.js:5
+#: dist/js/editor.js:1
 msgid "Wrap"
 msgstr "折り返す"
 
-#: src/style/fluid-shape-1/settings.js:5
+#: dist/js/editor.js:1
 msgid "Fluid Shape 1"
 msgstr "流体シェイプ1"
 
-#: src/style/fluid-shape-2/settings.js:5
+#: dist/js/editor.js:1
 msgid "Fluid Shape 2"
 msgstr "流体シェイプ2"
 
-#: src/style/fluid-shape-3/settings.js:5
+#: dist/js/editor.js:1
 msgid "Fluid Shape 3"
 msgstr "流体シェイプ3"
 
-#: src/style/list-arrow/settings.js:5
+#: dist/js/editor.js:1
 msgid "Arrow"
 msgstr "矢印"
 
-#: src/style/list-check/settings.js:5
+#: dist/js/editor.js:1
 msgid "Check"
 msgstr "チェック"
 
-#: src/style/list-remark/settings.js:5
+#: dist/js/editor.js:1
 msgid "Remarks"
 msgstr "備考"
 
-#: src/style/list-times/settings.js:5
+#: dist/js/editor.js:1
 msgid "Times"
 msgstr "✗"
 
-#: src/style/ordered-list-circle/settings.js:5
+#: dist/js/editor.js:1
 msgid "Ordered list (Circle)"
 msgstr "序列リスト（丸）"
 
-#: src/style/ordered-list-square/settings.js:5
+#: dist/js/editor.js:1
 msgid "Ordered list (Square)"
 msgstr "序列リスト（四角）"
 
-#: src/style/post-it-narrow/settings.js:5
-msgid "Post-it (Narrow)"
-msgstr "付箋（細）"
-
-#: src/style/post-it/settings.js:5
+#: dist/js/editor.js:1
 msgid "Post-it"
 msgstr "付箋"
 
-#: src/style/shadowed/settings.js:5
+#: dist/js/editor.js:1
+msgid "Post-it (Narrow)"
+msgstr "付箋（細）"
+
+#: dist/js/editor.js:1
 msgid "Shadowed"
 msgstr "影付き"
 
-#: src/style/speech/settings.js:5
+#: dist/js/editor.js:1
 msgid "Speech"
 msgstr "吹きだし"
+
+#: dist/js/editor.js:1
+msgid "Remove this preset"
+msgstr "このプリセットを削除"
+
+#: dist/js/editor.js:1
+msgid "Presets"
+msgstr "プリセット"
+
+#: dist/js/editor.js:1
+msgid "Save current settings as a preset"
+msgstr "現在の設定をプリセットとして保存する"
+
+#: dist/js/editor.js:1
+msgid "Input the preset name."
+msgstr "プリセット名を入力してください。"
+
+#: dist/js/editor.js:1
+msgid "Save"
+msgstr "保存"
 
 #~ msgid "Custom colors"
 #~ msgstr "カスタムカラー"

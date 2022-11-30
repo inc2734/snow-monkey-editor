@@ -2,19 +2,20 @@
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Snow Monkey Editor 8.0.2\n"
+"Project-Id-Version: Snow Monkey Editor 9.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-editor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-10-18T04:22:31+00:00\n"
+"POT-Creation-Date: 2022-11-30T08:18:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.0\n"
+"X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: snow-monkey-editor\n"
 
 #. Plugin Name of the plugin
+#: dist/js/editor-extension.js:5
 msgid "Snow Monkey Editor"
 msgstr ""
 
@@ -30,203 +31,220 @@ msgstr ""
 msgid "https://2inc.org"
 msgstr ""
 
-#: src/extension/animation/editor.js:82
-msgid "bounce-in"
+#: dist/js/editor-extension.js:1
+msgid "Display setting (By window size)"
 msgstr ""
 
-#: src/extension/animation/editor.js:86
-msgid "bounce-down"
+#: dist/js/editor-extension.js:1
+msgid "Hide on smartphone size"
 msgstr ""
 
-#: src/extension/animation/editor.js:90
-msgid "fade-in"
+#: dist/js/editor-extension.js:1
+msgid "Hide on tablet size"
 msgstr ""
 
-#: src/extension/animation/editor.js:94
-msgid "fade-in-up"
+#: dist/js/editor-extension.js:1
+msgid "Hide on PC size"
 msgstr ""
 
-#: src/extension/animation/editor.js:98
-msgid "fade-in-down"
+#: dist/js/editor-extension.js:1
+msgid "Display setting (By roles)"
 msgstr ""
 
-#: src/extension/animation/editor.js:142
-#: src/extension/animation/editor.js:148
+#: dist/js/editor-extension.js:1
+msgid "user is not logged in"
+msgstr ""
+
+#. translators: %1$s: The role name
+#: dist/js/editor-extension.js:3
+msgid "Hide if %1$s"
+msgstr ""
+
+#: dist/js/editor-extension.js:3
 msgid "Animation"
 msgstr ""
 
-#: src/extension/animation/editor.js:155
+#: dist/js/editor-extension.js:3
+msgid "bounce-in"
+msgstr ""
+
+#: dist/js/editor-extension.js:3
+msgid "bounce-down"
+msgstr ""
+
+#: dist/js/editor-extension.js:3
+msgid "fade-in"
+msgstr ""
+
+#: dist/js/editor-extension.js:3
+msgid "fade-in-up"
+msgstr ""
+
+#: dist/js/editor-extension.js:3
+msgid "fade-in-down"
+msgstr ""
+
+#: dist/js/editor-extension.js:3
 msgid "Delay"
 msgstr ""
 
-#: src/extension/animation/editor.js:165
+#: dist/js/editor-extension.js:3
 msgid "Duration"
 msgstr ""
 
-#: src/extension/date-time/date-time-picker.js:28
+#: dist/js/editor-extension.js:3
 msgid "Clear"
 msgstr ""
 
-#: src/extension/date-time/editor.js:94
+#: dist/js/editor-extension.js:3
 msgid "Publish setting"
 msgstr ""
 
-#: src/extension/date-time/editor.js:107
+#: dist/js/editor-extension.js:3
 msgid "Unpublish setting"
 msgstr ""
 
-#: src/extension/editing-lock/editor.js:144
+#: dist/js/editor-extension.js:3
 msgid "Editing lock (By roles)"
 msgstr ""
 
 #. translators: %1$s: The role name
-#: src/extension/editing-lock/editor.js:155
+#: dist/js/editor-extension.js:5
 msgid "Edit lock if %1$s"
 msgstr ""
 
-#: src/extension/hidden-by-role/editor.js:60
-msgid "user is not logged in"
-msgstr ""
-
-#: src/extension/hidden-by-role/editor.js:137
-msgid "Display setting (By roles)"
-msgstr ""
-
-#. translators: %1$s: The role name
-#: src/extension/hidden-by-role/editor.js:148
-msgid "Hide if %1$s"
-msgstr ""
-
-#: src/extension/hidden-by-size/editor.js:124
-msgid "Display setting (By window size)"
-msgstr ""
-
-#: src/extension/hidden-by-size/editor.js:133
-msgid "Hide on smartphone size"
-msgstr ""
-
-#: src/extension/hidden-by-size/editor.js:142
-msgid "Hide on tablet size"
-msgstr ""
-
-#: src/extension/hidden-by-size/editor.js:151
-msgid "Hide on PC size"
-msgstr ""
-
-#: src/format/badge/editor.js:17
-msgid "Badge"
-msgstr ""
-
-#: src/format/bg-color/editor.js:17
-msgid "Background color"
-msgstr ""
-
-#: src/format/component/format-toolbar.js:35
+#: dist/js/editor.js:1
 msgid "Snow Monkey Editor Controls"
 msgstr ""
 
-#: src/format/component/inline-background-color.js:91
-#: src/format/component/inline-color.js:85
-#: src/format/component/inline-gradient.js:83
-msgid "Color"
-msgstr ""
-
-#: src/format/font-size/editor.js:14
-msgid "Font size"
-msgstr ""
-
-#: src/format/highlighter/editor.js:17
-msgid "Highlighter"
-msgstr ""
-
-#: src/format/letter-spacing/editor.js:12
-msgid "Letter spacing"
-msgstr ""
-
-#: src/format/line-height/editor.js:12
-msgid "Line height"
-msgstr ""
-
-#: src/format/remove/editor.js:9
+#: dist/js/editor.js:1
 msgid "Remove formatting"
 msgstr ""
 
-#: src/format/text-color/editor.js:17
+#: dist/js/editor.js:1
+msgid "Font size"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Letter spacing"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Line height"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Color"
+msgstr ""
+
+#: dist/js/editor.js:1
 msgid "Text color"
 msgstr ""
 
-#: src/style/alert-remark/settings.js:5
-msgid "Alert (Remarks)"
+#: dist/js/editor.js:1
+msgid "Background color"
 msgstr ""
 
-#: src/style/alert-success/settings.js:5
-msgid "Alert (Success)"
+#: dist/js/editor.js:1
+msgid "Highlighter"
 msgstr ""
 
-#: src/style/alert-warning/settings.js:5
-msgid "Alert (Warning)"
+#: dist/js/editor.js:1
+msgid "Badge"
 msgstr ""
 
-#: src/style/alert/settings.js:5
+#: dist/js/editor.js:1
 msgid "Alert"
 msgstr ""
 
-#: src/style/block-code-nowrap/settings.js:5
+#: dist/js/editor.js:1
+msgid "Alert (Success)"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Alert (Warning)"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Alert (Remarks)"
+msgstr ""
+
+#: dist/js/editor.js:1
 msgid "No wrap"
 msgstr ""
 
-#: src/style/block-code-wrap/settings.js:5
+#: dist/js/editor.js:1
 msgid "Wrap"
 msgstr ""
 
-#: src/style/fluid-shape-1/settings.js:5
+#: dist/js/editor.js:1
 msgid "Fluid Shape 1"
 msgstr ""
 
-#: src/style/fluid-shape-2/settings.js:5
+#: dist/js/editor.js:1
 msgid "Fluid Shape 2"
 msgstr ""
 
-#: src/style/fluid-shape-3/settings.js:5
+#: dist/js/editor.js:1
 msgid "Fluid Shape 3"
 msgstr ""
 
-#: src/style/list-arrow/settings.js:5
+#: dist/js/editor.js:1
 msgid "Arrow"
 msgstr ""
 
-#: src/style/list-check/settings.js:5
+#: dist/js/editor.js:1
 msgid "Check"
 msgstr ""
 
-#: src/style/list-remark/settings.js:5
+#: dist/js/editor.js:1
 msgid "Remarks"
 msgstr ""
 
-#: src/style/list-times/settings.js:5
+#: dist/js/editor.js:1
 msgid "Times"
 msgstr ""
 
-#: src/style/ordered-list-circle/settings.js:5
+#: dist/js/editor.js:1
 msgid "Ordered list (Circle)"
 msgstr ""
 
-#: src/style/ordered-list-square/settings.js:5
+#: dist/js/editor.js:1
 msgid "Ordered list (Square)"
 msgstr ""
 
-#: src/style/post-it-narrow/settings.js:5
-msgid "Post-it (Narrow)"
-msgstr ""
-
-#: src/style/post-it/settings.js:5
+#: dist/js/editor.js:1
 msgid "Post-it"
 msgstr ""
 
-#: src/style/shadowed/settings.js:5
+#: dist/js/editor.js:1
+msgid "Post-it (Narrow)"
+msgstr ""
+
+#: dist/js/editor.js:1
 msgid "Shadowed"
 msgstr ""
 
-#: src/style/speech/settings.js:5
+#: dist/js/editor.js:1
 msgid "Speech"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Remove this preset"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Presets"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Save current settings as a preset"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Input the preset name."
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Save"
 msgstr ""
