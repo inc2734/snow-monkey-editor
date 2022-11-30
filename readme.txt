@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.1
 Tested up to: 6.1
-Stable tag: 9.0.3
+Stable tag: 9.1.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -39,6 +39,12 @@ You can settings in inspector.
 * Publish date time settings
 * Unpublish date time settings
 * Edit lock by user roles. (Only administrators can set it)
+
+= Block presets =
+
+This feature allows you to save the settings of a block and set them for other blocks of the same type at the touch of a button.
+
+(The number of blocks/attributes that can be used by the block preset feature is limited by default.)
 
 = Block styles =
 
@@ -181,6 +187,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.1.0 =
+* Add block presets feature.
 
 = 9.0.3 =
 * Fixed a bug that the extension panel of "Snow Monkey Editor" displayed an empty panel even for blocks that did not need it.
