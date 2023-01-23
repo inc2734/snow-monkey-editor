@@ -24,13 +24,21 @@ export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 
 	const currentClass = activeFontSizeFormat.attributes.class;
 	if ( currentClass ) {
-		const fontSizeSlug = currentClass.replace(
+		let fontSizeSlug = currentClass.replace(
 			/.*has-([^\s]*)-font-size.*/,
 			'$1'
 		);
-		const fontSizeObject = find( fontSizes, { slug: fontSizeSlug } );
+		let fontSizeObject = find( fontSizes, { slug: fontSizeSlug } );
 		if ( ! fontSizeObject ) {
-			return;
+			fontSizeSlug = fontSizeSlug.replace(
+				/(\d)-([^\d])/,
+				'$1$2',
+				fontSizeSlug
+			);
+			fontSizeObject = find( fontSizes, { slug: fontSizeSlug } );
+			if ( ! fontSizeObject ) {
+				return;
+			}
 		}
 		return fontSizeObject.size;
 	}
