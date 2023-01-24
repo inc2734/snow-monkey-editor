@@ -51,17 +51,20 @@ const useGetRoles = () => {
 };
 
 const Decorator = ( props ) => {
+	const { attributes, children } = props;
+	const { className, smeIsHiddenRoles = [] } = attributes;
+
 	const isDecorate =
-		!! props.attributes.className &&
+		!! className &&
 		! snowmonkeyeditor.currentUser.roles.includes( 'administrator' ) &&
-		props.attributes.smeIsHiddenRoles.some( ( role ) =>
+		smeIsHiddenRoles.some( ( role ) =>
 			snowmonkeyeditor.currentUser.roles.includes( role )
 		);
 
 	return isDecorate ? (
-		<div className="sme-hidden-by-role">{ props.children }</div>
+		<div className="sme-hidden-by-role">{ children }</div>
 	) : (
-		<>{ props.children }</>
+		<>{ children }</>
 	);
 };
 
