@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.1
 Tested up to: 6.1
-Stable tag: 9.1.0
+Stable tag: 9.1.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -187,6 +187,10 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.1.1 =
+* Fixed a bug that block was broken when changing the block style with a user belonging to a custom role.
+* Fixed a bug that when the font size format picker was opened with the font size format already set, the set font size was sometimes not selected.
 
 = 9.1.0 =
 * Add block presets feature.
