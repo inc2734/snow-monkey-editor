@@ -98,6 +98,10 @@ class Bootstrap {
 	 * @return string
 	 */
 	public function _hidden_by_roles( $content, $block ) {
+		if ( ! isset( $block['attrs'] ) ) {
+			return $content;
+		}
+
 		$attributes          = $block['attrs'];
 		$has_hidden_by_roles = isset( $attributes['smeIsHiddenRoles'] ) ? $attributes['smeIsHiddenRoles'] : false;
 		if ( $has_hidden_by_roles ) {
@@ -122,6 +126,10 @@ class Bootstrap {
 	 * @return string
 	 */
 	public function _date_time( $content, $block ) {
+		if ( ! isset( $block['attrs'] ) ) {
+			return $content;
+		}
+
 		// Dates entered in the block editor are localized.
 		$attributes      = $block['attrs'];
 		$start_date_time = isset( $attributes['smeStartDateTime'] ) ? $attributes['smeStartDateTime'] : false;
@@ -165,6 +173,10 @@ class Bootstrap {
 			return $content;
 		}
 
+		if ( ! isset( $block['attrs'] ) ) {
+			return $content;
+		}
+
 		$attributes = $block['attrs'];
 		$class_name = isset( $attributes['className'] ) ? $attributes['className'] : false;
 
@@ -198,6 +210,10 @@ class Bootstrap {
 	 * @return string
 	 */
 	public function _animation_delay( $content, $block ) {
+		if ( ! isset( $block['attrs'] ) ) {
+			return $content;
+		}
+
 		$attributes = $block['attrs'];
 		$delay      = isset( $attributes['smeAnimationDelay'] )
 			? $attributes['smeAnimationDelay']
@@ -223,6 +239,10 @@ class Bootstrap {
 	 * @return string
 	 */
 	public function _animation_duration( $content, $block ) {
+		if ( ! isset( $block['attrs'] ) ) {
+			return $content;
+		}
+
 		$attributes = $block['attrs'];
 		$duration   = isset( $attributes['smeAnimationDuration'] )
 			? $attributes['smeAnimationDuration']
