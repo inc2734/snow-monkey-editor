@@ -55,14 +55,15 @@ const Edit = ( props ) => {
 					onClose={ () => setIsAddingColor( false ) }
 					onChange={ ( newValue ) => {
 						if ( !! newValue ) {
+							if ( newValue.match( /^#/ ) ) {
+								newValue = hexToRgba( newValue, 0.5 );
+							}
+
 							onChange(
 								applyFormat( value, {
 									type: name,
 									attributes: {
-										style: `background-image: linear-gradient(transparent 60%, ${ hexToRgba(
-											newValue,
-											0.5
-										) } 60%)`,
+										style: `background-image: linear-gradient(transparent 60%, ${ newValue } 60%)`,
 									},
 								} )
 							);
