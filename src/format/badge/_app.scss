@@ -1,14 +1,11 @@
 .sme-badge {
   display: inline-flex;
   align-items: center;
-  height: $_base-line-height;
   color: #fff;
-  padding: 0 .5em;
+  padding: .25em 0.5em;
   vertical-align: middle;
-  font-size: calc(1em - 2px);
-  line-height: 1;
-  border-radius: $_border-radius !important;
+  font-size: calc(1em - .125rem);
+  border-radius: $_border-radius;
   font-weight: bold;
-  transform: translateY(-2px);
   white-space: nowrap;
 }
