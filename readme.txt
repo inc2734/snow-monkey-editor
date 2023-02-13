@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.1
 Tested up to: 6.1
-Stable tag: 9.1.1
+Stable tag: 9.1.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -187,6 +187,11 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.1.2 =
+* Fix PHP Warning error.
+* Fixed a bug that broke blocks when selecting colors defined in CSS vars in the highlighter.
+* Update badge style.
 
 = 9.1.1 =
 * Fixed a bug that block was broken when changing the block style with a user belonging to a custom role.
