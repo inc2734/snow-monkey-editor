@@ -1,12 +1,12 @@
 .is-style-sme-post-it {
   position: relative;
-  @include _margin-bottom(1);
+	margin-bottom: 1.8rem;
   background-color: _darker($alert-color);
   width: fit-content;
   max-width: 300px;
 
   &:not(:last-child) {
-    @include _margin-bottom(2);
+		margin-bottom: 3.6rem;
   }
 
   &::before {
@@ -15,7 +15,7 @@
     display: block;
     top: 100%;
     right: 0;
-    border-width: _space(1) _space(1) 0 0;
+    border-width: 1.8rem 1.8rem 0 0;
     border-style: solid;
     border-color: _lighter($_color-gray) transparent;
   }
@@ -24,11 +24,11 @@
     content: '';
     position: absolute;
     top: calc(100% - 1px);
-    right: _space(1);
+    right: 1.8rem;
     left: 0;
     display: block;
     background-color: inherit;
-    height: _space(1);
+    height: 1.8rem;
   }
 
   &.has-text-align-center {
@@ -43,5 +43,5 @@
 }
 
 p.is-style-sme-post-it {
-  @include _padding(1, 1, 0);
+	padding: 1.8rem 1.8rem 0;
 }

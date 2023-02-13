@@ -3,7 +3,7 @@
   @import 'app';
 
   .is-style-sme-post-it {
-    @include _margin-bottom(2);
+		margin-bottom: 3.6rem;
 
     &.wp-block {
       max-width: 300px;

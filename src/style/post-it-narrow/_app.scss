@@ -12,7 +12,7 @@
     bottom: 0;
     left: 0;
     display: block;
-    width: _space(.25);
+    width: .45rem;
     background-color: _darker(adjust-hue($alert-color, -30deg));
   }
 
@@ -28,5 +28,5 @@
 }
 
 p.is-style-sme-post-it-narrow {
-  @include _padding(.25, .5, .25, .75);
+  padding: .45rem .9rem .45rem 1.35rem;
 }

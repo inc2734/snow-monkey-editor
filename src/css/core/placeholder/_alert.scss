@@ -1,29 +1,29 @@
 %alert {
-  @include _alert();
-  position: relative;
-  border-radius: $_border-radius;
-  @include _padding(2.5, 1, 1, 1);
+	@include _alert();
+	position: relative;
+	border-radius: $_border-radius;
+	padding: 4.5rem 1.8rem 1.8rem;
 
-  @include _media-min(md) {
-    @include _padding(1, 1, 1, 2.5);
-  }
+	@include _media-min(md) {
+		padding: 1.8rem 1.8rem 1.8rem 4.5rem;
+	}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: _space(1);
-    left: 50%;
-    transform: translateX(-50%);
-    display: block;
-    @include _square(24px);
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 1.8rem;
+		left: 50%;
+		transform: translateX(-50%);
+		display: block;
+		@include _square(24px);
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-size: contain;
 
-    @include _media-min(md) {
-      top: 50%;
-      left: _space(1);
-      transform: translateY(-50%);
-    }
-  }
+		@include _media-min(md) {
+			top: 50%;
+			left: 1.8rem;
+			transform: translateY(-50%);
+		}
+	}
 }

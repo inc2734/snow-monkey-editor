@@ -9,7 +9,7 @@
     content: '';
     position: absolute;
     top: calc(100% - 7px);
-    left: _space(1.25);
+    left: 2.25rem;
     @include _square(14px);
     transform: rotate(45deg);
     background-color: inherit;
@@ -30,11 +30,11 @@
 
     &::before {
       left: auto;
-      right: _space(1.25);
+      right: 2.25rem;
     }
   }
 }
 
 p.is-style-sme-speech {
-  @include _padding(.5, 1);
+  padding: .9rem 1.8rem;
 }
