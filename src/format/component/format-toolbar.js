@@ -17,7 +17,7 @@ import { icon } from '../../helper/icon';
 
 const POPOVER_PROPS = {
 	position: 'bottom left',
-	isAlternate: true,
+	variant: 'alternate',
 };
 
 const Edit = () => {
