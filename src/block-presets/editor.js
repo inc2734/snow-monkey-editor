@@ -93,10 +93,12 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 						GLOBAL_IGNORE_ATTRIBUTES.forEach( ( attributeName ) => {
 							delete resetedAttributes[ attributeName ];
+							delete preset[ attributeName ];
 						} );
 
 						ignoreAttributes.forEach( ( attributeName ) => {
 							delete resetedAttributes[ attributeName ];
+							delete preset[ attributeName ];
 						} );
 
 						setAttributes( {
