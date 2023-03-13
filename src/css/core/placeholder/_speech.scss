@@ -1,0 +1,20 @@
+%speech {
+	--sme-speech--background-color: var(--_lighter-color-gray);
+	--sme-speech--border-radius: var(--_global--border-radius);
+	--sme-speech--triangle-size: 14px;
+
+	position: relative;
+	background-color: var(--sme-speech--background-color);
+	border-radius: var(--sme-speech--border-radius);
+	width: fit-content;
+	padding: var(--_padding-1) var(--_padding1);
+
+	&::before {
+		content: '';
+		position: absolute;
+		height: var(--sme-speech--triangle-size);
+		width: var(--sme-speech--triangle-size);
+		transform: rotate(45deg);
+		background-color: inherit;
+	}
+}

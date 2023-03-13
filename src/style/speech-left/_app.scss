@@ -1,0 +1,8 @@
+.is-style-sme-speech-left {
+	@extend %speech;
+
+	&::before {
+		right: calc(100% - var(--sme-speech--triangle-size) / 2);
+		top: calc(50% - var(--sme-speech--triangle-size) / 2);
+	}
+}

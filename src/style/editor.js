@@ -23,6 +23,9 @@ import postIt from './post-it/editor';
 import postItNarrow from './post-it-narrow/editor';
 import shadowed from './shadowed/editor';
 import speech from './speech/editor';
+import speechTop from './speech-top/editor';
+import speechRight from './speech-right/editor';
+import speechLeft from './speech-left/editor';
 
 [
 	alert,
@@ -44,6 +47,9 @@ import speech from './speech/editor';
 	postItNarrow,
 	shadowed,
 	speech,
+	speechTop,
+	speechRight,
+	speechLeft,
 ].forEach( ( component ) => {
 	component.forEach( ( props ) => registerStyle( props ) );
 } );

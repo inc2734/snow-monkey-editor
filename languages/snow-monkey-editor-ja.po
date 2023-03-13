@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
 "editor\n"
-"POT-Creation-Date: 2022-11-30T08:18:56+00:00\n"
-"PO-Revision-Date: 2022-11-30 17:19+0900\n"
+"POT-Creation-Date: 2023-03-13T06:13:43+00:00\n"
+"PO-Revision-Date: 2023-03-13 15:14+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -236,8 +236,20 @@ msgid "Shadowed"
 msgstr "影付き"
 
 #: dist/js/editor.js:1
-msgid "Speech"
-msgstr "吹きだし"
+msgid "Speech (Bottom)"
+msgstr "吹きだし（下）"
+
+#: dist/js/editor.js:1
+msgid "Speech (Top)"
+msgstr "吹きだし（上）"
+
+#: dist/js/editor.js:1
+msgid "Speech (Right)"
+msgstr "吹きだし（右）"
+
+#: dist/js/editor.js:1
+msgid "Speech (Left)"
+msgstr "吹きだし（左）"
 
 #: dist/js/editor.js:1
 msgid "Remove this preset"
@@ -258,6 +270,9 @@ msgstr "プリセット名を入力してください。"
 #: dist/js/editor.js:1
 msgid "Save"
 msgstr "保存"
+
+#~ msgid "Speech"
+#~ msgstr "吹きだし"
 
 #~ msgid "Custom colors"
 #~ msgstr "カスタムカラー"

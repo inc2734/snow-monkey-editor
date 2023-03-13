@@ -1,10 +1,10 @@
-.is-style-sme-speech {
+.is-style-sme-speech-top {
 	@extend %speech;
 
 	text-align: left;
 
 	&::before {
-		top: calc(100% - var(--sme-speech--triangle-size) / 2);
+		bottom: calc(100% - var(--sme-speech--triangle-size) / 2);
 		left: var(--_s1);
 	}
 
