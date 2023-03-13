@@ -58,7 +58,10 @@ There can be used in paragraph blocks, group blocks, image blocks, etc.
 * Post-it
 * Post-it (Narrow)
 * Shadowed
-* Speech
+* Speech (Top)
+* Speech (Right)
+* Speech (Bottom)
+* Speech (Left)
 * List (Arrow)
 * List (Check)
 * List (Remarks)
