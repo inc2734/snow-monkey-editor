@@ -25,7 +25,7 @@
 
 	<file>.</file>
 
-	<config name="text_domain" value="unitone"/>
+	<config name="text_domain" value="snow-monkey-editor"/>
 
 	<rule ref="WordPress-Core"/>
 	<rule ref="WordPress.CodeAnalysis.EmptyStatement"/>
