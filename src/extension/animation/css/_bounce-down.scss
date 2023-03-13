@@ -1,19 +1,19 @@
 @keyframes smeBounceDown {
-  0%   { transform: translateY(-300px); }
-  1%   { opacity: 1; }
-  40%  { opacity: 1; transform: translateY(10%); }
-  60%  { opacity: 1; transform: translateY(-5%); }
-  80%  { opacity: 1; transform: translateY(5%); }
-  100% { opacity: 1; transform: translateY(0); }
+	0%   { transform: translateY(-300px); }
+	1%   { opacity: 1; }
+	40%  { opacity: 1; transform: translateY(10%); }
+	60%  { opacity: 1; transform: translateY(-5%); }
+	80%  { opacity: 1; transform: translateY(5%); }
+	100% { opacity: 1; transform: translateY(0); }
 }
 
 .sme-animation-bounce-down {
-  opacity: 0;
+	opacity: 0;
 }
 
 .sme-animation-bounce-down-fired {
-  opacity: 0;
-  will-change: animation;
-  animation-fill-mode: forwards;
-  animation: smeBounceDown .6s cubic-bezier(0, 0, 0, 1);
+	opacity: 0;
+	will-change: animation;
+	animation-fill-mode: forwards;
+	animation: smeBounceDown .6s cubic-bezier(0, 0, 0, 1);
 }

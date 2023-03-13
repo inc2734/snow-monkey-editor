@@ -1,10 +1,8 @@
 .is-style-sme-alert {
-  @extend %alert;
-  background-color: $alert-color;
-  border: 1px solid darken($alert-color, 5%);
-  color: darken(desaturate($alert-color, 60%), 70%);
+	--sme-alert--background-color: #{ $alert-color };
+	--sme-alert--border: 1px solid #{ darken($alert-color, 5%) };
+	--sme-alert--color: #{ darken(desaturate($alert-color, 60%), 70%) };
+	--sme-alert--icon: url(../../src/style/alert/icon.svg);
 
-  &::before {
-    background-image: url(../../src/style/alert/icon.svg);
-  }
+	@extend %alert;
 }

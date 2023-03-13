@@ -1,13 +1,13 @@
 @keyframes smeBounceIn {
-  0%   { transform: scale(1.05); }
-  20%  { transform: scale(1); }
-  40%  { transform: scale(1.025); }
-  60%  { transform: scale(1) }
-  80%  { transform: scale(1.0125); }
-  100% { transform: scale(1); }
+	0%   { transform: scale(1.05); }
+	20%  { transform: scale(1); }
+	40%  { transform: scale(1.025); }
+	60%  { transform: scale(1) }
+	80%  { transform: scale(1.0125); }
+	100% { transform: scale(1); }
 }
 
 .sme-animation-bounce-in-fired {
-  will-change: animation;
-  animation: smeBounceIn .8s cubic-bezier(0, 0, 0, 1);
+	will-change: animation;
+	animation: smeBounceIn .8s cubic-bezier(0, 0, 0, 1);
 }

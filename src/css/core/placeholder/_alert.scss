@@ -1,28 +1,41 @@
 %alert {
+	--sme-alert--border-radius: var(--_global--border-radius);
+	--sme-alert--padding: var(--_padding1);
+	--sme-alert--background-color: transparent;
+	--sme-alert--border: 1px solid var(--_lighter-color-gray);
+	--sme-alert--color: currentColor;
+	--sme-alert--icon: none;
+	--sme-alert--icon-size: 24px;
+
 	@include _alert();
 	position: relative;
-	border-radius: $_border-radius;
-	padding: 4.5rem 1.8rem 1.8rem;
+	background-color: var(--sme-alert--background-color);
+	border: var(--sme-alert--border);
+	border-radius: var(--sme-alert--border-radius);
+	color: var(--sme-alert--color);
+	padding: calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size)) var(--sme-alert--padding) var(--sme-alert--padding);
 
 	@include _media-min(md) {
-		padding: 1.8rem 1.8rem 1.8rem 4.5rem;
+		padding: var(--sme-alert--padding) var(--sme-alert--padding) var(--sme-alert--padding) calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size));
 	}
 
 	&::before {
 		content: '';
 		position: absolute;
-		top: 1.8rem;
+		top: var(--_padding1);
 		left: 50%;
 		transform: translateX(-50%);
 		display: block;
-		@include _square(24px);
+		height: var(--sme-alert--icon-size);
+		width: var(--sme-alert--icon-size);
 		background-position: 50% 50%;
 		background-repeat: no-repeat;
 		background-size: contain;
+		background-image: var(--sme-alert--icon);
 
 		@include _media-min(md) {
 			top: 50%;
-			left: 1.8rem;
+			left: var(--_padding1);
 			transform: translateY(-50%);
 		}
 	}

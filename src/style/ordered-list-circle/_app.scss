@@ -1,29 +1,29 @@
 .is-style-sme-ordered-list-circle {
-  &,
-  ul,
-  ol {
-    @extend %ordered-list;
-  }
+	&,
+	ul,
+	ol {
+		@extend %ordered-list;
+	}
 
-  li {
-    @extend %ordered-list__item;
+	li {
+		@extend %ordered-list__item;
 
-    &::before {
-      left: calc(-1.8em - 6px);
-      top: $_half-leading / 2 * 1rem;
-      width: 20px;
-      height: 20px;
-      border-radius: 100%;
-      background-color: _lighter($_color-gray);
-      font-size: 12px;
-    }
-  }
+		&::before {
+			left: calc(-1.8em - 6px);
+			top: calc(var(--_half-leading) * 1rem / 2);
+			width: 20px;
+			height: 20px;
+			border-radius: 100%;
+			background-color: var(--_lighter-color-gray);
+			font-size: 12px;
+		}
+	}
 }
 
 ol.is-style-sme-ordered-list-circle[reversed] {
-  @extend %ordered-list--reserved;
+	@extend %ordered-list--reserved;
 
-  > li {
-    @extend %ordered-list--reserved__item;
-  }
+	> li {
+		@extend %ordered-list--reserved__item;
+	}
 }

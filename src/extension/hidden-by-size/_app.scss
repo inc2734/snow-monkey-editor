@@ -1,17 +1,17 @@
 .sme-hidden-sm {
-  @include _media-only(sm) {
-    display: none !important;
-  }
+	@include _media-only(sm) {
+		display: none !important;
+	}
 }
 
 .sme-hidden-md {
-  @include _media-only(md) {
-    display: none !important;
-  }
+	@include _media-only(md) {
+		display: none !important;
+	}
 }
 
 .sme-hidden-lg-up {
-  @include _media-min(lg) {
-    display: none !important;
-  }
+	@include _media-min(lg) {
+		display: none !important;
+	}
 }

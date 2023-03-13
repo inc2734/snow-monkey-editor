@@ -1,14 +1,14 @@
 @keyframes smeFadeIn {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
 }
 
 .sme-animation-fade-in {
-  opacity: 0;
+	opacity: 0;
 }
 
 .sme-animation-fade-in-fired {
-  opacity: 0;
-  will-change: animation;
-  animation: smeFadeIn .6s cubic-bezier(0, 0, 0, 1);
+	opacity: 0;
+	will-change: animation;
+	animation: smeFadeIn .6s cubic-bezier(0, 0, 0, 1);
 }

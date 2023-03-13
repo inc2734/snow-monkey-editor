@@ -34,6 +34,16 @@ define( 'SNOW_MONKEY_EDITOR_URL', untrailingslashit( plugin_dir_url( __FILE__ ) 
  */
 define( 'SNOW_MONKEY_EDITOR_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
+/**
+ * Whether pro edition.
+ *
+ * @return boolean
+ */
+function is_pro() {
+	$is_pro = 'snow-monkey' === get_template() || 'snow-monkey/resources' === get_template();
+	return apply_filters( 'snow_monkey_editor_pro', $is_pro );
+}
+
 class Bootstrap {
 
 	/**

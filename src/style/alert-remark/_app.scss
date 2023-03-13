@@ -1,9 +1,7 @@
 .is-style-sme-alert-remark {
-  @extend %alert;
-  background-color: _lightest($_color-gray);
-  border: 1px solid _lighter($_color-gray);
+	--sme-alert--background-color: var(--_lightest-color-gray);
+	--sme-alert--border: 1px solid var(--_lighter-color-gray);
+	--sme-alert--icon: url(../../src/style/alert-remark/icon.svg);
 
-  &::before {
-    background-image: url(../../src/style/alert-remark/icon.svg);
-  }
+	@extend %alert;
 }

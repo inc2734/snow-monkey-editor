@@ -6,10 +6,6 @@
 	code {
 		white-space: inherit !important;
 		display: block;
-		padding: .9rem;
-
-		@include _media-min(md) {
-			padding: 1.35rem;
-		}
+		padding: var(--_padding1);
 	}
 }

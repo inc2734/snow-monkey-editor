@@ -14,18 +14,18 @@
   }
 
   fieldset {
-    padding: .35em .75em .625em;
+		padding: var(--_padding-2);
   }
 
   // ToolsPanelItem Popover
   .components-dropdown-content-wrapper {
     .sme-popover__title {
-      font-weight: bold;;
-      padding: .625em .75em 0;
+      font-weight: bold;
+      padding: var(--_padding-2) var(--_padding-2) 0;
     }
 
     fieldset {
-      padding: .625em .75em;
+      padding: var(--_padding-2);
 
       > :last-child {
         margin-bottom: 0;
@@ -58,7 +58,7 @@
 
 .sme-extension-panel {
   .components-panel__icon {
-    fill: _light($_color-gray);
+		fill: var(--_light-color-gray);
   }
 
   &--enabled .components-panel__icon {

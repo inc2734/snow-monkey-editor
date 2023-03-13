@@ -1,10 +1,8 @@
 .is-style-sme-alert-success {
-  @extend %alert;
-  background-color: adjust-hue($alert-color, 40deg);
-  border: 1px solid adjust-hue(darken($alert-color, 10%), 40deg);
-  color: adjust-hue(darken(desaturate($alert-color, 70%), 80%), 40deg);
+	--sme-alert--background-color: #{ adjust-hue($alert-color, 40deg) };
+	--sme-alert--border: 1px solid #{ adjust-hue(darken($alert-color, 10%), 40deg) };
+	--sme-alert--color: #{ adjust-hue(darken(desaturate($alert-color, 70%), 80%), 40deg) };
+	--sme-alert--icon: url(../../src/style/alert-success/icon.svg);
 
-  &::before {
-    background-image: url(../../src/style/alert-success/icon.svg);
-  }
+	@extend %alert;
 }

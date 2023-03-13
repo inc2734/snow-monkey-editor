@@ -1,12 +1,12 @@
 .editor-styles-wrapper,
 .customize-control-sidebar_block_editor {
-  @import 'app';
+	@import 'app';
 
-  .is-style-sme-post-it {
+	.is-style-sme-post-it {
 		margin-bottom: 3.6rem;
 
-    &.wp-block {
-      max-width: 300px;
-    }
-  }
+		&.wp-block {
+			max-width: 300px;
+		}
+	}
 }

@@ -1,32 +1,32 @@
 .is-style-sme-list-times {
-  &,
-  ul,
-  ol {
-    list-style: none;
-  }
+	&,
+	ul,
+	ol {
+		list-style: none;
+	}
 
-  li {
-    position: relative;
+	li {
+		position: relative;
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      left: calc(-1.5em + 5px);
-      top: calc(#{ $_half-leading * 1rem } + 6px);
-      width: 10px;
-      height: 0;
-      border-style: solid;
-      border-color: adjust-hue(darken($alert-color, 55%), -30deg);
-      border-width: 0 0 2px;
-    }
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: calc(-1.5em + 5px);
+			top: calc(var(--_half-leading) * 1rem + 6px);
+			width: 10px;
+			height: 0;
+			border-style: solid;
+			border-color: adjust-hue(darken($alert-color, 55%), -30deg);
+			border-width: 0 0 2px;
+		}
 
-    &::before {
-      transform: rotate(45deg);
-    }
+		&::before {
+			transform: rotate(45deg);
+		}
 
-    &::after {
-      transform: rotate(-45deg);
-    }
-  }
+		&::after {
+			transform: rotate(-45deg);
+		}
+	}
 }

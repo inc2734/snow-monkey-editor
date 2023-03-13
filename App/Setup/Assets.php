@@ -7,15 +7,29 @@
 
 namespace Snow_Monkey\Plugin\Editor\App\Setup;
 
+use Snow_Monkey\Plugin\Editor;
+
 class Assets {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
+		add_action( 'enqueue_block_assets', array( $this, '_enqueue_block_assets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, '_enqueue_block_editor_extension' ), 9 );
 		add_action( 'enqueue_block_editor_assets', array( $this, '_enqueue_block_editor_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
+	}
+
+	public function _enqueue_block_assets() {
+		if ( apply_filters( 'snow_monkey_editor_enqueue_fallback_style', ! Editor\is_pro() ) ) {
+			wp_enqueue_style(
+				'snow-monkey-editor@fallback',
+				SNOW_MONKEY_EDITOR_URL . '/dist/css/fallback.css',
+				array(),
+				filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/fallback.css' )
+			);
+		}
 	}
 
 	/**

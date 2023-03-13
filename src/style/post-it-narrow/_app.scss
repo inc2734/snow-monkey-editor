@@ -1,32 +1,36 @@
 .is-style-sme-post-it-narrow {
-  position: relative;
-  z-index: 1;
-  background-color: #fff !important;
-  box-shadow: 1px 2px 6px rgba(#000, .1);
-  width: fit-content;
+	--sme-post-it-narrow--background-color: #fff;
+	--sme-post-it-narrow--line-size: .45rem;
+	--sme-post-it-narrow--line-color: #{ _darker(adjust-hue($alert-color, -30deg)) };
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-    width: .45rem;
-    background-color: _darker(adjust-hue($alert-color, -30deg));
-  }
+	position: relative;
+	z-index: 1;
+	background-color: var(--sme-post-it-narrow--background-color);
+	box-shadow: 1px 2px 6px rgba(#000, .1);
+	width: fit-content;
 
-  &.has-text-align-center {
-    margin-right: auto;
-    margin-left: auto;
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		display: block;
+		width: var(--sme-post-it-narrow--line-size);
+		background-color: var(--sme-post-it-narrow--line-color);
+	}
 
-  &.has-text-align-right {
-    margin-right: 0;
-    margin-left: auto;
-  }
+	&.has-text-align-center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	&.has-text-align-right {
+		margin-right: 0;
+		margin-left: auto;
+	}
 }
 
 p.is-style-sme-post-it-narrow {
-  padding: .45rem .9rem .45rem 1.35rem;
+	padding: var(--_padding-2) var(--_padding-1) var(--_padding-2) calc(var(--_padding-1) + var(--sme-post-it-narrow--line-size));
 }
