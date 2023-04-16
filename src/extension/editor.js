@@ -93,7 +93,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 										setting.isShown( props ) && (
 											<ToolsPanelItem
 												key={ index }
-												isShownByDefault={ true }
+												isShownByDefault={ false }
 												hasValue={ () =>
 													!! setting.hasValue( props )
 												}
@@ -183,7 +183,8 @@ addFilter(
 addFilter(
 	'editor.BlockEdit',
 	'snow-monkey-editor/block-control',
-	addBlockControl
+	addBlockControl,
+	101
 );
 
 if ( !! settings ) {

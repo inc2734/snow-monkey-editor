@@ -135,6 +135,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 		return (
 			<>
+				<BlockEdit { ...props } />
+
 				<InspectorControls>
 					<PanelBody title={ __( 'Presets', 'snow-monkey-editor' ) }>
 						{ !! presets && !! Object.values( presets ) && (
@@ -223,8 +225,6 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 						</div>
 					</PanelBody>
 				</InspectorControls>
-
-				<BlockEdit { ...props } />
 			</>
 		);
 	};
@@ -233,7 +233,8 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 addFilter(
 	'editor.BlockEdit',
 	'snow-monkey-editor/block-presets/with-inspector-controls',
-	withInspectorControls
+	withInspectorControls,
+	100
 );
 
 const addBlockPresetsSupport = ( settings, name ) => {
