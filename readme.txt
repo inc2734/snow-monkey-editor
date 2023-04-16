@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.2
 Tested up to: 6.2
-Stable tag: 9.2.0
+Stable tag: 9.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -190,6 +190,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.2.1 =
+* Changed the display position of the presets and extensions settings panel to the bottom.
 
 = 9.2.0 =
 * Fixed a bug that could cause text to disappear when a preset is applied to a paragraph block.
