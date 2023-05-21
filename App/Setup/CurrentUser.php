@@ -20,17 +20,18 @@ class CurrentUser {
 	 * Add user data to script.
 	 */
 	public function _wp_enqueue_scripts() {
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			return;
-		}
-
 		$current_user = wp_get_current_user();
-		$data         = array(
-			'id'    => $current_user->data->ID,
-			'name'  => $current_user->data->user_login,
-			'slug'  => $current_user->data->user_nicename,
-			'roles' => $current_user->roles,
-		);
+		$post_type    = get_post_type();
+		$capabilities = get_post_type_capabilities( get_post_type_object( $post_type ) );
+
+		$data = ! current_user_can( $capabilities->edit_posts )
+			? array(
+				'id'    => $current_user->data->ID,
+				'name'  => $current_user->data->user_login,
+				'slug'  => $current_user->data->user_nicename,
+				'roles' => $current_user->roles,
+			)
+			: array();
 
 		wp_localize_script(
 			'snow-monkey-editor@editor-extension',

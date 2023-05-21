@@ -8,7 +8,7 @@ import DateTimePicker from './date-time-picker';
 
 const isShown = ( props ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'date-time'
 	);
 	if ( ! isApplyToUser ) {
@@ -88,7 +88,7 @@ export const unpublishSettings = {
 
 export const blockAttributes = ( blockType ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'date-time'
 	);
 	if ( ! isApplyToUser ) {

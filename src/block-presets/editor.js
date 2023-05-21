@@ -34,7 +34,7 @@ const useIsShown = ( props ) => {
 	}
 
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'block-presets'
 	);
 	if ( ! isApplyToUser ) {

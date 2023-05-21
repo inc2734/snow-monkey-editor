@@ -10,7 +10,7 @@ import customAttributes from './attributes.json';
 
 const isShown = ( props ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'hidden-by-size'
 	);
 	if ( ! isApplyToUser ) {
@@ -122,7 +122,7 @@ export const settings = {
 
 export const blockAttributes = ( blockType ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'hidden-by-size'
 	);
 	if ( ! isApplyToUser ) {

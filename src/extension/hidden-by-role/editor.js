@@ -13,7 +13,7 @@ import { store } from '../store/roles';
 
 const isShown = ( props ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'hidden-by-role'
 	);
 	if ( ! isApplyToUser ) {
@@ -56,9 +56,9 @@ const Decorator = ( props ) => {
 
 	const isDecorate =
 		!! className &&
-		! snowmonkeyeditor.currentUser.roles.includes( 'administrator' ) &&
+		! snowmonkeyeditor?.currentUser?.roles?.includes( 'administrator' ) &&
 		smeIsHiddenRoles.some( ( role ) =>
-			snowmonkeyeditor.currentUser.roles.includes( role )
+			snowmonkeyeditor?.currentUser?.roles?.includes( role )
 		);
 
 	return isDecorate ? (
@@ -75,11 +75,12 @@ const Content = ( props ) => {
 	const roles = useGetRoles();
 
 	let rolesForHiddenByRoles = {};
-	if ( snowmonkeyeditor.currentUser.roles.includes( 'administrator' ) ) {
+	if ( snowmonkeyeditor?.currentUser?.roles?.includes( 'administrator' ) ) {
 		rolesForHiddenByRoles = { ...roles };
 	} else {
 		Object.keys( roles ).forEach( ( role, index ) => {
-			const hasRole = snowmonkeyeditor.currentUser.roles.includes( role );
+			const hasRole =
+				snowmonkeyeditor?.currentUser?.roles?.includes( role );
 			if ( ! hasRole ) {
 				rolesForHiddenByRoles[ role ] = Object.values( roles )[ index ];
 			}
@@ -149,7 +150,7 @@ export const settings = {
 
 export const blockAttributes = ( blockType ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'hidden-by-role'
 	);
 	if ( ! isApplyToUser ) {

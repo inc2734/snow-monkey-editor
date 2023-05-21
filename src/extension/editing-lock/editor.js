@@ -12,7 +12,7 @@ import { store } from '../store/roles';
 
 const isShown = ( props ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'editing-lock'
 	);
 	if ( ! isApplyToUser ) {
@@ -28,7 +28,7 @@ const isShown = ( props ) => {
 	}
 
 	const canEditingLockSetting = includes(
-		snowmonkeyeditor.currentUser.roles,
+		snowmonkeyeditor?.currentUser?.roles,
 		'administrator'
 	);
 	if ( ! canEditingLockSetting ) {
@@ -48,7 +48,7 @@ const isLocked = ( props ) => {
 		0 <
 		intersection(
 			props.attributes.smeIsEditingLockRoles,
-			snowmonkeyeditor.currentUser.roles
+			snowmonkeyeditor?.currentUser?.roles
 		).length
 	);
 };
@@ -158,7 +158,7 @@ export const settings = {
 
 export const blockAttributes = ( blockType ) => {
 	const isApplyToUser = isApplyExtensionToUser(
-		snowmonkeyeditor.currentUser,
+		snowmonkeyeditor?.currentUser,
 		'editing-lock'
 	);
 	if ( ! isApplyToUser ) {
