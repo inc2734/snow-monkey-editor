@@ -21,10 +21,15 @@ class CurrentUser {
 	 */
 	public function _wp_enqueue_scripts() {
 		$current_user = wp_get_current_user();
-		$post_type    = get_post_type();
-		$capabilities = get_post_type_capabilities( get_post_type_object( $post_type ) );
+		$post_type    = get_post_type_object( get_post_type() );
 
-		$data = ! current_user_can( $capabilities->edit_posts )
+		if ( ! isset( $post_type->capabilities ) ) {
+			$post_type->capabilities = array();
+		}
+
+		$capabilities = get_post_type_capabilities( $post_type );
+
+		$data = current_user_can( $capabilities->edit_posts )
 			? array(
 				'id'    => $current_user->data->ID,
 				'name'  => $current_user->data->user_login,
