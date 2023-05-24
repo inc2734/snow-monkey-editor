@@ -1,33 +1,32 @@
 {
-  "type": "wordpress-plugin",
-  "license": "GPL-2.0-or-later",
-  "require": {
-    "php": ">=7.4"
-  },
-  "require-dev": {
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
 		"wp-coding-standards/wpcs": "^2.3",
-    "wp-phpunit/wp-phpunit": "^5.8",
-    "yoast/phpunit-polyfills": "^1.0"
-  },
-  "authors": [
-    {
-      "name": "Takashi Kitajima",
-      "email": "inc@2inc.org"
-    }
-  ],
-  "autoload": {
-    "psr-4" : {
-      "Snow_Monkey\\Plugin\\Editor\\" : ""
-    }
-  },
-  "scripts": {
+		"yoast/phpunit-polyfills": "^1.0"
+	},
+	"authors": [
+		{
+			"name": "Takashi Kitajima",
+			"email": "inc@2inc.org"
+		}
+	],
+	"autoload": {
+		"psr-4" : {
+			"Snow_Monkey\\Plugin\\Editor\\" : ""
+		}
+	},
+	"scripts": {
 		"lint": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
 		"format": "./vendor/squizlabs/php_codesniffer/bin/phpcbf"
-  },
-  "config": {
-    "allow-plugins": {
-      "dealerdirect/phpcodesniffer-composer-installer": true
-    }
-  }
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }

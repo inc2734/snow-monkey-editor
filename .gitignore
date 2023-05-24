@@ -7,3 +7,4 @@ dist/
 npm-debug.log
 .wp-env.override.json
 /.export/*
+.phpunit.result.cache
