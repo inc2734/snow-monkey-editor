@@ -1,29 +1,29 @@
 %ordered-list {
-  list-style: none;
-  counter-reset: sme-count 0;
-  margin-left: 0;
+	list-style: none;
+	counter-reset: sme-count 0;
+	margin-left: 0;
 	padding-left: var(--_padding1);
 }
 
 %ordered-list__item {
-  position: relative;
+	position: relative;
 
-  &::before {
-    counter-increment: sme-count 1;
-    content: counter(sme-count);
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+	&::before {
+		counter-increment: sme-count 1;
+		content: counter(sme-count);
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }
 
 %ordered-list--reserved {
-  counter-reset: sme-count 1;
+	counter-reset: sme-count 1;
 }
 
 %ordered-list--reserved__item {
-  &::before {
-    counter-increment: sme-count -1;
-  }
+	&::before {
+		counter-increment: sme-count -1;
+	}
 }

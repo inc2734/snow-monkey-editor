@@ -1,15 +1,15 @@
 [data-sme-tabindex] {
-  opacity: .7;
-  pointer-events: none !important;
-  user-select: none !important;
+	opacity: .7;
+	pointer-events: none !important;
+	user-select: none !important;
 
-  .editor-block-list__insertion-point,
-  .components-drop-zone,
-  .editor-block-list__block-edit::before,
-  .editor-block-mover,
-  .editor-block-contextual-toolbar,
-  .components-resizable-box__handle,
-  .editor-rich-text__inline-toolbar {
-    display: none !important;
-  }
+	.editor-block-list__insertion-point,
+	.components-drop-zone,
+	.editor-block-list__block-edit::before,
+	.editor-block-mover,
+	.editor-block-contextual-toolbar,
+	.components-resizable-box__handle,
+	.editor-rich-text__inline-toolbar {
+		display: none !important;
+	}
 }

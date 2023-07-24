@@ -1,5 +1,3 @@
-@charset 'utf-8';
-
 @import 'core/core';
 
 @import '../extension/editor';
@@ -8,64 +6,68 @@
 @import '../block-presets/editor';
 
 .sme-popover {
-  .components-popover__content {
-    min-width: 240px;
-    overflow: visible !important;
-  }
+	.components-popover__content {
+		min-width: 240px;
+		overflow: visible !important;
+	}
 
-  fieldset {
+	fieldset {
 		padding: var(--_padding-2);
-  }
+	}
 
-  // ToolsPanelItem Popover
-  .components-dropdown-content-wrapper {
-    .sme-popover__title {
-      font-weight: bold;
-      padding: var(--_padding-2) var(--_padding-2) 0;
-    }
+	// ToolsPanelItem Popover
+	.components-dropdown-content-wrapper {
+		.sme-popover__title {
+			font-weight: bold;
+			padding: var(--_padding-2) var(--_padding-2) 0;
+		}
 
-    fieldset {
-      padding: var(--_padding-2);
+		fieldset {
+			padding: var(--_padding-2);
 
-      > :last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
+			> :last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
 }
 
 .sme-popover--inline-font-size {
-  .components-font-size-picker {
-    padding: 0;
-  }
+	.components-font-size-picker {
+		padding: 0;
+	}
 
-  .components-font-size-picker__controls {
-    margin-bottom: 5px;
-  }
+	.components-font-size-picker__controls {
+		margin-bottom: 5px;
+	}
 
-  .components-custom-select-control__menu {
-    max-height: 200px;
-  }
+	.components-custom-select-control__menu {
+		max-height: 200px;
+	}
 }
 
 .sme-extension-tools-panel {
-  .block-editor-panel-color-gradient-settings__dropdown {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    justify-content: space-between;
-  }
+	.block-editor-panel-color-gradient-settings__dropdown {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		justify-content: space-between;
+	}
+
+	.block-editor-tools-panel-color-gradient-settings__item:first-child {
+		border-top: 1px solid #ddd;
+	}
 }
 
 .sme-extension-panel {
-  .components-panel__icon {
+	.components-panel__icon {
 		fill: var(--_light-color-gray);
-  }
+	}
 
-  &--enabled .components-panel__icon {
-    fill: $color-accent;
-  }
+	&--enabled .components-panel__icon {
+		fill: $color-accent;
+	}
 }
 
 .components-dropdown-menu__menu-item.has-text.has-icon .dashicon {
-  margin-right: 8px;
+	margin-right: 8px;
 }
