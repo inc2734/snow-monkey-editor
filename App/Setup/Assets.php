@@ -42,7 +42,10 @@ class Assets {
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/editor-extension.js',
 			$asset['dependencies'],
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor-extension.js' ),
-			true
+			array(
+				'in_footer' => false,
+				'strategy'  => 'defer',
+			)
 		);
 
 		wp_set_script_translations(
@@ -62,7 +65,10 @@ class Assets {
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/editor.js',
 			$asset['dependencies'],
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor.js' ),
-			true
+			array(
+				'in_footer' => false,
+				'strategy'  => 'defer',
+			)
 		);
 
 		wp_set_script_translations(
@@ -110,7 +116,10 @@ class Assets {
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/app.js',
 			array(),
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/js/app.js' ),
-			true
+			array(
+				'in_footer' => false,
+				'strategy'  => 'defer',
+			)
 		);
 
 		wp_enqueue_style(
