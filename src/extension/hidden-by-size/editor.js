@@ -3,6 +3,7 @@ import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
@@ -50,51 +51,46 @@ const Content = ( props ) => {
 	const { smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg, className } =
 		attributes;
 
-	const onChangeIsHiddenSm = ( value ) => {
+	useEffect( () => {
 		setAttributes( {
-			smeIsHiddenSm: value,
 			className: classnames( className, {
-				'sme-hidden-sm': value,
+				'sme-hidden-sm': smeIsHiddenSm,
+				'sme-hidden-md': smeIsHiddenMd,
+				'sme-hidden-lg-up': smeIsHiddenLg,
 			} ),
 		} );
-	};
-
-	const onChangeIsHiddenMd = ( value ) => {
-		setAttributes( {
-			smeIsHiddenMd: value,
-			className: classnames( className, {
-				'sme-hidden-md': value,
-			} ),
-		} );
-	};
-
-	const onChangeIsHiddenLg = ( value ) => {
-		setAttributes( {
-			smeIsHiddenLg: value,
-			className: classnames( className, {
-				'sme-hidden-lg-up': value,
-			} ),
-		} );
-	};
+	}, [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] );
 
 	return (
 		<>
 			<ToggleControl
 				label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
 				checked={ smeIsHiddenSm }
-				onChange={ onChangeIsHiddenSm }
+				onChange={ ( value ) => {
+					setAttributes( {
+						smeIsHiddenSm: value,
+					} );
+				} }
 			/>
 
 			<ToggleControl
 				label={ __( 'Hide on tablet size', 'snow-monkey-editor' ) }
 				checked={ smeIsHiddenMd }
-				onChange={ onChangeIsHiddenMd }
+				onChange={ ( value ) => {
+					setAttributes( {
+						smeIsHiddenMd: value,
+					} );
+				} }
 			/>
 
 			<ToggleControl
 				label={ __( 'Hide on PC size', 'snow-monkey-editor' ) }
 				checked={ smeIsHiddenLg }
-				onChange={ onChangeIsHiddenLg }
+				onChange={ ( value ) => {
+					setAttributes( {
+						smeIsHiddenLg: value,
+					} );
+				} }
 			/>
 		</>
 	);
@@ -109,12 +105,20 @@ export const settings = {
 			props.attributes?.smeIsHiddenMd,
 			props.attributes?.smeIsHiddenLg,
 		] ).length,
-	resetValue: ( props ) =>
+	resetValue: ( props ) => {
 		props.setAttributes( {
-			smeIsHiddenSm: undefined,
-			smeIsHiddenMd: undefined,
-			smeIsHiddenLg: undefined,
-		} ),
+			smeIsHiddenSm: customAttributes.smeIsHiddenSm.default,
+			smeIsHiddenMd: customAttributes.smeIsHiddenMd.default,
+			smeIsHiddenLg: customAttributes.smeIsHiddenLg.default,
+		} );
+	},
+	resetClassnames: () => {
+		return {
+			'sme-hidden-sm': customAttributes.smeIsHiddenSm.default,
+			'sme-hidden-md': customAttributes.smeIsHiddenMd.default,
+			'sme-hidden-lg-up': customAttributes.smeIsHiddenLg.default,
+		};
+	},
 	label: __( 'Display setting (By window size)', 'snow-monkey-editor' ),
 	isShown,
 	Content,

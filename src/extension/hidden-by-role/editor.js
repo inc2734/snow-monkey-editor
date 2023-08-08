@@ -4,6 +4,7 @@ import classnames from 'classnames/dedupe';
 import { getBlockType } from '@wordpress/blocks';
 import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useEffect } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
@@ -50,6 +51,25 @@ const useGetRoles = () => {
 	}, [] );
 };
 
+const useGetRolesForHiddenByRoles = () => {
+	const roles = useGetRoles();
+
+	let rolesForHiddenByRoles = {};
+	if ( snowmonkeyeditor?.currentUser?.roles?.includes( 'administrator' ) ) {
+		rolesForHiddenByRoles = { ...roles };
+	} else {
+		Object.keys( roles ).forEach( ( role, index ) => {
+			const hasRole =
+				snowmonkeyeditor?.currentUser?.roles?.includes( role );
+			if ( ! hasRole ) {
+				rolesForHiddenByRoles[ role ] = Object.values( roles )[ index ];
+			}
+		} );
+	}
+
+	return rolesForHiddenByRoles;
+};
+
 const Decorator = ( props ) => {
 	const { attributes, children } = props;
 	const { className, smeIsHiddenRoles = [] } = attributes;
@@ -72,20 +92,7 @@ const Content = ( props ) => {
 	const { attributes, setAttributes } = props;
 	const { smeIsHiddenRoles, className } = attributes;
 
-	const roles = useGetRoles();
-
-	let rolesForHiddenByRoles = {};
-	if ( snowmonkeyeditor?.currentUser?.roles?.includes( 'administrator' ) ) {
-		rolesForHiddenByRoles = { ...roles };
-	} else {
-		Object.keys( roles ).forEach( ( role, index ) => {
-			const hasRole =
-				snowmonkeyeditor?.currentUser?.roles?.includes( role );
-			if ( ! hasRole ) {
-				rolesForHiddenByRoles[ role ] = Object.values( roles )[ index ];
-			}
-		} );
-	}
+	const rolesForHiddenByRoles = useGetRolesForHiddenByRoles();
 
 	const newAttributes = ( key, newValue ) => {
 		let newSmeIsHiddenRoles = [ ...smeIsHiddenRoles ];
@@ -98,6 +105,21 @@ const Content = ( props ) => {
 		}
 		return uniq( newSmeIsHiddenRoles );
 	};
+
+	useEffect( () => {
+		const newClassNameMap = {};
+		Object.keys( rolesForHiddenByRoles ).forEach( ( role ) => {
+			newClassNameMap[ `sme-hidden-by-role--${ role }` ] = false;
+		} );
+		smeIsHiddenRoles.forEach( ( role ) => {
+			newClassNameMap[ `sme-hidden-by-role--${ role }` ] = true;
+		} );
+		setAttributes( {
+			className: classnames( className, {
+				...newClassNameMap,
+			} ),
+		} );
+	}, [ smeIsHiddenRoles ] );
 
 	return (
 		<>
@@ -117,9 +139,6 @@ const Content = ( props ) => {
 
 					setAttributes( {
 						smeIsHiddenRoles: newSmeIsHiddenRoles,
-						className: classnames( className, {
-							[ `sme-hidden-by-role--${ key }` ]: value,
-						} ),
 					} );
 				};
 
@@ -141,7 +160,19 @@ export const settings = {
 	hasValue: ( props ) =>
 		! props.attributes?.smeIsHiddenRoles ||
 		0 < props.attributes?.smeIsHiddenRoles.length,
-	resetValue: ( props ) => props.setAttributes( { smeIsHiddenRoles: [] } ),
+	resetValue: ( props ) => {
+		props.setAttributes( {
+			smeIsHiddenRoles: customAttributes.smeIsHiddenRoles.default,
+		} );
+	},
+	resetClassnames: ( props ) => {
+		const rolesForHiddenByRoles = props.attributes?.smeIsHiddenRoles || [];
+		const newClassNameMap = {};
+		rolesForHiddenByRoles.forEach( ( role ) => {
+			newClassNameMap[ `sme-hidden-by-role--${ role }` ] = false;
+		} );
+		return newClassNameMap;
+	},
 	label: __( 'Display setting (By roles)', 'snow-monkey-editor' ),
 	isShown,
 	Content,

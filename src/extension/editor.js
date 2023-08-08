@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import {
 	Button,
@@ -81,6 +81,28 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 								settings.forEach( ( setting ) =>
 									setting.resetValue( props )
 								);
+
+								let newClassNames = {};
+								settings.forEach( ( setting ) => {
+									if ( !! setting?.resetClassnames ) {
+										newClassNames = {
+											...newClassNames,
+											...setting.resetClassnames( props ),
+										};
+									}
+								} );
+								if (
+									0 < Object.values( newClassNames ).length
+								) {
+									props.setAttributes( {
+										className: classnames(
+											props.attributes.className,
+											{
+												...newClassNames,
+											}
+										),
+									} );
+								}
 							} }
 							className="color-block-support-panel sme-extension-tools-panel"
 						>
@@ -97,9 +119,31 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 												hasValue={ () =>
 													!! setting.hasValue( props )
 												}
-												onDeselect={ () =>
-													setting.resetValue( props )
-												}
+												onDeselect={ () => {
+													setting.resetValue( props );
+
+													if (
+														!! setting?.resetClassnames
+													) {
+														const newClassNames = {
+															...setting.resetClassnames(
+																props
+															),
+														};
+
+														props.setAttributes( {
+															className:
+																classnames(
+																	props
+																		.attributes
+																		.className,
+																	{
+																		...newClassNames,
+																	}
+																),
+														} );
+													}
+												} }
 												label={ setting.label }
 												className={ classnames(
 													'block-editor-tools-panel-color-gradient-settings__item',

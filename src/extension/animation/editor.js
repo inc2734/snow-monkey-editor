@@ -1,13 +1,36 @@
-import { difference } from 'lodash';
-import classnames from 'classnames';
+import classnames from 'classnames/dedupe';
 
 import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
 import { SelectControl, RangeControl } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
-import { classes } from './helper';
 import customAttributes from './attributes.json';
+
+const options = [
+	{ label: '', value: undefined },
+	{
+		label: __( 'bounce-in', 'snow-monkey-editor' ),
+		value: 'bounce-in',
+	},
+	{
+		label: __( 'bounce-down', 'snow-monkey-editor' ),
+		value: 'bounce-down',
+	},
+	{
+		label: __( 'fade-in', 'snow-monkey-editor' ),
+		value: 'fade-in',
+	},
+	{
+		label: __( 'fade-in-up', 'snow-monkey-editor' ),
+		value: 'fade-in-up',
+	},
+	{
+		label: __( 'fade-in-down', 'snow-monkey-editor' ),
+		value: 'fade-in-down',
+	},
+];
 
 const isShown = ( props ) => {
 	const isApplyToUser = isApplyExtensionToUser(
@@ -40,29 +63,20 @@ const Content = ( props ) => {
 	const { smeAnimation, smeAnimationDelay, smeAnimationDuration, className } =
 		attributes;
 
-	const options = [
-		{ label: '', value: undefined },
-		{
-			label: __( 'bounce-in', 'snow-monkey-editor' ),
-			value: 'bounce-in',
-		},
-		{
-			label: __( 'bounce-down', 'snow-monkey-editor' ),
-			value: 'bounce-down',
-		},
-		{
-			label: __( 'fade-in', 'snow-monkey-editor' ),
-			value: 'fade-in',
-		},
-		{
-			label: __( 'fade-in-up', 'snow-monkey-editor' ),
-			value: 'fade-in-up',
-		},
-		{
-			label: __( 'fade-in-down', 'snow-monkey-editor' ),
-			value: 'fade-in-down',
-		},
-	];
+	useEffect( () => {
+		const newClassNameMap = {};
+		options.forEach( ( value ) => {
+			newClassNameMap[ `sme-animation-${ value.value }` ] = false;
+		} );
+		if ( !! smeAnimation ) {
+			newClassNameMap[ `sme-animation-${ smeAnimation }` ] = true;
+		}
+		setAttributes( {
+			className: classnames( className, {
+				...newClassNameMap,
+			} ),
+		} );
+	}, [ smeAnimation ] );
 
 	return (
 		<>
@@ -74,21 +88,11 @@ const Content = ( props ) => {
 					setAttributes( { smeAnimation: value } );
 
 					if ( ! value ) {
-						setAttributes( { smeAnimationDelay: undefined } );
+						setAttributes( {
+							smeAnimationDelay:
+								customAttributes.smeAnimationDelay.default,
+						} );
 					}
-
-					const removeAnimationClassNames = classes.filter(
-						( element ) => `sme-animation-${ value }` !== element
-					);
-
-					setAttributes( {
-						className: difference(
-							classnames( className, {
-								[ `sme-animation-${ value }` ]: !! value,
-							} ).split( ' ' ),
-							removeAnimationClassNames
-						).join( ' ' ),
-					} );
 				} }
 			/>
 
@@ -122,12 +126,22 @@ const Content = ( props ) => {
 export const settings = {
 	resetAll: {},
 	hasValue: ( props ) => !! props.attributes?.smeAnimation,
-	resetValue: ( props ) =>
+	resetValue: ( props ) => {
 		props.setAttributes( {
-			smeAnimation: undefined,
-			smeAnimationDelay: 0,
-			smeAnimationDuration: undefined,
-		} ),
+			smeAnimation: customAttributes.smeAnimation.default,
+			smeAnimationDelay: customAttributes.smeAnimationDelay.default,
+			smeAnimationDuration: customAttributes.smeAnimationDuration.default,
+		} );
+	},
+	resetClassnames: ( props ) => {
+		const newClassNameMap = {};
+		if ( null != props.attributes?.smeAnimation ) {
+			newClassNameMap[
+				`sme-animation-${ props.attributes.smeAnimation }`
+			] = false;
+		}
+		return newClassNameMap;
+	},
 	label: __( 'Animation', 'snow-monkey-editor' ),
 	isShown,
 	Content,
