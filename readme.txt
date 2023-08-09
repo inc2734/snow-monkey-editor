@@ -2,9 +2,9 @@
 Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
-Requires at least: 6.2
-Tested up to: 6.2
-Stable tag: 9.2.5
+Requires at least: 6.3
+Tested up to: 6.3
+Stable tag: 9.3.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -190,6 +190,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.3.0 =
+* Set `defer` attribute to `wp_enqueue_script()`.
 
 = 9.2.5 =
 * Fixed a bug that blocks with display settings by window size may switch display at unintended timing.
