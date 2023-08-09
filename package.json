@@ -60,7 +60,7 @@
 		"build": "npm-run-all -s css js",
 		"make-pot": "npm run wp i18n -- make-pot . ./languages/snow-monkey-editor.pot --exclude=.*,src,languages",
 		"make-json": "rimraf languages/*.json && npm run wp i18n -- make-json ./languages/snow-monkey-editor-ja.po --no-purge",
-		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='/sql' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/tests' --exclude='package*.json' . snow-monkey-editor && wp-env start && npm run composer 'install --no-dev -d snow-monkey-editor'",
+		"zip:pack": "rsync -a --exclude='/vendor' --exclude='/node_modules' --exclude='/sql' --exclude='.*' --exclude='*.ruleset.xml' --exclude='*.config.js' --exclude='*.xml.dist' --exclude='/tests' --exclude='package*.json' . snow-monkey-editor && wp-env start && npm run composer install -- --no-dev -d snow-monkey-editor",
 		"zip:archive": "zip -9 -qmr snow-monkey-editor.zip snow-monkey-editor",
 		"zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
 	}
