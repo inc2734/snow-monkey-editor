@@ -8,6 +8,7 @@
 .sme-popover {
 	.components-popover__content {
 		min-width: 240px;
+		max-height: none !important;
 		overflow: visible !important;
 	}
 

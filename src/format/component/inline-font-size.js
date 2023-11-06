@@ -61,6 +61,7 @@ const FontSizePicker = ( { name, value, onChange, onReset } ) => {
 				value={ activeFontSize }
 				onChange={ onChange }
 				fontSizes={ fontSizes }
+				__nextHasNoMarginBottom
 			/>
 
 			<Button
