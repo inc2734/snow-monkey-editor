@@ -69,18 +69,13 @@ const InlineColorUI = ( {
 	contentRef,
 	settings,
 } ) => {
-	const popoverAnchor = useCachedTruthy(
-		useAnchor( {
-			editableContentElement: contentRef.current,
-			value,
-			settings,
-		} )
-	);
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
 
-	const rect = useMemo( () => popoverAnchor.getBoundingClientRect(), [] );
-	if ( !! popoverAnchor?.ownerDocument ) {
-		popoverAnchor.getBoundingClientRect = () => rect;
-	}
+	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
+	popoverAnchor.getBoundingClientRect = () => cachedRect;
 
 	return (
 		<Popover
