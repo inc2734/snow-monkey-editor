@@ -7,24 +7,24 @@
 
 .sme-popover {
 	.components-popover__content {
-		min-width: 240px;
+		min-width: 260px;
 		max-height: none !important;
 		overflow: visible !important;
 	}
 
 	fieldset {
-		padding: var(--_padding-2);
+		padding: 16px;
 	}
 
 	// ToolsPanelItem Popover
 	.components-dropdown-content-wrapper {
 		.sme-popover__title {
 			font-weight: bold;
-			padding: var(--_padding-2) var(--_padding-2) 0;
+			padding: 16px 16px 0;
 		}
 
 		fieldset {
-			padding: var(--_padding-2);
+			padding: 16px;
 
 			> :last-child {
 				margin-bottom: 0;
