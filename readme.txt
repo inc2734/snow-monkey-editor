@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
 Requires at least: 6.3
 Tested up to: 6.4
-Stable tag: 9.3.2
+Stable tag: 9.3.3
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -190,6 +190,10 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 9.3.3 =
+* The width of the format popover is now the same as the width of the popover in the block settings panel.
+* Fixed a bug that caused the popover to move to the upper left corner of the screen when formatting unformatted text.
 
 = 9.3.1 =
 * Fix for JavaScript alert message.
