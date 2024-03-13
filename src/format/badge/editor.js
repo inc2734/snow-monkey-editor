@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 
 import {
-	useSetting,
+	useSettings,
 	getColorClassName,
 	getColorObjectByColorValue,
 } from '@wordpress/block-editor';
@@ -26,7 +26,7 @@ const EMPTY_ARRAY = [];
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const colors = useSetting( 'color.palette' ) || EMPTY_ARRAY;
+	const [ colors = EMPTY_ARRAY ] = useSettings( 'color.palette' );
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
 
 	const activeColor = useMemo( () => {

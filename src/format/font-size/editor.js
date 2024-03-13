@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import { find, isNumber, isString } from 'lodash';
 
-import { useSetting, getFontSizeClass } from '@wordpress/block-editor';
+import { useSettings, getFontSizeClass } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
@@ -18,7 +18,7 @@ const EMPTY_ARRAY = [];
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const fontSizes = useSetting( 'typography.fontSizes' ) || EMPTY_ARRAY;
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
 
 	return (

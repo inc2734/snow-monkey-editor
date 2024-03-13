@@ -2,7 +2,7 @@
 Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, gutenberg blocks, page builder
-Requires at least: 6.3
+Requires at least: 6.5
 Tested up to: 6.4
 Stable tag: 9.3.3
 Requires PHP: 7.4

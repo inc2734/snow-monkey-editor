@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import hexToRgba from 'hex-to-rgba';
 
-import { useSetting } from '@wordpress/block-editor';
+import { useSettings } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import { useState, useMemo } from '@wordpress/element';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
@@ -22,7 +22,7 @@ const EMPTY_ARRAY = [];
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const colors = useSetting( 'color.palette' ) || EMPTY_ARRAY;
+	const [ colors = EMPTY_ARRAY ] = useSettings( 'color.palette' );
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
 
 	const activeColor = useMemo( () => {
