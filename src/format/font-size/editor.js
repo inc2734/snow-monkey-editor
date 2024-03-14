@@ -13,8 +13,6 @@ import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button
 const name = 'snow-monkey-editor/font-size';
 const title = __( 'Font size', 'snow-monkey-editor' );
 
-const EMPTY_ARRAY = [];
-
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
