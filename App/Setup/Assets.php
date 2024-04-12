@@ -21,6 +21,9 @@ class Assets {
 		add_action( 'wp_enqueue_scripts', array( $this, '_wp_enqueue_scripts' ) );
 	}
 
+	/**
+	 * Enqueue block assets.
+	 */
 	public function _enqueue_block_assets() {
 		if ( apply_filters( 'snow_monkey_editor_enqueue_fallback_style', ! Editor\is_pro() ) ) {
 			wp_enqueue_style(
@@ -36,7 +39,7 @@ class Assets {
 	 * Enqueue editor extension
 	 */
 	public function _enqueue_block_editor_extension() {
-		$asset = include( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor-extension.asset.php' );
+		$asset = include SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor-extension.asset.php';
 		wp_enqueue_script(
 			'snow-monkey-editor@editor-extension',
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/editor-extension.js',
@@ -59,7 +62,7 @@ class Assets {
 	 * Enqueue editor assets
 	 */
 	public function _enqueue_block_editor_assets() {
-		$asset = include( SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor.asset.php' );
+		$asset = include SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor.asset.php';
 		wp_enqueue_script(
 			'snow-monkey-editor@editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/js/editor.js',

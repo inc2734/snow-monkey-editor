@@ -25,9 +25,9 @@ class Endpoint {
 			'/roles',
 			array(
 				'methods'             => 'GET',
-				'callback'            => function() {
+				'callback'            => function () {
 					if ( ! function_exists( '\\get_editable_roles' ) ) {
-						require_once( ABSPATH . '/wp-admin/includes/user.php' );
+						require_once ABSPATH . '/wp-admin/includes/user.php';
 					}
 
 					$roles          = array();

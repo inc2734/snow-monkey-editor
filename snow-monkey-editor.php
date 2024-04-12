@@ -18,7 +18,7 @@ namespace Snow_Monkey\Plugin\Editor;
 
 use WP_Block_Type_Registry;
 
-require_once( __DIR__ . '/vendor/autoload.php' );
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * Directory url of this plugin
@@ -44,6 +44,9 @@ function is_pro() {
 	return apply_filters( 'snow_monkey_editor_pro', $is_pro );
 }
 
+/**
+ * @codingStandardsIgnoreFile Universal.Files.SeparateFunctionsFromOO.Mixed
+ */
 class Bootstrap {
 
 	/**
@@ -119,7 +122,7 @@ class Bootstrap {
 			foreach ( $has_hidden_by_roles as $role ) {
 				if (
 					in_array( $role, (array) $user->roles, true )
-					|| 'sme-guest' === $role && ! $user->roles
+					|| ( 'sme-guest' === $role && ! $user->roles )
 				) {
 					return '';
 				}
@@ -279,7 +282,7 @@ class Bootstrap {
 		$attributes = array();
 		foreach ( glob( SNOW_MONKEY_EDITOR_PATH . '/src/extension/*', GLOB_ONLYDIR ) as $dir ) {
 			foreach ( glob( $dir . '/attributes.json' ) as $file ) {
-				$_attributes = file_get_contents( $file );
+				$_attributes = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 				$_attributes = json_decode( $_attributes, true );
 				$attributes  = array_merge( $attributes, $_attributes );
 			}
