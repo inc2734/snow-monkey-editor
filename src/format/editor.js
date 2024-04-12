@@ -10,6 +10,7 @@ import * as textColor from './text-color/editor';
 import * as bgColor from './bg-color/editor';
 import * as highlighter from './highlighter/editor';
 import * as badge from './badge/editor';
+import * as br from './br/editor';
 
 registerFormat( remove );
 registerFormat( fontSize );
@@ -19,3 +20,4 @@ registerFormat( textColor );
 registerFormat( bgColor );
 registerFormat( highlighter );
 registerFormat( badge );
+registerFormat( br );
