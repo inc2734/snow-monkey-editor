@@ -133,7 +133,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				<ToggleControl
 					label={ __(
 						'Line breaks when on the desktop',
-						'snow-monkey-blocks'
+						'snow-monkey-editor'
 					) }
 					checked={ ! disableDesktop }
 					onChange={ onChangeDesktop }
@@ -143,7 +143,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				<ToggleControl
 					label={ __(
 						'Line breaks when on the tablet',
-						'snow-monkey-blocks'
+						'snow-monkey-editor'
 					) }
 					checked={ ! disableTablet }
 					onChange={ onChangeTablet }
@@ -153,7 +153,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				<ToggleControl
 					label={ __(
 						'Line breaks when on the mobile',
-						'snow-monkey-blocks'
+						'snow-monkey-editor'
 					) }
 					checked={ ! disableMobile }
 					onChange={ onChangeMobile }

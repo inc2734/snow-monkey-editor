@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
 "editor\n"
-"POT-Creation-Date: 2024-04-12T00:53:33+00:00\n"
-"PO-Revision-Date: 2024-04-12 09:54+0900\n"
+"POT-Creation-Date: 2024-04-12T00:56:14+00:00\n"
+"PO-Revision-Date: 2024-04-12 09:58+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -166,6 +166,18 @@ msgstr "バッジ"
 #: dist/js/editor.js:1
 msgid "Line break per screen size"
 msgstr "画面サイズ毎の改行"
+
+#: dist/js/editor.js:1
+msgid "Line breaks when on the desktop"
+msgstr "デスクトップのときに改行"
+
+#: dist/js/editor.js:1
+msgid "Line breaks when on the tablet"
+msgstr "タブレットのときに改行"
+
+#: dist/js/editor.js:1
+msgid "Line breaks when on the mobile"
+msgstr "モバイルのときに改行"
 
 #: dist/js/editor.js:1
 msgid "Alert"
