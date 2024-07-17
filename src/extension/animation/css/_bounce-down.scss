@@ -7,11 +7,11 @@
 	100% { opacity: 1; transform: translateY(0); }
 }
 
-.sme-animation-bounce-down {
+.sme-animation-bounce-down:where(:not([data-type])) {
 	opacity: 0;
 }
 
-.sme-animation-bounce-down-fired {
+.sme-animation-bounce-down-fired:where(:not([data-type])) {
 	opacity: 0;
 	will-change: animation;
 	animation-fill-mode: forwards;

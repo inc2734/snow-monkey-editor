@@ -3,11 +3,11 @@
 	100% { opacity: 1; transform: translateY(0) }
 }
 
-.sme-animation-fade-in-down {
+.sme-animation-fade-in-down:where(:not([data-type])) {
 	opacity: 0;
 }
 
-.sme-animation-fade-in-down-fired {
+.sme-animation-fade-in-down-fired:where(:not([data-type])) {
 	opacity: 0;
 	will-change: animation;
 	animation: smeFadeInDown .6s cubic-bezier(0, 0, 0, 1);
