@@ -1,11 +1,7 @@
-.is-style-sme-ordered-list-square {
-	&,
-	ul,
-	ol {
-		@extend %ordered-list;
-	}
+:root :where(.wp-block-list.is-style-sme-ordered-list-square) {
+	@extend %ordered-list;
 
-	li {
+	:where(li) {
 		@extend %ordered-list__item;
 
 		&::before {
@@ -19,10 +15,10 @@
 	}
 }
 
-ol.is-style-sme-ordered-list-square[reversed] {
+:root :where(ol.is-style-sme-ordered-list-square[reversed]) {
 	@extend %ordered-list--reserved;
 
-	> li {
+	> :where(li) {
 		@extend %ordered-list--reserved__item;
 	}
 }

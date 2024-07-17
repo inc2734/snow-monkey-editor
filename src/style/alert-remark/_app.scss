@@ -1,4 +1,5 @@
-.is-style-sme-alert-remark {
+:root :where(p.is-style-sme-alert-remark),
+:root :where(.wp-block-group.is-style-sme-alert-remark) {
 	--sme-alert--background-color: var(--_lightest-color-gray);
 	--sme-alert--border: 1px solid var(--_lighter-color-gray);
 	--sme-alert--icon: url(../../src/style/alert-remark/icon.svg);

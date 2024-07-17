@@ -1,10 +1,11 @@
-.is-style-sme-post-it {
+:root :where(p.is-style-sme-post-it) {
 	--sme-post-it--background-color: #{ _darker($alert-color) };
 	--sme-post-it--dog-year-size: 1.8rem;
 
 	position: relative;
 	margin-bottom: var(--sme-post-it--dog-year-size) !important;
 	background-color: var(--sme-post-it--background-color);
+	padding: var(--_padding1) var(--_padding1) 0;
 	width: fit-content;
 
 	&:not(:last-child) {
@@ -42,8 +43,4 @@
 		margin-right: 0;
 		margin-left: auto;
 	}
-}
-
-p.is-style-sme-post-it {
-	padding: var(--_padding1) var(--_padding1) 0;
 }

@@ -78,6 +78,7 @@ class Bootstrap {
 		);
 
 		new App\Setup\Assets();
+		new App\Setup\BlockStyles();
 		new App\Setup\CurrentUser();
 		new App\Setup\Endpoint();
 	}

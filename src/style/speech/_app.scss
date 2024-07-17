@@ -1,4 +1,4 @@
-.is-style-sme-speech {
+:root :where(p.is-style-sme-speech) {
 	@extend %speech;
 
 	text-align: left;

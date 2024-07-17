@@ -1,11 +1,8 @@
-.is-style-sme-list-times {
-	&,
-	ul,
-	ol {
-		list-style: none;
-	}
+:root :where(.wp-block-list.is-style-sme-list-times) {
+	list-style: none;
+	padding-left: 1.5em;
 
-	li {
+	:where(li) {
 		position: relative;
 
 		&::before,

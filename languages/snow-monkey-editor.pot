@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Snow Monkey Editor 9.3.3\n"
+"Project-Id-Version: Snow Monkey Editor 10.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-editor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-04-12T00:56:14+00:00\n"
+"POT-Creation-Date: 2024-07-17T09:59:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: snow-monkey-editor\n"
@@ -29,6 +29,95 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://2inc.org"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:29
+msgid "Alert"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:37
+msgid "Alert (Remarks)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:45
+msgid "Alert (Success)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:53
+msgid "Alert (Warning)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:61
+msgid "No wrap"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:69
+msgid "Wrap"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:77
+msgid "Fluid Shape 1"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:85
+msgid "Fluid Shape 2"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:93
+msgid "Fluid Shape 3"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:101
+msgid "Arrow"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:109
+msgid "Check"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:117
+msgid "Remark"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:125
+msgid "Times"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:133
+msgid "Ordered list (Circle)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:141
+msgid "Ordered list (Square)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:149
+msgid "Post-it"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:157
+msgid "Post-it (Narrow)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:165
+msgid "Speech (Bottom)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:173
+msgid "Speech (Left)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:181
+msgid "Speech (Right)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:189
+msgid "Speech (Top)"
+msgstr ""
+
+#: App/Setup/BlockStyles.php:197
+#: App/Setup/BlockStyles.php:208
+msgid "Shadowed"
 msgstr ""
 
 #: dist/js/editor-extension.js:1
@@ -167,94 +256,6 @@ msgstr ""
 
 #: dist/js/editor.js:1
 msgid "Line breaks when on the mobile"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Alert"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Alert (Success)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Alert (Warning)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Alert (Remarks)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "No wrap"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Wrap"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Fluid Shape 1"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Fluid Shape 2"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Fluid Shape 3"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Arrow"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Check"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Remarks"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Times"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Ordered list (Circle)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Ordered list (Square)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Post-it"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Post-it (Narrow)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Shadowed"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Speech (Bottom)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Speech (Top)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Speech (Right)"
-msgstr ""
-
-#: dist/js/editor.js:1
-msgid "Speech (Left)"
 msgstr ""
 
 #: dist/js/editor.js:1

@@ -1,11 +1,9 @@
-.is-style-sme-alert-warning {
+:root :where(p.is-style-sme-alert-warning),
+:root :where(.wp-block-group.is-style-sme-alert-warning) {
 	--sme-alert--background-color: #{ adjust-hue($alert-color, -30deg) };
 	--sme-alert--border: 1px solid #{ adjust-hue(darken($alert-color, 5%), -30deg) };
 	--sme-alert--color: #{ adjust-hue(darken(desaturate($alert-color, 60%), 70%), -30deg) };
 	--sme-alert--icon: url(../../src/style/alert-warning/icon.svg);
 
 	@extend %alert;
-	background-color: adjust-hue($alert-color, -30deg);
-	border: 1px solid adjust-hue(darken($alert-color, 5%), -30deg);
-	color: adjust-hue(darken(desaturate($alert-color, 60%), 70%), -30deg);
 }

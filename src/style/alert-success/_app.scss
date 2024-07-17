@@ -1,4 +1,5 @@
-.is-style-sme-alert-success {
+:root :where(p.is-style-sme-alert-success),
+:root :where(.wp-block-group.is-style-sme-alert-success) {
 	--sme-alert--background-color: #{ adjust-hue($alert-color, 40deg) };
 	--sme-alert--border: 1px solid #{ adjust-hue(darken($alert-color, 10%), 40deg) };
 	--sme-alert--color: #{ adjust-hue(darken(desaturate($alert-color, 70%), 80%), 40deg) };

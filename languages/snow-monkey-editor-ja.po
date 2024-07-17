@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
 "editor\n"
-"POT-Creation-Date: 2024-04-12T00:56:14+00:00\n"
-"PO-Revision-Date: 2024-04-12 09:58+0900\n"
+"POT-Creation-Date: 2024-07-17T09:59:40+00:00\n"
+"PO-Revision-Date: 2024-07-17 19:00+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -40,6 +40,94 @@ msgstr "inc2734"
 #. Author URI of the plugin
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
+
+#: App/Setup/BlockStyles.php:29
+msgid "Alert"
+msgstr "アラート"
+
+#: App/Setup/BlockStyles.php:37
+msgid "Alert (Remarks)"
+msgstr "アラート（備考）"
+
+#: App/Setup/BlockStyles.php:45
+msgid "Alert (Success)"
+msgstr "アラート（サクセス）"
+
+#: App/Setup/BlockStyles.php:53
+msgid "Alert (Warning)"
+msgstr "アラート（ワーニング）"
+
+#: App/Setup/BlockStyles.php:61
+msgid "No wrap"
+msgstr "折り返さない"
+
+#: App/Setup/BlockStyles.php:69
+msgid "Wrap"
+msgstr "折り返す"
+
+#: App/Setup/BlockStyles.php:77
+msgid "Fluid Shape 1"
+msgstr "流体シェイプ1"
+
+#: App/Setup/BlockStyles.php:85
+msgid "Fluid Shape 2"
+msgstr "流体シェイプ2"
+
+#: App/Setup/BlockStyles.php:93
+msgid "Fluid Shape 3"
+msgstr "流体シェイプ3"
+
+#: App/Setup/BlockStyles.php:101
+msgid "Arrow"
+msgstr "矢印"
+
+#: App/Setup/BlockStyles.php:109
+msgid "Check"
+msgstr "チェック"
+
+#: App/Setup/BlockStyles.php:117
+msgid "Remark"
+msgstr "備考"
+
+#: App/Setup/BlockStyles.php:125
+msgid "Times"
+msgstr "✗"
+
+#: App/Setup/BlockStyles.php:133
+msgid "Ordered list (Circle)"
+msgstr "序列リスト（丸）"
+
+#: App/Setup/BlockStyles.php:141
+msgid "Ordered list (Square)"
+msgstr "序列リスト（四角）"
+
+#: App/Setup/BlockStyles.php:149
+msgid "Post-it"
+msgstr "付箋"
+
+#: App/Setup/BlockStyles.php:157
+msgid "Post-it (Narrow)"
+msgstr "付箋（細）"
+
+#: App/Setup/BlockStyles.php:165
+msgid "Speech (Bottom)"
+msgstr "吹きだし（下）"
+
+#: App/Setup/BlockStyles.php:173
+msgid "Speech (Left)"
+msgstr "吹きだし（左）"
+
+#: App/Setup/BlockStyles.php:181
+msgid "Speech (Right)"
+msgstr "吹きだし（右）"
+
+#: App/Setup/BlockStyles.php:189
+msgid "Speech (Top)"
+msgstr "吹きだし（上）"
+
+#: App/Setup/BlockStyles.php:197 App/Setup/BlockStyles.php:208
+msgid "Shadowed"
+msgstr "影付き"
 
 #: dist/js/editor-extension.js:1
 msgid "Display setting (By window size)"
@@ -178,94 +266,6 @@ msgstr "タブレットのときに改行"
 #: dist/js/editor.js:1
 msgid "Line breaks when on the mobile"
 msgstr "モバイルのときに改行"
-
-#: dist/js/editor.js:1
-msgid "Alert"
-msgstr "アラート"
-
-#: dist/js/editor.js:1
-msgid "Alert (Success)"
-msgstr "アラート（サクセス）"
-
-#: dist/js/editor.js:1
-msgid "Alert (Warning)"
-msgstr "アラート（ワーニング）"
-
-#: dist/js/editor.js:1
-msgid "Alert (Remarks)"
-msgstr "アラート（備考）"
-
-#: dist/js/editor.js:1
-msgid "No wrap"
-msgstr "折り返さない"
-
-#: dist/js/editor.js:1
-msgid "Wrap"
-msgstr "折り返す"
-
-#: dist/js/editor.js:1
-msgid "Fluid Shape 1"
-msgstr "流体シェイプ1"
-
-#: dist/js/editor.js:1
-msgid "Fluid Shape 2"
-msgstr "流体シェイプ2"
-
-#: dist/js/editor.js:1
-msgid "Fluid Shape 3"
-msgstr "流体シェイプ3"
-
-#: dist/js/editor.js:1
-msgid "Arrow"
-msgstr "矢印"
-
-#: dist/js/editor.js:1
-msgid "Check"
-msgstr "チェック"
-
-#: dist/js/editor.js:1
-msgid "Remarks"
-msgstr "備考"
-
-#: dist/js/editor.js:1
-msgid "Times"
-msgstr "✗"
-
-#: dist/js/editor.js:1
-msgid "Ordered list (Circle)"
-msgstr "序列リスト（丸）"
-
-#: dist/js/editor.js:1
-msgid "Ordered list (Square)"
-msgstr "序列リスト（四角）"
-
-#: dist/js/editor.js:1
-msgid "Post-it"
-msgstr "付箋"
-
-#: dist/js/editor.js:1
-msgid "Post-it (Narrow)"
-msgstr "付箋（細）"
-
-#: dist/js/editor.js:1
-msgid "Shadowed"
-msgstr "影付き"
-
-#: dist/js/editor.js:1
-msgid "Speech (Bottom)"
-msgstr "吹きだし（下）"
-
-#: dist/js/editor.js:1
-msgid "Speech (Top)"
-msgstr "吹きだし（上）"
-
-#: dist/js/editor.js:1
-msgid "Speech (Right)"
-msgstr "吹きだし（右）"
-
-#: dist/js/editor.js:1
-msgid "Speech (Left)"
-msgstr "吹きだし（左）"
 
 #: dist/js/editor.js:1
 msgid "Remove this preset"

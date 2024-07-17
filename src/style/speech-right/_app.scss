@@ -1,4 +1,4 @@
-.is-style-sme-speech-right {
+:root :where(p.is-style-sme-speech-right) {
 	@extend %speech;
 
 	&::before {
