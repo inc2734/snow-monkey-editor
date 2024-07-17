@@ -193,10 +193,10 @@ class BlockStyles {
 		register_block_style(
 			'core/image',
 			array(
-				'name'  => 'sme-shadowed',
-				'label' => __( 'Shadowed', 'snow-monkey-editor' ),
+				'name'       => 'sme-shadowed',
+				'label'      => __( 'Shadowed', 'snow-monkey-editor' ),
 				'style_data' => array(
-					"shadow" => "0 0 4px 0 rgba(0 0 0 / .1)",
+					'shadow' => '0 0 4px 0 rgba(0 0 0 / .1)',
 				),
 			)
 		);
@@ -204,10 +204,10 @@ class BlockStyles {
 		register_block_style(
 			'core/button',
 			array(
-				'name'  => 'sme-shadowed',
-				'label' => __( 'Shadowed', 'snow-monkey-editor' ),
+				'name'       => 'sme-shadowed',
+				'label'      => __( 'Shadowed', 'snow-monkey-editor' ),
 				'style_data' => array(
-					"shadow" => "0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 0 0 rgb(255 255 255 / .1) inset, 0 -1px 0 0 rgb(1 1 1 / .05) inset",
+					'shadow' => '0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 0 0 rgb(255 255 255 / .1) inset, 0 -1px 0 0 rgb(1 1 1 / .05) inset',
 				),
 			)
 		);
