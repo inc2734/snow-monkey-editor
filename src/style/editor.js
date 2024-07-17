@@ -17,8 +17,8 @@ addFilter(
 			}
 
 			if (
-				! className.match( 'is-style-sme-ordered-list-square' ) &&
-				! className.match( 'is-style-sme-ordered-list-circle' )
+				! className?.match( 'is-style-sme-ordered-list-square' ) &&
+				! className?.match( 'is-style-sme-ordered-list-circle' )
 			) {
 				return <BlockListBlock { ...props } />;
 			}
