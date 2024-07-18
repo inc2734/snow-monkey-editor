@@ -127,5 +127,12 @@ class Assets {
 				'strategy'  => 'defer',
 			)
 		);
+
+		wp_enqueue_style(
+			'snow-monkey-editor@view',
+			SNOW_MONKEY_EDITOR_URL . '/dist/css/view.css',
+			array(),
+			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/view.css' )
+		);
 	}
 }
