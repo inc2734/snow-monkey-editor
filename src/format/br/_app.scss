@@ -1,20 +1,22 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .sme-br {
 	position: relative;
 	display: inline;
 
-	@include _media-min(lg) {
+	@include core.media-min(lg) {
 		&--disable\:desktop br {
 			display: none;
 		}
 	}
 
-	@include _media-only(md) {
+	@include core.media-only(md) {
 		&--disable\:tablet br {
 			display: none;
 		}
 	}
 
-	@include _media-max(sm) {
+	@include core.media-max(sm) {
 		&--disable\:mobile br {
 			display: none;
 		}

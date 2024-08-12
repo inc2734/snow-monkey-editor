@@ -1,3 +1,5 @@
+@use '../../css/core/placeholder/ordered-list';
+
 :root :where(.wp-block-list.is-style-sme-ordered-list-circle) {
 	@extend %ordered-list;
 

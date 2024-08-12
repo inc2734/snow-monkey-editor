@@ -1,3 +1,5 @@
+@use '../../css/core/placeholder/fluid-shape';
+
 :root :where(.wp-block-image.is-style-sme-fluid-shape-3 img),
 :root :where(.wp-block-media-text.is-style-sme-fluid-shape-3 > .wp-block-media-text__media img) {
 	@extend %fluid-shape__media;

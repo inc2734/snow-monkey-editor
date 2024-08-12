@@ -1,17 +1,19 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .sme-hidden-sm {
-	@include _media-only(sm) {
+	@include core.media-only(sm) {
 		opacity: .3 !important;
 	}
 }
 
 .sme-hidden-md {
-	@include _media-only(md) {
+	@include core.media-only(md) {
 		opacity: .3 !important;
 	}
 }
 
 .sme-hidden-lg-up {
-	@include _media-min(lg) {
+	@include core.media-min(lg) {
 		opacity: .3 !important;
 	}
 }

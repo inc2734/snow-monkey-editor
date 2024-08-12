@@ -1,6 +1,10 @@
+@use 'sass:meta';
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../../css/core/variable/variable' as *;
+
 .editor-styles-wrapper,
 .customize-control-sidebar_block_editor {
-	@import 'app';
+	@include meta.load-css('app');
 
 	.sme-br {
 		&::before {
@@ -11,7 +15,7 @@
 			transition: opacity .2s;
 		}
 
-		@include _media-min(lg) {
+		@include core.media-min(lg) {
 			&--disable\:desktop::before {
 				opacity: 0;
 			}
@@ -22,7 +26,7 @@
 			}
 		}
 
-		@include _media-only(md) {
+		@include core.media-only(md) {
 			&--disable\:tablet::before {
 				opacity: 0;
 			}
@@ -33,7 +37,7 @@
 			}
 		}
 
-		@include _media-max(sm) {
+		@include core.media-max(sm) {
 			&--disable\:mobile::before {
 				opacity: 0;
 			}

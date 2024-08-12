@@ -1,5 +1,3 @@
-@import 'core/core';
-
-@import '../extension/app';
-@import '../format/app';
-@import '../style/app';
+@use '../extension/app' as *;
+@use '../format/app' as *;
+@use '../style/app' as *;

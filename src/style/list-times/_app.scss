@@ -1,3 +1,5 @@
+@use '../../css/core/variable/variable' as *;
+
 :root :where(.wp-block-list.is-style-sme-list-times) {
 	list-style: none;
 	padding-left: 1.5em;

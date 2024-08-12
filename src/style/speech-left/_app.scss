@@ -1,3 +1,5 @@
+@use '../../css/core/placeholder/speech';
+
 :root :where(p.is-style-sme-speech-left) {
 	@extend %speech;
 

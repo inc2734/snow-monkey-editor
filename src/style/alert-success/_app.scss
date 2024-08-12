@@ -1,3 +1,6 @@
+@use '../../css/core/placeholder/alert';
+@use '../../css/core/variable/variable' as *;
+
 :root :where(p.is-style-sme-alert-success),
 :root :where(.wp-block-group.is-style-sme-alert-success) {
 	--sme-alert--background-color: #{ adjust-hue($alert-color, 40deg) };

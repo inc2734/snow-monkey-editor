@@ -1,4 +1,4 @@
-@import 'date-time/editor';
-@import 'editing-lock/editor';
-@import 'hidden-by-role/editor';
-@import 'hidden-by-size/editor';
+@use 'date-time/editor' as *;
+@use 'editing-lock/editor' as *;
+@use 'hidden-by-role/editor' as *;
+@use 'hidden-by-size/editor' as *;

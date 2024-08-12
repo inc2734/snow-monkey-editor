@@ -1,7 +1,10 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../../css/core/variable/variable' as *;
+
 :root :where(p.is-style-sme-post-it-narrow) {
 	--sme-post-it-narrow--background-color: #fff;
 	--sme-post-it-narrow--line-size: .45rem;
-	--sme-post-it-narrow--line-color: #{ _darker(adjust-hue($alert-color, -30deg)) };
+	--sme-post-it-narrow--line-color: #{ core.darker(adjust-hue($alert-color, -30deg)) };
 
 	position: relative;
 	z-index: 1;

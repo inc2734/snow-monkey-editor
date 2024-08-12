@@ -1,5 +1,5 @@
-@import 'css/bounce-down';
-@import 'css/bounce-in';
-@import 'css/fade-in';
-@import 'css/fade-in-up';
-@import 'css/fade-in-down';
+@use 'css/bounce-down' as *;
+@use 'css/bounce-in' as *;
+@use 'css/fade-in' as *;
+@use 'css/fade-in-up' as *;
+@use 'css/fade-in-down' as *;

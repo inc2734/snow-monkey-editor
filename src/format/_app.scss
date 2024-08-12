@@ -1,5 +1,5 @@
-@import 'badge/app';
-@import 'br/app';
-@import 'font-size/app';
-@import 'highlighter/app';
-@import 'line-height/app';
+@use 'badge/app' as *;
+@use 'br/app' as *;
+@use 'font-size/app' as *;
+@use 'highlighter/app' as *;
+@use 'line-height/app' as *;

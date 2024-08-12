@@ -1,17 +1,19 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+
 .sme-hidden-sm:where(:not(.wp-block)) {
-	@include _media-only(sm) {
+	@include core.media-only(sm) {
 		display: none !important;
 	}
 }
 
 .sme-hidden-md:where(:not(.wp-block)) {
-	@include _media-only(md) {
+	@include core.media-only(md) {
 		display: none !important;
 	}
 }
 
 .sme-hidden-lg-up:where(:not(.wp-block)) {
-	@include _media-min(lg) {
+	@include core.media-min(lg) {
 		display: none !important;
 	}
 }

@@ -1,3 +1,5 @@
+@use '../../../../node_modules/sass-basis/src/css/core';
+
 %alert {
 	--sme-alert--border-radius: var(--_global--border-radius);
 	--sme-alert--padding: var(--_padding1);
@@ -7,7 +9,7 @@
 	--sme-alert--icon: none;
 	--sme-alert--icon-size: 24px;
 
-	@include _alert();
+	@include core.alert();
 	position: relative;
 	background-color: var(--sme-alert--background-color);
 	border: var(--sme-alert--border);
@@ -15,7 +17,7 @@
 	color: var(--sme-alert--color);
 	padding: calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size)) var(--sme-alert--padding) var(--sme-alert--padding);
 
-	@include _media-min(md) {
+	@include core.media-min(md) {
 		padding: var(--sme-alert--padding) var(--sme-alert--padding) var(--sme-alert--padding) calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size));
 	}
 
@@ -33,7 +35,7 @@
 		background-size: contain;
 		background-image: var(--sme-alert--icon);
 
-		@include _media-min(md) {
+		@include core.media-min(md) {
 			top: 50%;
 			left: var(--_padding1);
 			transform: translateY(-50%);

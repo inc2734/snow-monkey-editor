@@ -1,8 +1,7 @@
-@import 'core/core';
-
-@import '../block-presets/editor';
-@import '../extension/editor';
-@import '../format/editor';
+@use '../block-presets/editor' as *;
+@use '../extension/editor' as *;
+@use '../format/editor' as *;
+@use './core/variable/variable' as *;
 
 .sme-popover {
 	.components-popover__content {

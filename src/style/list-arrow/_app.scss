@@ -1,3 +1,6 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../../css/core/variable/variable' as *;
+
 :root :where(.wp-block-list.is-style-sme-list-arrow) {
 	list-style: none;
 	padding-left: 1.5em;
@@ -13,7 +16,7 @@
 			display: block;
 			width: 6px;
 			height: 6px;
-			border-color: _darker(adjust-hue($alert-color, -30deg));
+			border-color: core.darker(adjust-hue($alert-color, -30deg));
 			border-style: solid;
 			border-width: 0 2px 2px 0;
 			transform: rotate(-45deg);
@@ -24,7 +27,7 @@
 			position: absolute;
 			width: 8px;
 			height: 0;
-			border-color: _darker(adjust-hue($alert-color, -30deg));
+			border-color: core.darker(adjust-hue($alert-color, -30deg));
 			border-style: solid;
 			border-width: 2px 0 0 0;
 			left: calc(-1.5em + 5px);

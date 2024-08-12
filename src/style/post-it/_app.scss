@@ -1,5 +1,8 @@
+@use '../../../node_modules/sass-basis/src/css/core';
+@use '../../css/core/variable/variable' as *;
+
 :root :where(p.is-style-sme-post-it) {
-	--sme-post-it--background-color: #{ _darker($alert-color) };
+	--sme-post-it--background-color: #{ core.darker($alert-color) };
 	--sme-post-it--dog-year-size: 1.8rem;
 
 	position: relative;

@@ -1,3 +1,5 @@
+@use '../../css/core/placeholder/alert';
+
 :root :where(p.is-style-sme-alert-remark),
 :root :where(.wp-block-group.is-style-sme-alert-remark) {
 	--sme-alert--background-color: var(--_lightest-color-gray);
