@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin name: Snow Monkey Editor
- * Version: 10.0.3
+ * Version: 10.0.4
  * Description: Extends gutenberg block editor
  * Author: inc2734
  * Author URI: https://2inc.org
