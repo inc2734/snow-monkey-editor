@@ -81,6 +81,7 @@ const Content = ( props ) => {
 	return (
 		<>
 			<SelectControl
+				__nextHasNoMarginBottom
 				label={ __( 'Animation', 'snow-monkey-editor' ) }
 				value={ smeAnimation || undefined }
 				options={ options }
@@ -97,6 +98,7 @@ const Content = ( props ) => {
 			/>
 
 			<RangeControl
+				__nextHasNoMarginBottom
 				label={ __( 'Delay', 'snow-monkey-editor' ) }
 				value={ smeAnimationDelay || 0 }
 				onChange={ ( value ) => {
@@ -109,6 +111,7 @@ const Content = ( props ) => {
 			/>
 
 			<RangeControl
+				__nextHasNoMarginBottom
 				label={ __( 'Duration', 'snow-monkey-editor' ) }
 				value={ smeAnimationDuration || undefined }
 				onChange={ ( value ) => {

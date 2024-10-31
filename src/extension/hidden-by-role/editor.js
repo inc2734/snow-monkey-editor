@@ -144,6 +144,7 @@ const Content = ( props ) => {
 
 				return (
 					<ToggleControl
+						__nextHasNoMarginBottom
 						key={ `sme-hidden-role-${ key }` }
 						label={ hiddenRoleLabel }
 						checked={ checkedHiddenRole }

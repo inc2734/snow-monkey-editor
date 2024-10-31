@@ -64,6 +64,7 @@ const Content = ( props ) => {
 	return (
 		<>
 			<ToggleControl
+				__nextHasNoMarginBottom
 				label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
 				checked={ smeIsHiddenSm }
 				onChange={ ( value ) => {
@@ -74,6 +75,7 @@ const Content = ( props ) => {
 			/>
 
 			<ToggleControl
+				__nextHasNoMarginBottom
 				label={ __( 'Hide on tablet size', 'snow-monkey-editor' ) }
 				checked={ smeIsHiddenMd }
 				onChange={ ( value ) => {
@@ -84,6 +86,7 @@ const Content = ( props ) => {
 			/>
 
 			<ToggleControl
+				__nextHasNoMarginBottom
 				label={ __( 'Hide on PC size', 'snow-monkey-editor' ) }
 				checked={ smeIsHiddenLg }
 				onChange={ ( value ) => {

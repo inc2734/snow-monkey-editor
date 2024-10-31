@@ -132,6 +132,7 @@ const Content = ( props ) => {
 
 				return (
 					<ToggleControl
+						__nextHasNoMarginBottom
 						key={ `sme-editing-lock-role-${ key }` }
 						label={ labelEditingLockRole }
 						checked={ checkedEditingLockRole }

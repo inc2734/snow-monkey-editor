@@ -131,6 +131,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				} }
 			>
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __(
 						'Line breaks when on the desktop',
 						'snow-monkey-editor'
@@ -141,6 +142,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				/>
 
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __(
 						'Line breaks when on the tablet',
 						'snow-monkey-editor'
@@ -151,6 +153,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 				/>
 
 				<ToggleControl
+					__nextHasNoMarginBottom
 					label={ __(
 						'Line breaks when on the mobile',
 						'snow-monkey-editor'

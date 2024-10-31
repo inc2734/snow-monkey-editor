@@ -39,6 +39,7 @@ const LetterSpacingPicker = ( { name, title, value, onChange, onReset } ) => {
 	return (
 		<>
 			<RangeControl
+				__nextHasNoMarginBottom
 				label={ title }
 				value={ activeLetterSpacing }
 				onChange={ onChange }
