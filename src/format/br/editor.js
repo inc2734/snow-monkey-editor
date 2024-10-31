@@ -161,7 +161,6 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 					checked={ ! disableMobile }
 					onChange={ onChangeMobile }
 					disabled={ disableDesktop && disableTablet }
-					__nextHasNoMarginBottom
 				/>
 			</div>
 		</Popover>
