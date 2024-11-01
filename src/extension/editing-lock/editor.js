@@ -1,7 +1,12 @@
 import { uniq, intersection, includes } from 'lodash';
 
+import {
+	Disabled,
+	ToggleControl,
+	__experimentalVStack as VStack,
+} from '@wordpress/components';
+
 import { getBlockType } from '@wordpress/blocks';
-import { Disabled, ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { sprintf, __ } from '@wordpress/i18n';
 
@@ -108,7 +113,7 @@ const Content = ( props ) => {
 	}
 
 	return (
-		<>
+		<VStack spacing="16px">
 			{ Object.keys( roles ).map( ( key ) => {
 				const labelEditingLockRole = sprintf(
 					// translators: %1$s: The role name
@@ -140,7 +145,7 @@ const Content = ( props ) => {
 					/>
 				);
 			} ) }
-		</>
+		</VStack>
 	);
 };
 

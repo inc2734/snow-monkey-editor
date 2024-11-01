@@ -1,8 +1,12 @@
 import { uniq } from 'lodash';
 import classnames from 'classnames/dedupe';
 
+import {
+	ToggleControl,
+	__experimentalVStack as VStack,
+} from '@wordpress/components';
+
 import { getBlockType } from '@wordpress/blocks';
-import { ToggleControl } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
 import { useEffect } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
@@ -122,7 +126,7 @@ const Content = ( props ) => {
 	}, [ smeIsHiddenRoles ] );
 
 	return (
-		<>
+		<VStack spacing="16px">
 			{ Object.keys( rolesForHiddenByRoles ).map( ( key ) => {
 				const hiddenRoleLabel = sprintf(
 					// translators: %1$s: The role name
@@ -152,7 +156,7 @@ const Content = ( props ) => {
 					/>
 				);
 			} ) }
-		</>
+		</VStack>
 	);
 };
 

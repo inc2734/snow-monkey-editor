@@ -5,25 +5,28 @@
 
 .sme-popover {
 	.components-popover__content {
+		padding: 16px;
 		min-width: 260px;
 		max-height: none !important;
 		overflow: visible !important;
-	}
 
-	fieldset {
-		padding: 16px;
+		> * {
+			> * + * {
+				margin-top: 8px;
+			}
+		}
 	}
 
 	// ToolsPanelItem Popover
 	.components-dropdown-content-wrapper {
+		margin: 0 !important;
+
 		.sme-popover__title {
 			font-weight: bold;
-			padding: 16px 16px 0;
+			margin-bottom: 16px;
 		}
 
-		fieldset {
-			padding: 16px;
-
+		> fieldset {
 			> :last-child {
 				margin-bottom: 0;
 			}

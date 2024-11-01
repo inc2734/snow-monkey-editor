@@ -122,12 +122,11 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 			shift={ true }
 			focusOnMount={ false }
 			anchor={ popoverAnchor }
-			className="block-editor-format-toolbar__image-popover"
+			className="sme-popover"
 		>
 			<div
 				style={ {
 					width: '260px',
-					padding: '16px',
 				} }
 			>
 				<ToggleControl

@@ -1,8 +1,12 @@
 import { compact } from 'lodash';
 import classnames from 'classnames/dedupe';
 
+import {
+	ToggleControl,
+	__experimentalVStack as VStack,
+} from '@wordpress/components';
+
 import { hasBlockSupport, getBlockType } from '@wordpress/blocks';
-import { ToggleControl } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -62,7 +66,7 @@ const Content = ( props ) => {
 	}, [ smeIsHiddenSm, smeIsHiddenMd, smeIsHiddenLg ] );
 
 	return (
-		<>
+		<VStack spacing="16px">
 			<ToggleControl
 				__nextHasNoMarginBottom
 				label={ __( 'Hide on smartphone size', 'snow-monkey-editor' ) }
@@ -95,7 +99,7 @@ const Content = ( props ) => {
 					} );
 				} }
 			/>
-		</>
+		</VStack>
 	);
 };
 
