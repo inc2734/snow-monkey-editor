@@ -70,12 +70,7 @@ class Bootstrap {
 	 */
 	public function _bootstrap() {
 		add_filter( 'load_textdomain_mofile', array( $this, '_load_textdomain_mofile' ), 10, 2 );
-
-		load_plugin_textdomain(
-			'snow-monkey-editor',
-			false,
-			basename( SNOW_MONKEY_EDITOR_PATH ) . '/languages'
-		);
+		add_filter( 'init', array( $this, '_init' ) );
 
 		new App\Setup\Assets();
 		new App\Setup\BlockStyles();
@@ -102,6 +97,17 @@ class Bootstrap {
 		}
 
 		return $local_mofile;
+	}
+
+	/**
+	 * Load textdomain.
+	 */
+	public function _init() {
+		load_plugin_textdomain(
+			'snow-monkey-editor',
+			false,
+			basename( SNOW_MONKEY_EDITOR_PATH ) . '/languages'
+		);
 	}
 
 	/**
