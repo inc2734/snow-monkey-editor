@@ -192,6 +192,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 
 == Changelog ==
 
+= 10.0.6 =
+* Fixed a bug that the `<ServerSideRender />` in `<Disabled />` disappears without becoming transparent when the display settings (window size) are set.
+
 = 10.0.5 =
 * WordPress 6.7 compatible.
 
