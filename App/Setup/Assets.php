@@ -42,6 +42,21 @@ class Assets {
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/app.css' )
 		);
 
+		/**
+		 * Front only.
+		 */
+		if ( ! is_admin() ) {
+			wp_enqueue_style(
+				'snow-monkey-editor@front',
+				SNOW_MONKEY_EDITOR_URL . '/dist/css/front.css',
+				array(),
+				filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/front.css' )
+			);
+		}
+
+		/**
+		 * Admin only.
+		 */
 		if ( is_admin() ) {
 			$asset = include SNOW_MONKEY_EDITOR_PATH . '/dist/js/editor.asset.php';
 			wp_enqueue_script(
