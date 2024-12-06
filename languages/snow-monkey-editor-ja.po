@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
 "editor\n"
-"POT-Creation-Date: 2024-07-17T09:59:40+00:00\n"
-"PO-Revision-Date: 2024-07-17 19:00+0900\n"
+"POT-Creation-Date: 2024-12-06T04:43:29+00:00\n"
+"PO-Revision-Date: 2024-12-06 13:45+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -177,6 +177,14 @@ msgstr "フェード・イン・アップ"
 #: dist/js/editor-extension.js:4
 msgid "fade-in-down"
 msgstr "フェード・イン・ダウン"
+
+#: dist/js/editor-extension.js:4
+msgid "fade-in-left"
+msgstr "フェード・イン・レフト"
+
+#: dist/js/editor-extension.js:4
+msgid "fade-in-right"
+msgstr "フェード・イン・ライト"
 
 #: dist/js/editor-extension.js:4
 msgid "Animation"

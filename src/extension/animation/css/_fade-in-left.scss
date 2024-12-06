@@ -1,0 +1,14 @@
+@keyframes smeFadeInLeft {
+	0%   { opacity: 0; transform: translateX(-30px) }
+	100% { opacity: 1; transform: translateX(0) }
+}
+
+.sme-animation-fade-in-left {
+	opacity: 0;
+}
+
+.sme-animation-fade-in-left-fired {
+	opacity: 0;
+	will-change: animation;
+	animation: smeFadeInLeft .6s cubic-bezier(0, 0, 0, 1);
+}

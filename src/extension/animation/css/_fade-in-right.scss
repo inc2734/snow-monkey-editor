@@ -1,0 +1,14 @@
+@keyframes smeFadeInRight {
+	0%   { opacity: 0; transform: translateX(30px) }
+	100% { opacity: 1; transform: translateX(0) }
+}
+
+.sme-animation-fade-in-right {
+	opacity: 0;
+}
+
+.sme-animation-fade-in-right-fired {
+	opacity: 0;
+	will-change: animation;
+	animation: smeFadeInRight .6s cubic-bezier(0, 0, 0, 1);
+}

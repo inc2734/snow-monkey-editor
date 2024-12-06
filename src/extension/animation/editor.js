@@ -35,6 +35,14 @@ const options = [
 		label: __( 'fade-in-down', 'snow-monkey-editor' ),
 		value: 'fade-in-down',
 	},
+	{
+		label: __( 'fade-in-left', 'snow-monkey-editor' ),
+		value: 'fade-in-left',
+	},
+	{
+		label: __( 'fade-in-right', 'snow-monkey-editor' ),
+		value: 'fade-in-right',
+	},
 ];
 
 const isShown = ( props ) => {
