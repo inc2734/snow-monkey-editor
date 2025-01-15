@@ -13,3 +13,9 @@
 		display: none !important;
 	}
 }
+
+.sme-popover--editing-lock fieldset {
+	max-height: 215px;
+	overflow: auto;
+	padding: 3px;
+}

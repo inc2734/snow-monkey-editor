@@ -127,6 +127,7 @@ export const settings = {
 		};
 	},
 	label: __( 'Display setting (By window size)', 'snow-monkey-editor' ),
+	name: 'hidden-by-size',
 	isShown,
 	Content,
 };

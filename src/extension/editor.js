@@ -154,8 +154,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 											>
 												<Dropdown
 													popoverProps={ {
-														className:
-															'sme-popover',
+														className: `sme-popover sme-popover--${ setting.name }`,
 														placement: 'left-start',
 														offset: 36,
 														shift: true,

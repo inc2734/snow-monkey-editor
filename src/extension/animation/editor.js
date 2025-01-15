@@ -159,6 +159,7 @@ export const settings = {
 		return newClassNameMap;
 	},
 	label: __( 'Animation', 'snow-monkey-editor' ),
+	name: 'animation',
 	isShown,
 	Content,
 };

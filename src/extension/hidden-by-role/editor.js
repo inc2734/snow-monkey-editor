@@ -179,6 +179,7 @@ export const settings = {
 		return newClassNameMap;
 	},
 	label: __( 'Display setting (By roles)', 'snow-monkey-editor' ),
+	name: 'hidden-by-role',
 	isShown,
 	Content,
 	Decorator,

@@ -157,6 +157,7 @@ export const settings = {
 	resetValue: ( props ) =>
 		props.setAttributes( { smeIsEditingLockRoles: [] } ),
 	label: __( 'Editing lock (By roles)', 'snow-monkey-editor' ),
+	name: 'editing-lock',
 	isShown,
 	Content,
 	Decorator,

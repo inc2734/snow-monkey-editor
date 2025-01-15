@@ -72,6 +72,7 @@ export const publishSettings = {
 	resetValue: ( props ) =>
 		props.setAttributes( { smeStartDateTime: undefined } ),
 	label: __( 'Publish setting', 'snow-monkey-editor' ),
+	name: 'date-time',
 	isShown,
 	Content: PublishContent,
 };

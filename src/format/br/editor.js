@@ -122,7 +122,7 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 			shift={ true }
 			focusOnMount={ false }
 			anchor={ popoverAnchor }
-			className="sme-popover"
+			className="sme-popover sme-popover--inline-br"
 		>
 			<div
 				style={ {
