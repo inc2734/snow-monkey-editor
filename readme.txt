@@ -4,7 +4,7 @@ Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, page builder
 Requires at least: 6.6
 Tested up to: 6.7
-Stable tag: 10.1.0
+Stable tag: 10.1.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -191,6 +191,9 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 10.1.1 =
+* Improved popover display when there are many roles in "Edit lock (by role)" and "Display settings (by role)".
 
 = 10.1.0 =
 * Add animation "Fade in left".
