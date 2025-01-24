@@ -15,10 +15,19 @@
 	border: var(--sme-alert--border);
 	border-radius: var(--sme-alert--border-radius);
 	color: var(--sme-alert--color);
-	padding: calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size)) var(--sme-alert--padding) var(--sme-alert--padding);
+	padding-right: var(--sme-alert--padding);
+	padding-bottom: var(--sme-alert--padding);
+	padding-left: var(--sme-alert--padding);
+
+	@include core.media-max(sm) {
+		padding-top: calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size)) !important;
+	}
 
 	@include core.media-min(md) {
-		padding: var(--sme-alert--padding) var(--sme-alert--padding) var(--sme-alert--padding) calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size));
+		padding-top: var(--sme-alert--padding);
+		padding-right: var(--sme-alert--padding);
+		padding-bottom: var(--sme-alert--padding);
+		padding-left: calc(var(--sme-alert--padding) * 2 + var(--sme-alert--icon-size)) !important;
 	}
 
 	&::before {

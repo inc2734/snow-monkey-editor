@@ -38,7 +38,9 @@ class Assets {
 		wp_enqueue_style(
 			'snow-monkey-editor',
 			SNOW_MONKEY_EDITOR_URL . '/dist/css/app.css',
-			array(),
+			Editor\is_pro()
+				? array( 'snow-monkey-app' )
+				: array(),
 			filemtime( SNOW_MONKEY_EDITOR_PATH . '/dist/css/app.css' )
 		);
 
