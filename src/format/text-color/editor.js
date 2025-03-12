@@ -21,12 +21,24 @@ import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button
 const name = 'snow-monkey-editor/text-color';
 const title = __( 'Text color', 'snow-monkey-editor' );
 
-const EMPTY_ARRAY = [];
-
 const Edit = ( props ) => {
 	const { value, onChange, isActive, activeAttributes, contentRef } = props;
 
-	const [ colors = EMPTY_ARRAY ] = useSettings( 'color.palette' );
+	const [ userPalette, themePalette, defaultPalette ] = useSettings(
+		'color.palette.custom',
+		'color.palette.theme',
+		'color.palette.default'
+	);
+
+	const colors = useMemo(
+		() => [
+			...( userPalette || [] ),
+			...( themePalette || [] ),
+			...( defaultPalette || [] ),
+		],
+		[ userPalette, themePalette, defaultPalette ]
+	);
+
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
 
 	const activeColor = useMemo( () => {

@@ -1,15 +1,13 @@
-import { get } from 'lodash';
-
 import {
 	getColorObjectByAttributeValues,
 	useCachedTruthy,
+	useSettings,
 	__experimentalColorGradientControl as ColorGradientControl,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
 import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
 import { withSpokenMessages, Popover } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -35,10 +33,20 @@ export function getActiveColor( formatName, formatValue, colors ) {
 }
 
 const ColorPicker = ( { name, value, onChange } ) => {
-	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
-		return get( getSettings(), [ 'colors' ], [] );
-	} );
+	const [ userPalette, themePalette, defaultPalette ] = useSettings(
+		'color.palette.custom',
+		'color.palette.theme',
+		'color.palette.default'
+	);
+
+	const colors = useMemo(
+		() => [
+			...( userPalette || [] ),
+			...( themePalette || [] ),
+			...( defaultPalette || [] ),
+		],
+		[ userPalette, themePalette, defaultPalette ]
+	);
 
 	const activeColor = useMemo(
 		() => getActiveColor( name, value, colors ),

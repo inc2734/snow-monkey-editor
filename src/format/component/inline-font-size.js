@@ -1,13 +1,13 @@
-import { get, find } from 'lodash';
+import { find } from 'lodash';
 
 import {
 	FontSizePicker as BaseFontSizePicker,
 	useCachedTruthy,
+	useSettings,
 } from '@wordpress/block-editor';
 
 import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
 import { withSpokenMessages, Popover, Button } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -45,10 +45,7 @@ export function getActiveFontSize( formatName, formatValue, fontSizes ) {
 }
 
 const FontSizePicker = ( { name, value, onChange, onReset } ) => {
-	const fontSizes = useSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
-		return get( getSettings(), [ 'fontSizes' ], [] );
-	} );
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
 	const activeFontSize = useMemo(
 		() => getActiveFontSize( name, value, fontSizes ),
