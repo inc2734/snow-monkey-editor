@@ -1,7 +1,7 @@
-import { get } from 'lodash';
-import rgb2hex from 'rgb2hex';
+import { find } from 'lodash';
 
 import {
+	useSettings,
 	useCachedTruthy,
 	__experimentalColorGradientControl as ColorGradientControl,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
@@ -10,50 +10,70 @@ import {
 import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
 
 import { withSpokenMessages, Popover } from '@wordpress/components';
-import { useSelect } from '@wordpress/data';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-import hexLong2Short from '../helper/hex-long2short';
-
-export function getActiveColor( formatName, formatValue ) {
+export function getActiveGradient( formatName, formatValue, gradients ) {
 	const activeColorFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeColorFormat ) {
 		return;
 	}
 
-	const styleColor = activeColorFormat.attributes.style;
-	if ( ! styleColor ) {
-		return;
+	const currentStyle = activeColorFormat.attributes?.style;
+	if ( currentStyle ) {
+		return currentStyle.replace(
+			new RegExp( `^background-image:\\s*` ),
+			''
+		);
 	}
-
-	const hex = styleColor.match( /(#[0-9A-F]{3,6}) /i );
-	if ( hex ) {
-		return hex;
-	}
-
-	const rgb = styleColor.match( /,\s*?(rgba?\([^)]+\)) /i );
-	if ( rgb ) {
-		return hexLong2Short( rgb2hex( rgb[ 1 ] ).hex );
+	const currentClass = activeColorFormat.attributes?.class;
+	if ( currentClass ) {
+		let gradientSlug = currentClass.replace(
+			/.*has-([^\s]*)-gradient-background.*/,
+			'$1'
+		);
+		let gradientObject = find( gradients, { slug: gradientSlug } );
+		if ( ! gradientObject ) {
+			gradientSlug = gradientSlug.replace(
+				/(\d)-([^\d])/,
+				'$1$2',
+				gradientSlug
+			);
+			gradientObject = find( gradients, { slug: gradientSlug } );
+			if ( ! gradientObject ) {
+				return;
+			}
+		}
+		return gradientObject.gradient;
 	}
 }
 
-const ColorPicker = ( { name, value, onChange } ) => {
-	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
-		return get( getSettings(), [ 'colors' ], [] );
-	} );
+const GradientPicker = ( { name, value, onChange } ) => {
+	const [ userGradients, themeGradients, defaultGradients ] = useSettings(
+		'color.gradients.custom',
+		'color.gradients.theme',
+		'color.gradients.default'
+	);
 
-	const activeColor = useMemo(
-		() => getActiveColor( name, value, colors ),
-		[ name, value, colors ]
+	const gradients = useMemo(
+		() => [
+			...( userGradients || [] ),
+			...( themeGradients || [] ),
+			...( defaultGradients || [] ),
+		],
+		[ userGradients, themeGradients, defaultGradients ]
+	);
+
+	const activeGradient = useMemo(
+		() => getActiveGradient( name, value, gradients ),
+		[ name, value, gradients ]
 	);
 
 	return (
 		<ColorGradientControl
 			label={ __( 'Color', 'snow-monkey-editor' ) }
-			colorValue={ activeColor }
-			onColorChange={ onChange }
+			gradientValue={ activeGradient }
+			onGradientChange={ onChange }
 			{ ...useMultipleOriginColorsAndGradients() }
 			__experimentalHasMultipleOrigins={ true }
 			__experimentalIsRenderedInSidebar={ true }
@@ -61,7 +81,7 @@ const ColorPicker = ( { name, value, onChange } ) => {
 	);
 };
 
-const InlineColorUI = ( {
+const InlineGradientUI = ( {
 	name,
 	value,
 	onChange,
@@ -81,11 +101,15 @@ const InlineColorUI = ( {
 		<Popover
 			anchor={ popoverAnchor }
 			onClose={ onClose }
-			className="sme-popover sme-popover--inline-color components-inline-color-popover"
+			className="sme-popover sme-popover--inline-gradient components-inline-gradient-popover"
 		>
-			<ColorPicker name={ name } value={ value } onChange={ onChange } />
+			<GradientPicker
+				name={ name }
+				value={ value }
+				onChange={ onChange }
+			/>
 		</Popover>
 	);
 };
 
-export default withSpokenMessages( InlineColorUI );
+export default withSpokenMessages( InlineGradientUI );

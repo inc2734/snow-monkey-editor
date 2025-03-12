@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Snow Monkey Editor\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-"
 "editor\n"
-"POT-Creation-Date: 2024-12-06T04:43:29+00:00\n"
-"PO-Revision-Date: 2024-12-06 13:45+0900\n"
+"POT-Creation-Date: 2025-03-12T06:34:45+00:00\n"
+"PO-Revision-Date: 2025-03-12 16:07+0900\n"
 "Last-Translator: inc2734 <inc@2inc.org>\n"
 "Language-Team: Takashi Kitajima <inc@2inc.org>\n"
 "Language: ja_JP\n"
@@ -25,19 +25,22 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: languages\n"
 
 #. Plugin Name of the plugin
-#: dist/js/editor-extension.js:7
+#: snow-monkey-editor.php dist/js/editor-extension.js:7
 msgid "Snow Monkey Editor"
 msgstr "Snow Monkey Editor"
 
 #. Description of the plugin
+#: snow-monkey-editor.php
 msgid "Extends gutenberg block editor"
 msgstr "Gutenbergブロックエディターを拡張"
 
 #. Author of the plugin
+#: snow-monkey-editor.php
 msgid "inc2734"
 msgstr "inc2734"
 
 #. Author URI of the plugin
+#: snow-monkey-editor.php
 msgid "https://2inc.org"
 msgstr "https://2inc.org"
 
@@ -246,6 +249,10 @@ msgstr "色"
 #: dist/js/editor.js:1
 msgid "Text color"
 msgstr "文字色"
+
+#: dist/js/editor.js:1
+msgid "Text gradient"
+msgstr "テキストグラデーション"
 
 #: dist/js/editor.js:1
 msgid "Background color"

@@ -1,33 +1,37 @@
-# Copyright (C) 2024 inc2734
+# Copyright (C) 2025 inc2734
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Snow Monkey Editor 10.0.6\n"
+"Project-Id-Version: Snow Monkey Editor 10.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/snow-monkey-editor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-06T04:43:29+00:00\n"
+"POT-Creation-Date: 2025-03-12T06:34:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: snow-monkey-editor\n"
 
 #. Plugin Name of the plugin
+#: snow-monkey-editor.php
 #: dist/js/editor-extension.js:7
 msgid "Snow Monkey Editor"
 msgstr ""
 
 #. Description of the plugin
+#: snow-monkey-editor.php
 msgid "Extends gutenberg block editor"
 msgstr ""
 
 #. Author of the plugin
+#: snow-monkey-editor.php
 msgid "inc2734"
 msgstr ""
 
 #. Author URI of the plugin
+#: snow-monkey-editor.php
 msgid "https://2inc.org"
 msgstr ""
 
@@ -236,6 +240,10 @@ msgstr ""
 
 #: dist/js/editor.js:1
 msgid "Text color"
+msgstr ""
+
+#: dist/js/editor.js:1
+msgid "Text gradient"
 msgstr ""
 
 #: dist/js/editor.js:1

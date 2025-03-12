@@ -1,11 +1,13 @@
+@use 'sass:color';
+
 @use '../../css/core/placeholder/alert';
 @use '../../css/core/variable/variable' as *;
 
 :root :where(p.is-style-sme-alert),
 :root :where(.wp-block-group.is-style-sme-alert) {
 	--sme-alert--background-color: #{ $alert-color };
-	--sme-alert--border: 1px solid #{ darken($alert-color, 5%) };
-	--sme-alert--color: #{ darken(desaturate($alert-color, 60%), 70%) };
+	--sme-alert--border: 1px solid #{ color.adjust($alert-color, $lightness: -5%) };
+	--sme-alert--color: #{ color.adjust(color.adjust($alert-color, $saturation: -60%), $lightness: -70%) };
 	--sme-alert--icon: url(../../src/style/alert/icon.svg);
 
 	@extend %alert;

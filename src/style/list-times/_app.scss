@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use '../../css/core/variable/variable' as *;
 
 :root :where(.wp-block-list.is-style-sme-list-times) {
@@ -16,7 +18,7 @@
 			width: 10px;
 			height: 0;
 			border-style: solid;
-			border-color: adjust-hue(darken($alert-color, 55%), -30deg);
+			border-color: color.adjust(color.adjust($alert-color, $lightness: -55%), $hue: -30deg);
 			border-width: 0 0 2px;
 		}
 

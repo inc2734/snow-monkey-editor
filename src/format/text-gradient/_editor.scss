@@ -1,0 +1,13 @@
+.sme-toolbar-button--text-gradient {
+	.dashicon {
+		background-image: var(--sme--gradient);
+		background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
+	}
+}
+
+.sme-popover--inline-gradient {
+	.components-custom-gradient-picker__gradient-bar .components-custom-gradient-picker__control-point-button {
+		padding: 0 !important;
+	}
+}

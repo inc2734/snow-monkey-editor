@@ -10,7 +10,7 @@ import { __ } from '@wordpress/i18n';
 import {
 	default as InlineColorUI,
 	getActiveColor,
-} from '../component/inline-gradient';
+} from '../component/inline-highlighter';
 
 import { SnowMonkeyToolbarButton } from '../component/snow-monkey-toolbar-button';
 
