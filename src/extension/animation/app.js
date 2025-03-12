@@ -48,19 +48,32 @@ document.addEventListener(
 					}
 				} );
 
-				observer.unobserve( target );
+				if ( !! observer ) {
+					observer.unobserve( target );
+				}
 			} );
 		};
 
 		const options = {
 			root: null,
 			rootMargin: '-25% 0px',
-			thureshold: [ 0, 0.25, 0.5, 0.75, 1 ],
+			threshold: [ 0, 0.25, 0.5, 0.75, 1 ],
 		};
 
 		const observer = new IntersectionObserver( callback, options );
 
 		forEachHtmlNodes( targets, ( target ) => {
+			const rect = target.getBoundingClientRect();
+			const windowHeight = window.innerHeight;
+			const isInView = 0 <= rect.top && rect.top <= windowHeight;
+
+			if ( isInView ) {
+				// 交差状態を手動で処理（callback と同じ処理をここに入れるか呼び出す）
+				callback( [
+					{ target, isIntersecting: true, intersectionRatio: 1 },
+				] );
+			}
+
 			observer.observe( target );
 
 			target.addEventListener(
