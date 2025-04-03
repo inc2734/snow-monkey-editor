@@ -8,7 +8,7 @@ import {
 
 import { getBlockType } from '@wordpress/blocks';
 import { useSelect } from '@wordpress/data';
-import { useEffect } from '@wordpress/element';
+import { useEffect, useMemo } from '@wordpress/element';
 import { sprintf, __ } from '@wordpress/i18n';
 
 import { isApplyExtensionToBlock, isApplyExtensionToUser } from '../helper';
@@ -42,17 +42,18 @@ const isShown = ( props ) => {
 };
 
 const useGetRoles = () => {
-	return useSelect( ( select ) => {
-		const allRoles = select( store ).getRoles();
-		const filteredRoles = { ...allRoles };
+	const allRoles = useSelect( ( select ) => {
+		return select( store ).getRoles();
+	}, [] );
 
+	return useMemo( () => {
 		return {
 			'sme-guest': {
 				name: __( 'user is not logged in', 'snow-monkey-editor' ),
 			},
-			...filteredRoles,
+			...allRoles,
 		};
-	}, [] );
+	}, [ allRoles ] );
 };
 
 const useGetRolesForHiddenByRoles = () => {
