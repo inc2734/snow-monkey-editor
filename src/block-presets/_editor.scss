@@ -24,6 +24,11 @@
 
 	&__control {
 		display: flex;
+		align-items: stretch;
+
+		> button {
+			height: auto;
+		}
 
 		.components-base-control {
 			flex: 1;

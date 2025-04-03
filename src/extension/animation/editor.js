@@ -94,6 +94,7 @@ const Content = ( props ) => {
 	return (
 		<VStack spacing="16px">
 			<SelectControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ __( 'Animation', 'snow-monkey-editor' ) }
 				value={ smeAnimation || undefined }
@@ -111,6 +112,7 @@ const Content = ( props ) => {
 			/>
 
 			<RangeControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ __( 'Delay', 'snow-monkey-editor' ) }
 				value={ smeAnimationDelay || 0 }
@@ -124,6 +126,7 @@ const Content = ( props ) => {
 			/>
 
 			<RangeControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ __( 'Duration', 'snow-monkey-editor' ) }
 				value={ smeAnimationDuration || undefined }

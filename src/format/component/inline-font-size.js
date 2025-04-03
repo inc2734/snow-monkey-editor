@@ -55,16 +55,17 @@ const FontSizePicker = ( { name, value, onChange, onReset } ) => {
 	return (
 		<>
 			<BaseFontSizePicker
+				__next40pxDefaultSize
+				__nextHasNoMarginBottom
 				value={ activeFontSize }
 				onChange={ onChange }
 				fontSizes={ fontSizes }
-				__nextHasNoMarginBottom
 			/>
 
 			<Button
 				disabled={ value === undefined }
 				variant="secondary"
-				isSmall
+				size="small"
 				onClick={ onReset }
 			>
 				{ __( 'Reset' ) }

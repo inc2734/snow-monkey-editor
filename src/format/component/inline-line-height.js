@@ -34,6 +34,7 @@ const LineHeightPicker = ( { name, title, value, onChange, onReset } ) => {
 	return (
 		<>
 			<RangeControl
+				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				label={ title }
 				value={ activeLineHeight }
