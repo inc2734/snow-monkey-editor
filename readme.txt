@@ -2,9 +2,9 @@
 Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, page builder
-Requires at least: 6.6
-Tested up to: 6.7
-Stable tag: 10.2.0
+Requires at least: 6.8
+Tested up to: 6.8
+Stable tag: 11.0.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -192,6 +192,10 @@ Yes! You can use the Snow Monkey Editor with any theme, but we recommend using o
 28. List (Times)
 
 == Changelog ==
+
+= 11.0.0 =
+* WordPress 6.8 compatible.
+* Requires WordPress 6.8 or higher.
 
 = 10.2.0 =
 * Add new format: Text gradient.
