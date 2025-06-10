@@ -9,8 +9,12 @@ import {
 	__experimentalDropdownContentWrapper as DropdownContentWrapper,
 } from '@wordpress/components';
 
+import {
+	createHigherOrderComponent,
+	useViewportMatch,
+} from '@wordpress/compose';
+
 import { InspectorControls } from '@wordpress/block-editor';
-import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 
@@ -60,11 +64,29 @@ const addBlockAttributes = ( blockTypes ) => {
 	return blockTypes;
 };
 
+/**
+ * @see https://github.com/WordPress/gutenberg/blob/9122cc34fb1d972cdfc59614bf6f140a9b6f7d94/packages/block-library/src/utils/hooks.js
+ */
+function useToolsPanelDropdownMenuProps() {
+	const isMobile = useViewportMatch( 'medium', '<' );
+	return ! isMobile
+		? {
+				popoverProps: {
+					placement: 'left-start',
+					// For non-mobile, inner sidebar width (248px) - button width (24px) - border (1px) + padding (16px) + spacing (20px)
+					offset: 259,
+				},
+		  }
+		: {};
+}
+
 const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const isExtensionsShown = settings.some( ( setting ) =>
 			setting.isShown( props )
 		);
+
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		return (
 			<>
@@ -105,6 +127,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 								}
 							} }
 							className="color-block-support-panel sme-extension-tools-panel"
+							dropdownMenuProps={ dropdownMenuProps }
 						>
 							<div
 								className="color-block-support-panel__inner-wrapper"
