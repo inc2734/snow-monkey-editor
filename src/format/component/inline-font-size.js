@@ -2,12 +2,11 @@ import { find } from 'lodash';
 
 import {
 	FontSizePicker as BaseFontSizePicker,
-	useCachedTruthy,
 	useSettings,
 } from '@wordpress/block-editor';
 
 import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
-import { withSpokenMessages, Popover, Button } from '@wordpress/components';
+import { Popover, Button } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -78,7 +77,6 @@ const InlineFontSizeUI = ( {
 	name,
 	value,
 	onChange,
-	onClose,
 	onReset,
 	contentRef,
 	settings,
@@ -88,13 +86,12 @@ const InlineFontSizeUI = ( {
 		settings,
 	} );
 
-	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
-	popoverAnchor.getBoundingClientRect = () => cachedRect;
-
 	return (
 		<Popover
+			placement="bottom"
+			shift={ true }
+			focusOnMount={ false }
 			anchor={ popoverAnchor }
-			onClose={ onClose }
 			className="sme-popover sme-popover--inline-font-size components-inline-color-popover"
 		>
 			<fieldset>
@@ -109,4 +106,4 @@ const InlineFontSizeUI = ( {
 	);
 };
 
-export default withSpokenMessages( InlineFontSizeUI );
+export default InlineFontSizeUI;

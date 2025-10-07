@@ -210,7 +210,6 @@ function Edit( {
 
 					onFocus();
 				} }
-				isActive={ isObjectActive }
 			/>
 
 			{ isObjectActive && (

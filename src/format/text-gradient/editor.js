@@ -1,13 +1,14 @@
 import classnames from 'classnames';
 
 import {
-	useSettings,
 	getGradientSlugByValue,
 	__experimentalGetGradientClass,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import { Icon } from '@wordpress/components';
-import { useState, useMemo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+import { useCallback, useEffect, useMemo, useState } from '@wordpress/element';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -22,28 +23,30 @@ const name = 'snow-monkey-editor/text-gradient';
 const title = __( 'Text gradient', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
-	const { value, onChange, isActive, activeAttributes, contentRef } = props;
+	const { value, onChange, isActive, contentRef } = props;
 
-	const [ userGradients, themeGradients, defaultGradients ] = useSettings(
-		'color.gradients.custom',
-		'color.gradients.theme',
-		'color.gradients.default'
+	const gradients = useSelect(
+		( select ) => select( blockEditorStore ).getSettings()?.gradients ?? [],
+		[]
 	);
-
-	const gradients = useMemo(
-		() => [
-			...( userGradients || [] ),
-			...( themeGradients || [] ),
-			...( defaultGradients || [] ),
-		],
-		[ userGradients, themeGradients, defaultGradients ]
-	);
-
-	const [ isAddingGradient, setIsAddingGradient ] = useState( false );
 
 	const activeGradient = useMemo( () => {
 		return getActiveGradient( name, value, gradients );
 	}, [ value, gradients ] );
+
+	const [ isAddingGradient, setIsAddingGradient ] = useState( false );
+
+	const openModal = useCallback( () => {
+		setIsAddingGradient( true );
+	}, [ setIsAddingGradient ] );
+
+	const closeModal = useCallback( () => {
+		setIsAddingGradient( false );
+	}, [ setIsAddingGradient ] );
+
+	useEffect( () => {
+		closeModal();
+	}, [ value.start ] );
 
 	return (
 		<>
@@ -63,18 +66,14 @@ const Edit = ( props ) => {
 						'is-pressed': !! isActive,
 					}
 				) }
-				onClick={ () => {
-					setIsAddingGradient( ! isAddingGradient );
-				} }
+				onClick={ openModal }
 				icon={ <Icon icon="edit" /> }
 			/>
 
 			{ isAddingGradient && (
 				<InlineGradientUI
 					name={ name }
-					activeAttributes={ activeAttributes }
 					value={ value }
-					onClose={ () => setIsAddingGradient( false ) }
 					onChange={ ( newValue ) => {
 						if ( !! newValue ) {
 							const gradientObject = getGradientSlugByValue(
@@ -98,11 +97,11 @@ const Edit = ( props ) => {
 							);
 						} else {
 							onChange( removeFormat( value, name ) );
-							setIsAddingGradient( false );
+							closeModal();
 						}
 					} }
 					contentRef={ contentRef }
-					settings={ settings }
+					settings={ { ...settings, isActive } }
 				/>
 			) }
 		</>

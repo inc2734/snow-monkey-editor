@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 
 import { Icon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useCallback, useEffect, useState } from '@wordpress/element';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -12,9 +12,21 @@ const name = 'snow-monkey-editor/line-height';
 const title = __( 'Line height', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
-	const { value, onChange, isActive, activeAttributes, contentRef } = props;
+	const { value, onChange, isActive, contentRef } = props;
 
 	const [ isAddingLineHeight, setIsAddingLineHeight ] = useState( false );
+
+	const openModal = useCallback( () => {
+		setIsAddingLineHeight( true );
+	}, [ setIsAddingLineHeight ] );
+
+	const closeModal = useCallback( () => {
+		setIsAddingLineHeight( false );
+	}, [ setIsAddingLineHeight ] );
+
+	useEffect( () => {
+		closeModal();
+	}, [ value.start ] );
 
 	return (
 		<>
@@ -27,9 +39,7 @@ const Edit = ( props ) => {
 				className={ classnames( 'sme-toolbar-button', {
 					'is-pressed': !! isActive,
 				} ) }
-				onClick={ () => {
-					setIsAddingLineHeight( ! isAddingLineHeight );
-				} }
+				onClick={ openModal }
 				icon={ <Icon icon="editor-insertmore" /> }
 			/>
 
@@ -37,14 +47,10 @@ const Edit = ( props ) => {
 				<InlineLineHeightUI
 					name={ name }
 					title={ title }
-					activeAttributes={ activeAttributes }
 					value={ value }
-					onClose={ () => {
-						setIsAddingLineHeight( false );
-					} }
 					onReset={ () => {
-						setIsAddingLineHeight( false );
 						onChange( removeFormat( value, name ) );
+						closeModal();
 					} }
 					onChange={ ( newValue ) => {
 						onChange(
@@ -57,7 +63,7 @@ const Edit = ( props ) => {
 						);
 					} }
 					contentRef={ contentRef }
-					settings={ settings }
+					settings={ { ...settings, isActive } }
 				/>
 			) }
 		</>

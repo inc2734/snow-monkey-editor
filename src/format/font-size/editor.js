@@ -3,7 +3,7 @@ import { find, isNumber, isString } from 'lodash';
 
 import { useSettings, getFontSizeClass } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useCallback, useEffect, useState } from '@wordpress/element';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -14,10 +14,22 @@ const name = 'snow-monkey-editor/font-size';
 const title = __( 'Font size', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
-	const { value, onChange, isActive, activeAttributes, contentRef } = props;
+	const { value, onChange, isActive, contentRef } = props;
 
 	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
+
+	const openModal = useCallback( () => {
+		setIsAddingFontSize( true );
+	}, [ setIsAddingFontSize ] );
+
+	const closeModal = useCallback( () => {
+		setIsAddingFontSize( false );
+	}, [ setIsAddingFontSize ] );
+
+	useEffect( () => {
+		closeModal();
+	}, [ value.start ] );
 
 	return (
 		<>
@@ -28,21 +40,17 @@ const Edit = ( props ) => {
 				className={ classnames( 'sme-toolbar-button', {
 					'is-pressed': !! isActive,
 				} ) }
-				onClick={ () => {
-					setIsAddingFontSize( ! isAddingFontSize );
-				} }
+				onClick={ openModal }
 				icon={ <Icon icon="editor-textcolor" /> }
 			/>
 
 			{ isAddingFontSize && (
 				<InlineFontSizeUI
 					name={ name }
-					activeAttributes={ activeAttributes }
 					value={ value }
-					onClose={ () => setIsAddingFontSize( false ) }
 					onReset={ () => {
-						setIsAddingFontSize( false );
 						onChange( removeFormat( value, name ) );
+						closeModal();
 					} }
 					onChange={ ( newValue ) => {
 						if ( !! newValue ) {
@@ -80,10 +88,11 @@ const Edit = ( props ) => {
 							);
 						} else {
 							onChange( removeFormat( value, name ) );
+							closeModal();
 						}
 					} }
 					contentRef={ contentRef }
-					settings={ settings }
+					settings={ { ...settings, isActive } }
 				/>
 			) }
 		</>

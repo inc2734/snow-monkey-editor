@@ -1,15 +1,12 @@
 import rgb2hex from 'rgb2hex';
 
 import {
-	useCachedTruthy,
-	useSettings,
 	__experimentalColorGradientControl as ColorGradientControl,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
 import { getActiveFormat, useAnchor } from '@wordpress/rich-text';
-
-import { withSpokenMessages, Popover } from '@wordpress/components';
+import { Popover } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
@@ -38,24 +35,17 @@ export function getActiveColor( formatName, formatValue ) {
 }
 
 const ColorPicker = ( { name, value, onChange } ) => {
-	const [ userPalette, themePalette, defaultPalette ] = useSettings(
-		'color.palette.custom',
-		'color.palette.theme',
-		'color.palette.default'
-	);
-
-	const colors = useMemo(
-		() => [
-			...( userPalette || [] ),
-			...( themePalette || [] ),
-			...( defaultPalette || [] ),
-		],
-		[ userPalette, themePalette, defaultPalette ]
-	);
+	const multipleOriginColorsAndGradients =
+		useMultipleOriginColorsAndGradients();
 
 	const activeColor = useMemo(
-		() => getActiveColor( name, value, colors ),
-		[ name, value, colors ]
+		() =>
+			getActiveColor(
+				name,
+				value,
+				multipleOriginColorsAndGradients?.colors
+			),
+		[ name, value, multipleOriginColorsAndGradients?.colors ]
 	);
 
 	return (
@@ -63,33 +53,25 @@ const ColorPicker = ( { name, value, onChange } ) => {
 			label={ __( 'Color', 'snow-monkey-editor' ) }
 			colorValue={ activeColor }
 			onColorChange={ onChange }
-			{ ...useMultipleOriginColorsAndGradients() }
+			{ ...multipleOriginColorsAndGradients }
 			__experimentalHasMultipleOrigins={ true }
 			__experimentalIsRenderedInSidebar={ true }
 		/>
 	);
 };
 
-const InlineColorUI = ( {
-	name,
-	value,
-	onChange,
-	onClose,
-	contentRef,
-	settings,
-} ) => {
+const InlineColorUI = ( { name, value, onChange, contentRef, settings } ) => {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
 		settings,
 	} );
 
-	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
-	popoverAnchor.getBoundingClientRect = () => cachedRect;
-
 	return (
 		<Popover
+			placement="bottom"
+			shift={ true }
+			focusOnMount={ false }
 			anchor={ popoverAnchor }
-			onClose={ onClose }
 			className="sme-popover sme-popover--inline-color components-inline-color-popover"
 		>
 			<ColorPicker name={ name } value={ value } onChange={ onChange } />
@@ -97,4 +79,4 @@ const InlineColorUI = ( {
 	);
 };
 
-export default withSpokenMessages( InlineColorUI );
+export default InlineColorUI;

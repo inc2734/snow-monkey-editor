@@ -1,13 +1,14 @@
 import classnames from 'classnames';
 
 import {
-	useSettings,
 	getColorClassName,
 	getColorObjectByColorValue,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 import { Icon } from '@wordpress/components';
-import { useState, useMemo } from '@wordpress/element';
+import { useCallback, useEffect, useMemo, useState } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -22,28 +23,31 @@ const name = 'snow-monkey-editor/badge';
 const title = __( 'Badge', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
-	const { value, onChange, isActive, activeAttributes, contentRef } = props;
+	const { value, onChange, isActive, contentRef } = props;
 
-	const [ userPalette, themePalette, defaultPalette ] = useSettings(
-		'color.palette.custom',
-		'color.palette.theme',
-		'color.palette.default'
+	const colors = useSelect(
+		( select ) => select( blockEditorStore ).getSettings()?.colors ?? [],
+		[]
 	);
 
-	const colors = useMemo(
-		() => [
-			...( userPalette || [] ),
-			...( themePalette || [] ),
-			...( defaultPalette || [] ),
-		],
-		[ userPalette, themePalette, defaultPalette ]
+	const activeColor = useMemo(
+		() => getActiveBackgroundColor( name, value, colors ),
+		[ value, colors ]
 	);
 
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
 
-	const activeColor = useMemo( () => {
-		return getActiveBackgroundColor( name, value, colors );
-	}, [ value, colors ] );
+	const openModal = useCallback( () => {
+		setIsAddingColor( true );
+	}, [ setIsAddingColor ] );
+
+	const closeModal = useCallback( () => {
+		setIsAddingColor( false );
+	}, [ setIsAddingColor ] );
+
+	useEffect( () => {
+		closeModal();
+	}, [ value.start ] );
 
 	return (
 		<>
@@ -55,18 +59,13 @@ const Edit = ( props ) => {
 				className={ classnames( 'sme-toolbar-button', {
 					'is-pressed': !! isActive,
 				} ) }
-				onClick={ () => {
-					setIsAddingColor( ! isAddingColor );
-				} }
+				onClick={ openModal }
 				icon={ <Icon icon="tag" /> }
 			/>
 
 			{ isAddingColor && (
 				<InlineColorUI
-					name={ name }
-					activeAttributes={ activeAttributes }
 					value={ value }
-					onClose={ () => setIsAddingColor( false ) }
 					onChange={ ( newValue ) => {
 						if ( !! newValue ) {
 							const colorObject = getColorObjectByColorValue(
@@ -91,11 +90,11 @@ const Edit = ( props ) => {
 							);
 						} else {
 							onChange( removeFormat( value, name ) );
-							setIsAddingColor( false );
+							closeModal();
 						}
 					} }
 					contentRef={ contentRef }
-					settings={ settings }
+					settings={ { ...settings, isActive } }
 				/>
 			) }
 		</>

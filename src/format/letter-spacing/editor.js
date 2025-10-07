@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 
 import { Icon } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { useCallback, useEffect, useState } from '@wordpress/element';
 import { removeFormat, applyFormat } from '@wordpress/rich-text';
 import { __ } from '@wordpress/i18n';
 
@@ -12,10 +12,22 @@ const name = 'snow-monkey-editor/letter-spacing';
 const title = __( 'Letter spacing', 'snow-monkey-editor' );
 
 const Edit = ( props ) => {
-	const { value, onChange, isActive, activeAttributes, contentRef } = props;
+	const { value, onChange, isActive, contentRef } = props;
 
 	const [ isAddingLetterSpacing, setIsAddingLetterSpacing ] =
 		useState( false );
+
+	const openModal = useCallback( () => {
+		setIsAddingLetterSpacing( true );
+	}, [ setIsAddingLetterSpacing ] );
+
+	const closeModal = useCallback( () => {
+		setIsAddingLetterSpacing( false );
+	}, [ setIsAddingLetterSpacing ] );
+
+	useEffect( () => {
+		closeModal();
+	}, [ value.start ] );
 
 	return (
 		<>
@@ -30,9 +42,7 @@ const Edit = ( props ) => {
 				className={ classnames( 'sme-toolbar-button', {
 					'is-pressed': !! isActive,
 				} ) }
-				onClick={ () => {
-					setIsAddingLetterSpacing( ! isAddingLetterSpacing );
-				} }
+				onClick={ openModal }
 				icon={ <Icon icon="controls-pause" /> }
 			/>
 
@@ -40,14 +50,10 @@ const Edit = ( props ) => {
 				<InlineLetterSpacingUI
 					name={ name }
 					title={ title }
-					activeAttributes={ activeAttributes }
 					value={ value }
-					onClose={ () => {
-						setIsAddingLetterSpacing( false );
-					} }
 					onReset={ () => {
-						setIsAddingLetterSpacing( false );
 						onChange( removeFormat( value, name ) );
+						closeModal();
 					} }
 					onChange={ ( newValue ) => {
 						onChange(
@@ -60,7 +66,7 @@ const Edit = ( props ) => {
 						);
 					} }
 					contentRef={ contentRef }
-					settings={ settings }
+					settings={ { ...settings, isActive } }
 				/>
 			) }
 		</>
