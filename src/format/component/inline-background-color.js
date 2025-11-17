@@ -40,14 +40,29 @@ const ColorPicker = ( { name, value, onChange } ) => {
 	const multipleOriginColorsAndGradients =
 		useMultipleOriginColorsAndGradients();
 
+	const colors = useMemo( () => {
+		const origins = multipleOriginColorsAndGradients?.colors ?? [];
+
+		if ( Array.isArray( origins ) ) {
+			return origins.reduce( ( acc, origin ) => {
+				if ( Array.isArray( origin?.colors ) ) {
+					return [ ...acc, ...origin.colors ];
+				}
+
+				if ( origin?.color ) {
+					return [ ...acc, origin ];
+				}
+
+				return acc;
+			}, [] );
+		}
+
+		return origins;
+	}, [ multipleOriginColorsAndGradients?.colors ] );
+
 	const activeBackgroundColor = useMemo(
-		() =>
-			getActiveBackgroundColor(
-				name,
-				value,
-				multipleOriginColorsAndGradients?.colors
-			),
-		[ name, value, multipleOriginColorsAndGradients?.colors ]
+		() => getActiveBackgroundColor( name, value, colors ),
+		[ name, value, colors ]
 	);
 
 	return (

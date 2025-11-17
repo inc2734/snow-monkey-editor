@@ -49,14 +49,29 @@ const GradientPicker = ( { name, value, onChange } ) => {
 	const multipleOriginColorsAndGradients =
 		useMultipleOriginColorsAndGradients();
 
+	const gradients = useMemo( () => {
+		const origins = multipleOriginColorsAndGradients?.gradients ?? [];
+
+		if ( Array.isArray( origins ) ) {
+			return origins.reduce( ( acc, origin ) => {
+				if ( Array.isArray( origin?.gradients ) ) {
+					return [ ...acc, ...origin.gradients ];
+				}
+
+				if ( origin?.gradient ) {
+					return [ ...acc, origin ];
+				}
+
+				return acc;
+			}, [] );
+		}
+
+		return origins;
+	}, [ multipleOriginColorsAndGradients?.gradients ] );
+
 	const activeGradient = useMemo(
-		() =>
-			getActiveGradient(
-				name,
-				value,
-				multipleOriginColorsAndGradients?.gradients
-			),
-		[ name, value, multipleOriginColorsAndGradients?.gradients ]
+		() => getActiveGradient( name, value, gradients ),
+		[ name, value, gradients ]
 	);
 
 	return (

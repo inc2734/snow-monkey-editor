@@ -65,6 +65,7 @@ const Edit = ( props ) => {
 
 			{ isAddingColor && (
 				<InlineColorUI
+					name={ name }
 					value={ value }
 					onChange={ ( newValue ) => {
 						if ( !! newValue ) {
