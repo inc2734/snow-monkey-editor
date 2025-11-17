@@ -60,7 +60,14 @@ const ColorPicker = ( { name, value, onChange } ) => {
 	);
 };
 
-const InlineColorUI = ( { name, value, onChange, contentRef, settings } ) => {
+const InlineColorUI = ( {
+	name,
+	value,
+	onChange,
+	onClose,
+	contentRef,
+	settings,
+} ) => {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
 		settings,
@@ -70,8 +77,9 @@ const InlineColorUI = ( { name, value, onChange, contentRef, settings } ) => {
 		<Popover
 			placement="bottom"
 			shift={ true }
-			focusOnMount={ false }
+			focusOnMount="firstElement"
 			anchor={ popoverAnchor }
+			onClose={ onClose }
 			className="sme-popover sme-popover--inline-color components-inline-color-popover"
 		>
 			<ColorPicker name={ name } value={ value } onChange={ onChange } />

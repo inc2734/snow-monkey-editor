@@ -86,6 +86,7 @@ const Edit = ( props ) => {
 					} }
 					contentRef={ contentRef }
 					settings={ { ...settings, isActive } }
+					onClose={ closeModal }
 				/>
 			) }
 		</>

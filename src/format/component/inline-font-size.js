@@ -78,6 +78,7 @@ const InlineFontSizeUI = ( {
 	value,
 	onChange,
 	onReset,
+	onClose,
 	contentRef,
 	settings,
 } ) => {
@@ -90,8 +91,9 @@ const InlineFontSizeUI = ( {
 		<Popover
 			placement="bottom"
 			shift={ true }
-			focusOnMount={ false }
+			focusOnMount="firstElement"
 			anchor={ popoverAnchor }
+			onClose={ onClose }
 			className="sme-popover sme-popover--inline-font-size components-inline-color-popover"
 		>
 			<fieldset>

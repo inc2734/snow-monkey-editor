@@ -90,6 +90,7 @@ const InlineGradientUI = ( {
 	name,
 	value,
 	onChange,
+	onClose,
 	contentRef,
 	settings,
 } ) => {
@@ -102,8 +103,9 @@ const InlineGradientUI = ( {
 		<Popover
 			placement="bottom"
 			shift={ true }
-			focusOnMount={ false }
+			focusOnMount="firstElement"
 			anchor={ popoverAnchor }
+			onClose={ onClose }
 			className="sme-popover sme-popover--inline-gradient components-inline-gradient-popover"
 		>
 			<GradientPicker

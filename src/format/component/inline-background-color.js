@@ -81,6 +81,7 @@ const InlineBackgroundColorUI = ( {
 	name,
 	value,
 	onChange,
+	onClose,
 	contentRef,
 	settings,
 } ) => {
@@ -93,8 +94,9 @@ const InlineBackgroundColorUI = ( {
 		<Popover
 			placement="bottom"
 			shift={ true }
-			focusOnMount={ false }
+			focusOnMount="firstElement"
 			anchor={ popoverAnchor }
+			onClose={ onClose }
 			className="sme-popover sme-popover--inline-background-color components-inline-color-popover"
 		>
 			<ColorPicker name={ name } value={ value } onChange={ onChange } />
