@@ -3,8 +3,8 @@ Contributors: inc2734, rocketmartue
 Donate link: https://www.amazon.co.jp/registry/wishlist/39ANKRNSTNW40
 Tags: gutenberg, block, blocks, editor, page builder
 Requires at least: 6.8
-Tested up to: 6.8
-Stable tag: 11.0.4
+Tested up to: 6.9-RC2
+Stable tag: 11.0.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
