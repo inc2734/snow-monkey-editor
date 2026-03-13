@@ -13,7 +13,7 @@ class CurrentUser {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'enqueue_block_editor_assets', array( $this, '_wp_enqueue_scripts' ), 9 );
+		add_action( 'enqueue_block_editor_assets', array( $this, '_wp_enqueue_scripts' ) );
 	}
 
 	/**
