@@ -61,7 +61,6 @@ class Assets {
 		 * Admin only.
 		 */
 		if ( is_admin() ) {
-
 			wp_enqueue_style(
 				'snow-monkey-editor@editor',
 				SNOW_MONKEY_EDITOR_URL . '/dist/css/editor.css',
