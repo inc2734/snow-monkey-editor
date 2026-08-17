@@ -48,11 +48,11 @@ const isShown = ( props ) => {
 	return true;
 };
 
-const isLocked = ( props ) => {
+export const isLocked = ( props ) => {
 	return (
 		0 <
 		intersection(
-			props.attributes.smeIsEditingLockRoles,
+			props.attributes?.smeIsEditingLockRoles,
 			snowmonkeyeditor?.currentUser?.roles
 		).length
 	);
@@ -67,7 +67,7 @@ const Decorator = ( props ) => {
 };
 
 const Content = ( props ) => {
-	const { attributes, setAttributes, clientId } = props;
+	const { attributes, setAttributes } = props;
 	const { smeIsEditingLockRoles } = attributes;
 
 	const roles = useSelect( ( select ) => {
@@ -93,24 +93,6 @@ const Content = ( props ) => {
 		}
 		return uniq( newSmeIsEditingLockRoles );
 	};
-
-	const block = document.getElementById( `block-${ clientId }` );
-	if ( block ) {
-		if ( isLocked( props ) ) {
-			const tabindex = block.getAttribute( 'tabindex' );
-			if ( !! tabindex ) {
-				block.setAttribute( 'data-sme-tabindex', tabindex );
-				block.setAttribute( 'tabindex', -1 );
-			}
-		} else {
-			const tabindex = block.getAttribute( 'tabindex' );
-			const defaultTabindex = block.getAttribute( 'data-sme-tabindex' );
-			if ( !! tabindex && !! defaultTabindex ) {
-				block.setAttribute( 'tabindex', defaultTabindex );
-				block.removeAttribute( 'data-sme-tabindex' );
-			}
-		}
-	}
 
 	return (
 		<VStack spacing="16px">
