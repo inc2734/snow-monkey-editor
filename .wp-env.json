@@ -1,11 +1,13 @@
 {
-  "core": "https://wordpress.org/latest.zip",
-  "plugins": [ "." ],
-  "config": {
-    "WP_DEBUG": true,
-    "WP_MEMORY_LIMIT": "256M"
-  },
-  "mappings": {
-    ".export": "./.export"
-  }
+	"core": null,
+	"plugins": [ "." ],
+	"port": 8888,
+	"testsEnvironment": false,
+	"config": {
+		"WP_DEBUG": true,
+		"WP_MEMORY_LIMIT": "256M"
+	},
+	"mappings": {
+		".export": "./.export"
+	}
 }
