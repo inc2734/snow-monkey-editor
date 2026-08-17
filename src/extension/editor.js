@@ -170,6 +170,7 @@ const addBlockControl = createHigherOrderComponent( ( BlockEdit ) => {
 												} }
 												label={ setting.label }
 												className={ classnames(
+													'block-editor-color-gradient-item',
 													'block-editor-tools-panel-color-gradient-settings__item',
 													{
 														first: 0 === index,
