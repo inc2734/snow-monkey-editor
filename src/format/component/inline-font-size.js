@@ -54,7 +54,6 @@ const FontSizePicker = ( { name, value, onChange, onReset } ) => {
 	return (
 		<>
 			<BaseFontSizePicker
-				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 				value={ activeFontSize }
 				onChange={ onChange }

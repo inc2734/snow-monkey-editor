@@ -169,7 +169,6 @@ const withInspectorControls = createHigherOrderComponent( ( BlockEdit ) => {
 
 							<div className="sme-editor-block-presets-inserter__control">
 								<TextControl
-									__next40pxDefaultSize
 									__nextHasNoMarginBottom
 									value={ newPresetName || '' }
 									placeholder={ __(
