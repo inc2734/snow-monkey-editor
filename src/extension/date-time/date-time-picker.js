@@ -1,25 +1,13 @@
 import { Button, DateTimePicker } from '@wordpress/components';
-import { getSettings } from '@wordpress/date';
 import { __ } from '@wordpress/i18n';
 
 export default function ( { currentDate, onChange, onReset } ) {
-	// @see https://developer.wordpress.org/block-editor/components/date-time/#usage
-	const settings = getSettings();
-	const is12HourTime = /a(?!\\)/i.test(
-		settings.formats.time
-			.toLowerCase()
-			.replace( /\\\\/g, '' )
-			.split( '' )
-			.reverse()
-			.join( '' )
-	);
-
 	return (
 		<div className="sme-date-time-picker">
 			<DateTimePicker
 				currentDate={ currentDate }
 				onChange={ onChange }
-				is12Hour={ is12HourTime }
+				is12Hour={ false }
 			/>
 
 			<div className="sme-date-time-picker__action">
