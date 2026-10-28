@@ -29,6 +29,7 @@ jobs:
         with:
           node-version-file: 'package.json'
           cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Npm install
         run: npm ci

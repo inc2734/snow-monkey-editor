@@ -85,10 +85,10 @@ const Edit = ( props ) => {
 													'color',
 													colorObject.slug
 												),
-										  }
+											}
 										: {
 												style: `color: ${ newValue }`,
-										  },
+											},
 								} )
 							);
 						} else {

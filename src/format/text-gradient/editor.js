@@ -89,10 +89,10 @@ const Edit = ( props ) => {
 												class: __experimentalGetGradientClass(
 													gradientObject
 												),
-										  }
+											}
 										: {
 												style: `background-image: ${ newValue }`,
-										  },
+											},
 								} )
 							);
 						} else {

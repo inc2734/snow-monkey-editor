@@ -80,10 +80,10 @@ const Edit = ( props ) => {
 												class: getFontSizeClass(
 													fontSizeObject.slug
 												),
-										  }
+											}
 										: {
 												style: `font-size: ${ newFontSize }`,
-										  },
+											},
 								} )
 							);
 						} else {

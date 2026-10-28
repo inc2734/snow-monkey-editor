@@ -83,10 +83,10 @@ const Edit = ( props ) => {
 													'background-color',
 													colorObject.slug
 												),
-										  }
+											}
 										: {
 												style: `background-color: ${ newValue }`,
-										  },
+											},
 								} )
 							);
 						} else {

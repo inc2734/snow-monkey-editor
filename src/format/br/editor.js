@@ -27,9 +27,8 @@ function InlineUI( { value, onChange, activeObjectAttributes, contentRef } ) {
 	const isDisableMobile = () =>
 		!! className?.match( /sme-br--disable:mobile/ );
 
-	const [ disableDesktop, setDisableDesktop ] = useState(
-		isDisableDesktop()
-	);
+	const [ disableDesktop, setDisableDesktop ] =
+		useState( isDisableDesktop() );
 	const [ disableTablet, setDisableTablet ] = useState( isDisableTablet() );
 	const [ disableMobile, setDisableMobile ] = useState( isDisableMobile() );
 
